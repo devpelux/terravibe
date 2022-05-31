@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "terravibe",
+  "version": "${version}",
+
+  "name": "Terravibe",
+  "description": "Vibes from the earth...",
+  "authors": [
+    "devpelux"
+  ],
+  "contact": {
+    "homepage": "https://github.com/devpelux/terravibe",
+    "sources": "https://github.com/devpelux/terravibe"
+  },
+
+  "license": "MIT",
+  "icon": "assets/terravibe/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "xyz.devpelux.terravibe.Initializer"
+    ],
+    "client": [
+      "xyz.devpelux.terravibe.InitializerClient"
+    ]
+  },
+  "mixins": [
+    "terravibe.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19-beta.4",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
