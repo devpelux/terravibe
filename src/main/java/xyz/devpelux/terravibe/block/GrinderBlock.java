@@ -1,7 +1,9 @@
 package xyz.devpelux.terravibe.block;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,7 +33,7 @@ public class GrinderBlock extends Block {
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "grinder");
 
     /** Voxel shape of the block. */
-    private static final VoxelShape VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
+    private static VoxelShape VOXEL_SHAPE = null;
 
     /** Spawn position of the fail particles. */
     private static final Vec3f FAIL_PARTICLES_SPAWN_POINT = new Vec3f(0.5f, 0.1875f, 0.5f);
@@ -39,6 +41,11 @@ public class GrinderBlock extends Block {
     /** Initializes a new {@link GrinderBlock}. */
     public GrinderBlock(Settings settings) {
         super(settings);
+    }
+
+    /** Gets the block settings. */
+    public static @NotNull FabricBlockSettings getSettings() {
+        return FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
     }
 
     /**
@@ -102,13 +109,21 @@ public class GrinderBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VOXEL_SHAPE;
+        return getVoxelShape();
     }
 
     /** Gets the ray-cast shape of the block. */
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
+        return getVoxelShape();
+    }
+
+    /** Gets the voxel shape of the block. */
+    public static @NotNull VoxelShape getVoxelShape() {
+        if (VOXEL_SHAPE == null) {
+            VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
+        }
         return VOXEL_SHAPE;
     }
 }

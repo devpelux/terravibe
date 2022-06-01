@@ -45,7 +45,7 @@ public class ConvertingRecipe extends CuttingRecipe {
 
     /** Executes an attempt and returns if it was successful. */
     public boolean isSuccessful() {
-        return random.nextFloat() > getChance();
+        return random.nextFloat() <= getChance();
     }
 
     /** Checks if the specified inventory matches the ingredient list. */

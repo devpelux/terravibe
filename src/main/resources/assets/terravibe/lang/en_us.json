@@ -1,5 +1,9 @@
 {
-  "itemGroup.terravibe.terravibe" : "Terravibe",
+  "block.terravibe.grinder" : "Grinder",
+  "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
   "item.terravibe.grinder" : "Grinder",
-  "block.terravibe.grinder" : "Grinder"
+  "item.terravibe.sweet_potato" : "Sweet potato",
+  "item.terravibe.sweet_potato_bud" : "Sweet potato bud",
+  "item.terravibe.red_sweet_potato" : "Red sweet potato",
+  "itemGroup.terravibe.terravibe" : "Terravibe"
 }
