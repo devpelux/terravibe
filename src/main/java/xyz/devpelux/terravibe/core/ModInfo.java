@@ -1,11 +1,7 @@
 package xyz.devpelux.terravibe.core;
 
-/**
- * Contains some information about the mod.
- */
+/** Contains some information about the mod. */
 public class ModInfo {
-    /**
-     * This is the identifier of the mod.
-     */
-    public static final String MODID = "terravibe";
+    /** This is the identifier of the mod. */
+    public static final String MOD_ID = "terravibe";
 }
