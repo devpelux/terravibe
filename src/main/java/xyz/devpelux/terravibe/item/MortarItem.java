@@ -5,16 +5,16 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.block.GrinderBlock;
+import xyz.devpelux.terravibe.block.MortarBlock;
 import xyz.devpelux.terravibe.core.ModInfo;
 
-/** Item for {@link GrinderBlock} */
-public class GrinderItem extends BlockItem {
+/** Item for {@link MortarBlock}. */
+public class MortarItem extends BlockItem {
     /** Identifier of the item. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "grinder");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "mortar");
 
-    /** Initializes a new {@link GrinderItem}. */
-    public GrinderItem(Block block, Settings settings) {
+    /** Initializes a new {@link MortarItem}. */
+    public MortarItem(Block block, Settings settings) {
         super(block, settings);
     }
 

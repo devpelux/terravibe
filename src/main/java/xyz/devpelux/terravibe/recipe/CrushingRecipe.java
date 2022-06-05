@@ -15,21 +15,21 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
-/** Recipe to convert an item to another with a successful value. */
-public class ConvertingRecipe extends CuttingRecipe {
+/** Crushes an item to obtain another item with a successful chance. */
+public class CrushingRecipe extends CuttingRecipe {
     /** Identifier of the recipe. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "converting");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "crushing");
 
-    /** Json serializer of the {@link ConvertingRecipe}. */
-    public static final RecipeSerializer<ConvertingRecipe> CONVERTING_RECIPE_SERIALIZER =
+    /** Json serializer of the {@link CrushingRecipe}. */
+    public static final RecipeSerializer<CrushingRecipe> CRUSHING_RECIPE_SERIALIZER =
             Registry.register(Registry.RECIPE_SERIALIZER, ID, new Serializer());
 
     protected final float chance;
     protected final Random random = Random.create();
 
-    /** Initializes a new {@link ConvertingRecipe}. */
-    public ConvertingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance) {
-        super(RecipeTypeList.CONVERTING_RECIPE, CONVERTING_RECIPE_SERIALIZER, id, group, input, output);
+    /** Initializes a new {@link CrushingRecipe}. */
+    public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance) {
+        super(RecipeTypeList.CRUSHING, CRUSHING_RECIPE_SERIALIZER, id, group, input, output);
         this.chance = chance;
     }
 
@@ -55,15 +55,15 @@ public class ConvertingRecipe extends CuttingRecipe {
     }
 
 
-    /** {@link ConvertingRecipe} json serializer. */
-    public static class Serializer implements RecipeSerializer<ConvertingRecipe> {
+    /** {@link CrushingRecipe} json serializer. */
+    public static class Serializer implements RecipeSerializer<CrushingRecipe> {
 
         /** Initializes a new {@link Serializer}. */
         public Serializer() {}
 
         /** Reads the recipe from a json object. */
         @Override
-        public ConvertingRecipe read(Identifier id, JsonObject json) {
+        public CrushingRecipe read(Identifier id, JsonObject json) {
             //Group
             String group = JsonHelper.getString(json, "group", "");
 
@@ -83,22 +83,22 @@ public class ConvertingRecipe extends CuttingRecipe {
             //Chance
             float chance = JsonHelper.getFloat(json, "chance");
 
-            return new ConvertingRecipe(id, group, input, output, chance);
+            return new CrushingRecipe(id, group, input, output, chance);
         }
 
         /** Reads the recipe from a web packet. */
         @Override
-        public ConvertingRecipe read(Identifier id, @NotNull PacketByteBuf buf) {
+        public CrushingRecipe read(Identifier id, @NotNull PacketByteBuf buf) {
             String group = buf.readString();
             Ingredient input = Ingredient.fromPacket(buf);
             ItemStack output = buf.readItemStack();
             float chance = buf.readFloat();
-            return new ConvertingRecipe(id, group, input, output, chance);
+            return new CrushingRecipe(id, group, input, output, chance);
         }
 
         /** Writes the recipe into a web packet. */
         @Override
-        public void write(@NotNull PacketByteBuf buf, @NotNull ConvertingRecipe recipe) {
+        public void write(@NotNull PacketByteBuf buf, @NotNull CrushingRecipe recipe) {
             buf.writeString(recipe.getGroup());
             recipe.getInput().write(buf);
             buf.writeItemStack(recipe.getOutput());

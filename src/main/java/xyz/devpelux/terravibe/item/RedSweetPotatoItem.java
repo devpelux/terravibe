@@ -15,8 +15,8 @@ public class RedSweetPotatoItem extends AliasedBlockItem {
     /** Identifier of the item. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "red_sweet_potato");
 
-    /** Composting chance the item. */
-    public static final float COMPOSTING_CHANCE = 0.8f;
+    /** Composting chance of the item. */
+    public static final float COMPOSTING_CHANCE = 0.65f;
 
     /** Initializes a new {@link RedSweetPotatoItem}. */
     public RedSweetPotatoItem(Block block, Settings settings) {

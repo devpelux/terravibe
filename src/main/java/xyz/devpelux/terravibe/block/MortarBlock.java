@@ -22,15 +22,15 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.recipe.ConvertingRecipe;
+import xyz.devpelux.terravibe.recipe.CrushingRecipe;
 import xyz.devpelux.terravibe.recipe.RecipeTypeList;
 
 import java.util.Optional;
 
-/** Grinds an item to obtain another item. */
-public class GrinderBlock extends Block {
+/** Crushes an item to obtain another item. */
+public class MortarBlock extends Block {
     /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "grinder");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "mortar");
 
     /** Voxel shape of the block. */
     private static VoxelShape VOXEL_SHAPE = null;
@@ -38,8 +38,8 @@ public class GrinderBlock extends Block {
     /** Spawn position of the fail particles. */
     private static final Vec3f FAIL_PARTICLES_SPAWN_POINT = new Vec3f(0.5f, 0.1875f, 0.5f);
 
-    /** Initializes a new {@link GrinderBlock}. */
-    public GrinderBlock(Settings settings) {
+    /** Initializes a new {@link MortarBlock}. */
+    public MortarBlock(Settings settings) {
         super(settings);
     }
 
@@ -50,23 +50,23 @@ public class GrinderBlock extends Block {
 
     /**
      * Executed when the block is used.<br>
-     * Tries to grind the item in hand to obtain another item.
+     * Tries to crush the item in hand to obtain another item.
      */
     @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        //Checks if exists a grinding recipe for the item in hand.
-        Optional<ConvertingRecipe> match = world.getRecipeManager()
-                .getFirstMatch(RecipeTypeList.CONVERTING_RECIPE, new SimpleInventory(player.getStackInHand(hand)), world);
+        //Checks if exists a crushing recipe for the item in hand.
+        Optional<CrushingRecipe> match = world.getRecipeManager()
+                .getFirstMatch(RecipeTypeList.CRUSHING, new SimpleInventory(player.getStackInHand(hand)), world);
 
         //Gets the recipe if exists.
         if (match.isPresent()) {
-            ConvertingRecipe recipe = match.get();
+            CrushingRecipe recipe = match.get();
 
             //This is server side.
             if (!world.isClient()) {
 
-                //If the recipe exists, gets the item from the hand and tries to "grind" (convert) it.
+                //If the recipe exists, gets the item from the hand and tries to "crush" (convert) it.
                 //If the conversion is successful, then adds or drops the resulting item.
                 //Else, spawns fail particles to say that the item was consumed but nothing is returned.
                 player.getStackInHand(hand).decrement(1);
