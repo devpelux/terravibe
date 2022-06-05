@@ -1,9 +1,13 @@
 {
   "block.terravibe.mortar" : "Mortar",
+  "block.terravibe.shredder" : "Shredder",
+  "block.terravibe.shredder.title" : "Shredding",
   "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
   "item.terravibe.mortar" : "Mortar",
   "item.terravibe.sweet_potato" : "Sweet potato",
   "item.terravibe.sweet_potato_bud" : "Sweet potato bud",
   "item.terravibe.red_sweet_potato" : "Red sweet potato",
+  "item.terravibe.olives" : "Olives",
+  "item.terravibe.oil_bottle" : "Oil bottle",
   "itemGroup.terravibe.terravibe" : "Terravibe"
 }

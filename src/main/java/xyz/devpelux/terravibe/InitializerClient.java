@@ -3,6 +3,8 @@ package xyz.devpelux.terravibe;
 import net.fabricmc.api.ClientModInitializer;
 import xyz.devpelux.terravibe.block.BlockList;
 import xyz.devpelux.terravibe.core.Util;
+import xyz.devpelux.terravibe.item.ItemList;
+import xyz.devpelux.terravibe.screenhandler.ScreenHandlerTypeList;
 
 /** Client-side mod initializer. */
 public class InitializerClient implements ClientModInitializer {
@@ -10,6 +12,9 @@ public class InitializerClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockList.loadRenderLayerMaps();
+        ItemList.loadColorProviders();
+
+        ScreenHandlerTypeList.loadScreens();
 
         Util.LOGGER.info("Loaded Terravibe client components.");
     }

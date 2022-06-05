@@ -13,6 +13,9 @@ public class BlockList {
     /** Mortar block: Crushes an item to obtain another item. */
     public static final MortarBlock MORTAR;
 
+    /** Shredder block: Shreds a bunch of items to obtain something. */
+    public static final ShredderBlock SHREDDER;
+
     /** Sweet potato crop block: Crop of the sweet potato. */
     public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
 
@@ -32,6 +35,7 @@ public class BlockList {
 
     static {
         MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.getSettings()));
+        SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
     }
 }

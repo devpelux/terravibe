@@ -24,8 +24,9 @@ public class CrushingRecipe extends CuttingRecipe {
     public static final RecipeSerializer<CrushingRecipe> CRUSHING_RECIPE_SERIALIZER =
             Registry.register(Registry.RECIPE_SERIALIZER, ID, new Serializer());
 
-    protected final float chance;
     protected final Random random = Random.create();
+
+    protected final float chance;
 
     /** Initializes a new {@link CrushingRecipe}. */
     public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance) {
@@ -57,7 +58,6 @@ public class CrushingRecipe extends CuttingRecipe {
 
     /** {@link CrushingRecipe} json serializer. */
     public static class Serializer implements RecipeSerializer<CrushingRecipe> {
-
         /** Initializes a new {@link Serializer}. */
         public Serializer() {}
 
