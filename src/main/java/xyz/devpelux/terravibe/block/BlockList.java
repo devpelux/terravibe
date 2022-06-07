@@ -3,6 +3,7 @@ package xyz.devpelux.terravibe.block;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
@@ -19,8 +20,17 @@ public class BlockList {
     /** Sweet potato crop block: Crop of the sweet potato. */
     public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
 
+    /** Tun block: Container for "non-lava" fluids. */
+    public static final TunBlock TUN;
+
     /** Loads all the blocks. */
     public static void load() {}
+
+    /** Loads all the color providers for the items. */
+    @Environment(EnvType.CLIENT)
+    public static void loadColorProviders() {
+        ColorProviderRegistry.BLOCK.register(TunBlock::getContainedFluidColor, TUN);
+    }
 
     /** Loads all the render layer maps for the blocks. */
     @Environment(EnvType.CLIENT)
@@ -37,5 +47,6 @@ public class BlockList {
         MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.getSettings()));
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
+        TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
     }
 }

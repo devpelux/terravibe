@@ -11,8 +11,9 @@ public class InitializerClient implements ClientModInitializer {
     /** {@inheritDoc} */
     @Override
     public void onInitializeClient() {
-        BlockList.loadRenderLayerMaps();
         ItemList.loadColorProviders();
+        BlockList.loadColorProviders();
+        BlockList.loadRenderLayerMaps();
 
         ScreenHandlerTypeList.loadScreens();
 

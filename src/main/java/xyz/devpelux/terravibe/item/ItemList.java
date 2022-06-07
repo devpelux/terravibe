@@ -4,9 +4,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.BlockList;
+import xyz.devpelux.terravibe.block.TunBlock;
 import xyz.devpelux.terravibe.core.Util;
 
 /** List of all the items. */
@@ -32,18 +34,23 @@ public class ItemList {
     /** Oil bottle item: Bottle that contains oil. */
     public static final OilBottleItem OIL_BOTTLE;
 
+    /** Tun item: Container for "non-lava" fluids. */
+    public static final TunItem TUN;
+
     /** Loads all the items. */
     public static void load() {
         Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoBudItem.COMPOSTING_CHANCE, SWEET_POTATO_BUD);
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
+        TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);
+        TunBlock.registerContainable(Items.HONEY_BOTTLE, (s, w, p, i) -> 0x976018);
     }
 
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 1 ? 0x808000 : -1, OIL_BOTTLE);
+        ColorProviderRegistry.ITEM.register(OilBottleItem::getOverlayColor, OIL_BOTTLE);
     }
 
     /** Registers the specified item with the specified id. */
@@ -59,5 +66,6 @@ public class ItemList {
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(BlockList.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
         OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
+        TUN = register(TunItem.ID, new TunItem(BlockList.TUN, TunItem.getSettings()));
     }
 }

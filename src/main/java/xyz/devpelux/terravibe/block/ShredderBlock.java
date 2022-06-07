@@ -40,7 +40,7 @@ public class ShredderBlock extends BlockWithEntity {
 	/** Initializes a new {@link ShredderBlock}. */
 	public ShredderBlock(Settings settings) {
 		super(settings);
-		setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
+		setDefaultState(getStateManager().getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 	}
 
 	/** Gets the block settings. */

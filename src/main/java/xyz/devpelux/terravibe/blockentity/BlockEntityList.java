@@ -7,11 +7,15 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.BlockList;
 import xyz.devpelux.terravibe.block.ShredderBlock;
+import xyz.devpelux.terravibe.block.TunBlock;
 
 /** List of all the block entity types. */
 public class BlockEntityList {
     /** Shredder block entity type: Block entity type for the shredder block. */
     public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
+
+    /** Tun block entity type: Block entity type for the tun block. */
+    public static final BlockEntityType<TunBlockEntity> TUN;
 
     /** Loads all the block entity types. */
     public static void load() {}
@@ -23,5 +27,6 @@ public class BlockEntityList {
 
     static {
         SHREDDER = register(ShredderBlock.ID, FabricBlockEntityTypeBuilder.create(ShredderBlockEntity::new, BlockList.SHREDDER).build());
+        TUN = register(TunBlock.ID, FabricBlockEntityTypeBuilder.create(TunBlockEntity::new, BlockList.TUN).build());
     }
 }
