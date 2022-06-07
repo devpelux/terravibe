@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import xyz.devpelux.terravibe.core.compatibility.sodium.IgnoreColorBlendingRegistry;
 
 /** List of all the blocks. */
 public class BlockList {
@@ -24,7 +25,9 @@ public class BlockList {
     public static final TunBlock TUN;
 
     /** Loads all the blocks. */
-    public static void load() {}
+    public static void load() {
+        IgnoreColorBlendingRegistry.register(TUN);
+    }
 
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)

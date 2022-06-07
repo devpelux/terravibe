@@ -217,14 +217,12 @@ public class TunBlock extends BlockWithEntity {
     }
 
     /** Gets the color of the contained fluid. */
-    public static int getContainedFluidColor(BlockState blockState, BlockRenderView blockRenderView, BlockPos blockPos, int i) {
+    public static int getContainedFluidColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
         if (i != 1) return -1;
 
-        if (blockRenderView != null) {
-            if (blockRenderView.getBlockEntity(blockPos) instanceof TunBlockEntity tunEntity) {
-                if (tunEntity.hasContained()) {
-                    return containable.get(tunEntity.getContained()).getColor(blockState, blockRenderView, blockPos, i);
-                }
+        if (view.getBlockEntity(pos) instanceof TunBlockEntity tunEntity) {
+            if (tunEntity.hasContained()) {
+                return containable.get(tunEntity.getContained()).getColor(state, view, pos, i);
             }
         }
 
