@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -82,6 +83,11 @@ public class ShredderScreenHandler extends ScreenHandler {
         return true;
     }
 
+    /** Gets the take sound. */
+    protected SoundEvent getTakeSound() {
+        return SoundEvents.UI_STONECUTTER_TAKE_RESULT;
+    }
+
     /** Executed when the result item stack from the result slot is taken. */
     public void onResultTaken(PlayerEntity player, ItemStack stack) {
         if (!world.isClient()) {
@@ -91,8 +97,10 @@ public class ShredderScreenHandler extends ScreenHandler {
             getSlot(2).getStack().decrement(1);
             getSlot(3).getStack().decrement(1);
             getSlot(4).getStack().decrement(1);
-            //Plays the successful sound.
-            player.playSound(SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1f, 1f);
+
+            //Plays the take sound.
+            player.playSound(getTakeSound(), SoundCategory.BLOCKS, 1f, 1f);
+
             onUpdatedInputs(null);
         }
     }

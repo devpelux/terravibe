@@ -10,6 +10,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -48,6 +51,11 @@ public class MortarBlock extends Block {
         return FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
     }
 
+    /** Gets the crush sound. */
+    protected SoundEvent getCrushSound() {
+        return SoundEvents.BLOCK_ROOTED_DIRT_BREAK;
+    }
+
     /**
      * Executed when the block is used.<br>
      * Tries to crush the item in hand to obtain another item.
@@ -77,6 +85,9 @@ public class MortarBlock extends Block {
                     ExperienceOrbEntity.spawn((ServerWorld)world, player.getPos(), 2);
                 }
                 else failEffects(world, pos);
+
+                //Plays the crush sound.
+                player.playSound(getCrushSound(), SoundCategory.BLOCKS, 1f, 1f);
             }
 
             //Client: SUCCESS / Server: CONSUME

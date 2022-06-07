@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -144,7 +145,7 @@ public class TunBlock extends BlockWithEntity {
                     player.getStackInHand(Hand.MAIN_HAND).decrement(1);
                     player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE, 1));
                     //Plays the empty sound.
-                    player.playSound(getEmptySound(), 1f, 1f);
+                    player.playSound(getEmptySound(), SoundCategory.BLOCKS, 1f, 1f);
 
                     //Sets the contained item.
                     setContainedItem(world, pos, itemInHand);
@@ -161,7 +162,7 @@ public class TunBlock extends BlockWithEntity {
                 player.getStackInHand(Hand.MAIN_HAND).decrement(1);
                 player.getInventory().offerOrDrop(new ItemStack(getContainedItem(world, pos), 1));
                 //Plays the fill sound.
-                player.playSound(getFillSound(), 1f, 1f);
+                player.playSound(getFillSound(), SoundCategory.BLOCKS, 1f, 1f);
 
                 //If is empty, removes the contained item.
                 if (level == 1) setContainedItem(world, pos, null);
