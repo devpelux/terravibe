@@ -28,6 +28,9 @@ public class ItemList {
     /** Sweet potato item: Sweet potato, a mutation of the potato. */
     public static final SweetPotatoItem SWEET_POTATO;
 
+    /** Baked sweet potato item: Sweet potato, but baked. */
+    public static final BakedSweetPotatoItem BAKED_SWEET_POTATO;
+
     /** Olives item: Typical fruit used to make oil. */
     public static final OlivesItem OLIVES;
 
@@ -41,8 +44,10 @@ public class ItemList {
     public static void load() {
         Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
+        Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoBudItem.COMPOSTING_CHANCE, SWEET_POTATO_BUD);
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
+
         TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);
         TunBlock.registerContainable(Items.HONEY_BOTTLE, (s, w, p, i) -> 0x976018);
     }
@@ -64,6 +69,7 @@ public class ItemList {
         RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(BlockList.SWEET_POTATO_CROP, RedSweetPotatoItem.getSettings()));
         SWEET_POTATO_BUD = register(SweetPotatoBudItem.ID, new SweetPotatoBudItem(BlockList.SWEET_POTATO_CROP, SweetPotatoBudItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(BlockList.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
+        BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.getSettings()));
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
         OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
         TUN = register(TunItem.ID, new TunItem(BlockList.TUN, TunItem.getSettings()));
