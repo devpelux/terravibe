@@ -2,15 +2,24 @@
   "block.terravibe.mortar" : "Mortar",
   "block.terravibe.shredder" : "Shredder",
   "block.terravibe.shredder.title" : "Shredding",
-  "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
   "block.terravibe.tun" : "Tun",
+
+  "block.terravibe.onion_crop" : "Onion crop",
+  "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
+
   "item.terravibe.mortar" : "Mortar",
-  "item.terravibe.sweet_potato" : "Sweet potato",
-  "item.terravibe.baked_sweet_potato" : "Baked sweet potato",
-  "item.terravibe.sweet_potato_bud" : "Sweet potato bud",
-  "item.terravibe.red_sweet_potato" : "Red sweet potato",
-  "item.terravibe.olives" : "Olives",
-  "item.terravibe.oil_bottle" : "Oil bottle",
+  "item.terravibe.shredder" : "Shredder",
   "item.terravibe.tun" : "Tun",
+
+  "item.terravibe.olives" : "Olives",
+  "item.terravibe.onion" : "Onion",
+  "item.terravibe.onion_seeds" : "Onion seeds",
+  "item.terravibe.red_sweet_potato" : "Red sweet potato",
+  "item.terravibe.sweet_potato" : "Sweet potato",
+  "item.terravibe.sweet_potato_bud" : "Sweet potato bud",
+
+  "item.terravibe.baked_sweet_potato" : "Baked sweet potato",
+  "item.terravibe.oil_bottle" : "Oil bottle",
+
   "itemGroup.terravibe.terravibe" : "Terravibe"
 }

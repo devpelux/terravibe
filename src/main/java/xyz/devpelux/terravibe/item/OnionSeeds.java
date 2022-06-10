@@ -2,18 +2,24 @@ package xyz.devpelux.terravibe.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
-/** Container for "non-lava" fluids. */
-public class TunItem extends AliasedBlockItem {
+/** Seeds of onion. */
+public class OnionSeeds extends AliasedBlockItem {
     /** Identifier of the item. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tun");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "onion_seeds");
 
-    /** Initializes a new {@link TunItem}. */
-    public TunItem(Block block, Settings settings) {
+    /** Composting chance of the item. */
+    public static final float COMPOSTING_CHANCE = 0.3f;
+
+    /** Initializes a new {@link OnionSeeds}. */
+    public OnionSeeds(Block block, Settings settings) {
         super(block, settings);
     }
 

@@ -18,11 +18,14 @@ public class BlockList {
     /** Shredder block: Shreds a bunch of items to obtain something. */
     public static final ShredderBlock SHREDDER;
 
-    /** Sweet potato crop block: Crop of the sweet potato. */
-    public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
-
     /** Tun block: Container for "non-lava" fluids. */
     public static final TunBlock TUN;
+
+    /** Onion crop block: Crop of the onion. */
+    public static final OnionCropBlock ONION_CROP;
+
+    /** Sweet potato crop block: Crop of the sweet potato. */
+    public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
 
     /** Loads all the blocks. */
     public static void load() {
@@ -49,7 +52,8 @@ public class BlockList {
     static {
         MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.getSettings()));
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
-        SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
         TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
+        ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
+        SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
     }
 }
