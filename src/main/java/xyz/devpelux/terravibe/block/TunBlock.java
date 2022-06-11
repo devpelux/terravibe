@@ -133,11 +133,11 @@ public class TunBlock extends BlockWithEntity {
         //Gets the item in the main hand.
         Item itemInHand = player.getStackInHand(Hand.MAIN_HAND).getItem();
 
-        if (!world.isClient()) {
-            if (isItemContainable(itemInHand) && !isFull(state)) {
-                //If the item is containable.
-                //Checks if the item can be contained (the tun contains nothing or the item is the same).
-                if (getContainedItem(world, pos) == itemInHand || getContainedItem(world, pos) == null) {
+        if (isItemContainable(itemInHand) && !isFull(state)) {
+            //If the item is containable.
+            //Checks if the item can be contained (the tun contains nothing or the item is the same).
+            if (getContainedItem(world, pos) == itemInHand || getContainedItem(world, pos) == null) {
+                if (!world.isClient()) {
                     //Increments the level by 1.
                     int level = getLevel(state);
                     setLevel(state, world, pos, level + 1);
@@ -149,11 +149,14 @@ public class TunBlock extends BlockWithEntity {
 
                     //Sets the contained item.
                     setContainedItem(world, pos, itemInHand);
-
-                    return ActionResult.SUCCESS;
                 }
+
+                //Client: SUCCESS / Server: CONSUME
+                return ActionResult.success(world.isClient());
             }
-            else if(player.getStackInHand(Hand.MAIN_HAND).isOf(Items.GLASS_BOTTLE) && !isEmpty(state)) {
+        }
+        else if(player.getStackInHand(Hand.MAIN_HAND).isOf(Items.GLASS_BOTTLE) && !isEmpty(state)) {
+            if (!world.isClient()) {
                 //If the item is a glass bottle.
                 //Decrements the level by 1.
                 int level = getLevel(state);
@@ -166,13 +169,13 @@ public class TunBlock extends BlockWithEntity {
 
                 //If is empty, removes the contained item.
                 if (level == 1) setContainedItem(world, pos, null);
-
-                return ActionResult.SUCCESS;
             }
-            return ActionResult.PASS;
+
+            //Client: SUCCESS / Server: CONSUME
+            return ActionResult.success(world.isClient());
         }
 
-        return ActionResult.SUCCESS;
+        return ActionResult.PASS;
     }
 
     /** Creates the block entity for the block. */

@@ -93,6 +93,7 @@ public class MortarBlock extends Block {
             //Client: SUCCESS / Server: CONSUME
             return ActionResult.success(world.isClient());
         }
+        
         else return ActionResult.PASS;
     }
 

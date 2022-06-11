@@ -46,7 +46,7 @@ public class TrayBlock extends Block {
     public static final int MAX_EVAPORATION_TIME = 50;
 
     /** Min evaporation time. */
-    public static final int MIN_EVAPORATION_TIME = 5;
+    public static final int MIN_EVAPORATION_TIME = 10;
 
     /** Voxel shape of the block. */
     private static VoxelShape VOXEL_SHAPE = null;
@@ -100,38 +100,47 @@ public class TrayBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient()) {
-            ItemStack handStack = player.getStackInHand(hand);
-            Content content = getContent(state);
-            switch (content) {
-                case Nothing -> {
-                    if (PotionUtil.getPotion(handStack) == Potions.WATER) {
+        ItemStack handStack = player.getStackInHand(hand);
+        Content content = getContent(state);
+        switch (content) {
+            case Nothing -> {
+                if (PotionUtil.getPotion(handStack) == Potions.WATER) {
+                    if (!world.isClient()) {
                         setContent(state, world, pos, Content.Water);
                         handStack.decrement(1);
                         player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
                         player.playSound(getEmptyWaterSound(), SoundCategory.BLOCKS, 1f, 1f);
-                        return ActionResult.CONSUME;
                     }
+
+                    //Client: SUCCESS / Server: CONSUME
+                    return ActionResult.success(world.isClient());
                 }
-                case Water -> {
-                    if (handStack.isOf(Items.GLASS_BOTTLE)) {
+            }
+            case Water -> {
+                if (handStack.isOf(Items.GLASS_BOTTLE)) {
+                    if (!world.isClient()) {
                         setContent(state, world, pos, Content.Nothing);
                         handStack.decrement(1);
                         player.getInventory().offerOrDrop(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.WATER));
                         player.playSound(getFillWaterSound(), SoundCategory.BLOCKS, 1f, 1f);
-                        return ActionResult.CONSUME;
                     }
+
+                    //Client: SUCCESS / Server: CONSUME
+                    return ActionResult.success(world.isClient());
                 }
-                case Salt -> {
+            }
+            case Salt -> {
+                if (!world.isClient()) {
                     setContent(state, world, pos, Content.Nothing);
                     dropStack(world, pos, new ItemStack(TerravibeItems.SALT_CRYSTALS));
                     player.playSound(getTakeSaltSound(), SoundCategory.BLOCKS, 1f, 1f);
-                    return ActionResult.CONSUME;
                 }
+
+                return ActionResult.SUCCESS;
             }
-            return ActionResult.PASS;
         }
-        else return ActionResult.SUCCESS;
+
+        return ActionResult.PASS;
     }
 
     /** Gets a property indicating if the block reacts with the ticking system. */
