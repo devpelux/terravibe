@@ -40,11 +40,20 @@ public class ItemList {
     /** Sweet potato bud item: Bud of sweet potato. */
     public static final SweetPotatoBudItem SWEET_POTATO_BUD;
 
+    /** Tomato item: Edible berry of the plant Solanum lycopersicum, commonly known as the tomato plant. */
+    public static final TomatoItem TOMATO;
+
+    /** Tomato seeds item: Seeds of tomato. */
+    public static final TomatoSeeds TOMATO_SEEDS;
+
     /** Baked sweet potato item: Sweet potato, but baked. */
     public static final BakedSweetPotatoItem BAKED_SWEET_POTATO;
 
     /** Oil bottle item: Bottle that contains oil. */
     public static final OilBottleItem OIL_BOTTLE;
+
+    /** Tomato sauce bottle item: Bottle that contains tomato sauce. */
+    public static final TomatoSauceBottleItem TOMATO_SAUCE_BOTTLE;
 
     /** Loads all the items. */
     public static void load() {
@@ -55,15 +64,19 @@ public class ItemList {
         Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoBudItem.COMPOSTING_CHANCE, SWEET_POTATO_BUD);
+        Util.registerCompostableItem(TomatoItem.COMPOSTING_CHANCE, TOMATO);
+        Util.registerCompostableItem(TomatoSeeds.COMPOSTING_CHANCE, TOMATO_SEEDS);
 
-        TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);
         TunBlock.registerContainable(Items.HONEY_BOTTLE, (s, w, p, i) -> 0x976018);
+        TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);
+        TunBlock.registerContainable(TOMATO_SAUCE_BOTTLE, TomatoSauceBottleItem::getFluidColorForTun);
     }
 
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
         ColorProviderRegistry.ITEM.register(OilBottleItem::getOverlayColor, OIL_BOTTLE);
+        ColorProviderRegistry.ITEM.register(TomatoSauceBottleItem::getOverlayColor, TOMATO_SAUCE_BOTTLE);
     }
 
     /** Registers the specified item with the specified id. */
@@ -81,7 +94,10 @@ public class ItemList {
         RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(BlockList.SWEET_POTATO_CROP, RedSweetPotatoItem.getSettings()));
         SWEET_POTATO_BUD = register(SweetPotatoBudItem.ID, new SweetPotatoBudItem(BlockList.SWEET_POTATO_CROP, SweetPotatoBudItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(BlockList.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
+        TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
+        TOMATO_SEEDS = register(TomatoSeeds.ID, new TomatoSeeds(BlockList.TOMATO_CROP, TomatoSeeds.getSettings()));
         BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.getSettings()));
         OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
+        TOMATO_SAUCE_BOTTLE = register(TomatoSauceBottleItem.ID, new TomatoSauceBottleItem(TomatoSauceBottleItem.getSettings()));
     }
 }

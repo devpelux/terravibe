@@ -27,6 +27,9 @@ public class BlockList {
     /** Sweet potato crop block: Crop of the sweet potato. */
     public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
 
+    /** Tomato crop block: Crop of the tomato. */
+    public static final TomatoCropBlock TOMATO_CROP;
+
     /** Loads all the blocks. */
     public static void load() {
         IgnoreColorBlendingRegistry.register(TUN);
@@ -41,7 +44,9 @@ public class BlockList {
     /** Loads all the render layer maps for the blocks. */
     @Environment(EnvType.CLIENT)
     public static void loadRenderLayerMaps() {
+        BlockRenderLayerMap.INSTANCE.putBlock(ONION_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(TOMATO_CROP, RenderLayer.getCutout());
     }
 
     /** Registers the specified block with the specified id. */
@@ -55,5 +60,6 @@ public class BlockList {
         TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
         ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
+        TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.getSettings()));
     }
 }

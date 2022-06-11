@@ -1,0 +1,21 @@
+{
+  "type": "terravibe:shredding",
+  "ingredients": [
+    {
+      "item": "terravibe:tomato"
+    },
+    {
+      "item": "terravibe:tomato"
+    },
+    {
+      "item": "terravibe:tomato"
+    },
+    {
+      "item": "terravibe:tomato"
+    }
+  ],
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "output": "terravibe:tomato_sauce_bottle"
+}

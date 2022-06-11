@@ -6,6 +6,7 @@
 
   "block.terravibe.onion_crop" : "Onion crop",
   "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
+  "block.terravibe.tomato_crop" : "Tomato crop",
 
   "item.terravibe.mortar" : "Mortar",
   "item.terravibe.shredder" : "Shredder",
@@ -17,9 +18,12 @@
   "item.terravibe.red_sweet_potato" : "Red sweet potato",
   "item.terravibe.sweet_potato" : "Sweet potato",
   "item.terravibe.sweet_potato_bud" : "Sweet potato bud",
+  "item.terravibe.tomato" : "Tomato",
+  "item.terravibe.tomato_seeds" : "Tomato seeds",
 
   "item.terravibe.baked_sweet_potato" : "Baked sweet potato",
   "item.terravibe.oil_bottle" : "Oil bottle",
+  "item.terravibe.tomato_sauce_bottle" : "Tomato sauce bottle",
 
   "itemGroup.terravibe.terravibe" : "Terravibe"
 }
