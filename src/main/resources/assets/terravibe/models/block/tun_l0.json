@@ -5,8 +5,7 @@
 		"side": "terravibe:block/tun_side",
 		"top": "terravibe:block/tun_top",
 		"bottom": "terravibe:block/tun_bottom",
-		"inside": "terravibe:block/tun_inside",
-		"content": "block/water_still"
+		"inside": "terravibe:block/tun_inside"
 	},
 	"elements": [
 		{
@@ -80,15 +79,19 @@
 		},
 		"firstperson_lefthand": {
 			"rotation": [0, 40, 0],
-			"translation": [1, -1, -1],
+			"translation": [0.75, -1, -1],
 			"scale": [0.5, 0.5, 0.5]
 		},
 		"ground": {
+			"translation": [0, 2, 0],
 			"scale": [0.3, 0.3, 0.3]
 		},
 		"gui": {
 			"rotation": [25, 45, 0],
 			"scale": [0.6, 0.6, 0.6]
+		},
+		"head": {
+			"rotation": [0, 0, -180]
 		},
 		"fixed": {
 			"scale": [0.5, 0.5, 0.5]

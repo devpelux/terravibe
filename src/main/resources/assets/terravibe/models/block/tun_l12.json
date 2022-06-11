@@ -1,6 +1,8 @@
 {
 	"parent": "terravibe:block/tun_l0",
-	"render": "translucent",
+	"textures": {
+		"content": "block/water_still"
+	},
 	"elements": [
 		{
 			"from": [2, 0, 2],

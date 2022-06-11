@@ -8,15 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** Seeds of tomato. */
-public class TomatoSeeds extends AliasedBlockItem {
+public class TomatoSeedsItem extends AliasedBlockItem {
     /** Identifier of the item. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tomato_seeds");
 
     /** Composting chance of the item. */
     public static final float COMPOSTING_CHANCE = 0.3f;
 
-    /** Initializes a new {@link TomatoSeeds}. */
-    public TomatoSeeds(Block block, Settings settings) {
+    /** Initializes a new {@link TomatoSeedsItem}. */
+    public TomatoSeedsItem(Block block, Settings settings) {
         super(block, settings);
     }
 

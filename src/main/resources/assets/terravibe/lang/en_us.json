@@ -3,6 +3,7 @@
   "block.terravibe.shredder" : "Shredder",
   "block.terravibe.shredder.title" : "Shredding",
   "block.terravibe.tun" : "Tun",
+  "block.terravibe.tray" : "Tray",
 
   "block.terravibe.onion_crop" : "Onion crop",
   "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
@@ -11,6 +12,7 @@
   "item.terravibe.mortar" : "Mortar",
   "item.terravibe.shredder" : "Shredder",
   "item.terravibe.tun" : "Tun",
+  "item.terravibe.tray" : "Tray",
 
   "item.terravibe.olives" : "Olives",
   "item.terravibe.onion" : "Onion",
@@ -20,6 +22,8 @@
   "item.terravibe.sweet_potato_bud" : "Sweet potato bud",
   "item.terravibe.tomato" : "Tomato",
   "item.terravibe.tomato_seeds" : "Tomato seeds",
+  "item.terravibe.salt" : "Salt",
+  "item.terravibe.salt_crystals" : "Salt crystals",
 
   "item.terravibe.baked_sweet_potato" : "Baked sweet potato",
   "item.terravibe.oil_bottle" : "Oil bottle",

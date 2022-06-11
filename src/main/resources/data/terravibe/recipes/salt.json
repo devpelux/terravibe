@@ -1,0 +1,9 @@
+{
+  "type": "terravibe:crushing",
+  "ingredient": {
+    "item": "terravibe:salt_crystals"
+  },
+  "result": "terravibe:salt",
+  "count": 1,
+  "chance": 1
+}

@@ -21,6 +21,9 @@ public class BlockList {
     /** Tun block: Container for "non-lava" fluids. */
     public static final TunBlock TUN;
 
+    /** Tray block: Tray used to make salt. */
+    public static final TrayBlock TRAY;
+
     /** Onion crop block: Crop of the onion. */
     public static final OnionCropBlock ONION_CROP;
 
@@ -39,6 +42,7 @@ public class BlockList {
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
         ColorProviderRegistry.BLOCK.register(TunBlock::getContainedFluidColor, TUN);
+        ColorProviderRegistry.BLOCK.register(TrayBlock::getWaterColor, TRAY);
     }
 
     /** Loads all the render layer maps for the blocks. */
@@ -58,6 +62,7 @@ public class BlockList {
         MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.getSettings()));
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
         TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
+        TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.getSettings()));
         ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.getSettings()));

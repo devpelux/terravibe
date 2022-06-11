@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "content=nothing": { "model": "terravibe:block/tray" },
+    "content=water": { "model": "terravibe:block/tray_water" },
+    "content=salt": { "model": "terravibe:block/tray_salt" }
+  }
+}

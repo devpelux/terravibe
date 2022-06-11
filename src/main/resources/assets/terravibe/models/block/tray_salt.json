@@ -1,0 +1,67 @@
+{
+	"parent": "terravibe:block/tray",
+	"textures": {
+		"salt": "terravibe:block/salt"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 1, 16],
+			"faces": {
+				"north": {"uv": [0, 3, 16, 4], "texture": "#tray"},
+				"east": {"uv": [0, 3, 16, 4], "texture": "#tray"},
+				"south": {"uv": [0, 3, 16, 4], "texture": "#tray"},
+				"west": {"uv": [0, 3, 16, 4], "texture": "#tray"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#tray"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#tray"}
+			}
+		},
+		{
+			"from": [0, 1, 0],
+			"to": [15, 4, 1],
+			"faces": {
+				"north": {"uv": [1, 0, 16, 3], "texture": "#tray"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#tray"},
+				"west": {"uv": [0, 0, 1, 3], "texture": "#tray"},
+				"up": {"uv": [0, 0, 15, 1], "texture": "#tray"}
+			}
+		},
+		{
+			"from": [15, 1, 0],
+			"to": [16, 4, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 3], "texture": "#tray"},
+				"east": {"uv": [1, 0, 16, 3], "texture": "#tray"},
+				"west": {"uv": [0, 3, 15, 6], "texture": "#tray"},
+				"up": {"uv": [15, 0, 16, 15], "texture": "#tray"}
+			}
+		},
+		{
+			"from": [1, 1, 15],
+			"to": [16, 4, 16],
+			"faces": {
+				"north": {"uv": [0, 3, 15, 6], "texture": "#tray"},
+				"east": {"uv": [0, 0, 1, 3], "texture": "#tray"},
+				"south": {"uv": [1, 0, 16, 3], "texture": "#tray"},
+				"up": {"uv": [1, 15, 16, 16], "texture": "#tray"}
+			}
+		},
+		{
+			"from": [0, 1, 1],
+			"to": [1, 4, 16],
+			"faces": {
+				"east": {"uv": [0, 3, 15, 6], "texture": "#tray"},
+				"south": {"uv": [0, 0, 1, 3], "texture": "#tray"},
+				"west": {"uv": [1, 0, 16, 3], "texture": "#tray"},
+				"up": {"uv": [0, 1, 1, 16], "texture": "#tray"}
+			}
+		},
+		{
+			"from": [1, 1, 1],
+			"to": [15, 2, 15],
+			"faces": {
+				"up": {"uv": [1, 1, 15, 15], "texture": "#salt"}
+			}
+		}
+	]
+}

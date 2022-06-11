@@ -22,6 +22,9 @@ public class ItemList {
     /** Tun item: Container for "non-lava" fluids. */
     public static final TunItem TUN;
 
+    /** Tray item: Tray used to make salt. */
+    public static final TrayItem TRAY;
+
     /** Olives item: Typical fruit used to make oil. */
     public static final OlivesItem OLIVES;
 
@@ -29,7 +32,7 @@ public class ItemList {
     public static final OnionItem ONION;
 
     /** Onion seeds item: Seeds of onion. */
-    public static final OnionSeeds ONION_SEEDS;
+    public static final OnionSeedsItem ONION_SEEDS;
 
     /** Red sweet potato item: Red sweet potato, a rare mutation of the sweet potato. */
     public static final RedSweetPotatoItem RED_SWEET_POTATO;
@@ -44,13 +47,19 @@ public class ItemList {
     public static final TomatoItem TOMATO;
 
     /** Tomato seeds item: Seeds of tomato. */
-    public static final TomatoSeeds TOMATO_SEEDS;
+    public static final TomatoSeedsItem TOMATO_SEEDS;
 
     /** Baked sweet potato item: Sweet potato, but baked. */
     public static final BakedSweetPotatoItem BAKED_SWEET_POTATO;
 
     /** Oil bottle item: Bottle that contains oil. */
     public static final OilBottleItem OIL_BOTTLE;
+
+    /** Salt item: Salt. */
+    public static final SaltItem SALT;
+
+    /** Salt crystals item: Salt crystals. */
+    public static final SaltCrystalsItems SALT_CRYSTALS;
 
     /** Tomato sauce bottle item: Bottle that contains tomato sauce. */
     public static final TomatoSauceBottleItem TOMATO_SAUCE_BOTTLE;
@@ -60,12 +69,12 @@ public class ItemList {
         Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
         Util.registerCompostableItem(OnionItem.COMPOSTING_CHANCE, ONION);
-        Util.registerCompostableItem(OnionSeeds.COMPOSTING_CHANCE, ONION_SEEDS);
+        Util.registerCompostableItem(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
         Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoBudItem.COMPOSTING_CHANCE, SWEET_POTATO_BUD);
         Util.registerCompostableItem(TomatoItem.COMPOSTING_CHANCE, TOMATO);
-        Util.registerCompostableItem(TomatoSeeds.COMPOSTING_CHANCE, TOMATO_SEEDS);
+        Util.registerCompostableItem(TomatoSeedsItem.COMPOSTING_CHANCE, TOMATO_SEEDS);
 
         TunBlock.registerContainable(Items.HONEY_BOTTLE, (s, w, p, i) -> 0x976018);
         TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);
@@ -88,16 +97,19 @@ public class ItemList {
         MORTAR = register(MortarItem.ID, new MortarItem(BlockList.MORTAR, MortarItem.getSettings()));
         SHREDDER = register(ShredderItem.ID, new ShredderItem(BlockList.SHREDDER, ShredderItem.getSettings()));
         TUN = register(TunItem.ID, new TunItem(BlockList.TUN, TunItem.getSettings()));
+        TRAY = register(TrayItem.ID, new TrayItem(BlockList.TRAY, TrayItem.getSettings()));
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
-        ONION_SEEDS = register(OnionSeeds.ID, new OnionSeeds(BlockList.ONION_CROP, OnionSeeds.getSettings()));
+        ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(BlockList.ONION_CROP, OnionSeedsItem.getSettings()));
         RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(BlockList.SWEET_POTATO_CROP, RedSweetPotatoItem.getSettings()));
         SWEET_POTATO_BUD = register(SweetPotatoBudItem.ID, new SweetPotatoBudItem(BlockList.SWEET_POTATO_CROP, SweetPotatoBudItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(BlockList.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
-        TOMATO_SEEDS = register(TomatoSeeds.ID, new TomatoSeeds(BlockList.TOMATO_CROP, TomatoSeeds.getSettings()));
+        TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(BlockList.TOMATO_CROP, TomatoSeedsItem.getSettings()));
         BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.getSettings()));
         OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
+        SALT = register(SaltItem.ID, new SaltItem(SaltItem.getSettings()));
+        SALT_CRYSTALS = register(SaltCrystalsItems.ID, new SaltCrystalsItems(SaltCrystalsItems.getSettings()));
         TOMATO_SAUCE_BOTTLE = register(TomatoSauceBottleItem.ID, new TomatoSauceBottleItem(TomatoSauceBottleItem.getSettings()));
     }
 }

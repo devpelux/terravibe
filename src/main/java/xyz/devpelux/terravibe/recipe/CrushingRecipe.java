@@ -27,11 +27,13 @@ public class CrushingRecipe extends CuttingRecipe {
     protected final Random random = Random.create();
 
     protected final float chance;
+    protected final int experience;
 
     /** Initializes a new {@link CrushingRecipe}. */
-    public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance) {
+    public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance, int experience) {
         super(RecipeTypeList.CRUSHING, CRUSHING_RECIPE_SERIALIZER, id, group, input, output);
         this.chance = chance;
+        this.experience = experience;
     }
 
     /** Gets the input ingredient. */
@@ -47,6 +49,11 @@ public class CrushingRecipe extends CuttingRecipe {
     /** Executes an attempt and returns if it was successful. */
     public boolean isSuccessful() {
         return random.nextFloat() <= getChance();
+    }
+
+    /** Gets the experience amount value of the recipe. */
+    public int getExperience() {
+        return experience;
     }
 
     /** Checks if the specified inventory matches the ingredient list. */
@@ -83,7 +90,10 @@ public class CrushingRecipe extends CuttingRecipe {
             //Chance
             float chance = JsonHelper.getFloat(json, "chance");
 
-            return new CrushingRecipe(id, group, input, output, chance);
+            //Experience
+            int experience = JsonHelper.hasElement(json, "experience") ? JsonHelper.getInt(json, "experience") : 0;
+
+            return new CrushingRecipe(id, group, input, output, chance, experience);
         }
 
         /** Reads the recipe from a web packet. */
@@ -93,7 +103,8 @@ public class CrushingRecipe extends CuttingRecipe {
             Ingredient input = Ingredient.fromPacket(buf);
             ItemStack output = buf.readItemStack();
             float chance = buf.readFloat();
-            return new CrushingRecipe(id, group, input, output, chance);
+            int experience = buf.readInt();
+            return new CrushingRecipe(id, group, input, output, chance, experience);
         }
 
         /** Writes the recipe into a web packet. */
@@ -103,6 +114,7 @@ public class CrushingRecipe extends CuttingRecipe {
             recipe.getInput().write(buf);
             buf.writeItemStack(recipe.getOutput());
             buf.writeFloat(recipe.getChance());
+            buf.writeInt(recipe.getExperience());
         }
     }
 }

@@ -82,7 +82,7 @@ public class MortarBlock extends Block {
                     player.getInventory().offerOrDrop(recipe.getOutput().copy());
 
                     //If is successful, drops experience.
-                    ExperienceOrbEntity.spawn((ServerWorld)world, player.getPos(), 2);
+                    ExperienceOrbEntity.spawn((ServerWorld)world, player.getPos(), recipe.getExperience());
                 }
                 else failEffects(world, pos);
 
