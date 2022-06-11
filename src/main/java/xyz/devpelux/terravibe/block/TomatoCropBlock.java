@@ -61,7 +61,7 @@ public class TomatoCropBlock extends CropBlock {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(AGE) == 7) {
             //Will drops from 1 to 3 items if the age is 7.
-            int nDrops = 1 + world.random.nextInt(2);
+            int nDrops = world.random.nextBetween(1, 3);
             dropStack(world, pos, new ItemStack(TerravibeItems.TOMATO, nDrops));
 
             //Plays the taken sound.

@@ -19,7 +19,7 @@
                   "block": "terravibe:onion_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "age": "3"
+                    "age": "7"
                   }
                 }
               ],
@@ -41,7 +41,7 @@
           "block": "terravibe:onion_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "3"
+            "age": "7"
           }
         }
       ],

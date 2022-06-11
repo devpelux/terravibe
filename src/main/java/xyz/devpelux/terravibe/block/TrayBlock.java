@@ -147,7 +147,7 @@ public class TrayBlock extends Block {
         int light = world.getLightLevel(LightType.SKY, pos);
         int lightBonus = (int)((MAX_EVAPORATION_TIME - MIN_EVAPORATION_TIME) * (light / 15d));
         int evaporationTime = MAX_EVAPORATION_TIME - lightBonus;
-        int attempt = random.nextInt(evaporationTime);
+        int attempt = random.nextInt(evaporationTime + 1);
         if (attempt == 0) setContent(state, world, pos, Content.Salt);
     }
 
