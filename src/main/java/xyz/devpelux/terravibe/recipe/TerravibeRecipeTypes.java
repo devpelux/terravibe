@@ -6,7 +6,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /** List of all the recipe types. */
-public class RecipeTypeList {
+public class TerravibeRecipeTypes {
     /** Crushing recipe: Crushes an item to obtain another item with a successful chance. */
     public static final RecipeType<CrushingRecipe> CRUSHING;
 

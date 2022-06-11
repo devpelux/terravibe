@@ -11,7 +11,7 @@ import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.core.compatibility.sodium.IgnoreColorBlendingRegistry;
 
 /** List of all the blocks. */
-public class BlockList {
+public class TerravibeBlocks {
     /** Mortar block: Crushes an item to obtain another item. */
     public static final MortarBlock MORTAR;
 

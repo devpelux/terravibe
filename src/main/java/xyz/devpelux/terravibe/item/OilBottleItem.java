@@ -24,7 +24,7 @@ public class OilBottleItem extends Item {
     public static @NotNull FabricItemSettings getSettings() {
         return new FabricItemSettings()
                 .maxCount(16)
-                .group(ItemGroupList.TERRAVIBE);
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 
     /** Gets the fluid color for the tun. */

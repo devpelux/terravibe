@@ -10,7 +10,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.item.ItemList;
+import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Crop of the sweet potato. */
 public class SweetPotatoCropBlock extends CropBlock {
@@ -37,7 +37,7 @@ public class SweetPotatoCropBlock extends CropBlock {
 
     /** Gets the seeds item of the block. */
     public ItemConvertible getSeedsItem() {
-        return ItemList.SWEET_POTATO;
+        return TerravibeItems.SWEET_POTATO;
     }
 
     /** Gets the outline shape of the block. */

@@ -24,6 +24,6 @@ public class OnionSeedsItem extends AliasedBlockItem {
     public static @NotNull FabricItemSettings getSettings() {
         return new FabricItemSettings()
                 .maxCount(64)
-                .group(ItemGroupList.TERRAVIBE);
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 }

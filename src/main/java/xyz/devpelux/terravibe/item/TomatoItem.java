@@ -30,6 +30,6 @@ public class TomatoItem extends Item {
         return new FabricItemSettings()
                 .maxCount(64)
                 .food(foodEffects)
-                .group(ItemGroupList.TERRAVIBE);
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 }

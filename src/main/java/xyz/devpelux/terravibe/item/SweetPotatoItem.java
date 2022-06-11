@@ -31,6 +31,6 @@ public class SweetPotatoItem extends AliasedBlockItem {
         return new FabricItemSettings()
                 .maxCount(64)
                 .food(foodEffects)
-                .group(ItemGroupList.TERRAVIBE);
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 }

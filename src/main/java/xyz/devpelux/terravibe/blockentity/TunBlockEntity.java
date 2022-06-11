@@ -22,7 +22,7 @@ public class TunBlockEntity extends BlockEntity {
 
     /** Initializes a new {@link TunBlockEntity}. */
     public TunBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityList.TUN, pos, state);
+        super(TerravibeBlockEntityTypes.TUN, pos, state);
     }
 
     /** Gets a value indicating if the contained item is not null. */

@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.blockentity.ShredderBlockEntity;
 import xyz.devpelux.terravibe.core.ui.ResultSlot;
 import xyz.devpelux.terravibe.recipe.ShreddingRecipe;
-import xyz.devpelux.terravibe.recipe.RecipeTypeList;
+import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 
 import java.util.Optional;
 
@@ -35,7 +35,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 
     /** Initializes a new {@link ShredderScreenHandler}. */
     public ShredderScreenHandler(int syncId, @NotNull PlayerInventory playerInventory) {
-        super(ScreenHandlerTypeList.SHREDDER, syncId);
+        super(TerravibeScreenHandlerTypes.SHREDDER, syncId);
         this.world = playerInventory.player.world;
         ingredients.addListener(this::onUpdatedInputs);
         container.addListener(this::onUpdatedInputs);
@@ -116,7 +116,7 @@ public class ShredderScreenHandler extends ScreenHandler {
             inputs.setStack(4, getSlot(4).getStack());
 
             //Checks if there is a valid recipe to craft something.
-            Optional<ShreddingRecipe> match = world.getRecipeManager().getFirstMatch(RecipeTypeList.SHREDDING, inputs, world);
+            Optional<ShreddingRecipe> match = world.getRecipeManager().getFirstMatch(TerravibeRecipeTypes.SHREDDING, inputs, world);
 
             if (match.isPresent()) {
                 //If the recipe exists then set the output item stack to the crafting result.

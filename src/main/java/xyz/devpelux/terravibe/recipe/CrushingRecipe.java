@@ -31,7 +31,7 @@ public class CrushingRecipe extends CuttingRecipe {
 
     /** Initializes a new {@link CrushingRecipe}. */
     public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance, int experience) {
-        super(RecipeTypeList.CRUSHING, CRUSHING_RECIPE_SERIALIZER, id, group, input, output);
+        super(TerravibeRecipeTypes.CRUSHING, CRUSHING_RECIPE_SERIALIZER, id, group, input, output);
         this.chance = chance;
         this.experience = experience;
     }

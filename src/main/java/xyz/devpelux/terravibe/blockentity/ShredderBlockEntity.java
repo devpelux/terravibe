@@ -16,7 +16,7 @@ import xyz.devpelux.terravibe.screenhandler.ShredderScreenHandler;
 public class ShredderBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
     /** Initializes a new {@link ShredderBlockEntity}. */
     public ShredderBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityList.SHREDDER, pos, state);
+        super(TerravibeBlockEntityTypes.SHREDDER, pos, state);
     }
 
     /** Gets the name to display in the UI of this block entity. */

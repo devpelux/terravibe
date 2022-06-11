@@ -7,12 +7,12 @@ import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** Salt crystals. */
-public class SaltCrystalsItems extends Item {
+public class SaltCrystalsItem extends Item {
     /** Identifier of the item. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "salt_crystals");
 
-    /** Initializes a new {@link SaltCrystalsItems}. */
-    public SaltCrystalsItems(Settings settings) {
+    /** Initializes a new {@link SaltCrystalsItem}. */
+    public SaltCrystalsItem(Settings settings) {
         super(settings);
     }
 
@@ -20,6 +20,6 @@ public class SaltCrystalsItems extends Item {
     public static @NotNull FabricItemSettings getSettings() {
         return new FabricItemSettings()
                 .maxCount(64)
-                .group(ItemGroupList.TERRAVIBE);
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 }

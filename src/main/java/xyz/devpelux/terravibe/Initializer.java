@@ -1,28 +1,28 @@
 package xyz.devpelux.terravibe;
 
 import net.fabricmc.api.ModInitializer;
-import xyz.devpelux.terravibe.block.BlockList;
-import xyz.devpelux.terravibe.blockentity.BlockEntityList;
+import xyz.devpelux.terravibe.block.TerravibeBlocks;
+import xyz.devpelux.terravibe.blockentity.TerravibeBlockEntityTypes;
 import xyz.devpelux.terravibe.core.Util;
-import xyz.devpelux.terravibe.item.ItemGroupList;
-import xyz.devpelux.terravibe.item.ItemList;
-import xyz.devpelux.terravibe.recipe.RecipeTypeList;
-import xyz.devpelux.terravibe.screenhandler.ScreenHandlerTypeList;
+import xyz.devpelux.terravibe.item.TerravibeItemGroups;
+import xyz.devpelux.terravibe.item.TerravibeItems;
+import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
+import xyz.devpelux.terravibe.screenhandler.TerravibeScreenHandlerTypes;
 
 /** Main mod initializer. */
 public class Initializer implements ModInitializer {
 	/** {@inheritDoc} */
 	@Override
 	public void onInitialize() {
-		RecipeTypeList.load();
+		TerravibeRecipeTypes.load();
 
-		ItemGroupList.load();
+		TerravibeItemGroups.load();
 
-		BlockList.load();
-		BlockEntityList.load();
-		ItemList.load();
+		TerravibeBlocks.load();
+		TerravibeBlockEntityTypes.load();
+		TerravibeItems.load();
 
-		ScreenHandlerTypeList.load();
+		TerravibeScreenHandlerTypes.load();
 
 		Util.LOGGER.info("Loaded Terravibe components.");
 	}

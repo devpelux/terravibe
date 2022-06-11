@@ -32,7 +32,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.item.ItemList;
+import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Tray used to make salt. */
 public class TrayBlock extends Block {
@@ -124,7 +124,7 @@ public class TrayBlock extends Block {
                 }
                 case Salt -> {
                     setContent(state, world, pos, Content.Nothing);
-                    dropStack(world, pos, new ItemStack(ItemList.SALT_CRYSTALS));
+                    dropStack(world, pos, new ItemStack(TerravibeItems.SALT_CRYSTALS));
                     player.playSound(getTakeSaltSound(), SoundCategory.BLOCKS, 1f, 1f);
                     return ActionResult.CONSUME;
                 }

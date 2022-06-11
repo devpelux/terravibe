@@ -37,7 +37,7 @@ public class ShreddingRecipe implements Recipe<Inventory> {
 
     /** Initializes a new {@link ShreddingRecipe}. */
     public ShreddingRecipe(Identifier id, DefaultedList<Ingredient> ingredients, Ingredient container, ItemStack output) {
-        this(RecipeTypeList.SHREDDING, SHREDDING_RECIPE_SERIALIZER, id, ingredients, container, output);
+        this(TerravibeRecipeTypes.SHREDDING, SHREDDING_RECIPE_SERIALIZER, id, ingredients, container, output);
     }
 
     /** Initializes a new {@link ShreddingRecipe}. */

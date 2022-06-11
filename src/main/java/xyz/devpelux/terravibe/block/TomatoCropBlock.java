@@ -5,7 +5,6 @@ import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -20,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.item.ItemList;
+import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Crop of the tomato. */
 public class TomatoCropBlock extends CropBlock {
@@ -50,7 +49,7 @@ public class TomatoCropBlock extends CropBlock {
 
     /** Gets the seeds item of the block. */
     public ItemConvertible getSeedsItem() {
-        return ItemList.TOMATO_SEEDS;
+        return TerravibeItems.TOMATO_SEEDS;
     }
 
     /**
@@ -63,7 +62,7 @@ public class TomatoCropBlock extends CropBlock {
         if (state.get(AGE) == 7) {
             //Will drops from 1 to 3 items if the age is 7.
             int nDrops = 1 + world.random.nextInt(2);
-            dropStack(world, pos, new ItemStack(ItemList.TOMATO, nDrops));
+            dropStack(world, pos, new ItemStack(TerravibeItems.TOMATO, nDrops));
 
             //Plays the taken sound.
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS,

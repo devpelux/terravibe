@@ -9,6 +9,8 @@ import static net.minecraft.block.ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE;
 
 /** Contains some utilities. */
 public class Util {
+    private Util() {}
+
     /** This logger is used to write text to the console and the log file. */
     public static final Logger LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 

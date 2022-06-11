@@ -10,7 +10,7 @@ import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.ShredderBlock;
 
 /** List of all the screen handler types. */
-public class ScreenHandlerTypeList {
+public class TerravibeScreenHandlerTypes {
     /** Shredder screen handler type: Screen handler type for the shredder block entity UI. */
     public static final ScreenHandlerType<ShredderScreenHandler> SHREDDER;
 

@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.recipe.CrushingRecipe;
-import xyz.devpelux.terravibe.recipe.RecipeTypeList;
+import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 
 import java.util.Optional;
 
@@ -65,7 +65,7 @@ public class MortarBlock extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         //Checks if exists a crushing recipe for the item in hand.
         Optional<CrushingRecipe> match = world.getRecipeManager()
-                .getFirstMatch(RecipeTypeList.CRUSHING, new SimpleInventory(player.getStackInHand(hand)), world);
+                .getFirstMatch(TerravibeRecipeTypes.CRUSHING, new SimpleInventory(player.getStackInHand(hand)), world);
 
         //Gets the recipe if exists.
         if (match.isPresent()) {

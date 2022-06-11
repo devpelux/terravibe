@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the item groups. */
-public class ItemGroupList {
+public class TerravibeItemGroups {
     /** Generic "terravibe" item group. */
     public static final ItemGroup TERRAVIBE;
 
