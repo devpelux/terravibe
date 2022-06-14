@@ -77,7 +77,10 @@ public class MortarBlock extends Block {
                 //If the recipe exists, gets the item from the hand and tries to "crush" (convert) it.
                 //If the conversion is successful, then adds or drops the resulting item.
                 //Else, spawns fail particles to say that the item was consumed but nothing is returned.
-                player.getStackInHand(hand).decrement(1);
+                if (!player.getAbilities().creativeMode) {
+                    //The item is consumed only if the player is not in creative mode.
+                    player.getStackInHand(hand).decrement(1);
+                }
                 if (recipe.isSuccessful()) {
                     player.getInventory().offerOrDrop(recipe.getOutput().copy());
 
