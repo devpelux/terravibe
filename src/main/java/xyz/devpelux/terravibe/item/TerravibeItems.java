@@ -25,6 +25,12 @@ public class TerravibeItems {
     /** Tray item: Tray used to make salt. */
     public static final TrayItem TRAY;
 
+    /** Lettuce leaves item: Vegetable that is mainly used to make salad. */
+    public static final LettuceLeavesItem LETTUCE_LEAVES;
+
+    /** Lettuce seeds item: Seeds of lettuce. */
+    public static final LettuceSeedsItem LETTUCE_SEEDS;
+
     /** Olives item: Typical fruit used to make oil. */
     public static final OlivesItem OLIVES;
 
@@ -67,6 +73,8 @@ public class TerravibeItems {
     /** Loads all the items. */
     public static void load() {
         Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
+        Util.registerCompostableItem(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
+        Util.registerCompostableItem(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
         Util.registerCompostableItem(OnionItem.COMPOSTING_CHANCE, ONION);
         Util.registerCompostableItem(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
@@ -99,6 +107,8 @@ public class TerravibeItems {
         SHREDDER = register(ShredderItem.ID, new ShredderItem(TerravibeBlocks.SHREDDER, ShredderItem.getSettings()));
         TUN = register(TunItem.ID, new TunItem(TerravibeBlocks.TUN, TunItem.getSettings()));
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
+        LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
+        LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.getSettings()));
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
         ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));

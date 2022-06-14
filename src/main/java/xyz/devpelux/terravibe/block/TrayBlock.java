@@ -1,10 +1,7 @@
 package xyz.devpelux.terravibe.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -12,6 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -59,7 +57,9 @@ public class TrayBlock extends Block {
 
     /** Gets the block settings. */
     public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
+        return FabricBlockSettings.of(Material.STONE, MapColor.BLACK)
+                .breakInstantly()
+                .sounds(BlockSoundGroup.STONE);
     }
 
     /** Registers the properties of the block. */
