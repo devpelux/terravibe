@@ -6,7 +6,9 @@
   "mixins": [
   ],
   "client": [
-    "client.sodium.LinearColorBlenderMixin"
+    "sodium.client.FluidMixin",
+    "sodium.client.BlockMixin",
+    "sodium.client.LinearColorBlenderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

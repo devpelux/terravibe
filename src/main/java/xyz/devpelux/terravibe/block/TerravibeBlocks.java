@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.core.compatibility.sodium.IgnoreColorBlendingRegistry;
 
 /** List of all the blocks. */
 public class TerravibeBlocks {
@@ -34,9 +33,7 @@ public class TerravibeBlocks {
     public static final TomatoCropBlock TOMATO_CROP;
 
     /** Loads all the blocks. */
-    public static void load() {
-        IgnoreColorBlendingRegistry.register(TUN);
-    }
+    public static void load() {}
 
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)

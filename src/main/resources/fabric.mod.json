@@ -25,12 +25,20 @@
       "xyz.devpelux.terravibe.InitializerClient"
     ]
   },
+
+  "accessWidener": "terravibe.accesswidener",
   "mixins": [
     "terravibe.mixins.json"
   ],
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_2248": ["xyz/devpelux/terravibe/core/compatibility/sodium/SodiumColorBlendable"],
+      "net/minecraft/class_3611": ["xyz/devpelux/terravibe/core/compatibility/sodium/SodiumColorBlendable"]
+    }
+  },
 
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": ">=0.14.7",
     "fabric": "*",
     "minecraft": "~1.19",
     "java": ">=17"

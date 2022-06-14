@@ -219,6 +219,12 @@ public class TunBlock extends BlockWithEntity {
         return VOXEL_SHAPE;
     }
 
+    /** Returns a value indicating if to enable color blending for this block. */
+    @Override
+    public boolean enableSodiumColorBlending() {
+        return false;
+    }
+
     /** Gets the color of the contained fluid. */
     public static int getContainedFluidColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
         if (i != 1) return -1;

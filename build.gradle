@@ -10,6 +10,10 @@ archivesBaseName = project.archives_base_name
 group = project.maven_group
 version = project.mod_version
 
+loom {
+	accessWidenerPath = file("src/main/resources/terravibe.accesswidener")
+}
+
 repositories {
 	// Repositories to retrieve artifacts.
 	// Only use this when depending on other mods.
