@@ -3,8 +3,8 @@
   "ingredient": {
     "item": "minecraft:poisonous_potato"
   },
-  "result": "terravibe:sweet_potato_bud",
+  "result": "terravibe:sweet_potato_buds",
   "count": 1,
-  "chance": 0.1,
-  "experience": 2
+  "chance": 0.15,
+  "experience": 1
 }

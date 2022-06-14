@@ -1,26 +1,25 @@
 package xyz.devpelux.terravibe.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.Block;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** Rare mutation of the sweet potato. */
-public class RedSweetPotatoItem extends AliasedBlockItem {
+public class RedSweetPotatoItem extends Item {
     /** Identifier of the item. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "red_sweet_potato");
 
     /** Composting chance of the item. */
-    public static final float COMPOSTING_CHANCE = 0.65f;
+    public static final float COMPOSTING_CHANCE = 0.8f;
 
     /** Initializes a new {@link RedSweetPotatoItem}. */
-    public RedSweetPotatoItem(Block block, Settings settings) {
-        super(block, settings);
+    public RedSweetPotatoItem(Settings settings) {
+        super(settings);
     }
 
     /** Gets the item settings. */
@@ -34,6 +33,7 @@ public class RedSweetPotatoItem extends AliasedBlockItem {
 
         return new FabricItemSettings()
                 .maxCount(64)
-                .food(foodEffects);
+                .food(foodEffects)
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 }

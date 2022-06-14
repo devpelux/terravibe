@@ -3,12 +3,14 @@ package xyz.devpelux.terravibe.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
@@ -38,6 +40,17 @@ public class SweetPotatoCropBlock extends CropBlock {
     /** Gets the seeds item of the block. */
     public ItemConvertible getSeedsItem() {
         return TerravibeItems.SWEET_POTATO;
+    }
+
+    /** Gets the placement state of the block. */
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        if (ctx.getStack().isOf(TerravibeItems.SWEET_POTATO)) {
+            //Crops planted with sweet potatoes have an initial age of 1.
+            return withAge(1);
+        }
+        return super.getPlacementState(ctx);
     }
 
     /** Gets the outline shape of the block. */

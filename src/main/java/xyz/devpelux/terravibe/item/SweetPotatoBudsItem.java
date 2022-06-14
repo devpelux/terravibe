@@ -10,16 +10,16 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
-/** Bud of sweet potato. */
-public class SweetPotatoBudItem extends AliasedBlockItem {
+/** Buds of sweet potato. */
+public class SweetPotatoBudsItem extends AliasedBlockItem {
     /** Identifier of the item. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "sweet_potato_bud");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "sweet_potato_buds");
 
     /** Composting chance of the item. */
-    public static final float COMPOSTING_CHANCE = 0.3f;
+    public static final float COMPOSTING_CHANCE = 0.4f;
 
-    /** Initializes a new {@link SweetPotatoBudItem}. */
-    public SweetPotatoBudItem(Block block, Settings settings) {
+    /** Initializes a new {@link SweetPotatoBudsItem}. */
+    public SweetPotatoBudsItem(Block block, Settings settings) {
         super(block, settings);
     }
 

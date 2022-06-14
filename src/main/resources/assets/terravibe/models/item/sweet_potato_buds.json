@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "terravibe:item/sweet_potato_bud"
+    "layer0": "terravibe:item/sweet_potato_buds"
   }
 }

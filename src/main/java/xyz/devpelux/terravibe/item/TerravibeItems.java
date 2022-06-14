@@ -40,8 +40,8 @@ public class TerravibeItems {
     /** Sweet potato item: Sweet potato, a mutation of the potato. */
     public static final SweetPotatoItem SWEET_POTATO;
 
-    /** Sweet potato bud item: Bud of sweet potato. */
-    public static final SweetPotatoBudItem SWEET_POTATO_BUD;
+    /** Sweet potato bud item: Buds of sweet potato. */
+    public static final SweetPotatoBudsItem SWEET_POTATO_BUDS;
 
     /** Tomato item: Edible berry of the plant Solanum lycopersicum, commonly known as the tomato plant. */
     public static final TomatoItem TOMATO;
@@ -70,9 +70,10 @@ public class TerravibeItems {
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
         Util.registerCompostableItem(OnionItem.COMPOSTING_CHANCE, ONION);
         Util.registerCompostableItem(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
+        Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, Items.POISONOUS_POTATO);
         Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
         Util.registerCompostableItem(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
-        Util.registerCompostableItem(SweetPotatoBudItem.COMPOSTING_CHANCE, SWEET_POTATO_BUD);
+        Util.registerCompostableItem(SweetPotatoBudsItem.COMPOSTING_CHANCE, SWEET_POTATO_BUDS);
         Util.registerCompostableItem(TomatoItem.COMPOSTING_CHANCE, TOMATO);
         Util.registerCompostableItem(TomatoSeedsItem.COMPOSTING_CHANCE, TOMATO_SEEDS);
 
@@ -101,8 +102,8 @@ public class TerravibeItems {
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
         ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));
-        RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, RedSweetPotatoItem.getSettings()));
-        SWEET_POTATO_BUD = register(SweetPotatoBudItem.ID, new SweetPotatoBudItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudItem.getSettings()));
+        RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.getSettings()));
+        SWEET_POTATO_BUDS = register(SweetPotatoBudsItem.ID, new SweetPotatoBudsItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudsItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
         TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.getSettings()));
