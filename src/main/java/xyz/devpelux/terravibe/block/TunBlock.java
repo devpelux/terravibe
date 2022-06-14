@@ -142,8 +142,11 @@ public class TunBlock extends BlockWithEntity {
                     int level = getLevel(state);
                     setLevel(state, world, pos, level + 1);
                     //Coverts the item into a glass bottle.
-                    player.getStackInHand(Hand.MAIN_HAND).decrement(1);
-                    player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
+                    if (!player.getAbilities().creativeMode) {
+                        //The inventory is changed only if the player is not in creative mode.
+                        player.getStackInHand(Hand.MAIN_HAND).decrement(1);
+                        player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
+                    }
                     //Plays the empty sound.
                     player.playSound(getEmptySound(), SoundCategory.BLOCKS, 1f, 1f);
 
@@ -162,8 +165,11 @@ public class TunBlock extends BlockWithEntity {
                 int level = getLevel(state);
                 setLevel(state, world, pos, level - 1);
                 //Coverts the bottle into the original item.
-                player.getStackInHand(Hand.MAIN_HAND).decrement(1);
-                player.getInventory().offerOrDrop(new ItemStack(getContainedItem(world, pos)));
+                if (!player.getAbilities().creativeMode) {
+                    //The inventory is changed only if the player is not in creative mode.
+                    player.getStackInHand(Hand.MAIN_HAND).decrement(1);
+                    player.getInventory().offerOrDrop(new ItemStack(getContainedItem(world, pos)));
+                }
                 //Plays the fill sound.
                 player.playSound(getFillSound(), SoundCategory.BLOCKS, 1f, 1f);
 

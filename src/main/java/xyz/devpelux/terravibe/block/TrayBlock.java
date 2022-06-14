@@ -107,8 +107,12 @@ public class TrayBlock extends Block {
                 if (PotionUtil.getPotion(handStack) == Potions.WATER) {
                     if (!world.isClient()) {
                         setContent(state, world, pos, Content.Water);
-                        handStack.decrement(1);
-                        player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
+                        //Takes the bottle with water and gives a glass bottle.
+                        if (!player.getAbilities().creativeMode) {
+                            //The inventory is changed only if the player is not in creative mode.
+                            handStack.decrement(1);
+                            player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
+                        }
                         player.playSound(getEmptyWaterSound(), SoundCategory.BLOCKS, 1f, 1f);
                     }
 
@@ -120,8 +124,12 @@ public class TrayBlock extends Block {
                 if (handStack.isOf(Items.GLASS_BOTTLE)) {
                     if (!world.isClient()) {
                         setContent(state, world, pos, Content.Nothing);
-                        handStack.decrement(1);
-                        player.getInventory().offerOrDrop(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.WATER));
+                        //Takes the glass bottle and gives a bottle with water.
+                        if (!player.getAbilities().creativeMode) {
+                            //The inventory is changed only if the player is not in creative mode.
+                            handStack.decrement(1);
+                            player.getInventory().offerOrDrop(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.WATER));
+                        }
                         player.playSound(getFillWaterSound(), SoundCategory.BLOCKS, 1f, 1f);
                     }
 
@@ -132,6 +140,7 @@ public class TrayBlock extends Block {
             case Salt -> {
                 if (!world.isClient()) {
                     setContent(state, world, pos, Content.Nothing);
+                    //Gives salt crystals.
                     dropStack(world, pos, new ItemStack(TerravibeItems.SALT_CRYSTALS));
                     player.playSound(getTakeSaltSound(), SoundCategory.BLOCKS, 1f, 1f);
                 }
