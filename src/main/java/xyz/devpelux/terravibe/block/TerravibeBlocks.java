@@ -29,6 +29,9 @@ public class TerravibeBlocks {
     /** Lettuce crop block: Crop of the lettuce. */
     public static final LettuceCropBlock LETTUCE_CROP;
 
+    /** Nightlock berry bush block: Bush of nightlock berries, without thorns. */
+    public static final NightlockBerryBushBlock NIGHTLOCK_BERRY_BUSH;
+
     /** Onion crop block: Crop of the onion. */
     public static final OnionCropBlock ONION_CROP;
 
@@ -53,6 +56,7 @@ public class TerravibeBlocks {
     public static void loadRenderLayerMaps() {
         BlockRenderLayerMap.INSTANCE.putBlock(BLUE_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(NIGHTLOCK_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ONION_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TOMATO_CROP, RenderLayer.getCutout());
@@ -71,6 +75,7 @@ public class TerravibeBlocks {
 
         BLUE_BERRY_BUSH = register(BlueBerryBushBlock.ID, new BlueBerryBushBlock(BlueBerryBushBlock.getSettings()));
         LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.getSettings()));
+        NIGHTLOCK_BERRY_BUSH = register(NightlockBerryBushBlock.ID, new NightlockBerryBushBlock(NightlockBerryBushBlock.getSettings()));
         ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.getSettings()));

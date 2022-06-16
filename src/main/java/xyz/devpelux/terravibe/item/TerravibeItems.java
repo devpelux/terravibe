@@ -34,6 +34,9 @@ public class TerravibeItems {
     /** Lettuce seeds item: Seeds of lettuce. */
     public static final LettuceSeedsItem LETTUCE_SEEDS;
 
+    /** Nightlock berries item: Little poisonous berry with a black color. */
+    public static final NightlockBerriesItem NIGHTLOCK_BERRIES;
+
     /** Olives item: Typical fruit used to make oil. */
     public static final OlivesItem OLIVES;
 
@@ -79,6 +82,7 @@ public class TerravibeItems {
         Util.registerCompostableItem(BlueBerriesItem.COMPOSTING_CHANCE, BLUE_BERRIES);
         Util.registerCompostableItem(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
         Util.registerCompostableItem(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
+        Util.registerCompostableItem(NightlockBerriesItem.COMPOSTING_CHANCE, NIGHTLOCK_BERRIES);
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
         Util.registerCompostableItem(OnionItem.COMPOSTING_CHANCE, ONION);
         Util.registerCompostableItem(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
@@ -115,6 +119,7 @@ public class TerravibeItems {
         BLUE_BERRIES = register(BlueBerriesItem.ID, new BlueBerriesItem(TerravibeBlocks.BLUE_BERRY_BUSH, BlueBerriesItem.getSettings()));
         LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
         LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.getSettings()));
+        NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.getSettings()));
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
         ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));

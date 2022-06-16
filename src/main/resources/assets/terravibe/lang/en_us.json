@@ -7,6 +7,7 @@
 
   "block.terravibe.blue_berry_bush" : "Blueberry bush",
   "block.terravibe.lettuce_crop" : "Lettuce crop",
+  "block.terravibe.nightlock_berry_bush" : "Nightlock berry bush",
   "block.terravibe.onion_crop" : "Onion crop",
   "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
   "block.terravibe.tomato_crop" : "Tomato crop",
@@ -19,6 +20,7 @@
   "item.terravibe.blue_berries" : "Blueberries",
   "item.terravibe.lettuce_leaves" : "Lettuce leaves",
   "item.terravibe.lettuce_seeds" : "Lettuce seeds",
+  "item.terravibe.nightlock_berries" : "Nightlock berries",
   "item.terravibe.olives" : "Olives",
   "item.terravibe.onion" : "Onion",
   "item.terravibe.onion_seeds" : "Onion seeds",
@@ -34,5 +36,7 @@
   "item.terravibe.oil_bottle" : "Oil bottle",
   "item.terravibe.tomato_sauce_bottle" : "Tomato sauce bottle",
 
-  "itemGroup.terravibe.terravibe" : "Terravibe"
+  "itemGroup.terravibe.terravibe" : "Terravibe",
+
+  "death.attack.nightlock" : "%1$s ate something that shouldn't have eaten."
 }
