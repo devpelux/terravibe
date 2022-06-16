@@ -28,11 +28,7 @@ public class SweetPotatoBudsItem extends AliasedBlockItem {
         FoodComponent foodEffects = new FoodComponent.Builder()
                 .hunger(1)
                 .saturationModifier(0.1f)
-                .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 80, 0), 0.1f)
-                .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 240, 2), 1f)
-                .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 240, 0), 1f)
-                .statusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, 240, 0), 1f)
-                .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 1, 0), 0.4f)
+                .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 400, 1), 1f)
                 .build();
 
         return new FabricItemSettings()

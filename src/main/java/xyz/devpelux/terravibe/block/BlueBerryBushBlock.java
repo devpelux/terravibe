@@ -58,7 +58,7 @@ public class BlueBerryBushBlock extends BerryBushBlock {
                 .noCollision()
                 .ticksRandomly()
                 .breakInstantly()
-                .sounds(BlockSoundGroup.CROP);
+                .sounds(BlockSoundGroup.SWEET_BERRY_BUSH);
     }
 
     /** {@inheritDoc} */
