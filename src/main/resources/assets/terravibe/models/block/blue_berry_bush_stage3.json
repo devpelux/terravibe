@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "terravibe:block/lettuce_crop_stage2"
+    "cross": "terravibe:block/blue_berry_bush_stage3"
   }
 }

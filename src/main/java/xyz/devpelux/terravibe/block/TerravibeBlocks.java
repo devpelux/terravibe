@@ -23,6 +23,9 @@ public class TerravibeBlocks {
     /** Tray block: Tray used to make salt. */
     public static final TrayBlock TRAY;
 
+    /** Blueberry bush block: Bush of blueberries, without thorns. */
+    public static final BlueBerryBushBlock BLUE_BERRY_BUSH;
+
     /** Lettuce crop block: Crop of the lettuce. */
     public static final LettuceCropBlock LETTUCE_CROP;
 
@@ -48,6 +51,7 @@ public class TerravibeBlocks {
     /** Loads all the render layer maps for the blocks. */
     @Environment(EnvType.CLIENT)
     public static void loadRenderLayerMaps() {
+        BlockRenderLayerMap.INSTANCE.putBlock(BLUE_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ONION_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
@@ -64,6 +68,8 @@ public class TerravibeBlocks {
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
         TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
         TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.getSettings()));
+
+        BLUE_BERRY_BUSH = register(BlueBerryBushBlock.ID, new BlueBerryBushBlock(BlueBerryBushBlock.getSettings()));
         LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.getSettings()));
         ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));

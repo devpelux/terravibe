@@ -25,6 +25,9 @@ public class TerravibeItems {
     /** Tray item: Tray used to make salt. */
     public static final TrayItem TRAY;
 
+    /** Blueberries item: Little berry with a blue-purplish color mostly used for jams. */
+    public static final BlueBerriesItem BLUE_BERRIES;
+
     /** Lettuce leaves item: Vegetable that is mainly used to make salad. */
     public static final LettuceLeavesItem LETTUCE_LEAVES;
 
@@ -73,6 +76,7 @@ public class TerravibeItems {
     /** Loads all the items. */
     public static void load() {
         Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
+        Util.registerCompostableItem(BlueBerriesItem.COMPOSTING_CHANCE, BLUE_BERRIES);
         Util.registerCompostableItem(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
         Util.registerCompostableItem(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
         Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
@@ -107,6 +111,8 @@ public class TerravibeItems {
         SHREDDER = register(ShredderItem.ID, new ShredderItem(TerravibeBlocks.SHREDDER, ShredderItem.getSettings()));
         TUN = register(TunItem.ID, new TunItem(TerravibeBlocks.TUN, TunItem.getSettings()));
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
+
+        BLUE_BERRIES = register(BlueBerriesItem.ID, new BlueBerriesItem(TerravibeBlocks.BLUE_BERRY_BUSH, BlueBerriesItem.getSettings()));
         LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
         LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.getSettings()));
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
@@ -118,9 +124,10 @@ public class TerravibeItems {
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
         TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.getSettings()));
         BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.getSettings()));
-        OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
         SALT = register(SaltItem.ID, new SaltItem(SaltItem.getSettings()));
         SALT_CRYSTALS = register(SaltCrystalsItem.ID, new SaltCrystalsItem(SaltCrystalsItem.getSettings()));
+
+        OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
         TOMATO_SAUCE_BOTTLE = register(TomatoSauceBottleItem.ID, new TomatoSauceBottleItem(TomatoSauceBottleItem.getSettings()));
     }
 }

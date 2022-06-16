@@ -5,6 +5,7 @@
   "block.terravibe.tun" : "Tun",
   "block.terravibe.tray" : "Tray",
 
+  "block.terravibe.blue_berry_bush" : "Blueberry bush",
   "block.terravibe.lettuce_crop" : "Lettuce crop",
   "block.terravibe.onion_crop" : "Onion crop",
   "block.terravibe.sweet_potato_crop" : "Sweet potato crop",
@@ -15,6 +16,7 @@
   "item.terravibe.tun" : "Tun",
   "item.terravibe.tray" : "Tray",
 
+  "item.terravibe.blue_berries" : "Blueberries",
   "item.terravibe.lettuce_leaves" : "Lettuce leaves",
   "item.terravibe.lettuce_seeds" : "Lettuce seeds",
   "item.terravibe.olives" : "Olives",
