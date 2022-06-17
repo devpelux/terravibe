@@ -28,6 +28,12 @@ public class TerravibeItems {
     /** Blueberries item: Little berry with a blue-purplish color mostly used for jams. */
     public static final BlueBerriesItem BLUE_BERRIES;
 
+    /** Kale item: Vegetable mostly used to make soups. */
+    public static final KaleItem KALE;
+
+    /** Kale seeds item: Seeds of kale. */
+    public static final KaleSeedsItem KALE_SEEDS;
+
     /** Lettuce leaves item: Vegetable that is mainly used to make salad. */
     public static final LettuceLeavesItem LETTUCE_LEAVES;
 
@@ -80,6 +86,8 @@ public class TerravibeItems {
     public static void load() {
         Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
         Util.registerCompostableItem(BlueBerriesItem.COMPOSTING_CHANCE, BLUE_BERRIES);
+        Util.registerCompostableItem(KaleItem.COMPOSTING_CHANCE, KALE);
+        Util.registerCompostableItem(KaleSeedsItem.COMPOSTING_CHANCE, KALE_SEEDS);
         Util.registerCompostableItem(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
         Util.registerCompostableItem(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
         Util.registerCompostableItem(NightlockBerriesItem.COMPOSTING_CHANCE, NIGHTLOCK_BERRIES);
@@ -117,6 +125,8 @@ public class TerravibeItems {
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
 
         BLUE_BERRIES = register(BlueBerriesItem.ID, new BlueBerriesItem(TerravibeBlocks.BLUE_BERRY_BUSH, BlueBerriesItem.getSettings()));
+        KALE = register(KaleItem.ID, new KaleItem(KaleItem.getSettings()));
+        KALE_SEEDS = register(KaleSeedsItem.ID, new KaleSeedsItem(TerravibeBlocks.KALE_CROP, KaleSeedsItem.getSettings()));
         LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
         LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.getSettings()));
         NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.getSettings()));

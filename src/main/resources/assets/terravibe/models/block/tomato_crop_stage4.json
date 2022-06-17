@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "terravibe:block/cross_crop",
   "textures": {
     "cross": "terravibe:block/tomato_crop_stage4"
   }
