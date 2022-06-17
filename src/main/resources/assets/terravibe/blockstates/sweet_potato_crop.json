@@ -19,7 +19,7 @@
       "model": "terravibe:block/sweet_potato_crop_stage3"
     },
     "age=6": {
-      "model": "terravibe:block/sweet_potato_crop_stage4"
+      "model": "terravibe:block/sweet_potato_crop_stage3"
     },
     "age=7": {
       "model": "terravibe:block/sweet_potato_crop_stage4"
