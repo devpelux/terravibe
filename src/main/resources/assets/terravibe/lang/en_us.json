@@ -5,6 +5,7 @@
   "block.terravibe.tun" : "Tun",
   "block.terravibe.tray" : "Tray",
 
+  "block.terravibe.beans_crop" : "Beans crop",
   "block.terravibe.blue_berry_bush" : "Blueberry bush",
   "block.terravibe.eggplant_crop" : "Eggplant crop",
   "block.terravibe.kale_crop" : "Kale crop",
@@ -19,6 +20,7 @@
   "item.terravibe.tun" : "Tun",
   "item.terravibe.tray" : "Tray",
 
+  "item.terravibe.beans" : "Beans",
   "item.terravibe.blue_berries" : "Blueberries",
   "item.terravibe.eggplant" : "Eggplant",
   "item.terravibe.eggplant_seeds" : "Eggplant seeds",

@@ -25,6 +25,9 @@ public class TerravibeItems {
     /** Tray item: Tray used to make salt. */
     public static final TrayItem TRAY;
 
+    /** Beans item: Little edible seeds. */
+    public static final BeansItem BEANS;
+
     /** Blueberries item: Little berry with a blue-purplish color mostly used for jams. */
     public static final BlueBerriesItem BLUE_BERRIES;
 
@@ -91,6 +94,7 @@ public class TerravibeItems {
     /** Loads all the items. */
     public static void load() {
         Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
+        Util.registerCompostableItem(BeansItem.COMPOSTING_CHANCE, BEANS);
         Util.registerCompostableItem(BlueBerriesItem.COMPOSTING_CHANCE, BLUE_BERRIES);
         Util.registerCompostableItem(EggplantItem.COMPOSTING_CHANCE, EGGPLANT);
         Util.registerCompostableItem(EggplantSeedsItem.COMPOSTING_CHANCE, EGGPLANT_SEEDS);
@@ -133,6 +137,7 @@ public class TerravibeItems {
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
 
         BLUE_BERRIES = register(BlueBerriesItem.ID, new BlueBerriesItem(TerravibeBlocks.BLUE_BERRY_BUSH, BlueBerriesItem.getSettings()));
+        BEANS = register(BeansItem.ID, new BeansItem(TerravibeBlocks.BEANS_CROP, BeansItem.getSettings()));
         EGGPLANT = register(EggplantItem.ID, new EggplantItem(EggplantItem.getSettings()));
         EGGPLANT_SEEDS = register(EggplantSeedsItem.ID, new EggplantSeedsItem(TerravibeBlocks.EGGPLANT_CROP, EggplantSeedsItem.getSettings()));
         KALE = register(KaleItem.ID, new KaleItem(KaleItem.getSettings()));
