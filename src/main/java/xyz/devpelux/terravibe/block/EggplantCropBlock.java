@@ -52,6 +52,11 @@ public class EggplantCropBlock extends CropBlock {
         return TerravibeItems.EGGPLANT_SEEDS;
     }
 
+    /** Gets the fruit item of the block. */
+    public ItemConvertible getFruitItem() {
+        return TerravibeItems.EGGPLANT;
+    }
+
     /**
      * Executed when the plant is used.<br>
      * Gets the drops, then reset the plant age to the fully grown age.
@@ -62,7 +67,7 @@ public class EggplantCropBlock extends CropBlock {
         if (state.get(AGE) == 7) {
             //Will drops from 1 to 2 items if the age is 7.
             int nDrops = world.random.nextBetween(1, 2);
-            dropStack(world, pos, new ItemStack(TerravibeItems.TOMATO, nDrops));
+            dropStack(world, pos, new ItemStack(getFruitItem(), nDrops));
 
             //Plays the taken sound.
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS,
