@@ -7,16 +7,16 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
-/** Edible red berry, commonly used to make sauces or for salad. */
-public class TomatoItem extends Item {
+/** Edible purple berry, spongy, absorbent, typically used as a vegetable in cooking. */
+public class EggplantItem extends Item {
     /** Identifier of the item. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tomato");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "eggplant");
 
     /** Composting chance of the item. */
     public static final float COMPOSTING_CHANCE = 0.65f;
 
-    /** Initializes a new {@link TomatoItem}. */
-    public TomatoItem(Settings settings) {
+    /** Initializes a new {@link EggplantItem}. */
+    public EggplantItem(Settings settings) {
         super(settings);
     }
 

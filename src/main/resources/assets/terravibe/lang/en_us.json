@@ -6,6 +6,7 @@
   "block.terravibe.tray" : "Tray",
 
   "block.terravibe.blue_berry_bush" : "Blueberry bush",
+  "block.terravibe.eggplant_crop" : "Eggplant crop",
   "block.terravibe.kale_crop" : "Kale crop",
   "block.terravibe.lettuce_crop" : "Lettuce crop",
   "block.terravibe.nightlock_berry_bush" : "Nightlock berry bush",
@@ -19,6 +20,8 @@
   "item.terravibe.tray" : "Tray",
 
   "item.terravibe.blue_berries" : "Blueberries",
+  "item.terravibe.eggplant" : "Eggplant",
+  "item.terravibe.eggplant_seeds" : "Eggplant seeds",
   "item.terravibe.kale" : "Kale",
   "item.terravibe.kale_seeds" : "Kale seeds",
   "item.terravibe.lettuce_leaves" : "Lettuce leaves",

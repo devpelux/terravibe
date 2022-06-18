@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "terravibe:eggplant"
+    }
+  ],
+  "result": {
+    "item": "terravibe:eggplant_seeds"
+  }
+}

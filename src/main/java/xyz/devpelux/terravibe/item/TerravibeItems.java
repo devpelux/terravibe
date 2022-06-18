@@ -28,6 +28,12 @@ public class TerravibeItems {
     /** Blueberries item: Little berry with a blue-purplish color mostly used for jams. */
     public static final BlueBerriesItem BLUE_BERRIES;
 
+    /** Eggplant item: Edible purple berry, spongy, absorbent, typically used as a vegetable in cooking. */
+    public static final EggplantItem EGGPLANT;
+
+    /** Eggplant seeds item: Seeds of eggplant. */
+    public static final EggplantSeedsItem EGGPLANT_SEEDS;
+
     /** Kale item: Vegetable mostly used to make soups. */
     public static final KaleItem KALE;
 
@@ -61,7 +67,7 @@ public class TerravibeItems {
     /** Sweet potato bud item: Buds of sweet potato. */
     public static final SweetPotatoBudsItem SWEET_POTATO_BUDS;
 
-    /** Tomato item: Edible berry of the plant Solanum lycopersicum, commonly known as the tomato plant. */
+    /** Tomato item: Edible red berry, commonly used to make sauces or for salad. */
     public static final TomatoItem TOMATO;
 
     /** Tomato seeds item: Seeds of tomato. */
@@ -86,6 +92,8 @@ public class TerravibeItems {
     public static void load() {
         Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
         Util.registerCompostableItem(BlueBerriesItem.COMPOSTING_CHANCE, BLUE_BERRIES);
+        Util.registerCompostableItem(EggplantItem.COMPOSTING_CHANCE, EGGPLANT);
+        Util.registerCompostableItem(EggplantSeedsItem.COMPOSTING_CHANCE, EGGPLANT_SEEDS);
         Util.registerCompostableItem(KaleItem.COMPOSTING_CHANCE, KALE);
         Util.registerCompostableItem(KaleSeedsItem.COMPOSTING_CHANCE, KALE_SEEDS);
         Util.registerCompostableItem(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
@@ -125,6 +133,8 @@ public class TerravibeItems {
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
 
         BLUE_BERRIES = register(BlueBerriesItem.ID, new BlueBerriesItem(TerravibeBlocks.BLUE_BERRY_BUSH, BlueBerriesItem.getSettings()));
+        EGGPLANT = register(EggplantItem.ID, new EggplantItem(EggplantItem.getSettings()));
+        EGGPLANT_SEEDS = register(EggplantSeedsItem.ID, new EggplantSeedsItem(TerravibeBlocks.EGGPLANT_CROP, EggplantSeedsItem.getSettings()));
         KALE = register(KaleItem.ID, new KaleItem(KaleItem.getSettings()));
         KALE_SEEDS = register(KaleSeedsItem.ID, new KaleSeedsItem(TerravibeBlocks.KALE_CROP, KaleSeedsItem.getSettings()));
         LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
@@ -139,6 +149,7 @@ public class TerravibeItems {
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
         TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.getSettings()));
         BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.getSettings()));
+
         SALT = register(SaltItem.ID, new SaltItem(SaltItem.getSettings()));
         SALT_CRYSTALS = register(SaltCrystalsItem.ID, new SaltCrystalsItem(SaltCrystalsItem.getSettings()));
 

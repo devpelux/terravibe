@@ -26,6 +26,9 @@ public class TerravibeBlocks {
     /** Blueberry bush block: Bush of blueberries, without thorns. */
     public static final BlueBerryBushBlock BLUE_BERRY_BUSH;
 
+    /** Eggplant crop block: Crop of the eggplant. */
+    public static final EggplantCropBlock EGGPLANT_CROP;
+
     /** Kale crop block: Crop of the kale. */
     public static final KaleCropBlock KALE_CROP;
 
@@ -58,6 +61,7 @@ public class TerravibeBlocks {
     @Environment(EnvType.CLIENT)
     public static void loadRenderLayerMaps() {
         BlockRenderLayerMap.INSTANCE.putBlock(BLUE_BERRY_BUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EGGPLANT_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NIGHTLOCK_BERRY_BUSH, RenderLayer.getCutout());
@@ -78,6 +82,7 @@ public class TerravibeBlocks {
         TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.getSettings()));
 
         BLUE_BERRY_BUSH = register(BlueBerryBushBlock.ID, new BlueBerryBushBlock(BlueBerryBushBlock.getSettings()));
+        EGGPLANT_CROP = register(EggplantCropBlock.ID, new EggplantCropBlock(EggplantCropBlock.getSettings()));
         KALE_CROP = register(KaleCropBlock.ID, new KaleCropBlock(KaleCropBlock.getSettings()));
         LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.getSettings()));
         NIGHTLOCK_BERRY_BUSH = register(NightlockBerryBushBlock.ID, new NightlockBerryBushBlock(NightlockBerryBushBlock.getSettings()));
