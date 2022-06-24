@@ -9,6 +9,8 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 import xyz.devpelux.terravibe.screenhandler.TerravibeScreenHandlerTypes;
 
+//1346728994490959230
+
 /** Main mod initializer. */
 public class Initializer implements ModInitializer {
 	/** {@inheritDoc} */
