@@ -8,5 +8,8 @@ public class TerravibeDamageSources {
     private TerravibeDamageSources() {}
 
     /** Entity was killed by nightlock. */
-    public static final DamageSource NIGHTLOCK = new FabricDamageSource("nightlock").setBypassesArmor().setOutOfWorld();
+    public static final DamageSource NIGHTLOCK = new FabricDamageSource("nightlock").setBypassesArmor();
+
+    /** Entity was killed by nightlock in creative mode. */
+    public static final DamageSource NIGHTLOCK_CREATIVE = new FabricDamageSource("nightlock_creative").setBypassesArmor().setOutOfWorld();
 }

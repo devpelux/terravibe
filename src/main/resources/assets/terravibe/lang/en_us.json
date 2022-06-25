@@ -48,5 +48,6 @@
 
   "itemGroup.terravibe.terravibe" : "Terravibe",
 
-  "death.attack.nightlock" : "%1$s ate something that shouldn't have eaten."
+  "death.attack.nightlock" : "%1$s ate something that shouldn't have eaten.",
+  "death.attack.nightlock_creative" : "%1$s discovered that nightlock berries kills even in creative mode!"
 }

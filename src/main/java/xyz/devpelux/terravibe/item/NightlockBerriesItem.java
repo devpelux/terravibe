@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.FoxEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemStack;
@@ -52,7 +53,11 @@ public class NightlockBerriesItem extends AliasedBlockItem {
             ItemStack eatenStack = entity.eatFood(world, stack);
             if (entity.getType() != EntityType.FOX) {
                 //The nightlock kills the entity after being eaten.
-                entity.damage(TerravibeDamageSources.NIGHTLOCK, Float.MAX_VALUE);
+                if (entity instanceof PlayerEntity player && player.getAbilities().creativeMode) {
+                    //Even in creative mode!
+                    entity.damage(TerravibeDamageSources.NIGHTLOCK_CREATIVE, Float.MAX_VALUE);
+                }
+                else entity.damage(TerravibeDamageSources.NIGHTLOCK, Float.MAX_VALUE);
             }
             else {
                 //Foxes are only poisoned, not killed.
