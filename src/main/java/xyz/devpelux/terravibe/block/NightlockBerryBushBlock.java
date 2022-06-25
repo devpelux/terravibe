@@ -32,7 +32,7 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "nightlock_berry_bush");
 
     /** Movement slow amount. */
-    public static final Vec3d MOVEMENT_SLOW_AMOUNT = new Vec3d(0.800000011920929, 0.75, 0.800000011920929);
+    public static final Vec3d MOVEMENT_SLOWING_AMOUNT = new Vec3d(0.800000011920929, 0.75, 0.800000011920929);
 
     /** Max age. */
     public static final int MAX_AGE = 3;
@@ -46,7 +46,7 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
     /** Voxel shapes of the block. */
     private static VoxelShape[] AGE_TO_SHAPE = null;
 
-    /** Initializes a new BlueBerryBushBlock. */
+    /** Initializes a new {@link NightlockBerryBushBlock}. */
     public NightlockBerryBushBlock(Settings settings) {
         super(settings);
     }
@@ -81,6 +81,21 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
 
     /** {@inheritDoc} */
     @Override
+    public float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, @NotNull Vec3d entityMovement) {
+        return 0F;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Vec3d getSlowingAmount(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+            return MOVEMENT_SLOWING_AMOUNT;
+        }
+        return Vec3d.ZERO;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         return new ItemStack(TerravibeItems.NIGHTLOCK_BERRIES);
     }
@@ -103,20 +118,7 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
     /** {@inheritDoc} */
     @Override
     public int getMinLightToGrow() {
-        return 9;
-    }
-
-    /**
-     * Executed when an entity collides with the bush.
-     * Slow down the entity.
-     */
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
-            //Slow down every entity, except for bees and foxes.
-            entity.slowMovement(state, MOVEMENT_SLOW_AMOUNT);
-        }
+        return 1;
     }
 
     /** Gets the outline shape of the block. */

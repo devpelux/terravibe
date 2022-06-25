@@ -1,6 +1,8 @@
 package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -13,6 +15,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -61,6 +64,12 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 
     /** Gets the age when the bush has fruits. */
     public abstract int getMatureAge();
+
+    /** Gets the thorns damage caused by the bush. (0 = no thorns) */
+    public abstract float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, @NotNull Vec3d entityMovement);
+
+    /** Gets the movement slowing amount when inside the bush. */
+    public abstract Vec3d getSlowingAmount(BlockState state, World world, BlockPos pos, Entity entity);
 
     /** Gets the stack to pick from the bush. */
     @Override
@@ -130,6 +139,26 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
             BlockState nextGrowState = state.with(getAgeProperty(), getAge(state) + 1);
             world.setBlockState(pos, nextGrowState, 2);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(nextGrowState));
+        }
+    }
+
+    /**
+     * Executed when an entity collides with the bush.
+     * Slow down the entity and applies the thorns damage.
+     */
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        entity.slowMovement(state, getSlowingAmount(state, world, pos, entity));
+        if (!world.isClient()) {
+            double movementX = Math.abs(entity.getX() - entity.lastRenderX);
+            double movementY = Math.abs(entity.getY() - entity.lastRenderY);
+            double movementZ = Math.abs(entity.getZ() - entity.lastRenderZ);
+            Vec3d movement = new Vec3d(movementX, movementY, movementZ);
+            float damage = getThornsDamage(state, world, pos, entity, movement);
+            if (damage >= 0F) {
+                entity.damage(DamageSource.SWEET_BERRY_BUSH, damage);
+            }
         }
     }
 

@@ -1,10 +1,7 @@
 package xyz.devpelux.terravibe.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -26,13 +23,16 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Optional;
 
-/** Bush of blueberries, without thorns. */
-public class BlueBerryBushBlock extends BerryBushBlock {
+/** Bush of dark berries. */
+public class DarkSweetBerryBushBlock extends BerryBushBlock {
     /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "blue_berry_bush");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "dark_sweet_berry_bush");
 
-    /** Movement slow amount. */
-    public static final Vec3d MOVEMENT_SLOW_AMOUNT = new Vec3d(0.800000011920929, 0.75, 0.800000011920929);
+    /** Movement slowing amount. */
+    public static final Vec3d MOVEMENT_SLOWING_AMOUNT = new Vec3d(0.800000011920929, 0.75, 0.800000011920929);
+
+    /** Minimum movement to get the thorns damage. */
+    public static final double MIN_MOVEMENT_FOR_THORNS_DAMAGE = 0.003000000026077032;
 
     /** Max age. */
     public static final int MAX_AGE = 3;
@@ -46,8 +46,8 @@ public class BlueBerryBushBlock extends BerryBushBlock {
     /** Voxel shapes of the block. */
     private static VoxelShape[] AGE_TO_SHAPE = null;
 
-    /** Initializes a new BlueBerryBushBlock. */
-    public BlueBerryBushBlock(Settings settings) {
+    /** Initializes a new {@link DarkSweetBerryBushBlock}. */
+    public DarkSweetBerryBushBlock(Settings settings) {
         super(settings);
     }
 
@@ -81,8 +81,27 @@ public class BlueBerryBushBlock extends BerryBushBlock {
 
     /** {@inheritDoc} */
     @Override
+    public float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, @NotNull Vec3d entityMovement) {
+        if (getAge(state) > 0 && (entityMovement.getX() >= MIN_MOVEMENT_FOR_THORNS_DAMAGE || entityMovement.getZ() >= MIN_MOVEMENT_FOR_THORNS_DAMAGE))
+        {
+            return 1F;
+        }
+        return 0F;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Vec3d getSlowingAmount(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+            return MOVEMENT_SLOWING_AMOUNT;
+        }
+        return Vec3d.ZERO;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(TerravibeItems.BLUE_BERRIES);
+        return new ItemStack(TerravibeItems.DARK_SWEET_BERRIES);
     }
 
     /** {@inheritDoc} */
@@ -103,20 +122,7 @@ public class BlueBerryBushBlock extends BerryBushBlock {
     /** {@inheritDoc} */
     @Override
     public int getMinLightToGrow() {
-        return 9;
-    }
-
-    /**
-     * Executed when an entity collides with the bush.
-     * Slow down the entity.
-     */
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
-            //Slow down every entity, except for bees and foxes.
-            entity.slowMovement(state, MOVEMENT_SLOW_AMOUNT);
-        }
+        return 4;
     }
 
     /** Gets the outline shape of the block. */

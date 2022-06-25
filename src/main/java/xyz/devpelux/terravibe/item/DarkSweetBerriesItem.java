@@ -8,16 +8,16 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
-/** Little berry with a blue-purplish color mostly used for jams. */
-public class BlueBerriesItem extends AliasedBlockItem {
+/** Little berry with a purplish color, mutation of the sweet berries. */
+public class DarkSweetBerriesItem extends AliasedBlockItem {
     /** Identifier of the item. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "blue_berries");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "dark_sweet_berries");
 
     /** Composting chance of the item. */
     public static final float COMPOSTING_CHANCE = 0.3F;
 
-    /** Initializes a new {@link BlueBerriesItem}. */
-    public BlueBerriesItem(Block block, Settings settings) {
+    /** Initializes a new {@link DarkSweetBerriesItem}. */
+    public DarkSweetBerriesItem(Block block, Settings settings) {
         super(block, settings);
     }
 
