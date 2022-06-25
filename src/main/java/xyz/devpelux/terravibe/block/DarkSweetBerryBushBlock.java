@@ -82,9 +82,13 @@ public class DarkSweetBerryBushBlock extends BerryBushBlock {
     /** {@inheritDoc} */
     @Override
     public float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, @NotNull Vec3d entityMovement) {
-        if (getAge(state) > 0 && (entityMovement.getX() >= MIN_MOVEMENT_FOR_THORNS_DAMAGE || entityMovement.getZ() >= MIN_MOVEMENT_FOR_THORNS_DAMAGE))
-        {
-            return 1F;
+        if (getAge(state) > 0) {
+            if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+                if (entityMovement.getX() >= MIN_MOVEMENT_FOR_THORNS_DAMAGE || entityMovement.getZ() >= MIN_MOVEMENT_FOR_THORNS_DAMAGE)
+                {
+                    return 1F;
+                }
+            }
         }
         return 0F;
     }
