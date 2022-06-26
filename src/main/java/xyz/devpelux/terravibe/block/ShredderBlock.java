@@ -85,9 +85,9 @@ public class ShredderBlock extends BlockWithEntity {
 
 	/** Registers the properties of the block. */
 	@Override
-	protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> stateManager) {
-		//Horizontal facing: Horizontal orientation of the block.
-		stateManager.add(Properties.HORIZONTAL_FACING);
+	protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
+		super.appendProperties(builder);
+		builder.add(Properties.HORIZONTAL_FACING);
 	}
 
 	/** Gets the correct orientation of the block basing on the way the player places it. */

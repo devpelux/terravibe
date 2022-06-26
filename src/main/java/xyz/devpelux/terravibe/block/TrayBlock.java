@@ -27,7 +27,7 @@ import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Contract;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
@@ -45,6 +45,9 @@ public class TrayBlock extends Block {
 
     /** Min evaporation time. */
     public static final int MIN_EVAPORATION_TIME = 10;
+
+    /** Rain filling chance. */
+    public static final float RAIN_FILLING_CHANCE = 0.05F;
 
     /** Voxel shape of the block. */
     private static VoxelShape VOXEL_SHAPE = null;
@@ -65,6 +68,7 @@ public class TrayBlock extends Block {
     /** Registers the properties of the block. */
     @Override
     protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
         builder.add(CONTENT);
     }
 
@@ -152,6 +156,17 @@ public class TrayBlock extends Block {
         return ActionResult.PASS;
     }
 
+    /**
+     * Executed when something like rain drops on the block.
+     * Randomly fills the block with water.
+     */
+    @Override
+    public void precipitationTick(BlockState state, World world, BlockPos pos, Biome.Precipitation precipitation) {
+        if (precipitation == Biome.Precipitation.RAIN && world.getRandom().nextFloat() < RAIN_FILLING_CHANCE) {
+            setContent(state, world, pos, Content.Water);
+        }
+    }
+
     /** Gets a property indicating if the block reacts with the ticking system. */
     @Override
     public boolean hasRandomTicks(BlockState state) {
@@ -192,6 +207,7 @@ public class TrayBlock extends Block {
     }
 
     /** Gets the water color. */
+    @SuppressWarnings("unused")
     public static int getWaterColor(BlockState blockState, BlockRenderView blockRenderView, BlockPos blockPos, int i) {
         if (i != 1) return -1;
         return BiomeColors.getWaterColor(blockRenderView, blockPos);
@@ -218,7 +234,6 @@ public class TrayBlock extends Block {
         }
 
         /** Returns the string representation of this instance. */
-        @Contract(pure = true)
         @Override
         public @NotNull String asString() {
             return this.name;
@@ -226,8 +241,8 @@ public class TrayBlock extends Block {
 
         /** Returns the string representation of this instance. */
         @Override
-        public String toString() {
-            return this.name;
+        public @NotNull String toString() {
+            return asString();
         }
     }
 }

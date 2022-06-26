@@ -66,6 +66,7 @@ public class TunBlock extends BlockWithEntity {
     /** Registers the properties of the block. */
     @Override
     protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
         builder.add(LEVEL);
     }
 
