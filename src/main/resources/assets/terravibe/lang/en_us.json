@@ -5,6 +5,8 @@
   "block.terravibe.tun" : "Tun",
   "block.terravibe.tray" : "Tray",
 
+  "block.terravibe.flooded_mud" : "Flooded Mud",
+
   "block.terravibe.beans_crop" : "Beans Crop",
   "block.terravibe.dark_sweet_berry_bush" : "Dark Sweet Berry Bush",
   "block.terravibe.eggplant_crop" : "Eggplant Crop",
@@ -21,6 +23,8 @@
   "item.terravibe.shredder" : "Shredder",
   "item.terravibe.tun" : "Tun",
   "item.terravibe.tray" : "Tray",
+
+  "item.terravibe.flooded_mud" : "Flooded Mud",
 
   "item.terravibe.beans" : "Beans",
   "item.terravibe.dark_sweet_berries" : "Dark Sweet Berries",

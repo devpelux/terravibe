@@ -1,0 +1,41 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "terravibe:block/flooded_mud_bottom"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/flooded_mud_north_border"
+      },
+      "when": {
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/flooded_mud_east_border"
+      },
+      "when": {
+        "east": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/flooded_mud_south_border"
+      },
+      "when": {
+        "south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/flooded_mud_west_border"
+      },
+      "when": {
+        "west": "false"
+      }
+    }
+  ]
+}

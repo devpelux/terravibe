@@ -1,0 +1,22 @@
+{
+	"credit": "devpelux",
+	"parent": "block/block",
+	"textures": {
+		"particle": "minecraft:block/mud",
+		"mud": "minecraft:block/mud"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 11, 16],
+			"faces": {
+				"north": {"uv": [0, 5, 16, 16], "texture": "#mud"},
+				"east": {"uv": [0, 5, 16, 16], "texture": "#mud"},
+				"south": {"uv": [0, 5, 16, 16], "texture": "#mud"},
+				"west": {"uv": [0, 5, 16, 16], "texture": "#mud"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#mud"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#mud"}
+			}
+		}
+	]
+}

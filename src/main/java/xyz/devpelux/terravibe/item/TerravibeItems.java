@@ -25,6 +25,9 @@ public class TerravibeItems {
     /** Tun item: Container for "non-lava" fluids. */
     public static final TunItem TUN;
 
+    /** Flooded mud item: A mud block excavated and flooded with water. */
+    public static final FloodedMudItem FLOODED_MUD;
+
     /** Beans item: Little edible seeds. */
     public static final BeansItem BEANS;
 
@@ -93,25 +96,25 @@ public class TerravibeItems {
 
     /** Loads all the items. */
     public static void load() {
-        Util.registerCompostableItem(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
-        Util.registerCompostableItem(BeansItem.COMPOSTING_CHANCE, BEANS);
-        Util.registerCompostableItem(DarkSweetBerriesItem.COMPOSTING_CHANCE, DARK_SWEET_BERRIES);
-        Util.registerCompostableItem(EggplantItem.COMPOSTING_CHANCE, EGGPLANT);
-        Util.registerCompostableItem(EggplantSeedsItem.COMPOSTING_CHANCE, EGGPLANT_SEEDS);
-        Util.registerCompostableItem(KaleItem.COMPOSTING_CHANCE, KALE);
-        Util.registerCompostableItem(KaleSeedsItem.COMPOSTING_CHANCE, KALE_SEEDS);
-        Util.registerCompostableItem(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
-        Util.registerCompostableItem(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
-        Util.registerCompostableItem(NightlockBerriesItem.COMPOSTING_CHANCE, NIGHTLOCK_BERRIES);
-        Util.registerCompostableItem(OlivesItem.COMPOSTING_CHANCE, OLIVES);
-        Util.registerCompostableItem(OnionItem.COMPOSTING_CHANCE, ONION);
-        Util.registerCompostableItem(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
-        Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, Items.POISONOUS_POTATO);
-        Util.registerCompostableItem(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
-        Util.registerCompostableItem(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
-        Util.registerCompostableItem(SweetPotatoBudsItem.COMPOSTING_CHANCE, SWEET_POTATO_BUDS);
-        Util.registerCompostableItem(TomatoItem.COMPOSTING_CHANCE, TOMATO);
-        Util.registerCompostableItem(TomatoSeedsItem.COMPOSTING_CHANCE, TOMATO_SEEDS);
+        Util.registerCompostable(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
+        Util.registerCompostable(BeansItem.COMPOSTING_CHANCE, BEANS);
+        Util.registerCompostable(DarkSweetBerriesItem.COMPOSTING_CHANCE, DARK_SWEET_BERRIES);
+        Util.registerCompostable(EggplantItem.COMPOSTING_CHANCE, EGGPLANT);
+        Util.registerCompostable(EggplantSeedsItem.COMPOSTING_CHANCE, EGGPLANT_SEEDS);
+        Util.registerCompostable(KaleItem.COMPOSTING_CHANCE, KALE);
+        Util.registerCompostable(KaleSeedsItem.COMPOSTING_CHANCE, KALE_SEEDS);
+        Util.registerCompostable(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
+        Util.registerCompostable(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
+        Util.registerCompostable(NightlockBerriesItem.COMPOSTING_CHANCE, NIGHTLOCK_BERRIES);
+        Util.registerCompostable(OlivesItem.COMPOSTING_CHANCE, OLIVES);
+        Util.registerCompostable(OnionItem.COMPOSTING_CHANCE, ONION);
+        Util.registerCompostable(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
+        Util.registerCompostable(RedSweetPotatoItem.COMPOSTING_CHANCE, Items.POISONOUS_POTATO);
+        Util.registerCompostable(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
+        Util.registerCompostable(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
+        Util.registerCompostable(SweetPotatoBudsItem.COMPOSTING_CHANCE, SWEET_POTATO_BUDS);
+        Util.registerCompostable(TomatoItem.COMPOSTING_CHANCE, TOMATO);
+        Util.registerCompostable(TomatoSeedsItem.COMPOSTING_CHANCE, TOMATO_SEEDS);
 
         TunBlock.registerContainable(Items.HONEY_BOTTLE, (s, w, p, i) -> 0x976018);
         TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);
@@ -135,6 +138,8 @@ public class TerravibeItems {
         SHREDDER = register(ShredderItem.ID, new ShredderItem(TerravibeBlocks.SHREDDER, ShredderItem.getSettings()));
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
         TUN = register(TunItem.ID, new TunItem(TerravibeBlocks.TUN, TunItem.getSettings()));
+
+        FLOODED_MUD = register(FloodedMudItem.ID, new FloodedMudItem(TerravibeBlocks.FLOODED_MUD, FloodedMudItem.getSettings()));
 
         DARK_SWEET_BERRIES = register(DarkSweetBerriesItem.ID, new DarkSweetBerriesItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, DarkSweetBerriesItem.getSettings()));
         NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.getSettings()));

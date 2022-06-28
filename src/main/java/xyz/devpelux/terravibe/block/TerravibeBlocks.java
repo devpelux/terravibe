@@ -5,9 +5,11 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import xyz.devpelux.terravibe.core.Util;
 
 /** List of all the blocks. */
 public class TerravibeBlocks {
@@ -22,6 +24,9 @@ public class TerravibeBlocks {
 
     /** Tray block: Tray used to make salt. */
     public static final TrayBlock TRAY;
+
+    /** Flooded mud block: A mud block excavated and flooded with water. */
+    public static final FloodedMudBlock FLOODED_MUD;
 
     /** Bean crop block: Crop of the beans. */
     public static final BeansCropBlock BEANS_CROP;
@@ -51,7 +56,9 @@ public class TerravibeBlocks {
     public static final TomatoCropBlock TOMATO_CROP;
 
     /** Loads all the blocks. */
-    public static void load() {}
+    public static void load() {
+        Util.registerExcavable(Blocks.MUD, TerravibeBlocks.FLOODED_MUD.getDefaultState());
+    }
 
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
@@ -84,6 +91,8 @@ public class TerravibeBlocks {
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
         TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
         TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.getSettings()));
+
+        FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.getSettings()));
 
         BEANS_CROP = register(BeansCropBlock.ID, new BeansCropBlock(BeansCropBlock.getSettings()));
         DARK_SWEET_BERRY_BUSH = register(DarkSweetBerryBushBlock.ID, new DarkSweetBerryBushBlock(DarkSweetBerryBushBlock.getSettings()));
