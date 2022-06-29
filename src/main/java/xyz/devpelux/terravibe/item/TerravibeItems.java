@@ -3,13 +3,13 @@ package xyz.devpelux.terravibe.item;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.block.TunBlock;
-import xyz.devpelux.terravibe.core.Util;
 
 /** List of all the items. */
 public class TerravibeItems {
@@ -99,26 +99,26 @@ public class TerravibeItems {
 
     /** Loads all the items. */
     public static void load() {
-        Util.registerCompostable(BakedSweetPotatoItem.COMPOSTING_CHANCE, BAKED_SWEET_POTATO);
-        Util.registerCompostable(BeansItem.COMPOSTING_CHANCE, BEANS);
-        Util.registerCompostable(DarkSweetBerriesItem.COMPOSTING_CHANCE, DARK_SWEET_BERRIES);
-        Util.registerCompostable(EggplantItem.COMPOSTING_CHANCE, EGGPLANT);
-        Util.registerCompostable(EggplantSeedsItem.COMPOSTING_CHANCE, EGGPLANT_SEEDS);
-        Util.registerCompostable(KaleItem.COMPOSTING_CHANCE, KALE);
-        Util.registerCompostable(KaleSeedsItem.COMPOSTING_CHANCE, KALE_SEEDS);
-        Util.registerCompostable(LettuceLeavesItem.COMPOSTING_CHANCE, LETTUCE_LEAVES);
-        Util.registerCompostable(LettuceSeedsItem.COMPOSTING_CHANCE, LETTUCE_SEEDS);
-        Util.registerCompostable(NightlockBerriesItem.COMPOSTING_CHANCE, NIGHTLOCK_BERRIES);
-        Util.registerCompostable(OlivesItem.COMPOSTING_CHANCE, OLIVES);
-        Util.registerCompostable(OnionItem.COMPOSTING_CHANCE, ONION);
-        Util.registerCompostable(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
-        Util.registerCompostable(RedSweetPotatoItem.COMPOSTING_CHANCE, Items.POISONOUS_POTATO);
-        Util.registerCompostable(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
-        Util.registerCompostable(RiceItem.COMPOSTING_CHANCE, RICE);
-        Util.registerCompostable(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
-        Util.registerCompostable(SweetPotatoBudsItem.COMPOSTING_CHANCE, SWEET_POTATO_BUDS);
-        Util.registerCompostable(TomatoItem.COMPOSTING_CHANCE, TOMATO);
-        Util.registerCompostable(TomatoSeedsItem.COMPOSTING_CHANCE, TOMATO_SEEDS);
+        CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, BakedSweetPotatoItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(BEANS, BeansItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, DarkSweetBerriesItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(EGGPLANT, EggplantItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, EggplantSeedsItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(KALE, KaleItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, KaleSeedsItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, LettuceLeavesItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(LETTUCE_SEEDS, LettuceSeedsItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(NIGHTLOCK_BERRIES, NightlockBerriesItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(OLIVES, OlivesItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(ONION, OnionItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(ONION_SEEDS, OnionSeedsItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(Items.POISONOUS_POTATO, 0.7f);
+        CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, RedSweetPotatoItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(RICE, RiceItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO, SweetPotatoItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, SweetPotatoBudsItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(TOMATO, TomatoItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, TomatoSeedsItem.COMPOSTING_CHANCE);
 
         TunBlock.registerContainable(Items.HONEY_BOTTLE, (s, w, p, i) -> 0x976018);
         TunBlock.registerContainable(OIL_BOTTLE, OilBottleItem::getFluidColorForTun);

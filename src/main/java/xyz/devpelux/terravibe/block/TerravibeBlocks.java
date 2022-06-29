@@ -4,12 +4,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.registry.FlattenableBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.core.Util;
 
 /** List of all the blocks. */
 public class TerravibeBlocks {
@@ -60,7 +60,7 @@ public class TerravibeBlocks {
 
     /** Loads all the blocks. */
     public static void load() {
-        Util.registerExcavable(Blocks.MUD, FLOODED_MUD.getDefaultState());
+        FlattenableBlockRegistry.register(Blocks.MUD, FLOODED_MUD.getDefaultState());
         FloodedCropBlock.registerFloodedFertileBlock(FLOODED_MUD);
     }
 
