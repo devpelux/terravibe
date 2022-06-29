@@ -14,6 +14,7 @@
   "block.terravibe.lettuce_crop" : "Lettuce Crop",
   "block.terravibe.nightlock_berry_bush" : "Nightlock Berry Bush",
   "block.terravibe.onion_crop" : "Onion Crop",
+  "block.terravibe.rice_crop" : "Rice Crop",
   "block.terravibe.sweet_potato_crop" : "Sweet Potato Crop",
   "block.terravibe.tomato_crop" : "Tomato Crop",
 
@@ -39,6 +40,7 @@
   "item.terravibe.onion" : "Onion",
   "item.terravibe.onion_seeds" : "Onion Seeds",
   "item.terravibe.red_sweet_potato" : "Red Sweet Potato",
+  "item.terravibe.rice" : "Rice",
   "item.terravibe.sweet_potato" : "Sweet Potato",
   "item.terravibe.sweet_potato_buds" : "Sweet Potato Buds",
   "item.terravibe.tomato" : "Tomato",

@@ -67,6 +67,9 @@ public class TerravibeItems {
     /** Red sweet potato item: Red sweet potato, a rare mutation of the sweet potato. */
     public static final RedSweetPotatoItem RED_SWEET_POTATO;
 
+    /** Rice item: Little white seed, one of the most consumed foods in the world. */
+    public static final RiceItem RICE;
+
     /** Sweet potato item: Sweet potato, a mutation of the potato. */
     public static final SweetPotatoItem SWEET_POTATO;
 
@@ -111,6 +114,7 @@ public class TerravibeItems {
         Util.registerCompostable(OnionSeedsItem.COMPOSTING_CHANCE, ONION_SEEDS);
         Util.registerCompostable(RedSweetPotatoItem.COMPOSTING_CHANCE, Items.POISONOUS_POTATO);
         Util.registerCompostable(RedSweetPotatoItem.COMPOSTING_CHANCE, RED_SWEET_POTATO);
+        Util.registerCompostable(RiceItem.COMPOSTING_CHANCE, RICE);
         Util.registerCompostable(SweetPotatoItem.COMPOSTING_CHANCE, SWEET_POTATO);
         Util.registerCompostable(SweetPotatoBudsItem.COMPOSTING_CHANCE, SWEET_POTATO_BUDS);
         Util.registerCompostable(TomatoItem.COMPOSTING_CHANCE, TOMATO);
@@ -153,6 +157,7 @@ public class TerravibeItems {
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
         ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));
         RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.getSettings()));
+        RICE = register(RiceItem.ID, new RiceItem(TerravibeBlocks.RICE_CROP, RiceItem.getSettings()));
         SWEET_POTATO_BUDS = register(SweetPotatoBudsItem.ID, new SweetPotatoBudsItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudsItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));

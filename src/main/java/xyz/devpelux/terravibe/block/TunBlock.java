@@ -50,7 +50,7 @@ public class TunBlock extends BlockWithEntity {
     private static VoxelShape VOXEL_SHAPE = null;
 
     /** List of all containable items with their fluid colors. */
-    private static final HashMap<Item, BlockColorProvider> containable = new HashMap<>();
+    private static final HashMap<Item, BlockColorProvider> CONTAINABLE = new HashMap<>();
 
     /** Initializes a new {@link MortarBlock}. */
     public TunBlock(Settings settings) {
@@ -102,12 +102,12 @@ public class TunBlock extends BlockWithEntity {
 
     /** Registers a containable item in the tun with its fluid color. */
     public static void registerContainable(Item item, BlockColorProvider colorProvider) {
-        containable.putIfAbsent(item, colorProvider);
+        CONTAINABLE.putIfAbsent(item, colorProvider);
     }
 
     /** Gets a value indicating if the specified item has a fluid containable in the tun. */
     public static boolean isItemContainable(Item item) {
-        return containable.containsKey(item);
+        return CONTAINABLE.containsKey(item);
     }
 
     /** Gets the contained item. */
@@ -238,7 +238,7 @@ public class TunBlock extends BlockWithEntity {
 
         if (view.getBlockEntity(pos) instanceof TunBlockEntity tunEntity) {
             if (tunEntity.hasContained()) {
-                return containable.get(tunEntity.getContained()).getColor(state, view, pos, i);
+                return CONTAINABLE.get(tunEntity.getContained()).getColor(state, view, pos, i);
             }
         }
 

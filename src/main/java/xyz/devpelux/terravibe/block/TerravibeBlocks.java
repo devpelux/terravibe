@@ -49,6 +49,9 @@ public class TerravibeBlocks {
     /** Onion crop block: Crop of the onion. */
     public static final OnionCropBlock ONION_CROP;
 
+    /** Rice crop block: Crop of the rice. */
+    public static final RiceCropBlock RICE_CROP;
+
     /** Sweet potato crop block: Crop of the sweet potato. */
     public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
 
@@ -57,7 +60,8 @@ public class TerravibeBlocks {
 
     /** Loads all the blocks. */
     public static void load() {
-        Util.registerExcavable(Blocks.MUD, TerravibeBlocks.FLOODED_MUD.getDefaultState());
+        Util.registerExcavable(Blocks.MUD, FLOODED_MUD.getDefaultState());
+        FloodedCropBlock.registerFloodedFertileBlock(FLOODED_MUD);
     }
 
     /** Loads all the color providers for the items. */
@@ -77,6 +81,7 @@ public class TerravibeBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NIGHTLOCK_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ONION_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(RICE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TOMATO_CROP, RenderLayer.getCutout());
     }
@@ -101,6 +106,7 @@ public class TerravibeBlocks {
         LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.getSettings()));
         NIGHTLOCK_BERRY_BUSH = register(NightlockBerryBushBlock.ID, new NightlockBerryBushBlock(NightlockBerryBushBlock.getSettings()));
         ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
+        RICE_CROP = register(RiceCropBlock.ID, new RiceCropBlock(RiceCropBlock.getSettings()));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.getSettings()));
     }
