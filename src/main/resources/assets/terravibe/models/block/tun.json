@@ -1,7 +1,12 @@
 {
-	"parent": "terravibe:block/tun_l0",
+	"credit": "devpelux",
+	"parent": "block/block",
 	"textures": {
-		"content": "block/water_still"
+		"particle": "terravibe:block/tun_side",
+		"side": "terravibe:block/tun_side",
+		"top": "terravibe:block/tun_top",
+		"bottom": "terravibe:block/tun_bottom",
+		"inside": "terravibe:block/tun_inside"
 	},
 	"elements": [
 		{
@@ -55,13 +60,11 @@
 				"up": {"uv": [0, 0, 14, 2], "texture": "#top"},
 				"down": {"uv": [0, 14, 14, 16], "texture": "#bottom"}
 			}
-		},
-		{
-			"from": [2, 2, 2],
-			"to": [14, 13, 14],
-			"faces": {
-				"up": {"texture": "#content", "tintindex": 1}
-			}
 		}
-	]
+	],
+	"display": {
+		"head": {
+			"rotation": [0, 0, -180]
+		}
+	}
 }

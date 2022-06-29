@@ -1,7 +1,25 @@
 {
-  "variants": {
-    "content=nothing": { "model": "terravibe:block/tray" },
-    "content=water": { "model": "terravibe:block/tray_water" },
-    "content=salt": { "model": "terravibe:block/tray_salt" }
-  }
+  "multipart": [
+    {
+      "apply": {
+        "model": "terravibe:block/tray"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/tray_water"
+      },
+      "when": {
+        "content": "water"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/tray_salt"
+      },
+      "when": {
+        "content": "salt"
+      }
+    }
+  ]
 }
