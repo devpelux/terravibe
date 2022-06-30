@@ -14,9 +14,24 @@
       }
     },
     {
-      "apply": {
-        "model": "terravibe:block/tray_salt"
-      },
+      "apply": [
+        {
+          "model": "terravibe:block/tray_salt",
+          "y": 0
+        },
+        {
+          "model": "terravibe:block/tray_salt",
+          "y": 90
+        },
+        {
+          "model": "terravibe:block/tray_salt",
+          "y": 180
+        },
+        {
+          "model": "terravibe:block/tray_salt",
+          "y": 270
+        }
+      ],
       "when": {
         "content": "salt"
       }
