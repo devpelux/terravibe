@@ -32,7 +32,7 @@ public class RiceCropBlock extends FloodedCropBlock {
     /** {@inheritDoc}. */
     @Override
     public ItemConvertible getSeedsItem() {
-        return TerravibeItems.RICE;
+        return TerravibeItems.GRAINS_OF_RICE;
     }
 
     /** {@inheritDoc}. */
