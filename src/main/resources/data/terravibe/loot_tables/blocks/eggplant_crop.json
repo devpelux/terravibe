@@ -13,6 +13,25 @@
           "block": "terravibe:eggplant_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
+            "age": "0"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "terravibe:eggplant_seeds"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "terravibe:eggplant_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
             "age": "7"
           }
         }
