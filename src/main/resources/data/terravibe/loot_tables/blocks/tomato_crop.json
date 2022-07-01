@@ -7,11 +7,12 @@
   ],
   "pools": [
     {
-      "bonus_rolls": 0.0,
+      "rolls": 1,
+      "bonus_rolls": 0,
       "conditions": [
         {
-          "block": "terravibe:tomato_crop",
           "condition": "minecraft:block_state_property",
+          "block": "terravibe:tomato_crop",
           "properties": {
             "age": "0"
           }
@@ -22,15 +23,15 @@
           "type": "minecraft:item",
           "name": "terravibe:tomato_seeds"
         }
-      ],
-      "rolls": 1.0
+      ]
     },
     {
-      "bonus_rolls": 0.0,
+      "rolls": 1,
+      "bonus_rolls": 0,
       "conditions": [
         {
-          "block": "terravibe:tomato_crop",
           "condition": "minecraft:block_state_property",
+          "block": "terravibe:tomato_crop",
           "properties": {
             "age": "7"
           }
@@ -39,29 +40,28 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "terravibe:tomato"
+          "name": "terravibe:tomato",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            },
+            {
+              "function": "minecraft:apply_bonus",
+              "formula": "minecraft:uniform_bonus_count",
+              "enchantment": "minecraft:fortune",
+              "parameters": {
+                "bonusMultiplier": 1
+              }
+            }
+          ]
         }
-      ],
-      "functions": [
-        {
-          "add": false,
-          "count": {
-            "type": "minecraft:uniform",
-            "max": 3.0,
-            "min": 1.0
-          },
-          "function": "minecraft:set_count"
-        },
-        {
-          "enchantment": "minecraft:fortune",
-          "formula": "minecraft:uniform_bonus_count",
-          "function": "minecraft:apply_bonus",
-          "parameters": {
-            "bonusMultiplier": 1
-          }
-        }
-      ],
-      "rolls": 1.0
+      ]
     }
   ]
 }

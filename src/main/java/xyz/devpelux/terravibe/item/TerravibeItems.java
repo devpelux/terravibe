@@ -142,6 +142,8 @@ public class TerravibeItems {
     }
 
     static {
+        //Items loading order corresponds to the order of the creative tab "Terravibe".
+
         MORTAR = register(MortarItem.ID, new MortarItem(TerravibeBlocks.MORTAR, MortarItem.getSettings()));
         SHREDDER = register(ShredderItem.ID, new ShredderItem(TerravibeBlocks.SHREDDER, ShredderItem.getSettings()));
         TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
@@ -154,17 +156,17 @@ public class TerravibeItems {
         BEANS = register(BeansItem.ID, new BeansItem(TerravibeBlocks.BEANS_CROP, BeansItem.getSettings()));
         EGGPLANT = register(EggplantItem.ID, new EggplantItem(EggplantItem.getSettings()));
         EGGPLANT_SEEDS = register(EggplantSeedsItem.ID, new EggplantSeedsItem(TerravibeBlocks.EGGPLANT_CROP, EggplantSeedsItem.getSettings()));
-        GRAINS_OF_RICE = register(GrainsOfRiceItem.ID, new GrainsOfRiceItem(TerravibeBlocks.RICE_CROP, GrainsOfRiceItem.getSettings()));
         KALE = register(KaleItem.ID, new KaleItem(KaleItem.getSettings()));
         KALE_SEEDS = register(KaleSeedsItem.ID, new KaleSeedsItem(TerravibeBlocks.KALE_CROP, KaleSeedsItem.getSettings()));
         LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
         LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.getSettings()));
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
         ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));
-        RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.getSettings()));
         RICE = register(RiceItem.ID, new RiceItem(RiceItem.getSettings()));
+        GRAINS_OF_RICE = register(GrainsOfRiceItem.ID, new GrainsOfRiceItem(TerravibeBlocks.RICE_CROP, GrainsOfRiceItem.getSettings()));
         SWEET_POTATO_BUDS = register(SweetPotatoBudsItem.ID, new SweetPotatoBudsItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudsItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
+        RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.getSettings()));
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
         TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.getSettings()));
 
