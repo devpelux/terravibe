@@ -29,15 +29,9 @@ public class RiceCropBlock extends FloodedCropBlock {
                 .sounds(BlockSoundGroup.CROP);
     }
 
-    /** {@inheritDoc}. */
+    /** Gets the seeds item of the block. */
     @Override
     public ItemConvertible getSeedsItem() {
         return TerravibeItems.GRAINS_OF_RICE;
-    }
-
-    /** {@inheritDoc}. */
-    @Override
-    public int getMinLightToGrow() {
-        return 7;
     }
 }

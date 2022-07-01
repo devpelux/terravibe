@@ -61,7 +61,6 @@ public class TerravibeBlocks {
     /** Loads all the blocks. */
     public static void load() {
         FlattenableBlockRegistry.register(Blocks.MUD, FLOODED_MUD.getDefaultState());
-        FloodedCropBlock.registerFloodedFertileBlock(FLOODED_MUD);
     }
 
     /** Loads all the color providers for the items. */
