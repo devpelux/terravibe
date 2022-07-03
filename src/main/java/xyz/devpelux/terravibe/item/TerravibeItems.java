@@ -40,9 +40,6 @@ public class TerravibeItems {
     /** Eggplant seeds item: Seeds of eggplant. */
     public static final EggplantSeedsItem EGGPLANT_SEEDS;
 
-    /** Grains of rice item: Some grains of rice. */
-    public static final GrainsOfRiceItem GRAINS_OF_RICE;
-
     /** Kale item: Vegetable mostly used to make soups. */
     public static final KaleItem KALE;
 
@@ -72,6 +69,9 @@ public class TerravibeItems {
 
     /** Rice item: Little white seed, one of the most consumed foods in the world. */
     public static final RiceItem RICE;
+
+    /** Rice grains item: Some grains of rice. */
+    public static final RiceGrainsItem RICE_GRAINS;
 
     /** Sweet potato item: Sweet potato, a mutation of the potato. */
     public static final SweetPotatoItem SWEET_POTATO;
@@ -107,7 +107,6 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, DarkSweetBerriesItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT, EggplantItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, EggplantSeedsItem.COMPOSTING_CHANCE);
-        CompostingChanceRegistry.INSTANCE.add(GRAINS_OF_RICE, GrainsOfRiceItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(KALE, KaleItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, KaleSeedsItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, LettuceLeavesItem.COMPOSTING_CHANCE);
@@ -119,6 +118,7 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(Items.POISONOUS_POTATO, 0.7f);
         CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, RedSweetPotatoItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(RICE, RiceItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, RiceGrainsItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO, SweetPotatoItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, SweetPotatoBudsItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, TomatoItem.COMPOSTING_CHANCE);
@@ -163,7 +163,7 @@ public class TerravibeItems {
         ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
         ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));
         RICE = register(RiceItem.ID, new RiceItem(RiceItem.getSettings()));
-        GRAINS_OF_RICE = register(GrainsOfRiceItem.ID, new GrainsOfRiceItem(TerravibeBlocks.RICE_CROP, GrainsOfRiceItem.getSettings()));
+        RICE_GRAINS = register(RiceGrainsItem.ID, new RiceGrainsItem(TerravibeBlocks.RICE_CROP, RiceGrainsItem.getSettings()));
         SWEET_POTATO_BUDS = register(SweetPotatoBudsItem.ID, new SweetPotatoBudsItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudsItem.getSettings()));
         SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
         RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.getSettings()));

@@ -8,15 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** Some grains of rice. */
-public class GrainsOfRiceItem extends AliasedBlockItem {
+public class RiceGrainsItem extends AliasedBlockItem {
     /** Identifier of the item. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "grains_of_rice");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "rice_grains");
 
     /** Composting chance of the item. */
     public static final float COMPOSTING_CHANCE = 0.05f;
 
-    /** Initializes a new {@link GrainsOfRiceItem}. */
-    public GrainsOfRiceItem(Block block, Settings settings) {
+    /** Initializes a new {@link RiceGrainsItem}. */
+    public RiceGrainsItem(Block block, Settings settings) {
         super(block, settings);
     }
 

@@ -21,7 +21,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "terravibe:grains_of_rice"
+          "name": "terravibe:rice_grains"
         }
       ]
     },
@@ -78,7 +78,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "terravibe:grains_of_rice",
+          "name": "terravibe:rice_grains",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
