@@ -47,7 +47,7 @@ public class TrayBlock extends Block {
     public static final int MIN_EVAPORATION_TIME = 10;
 
     /** Rain filling chance. */
-    public static final float RAIN_FILLING_CHANCE = 0.05F;
+    public static final float RAIN_FILLING_CHANCE = 0.2F;
 
     /** Voxel shape of the block. */
     private static VoxelShape VOXEL_SHAPE = null;
@@ -176,12 +176,14 @@ public class TrayBlock extends Block {
     /** Executed every tick. */
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(BlockState state, @NotNull ServerWorld world, BlockPos pos, @NotNull Random random) {
-        int light = world.getLightLevel(LightType.SKY, pos);
-        int lightBonus = (int)((MAX_EVAPORATION_TIME - MIN_EVAPORATION_TIME) * (light / 15d));
-        int evaporationTime = MAX_EVAPORATION_TIME - lightBonus;
-        int attempt = random.nextInt(evaporationTime + 1);
-        if (attempt == 0) setContent(state, world, pos, Content.Salt);
+    public void randomTick(BlockState state, @NotNull ServerWorld world, @NotNull BlockPos pos, @NotNull Random random) {
+        if (!world.hasRain(pos.up())) {
+            int light = world.getLightLevel(LightType.SKY, pos);
+            int lightBonus = (int)((MAX_EVAPORATION_TIME - MIN_EVAPORATION_TIME) * (light / 15d));
+            int evaporationTime = MAX_EVAPORATION_TIME - lightBonus;
+            int attempt = random.nextInt(evaporationTime + 1);
+            if (attempt == 0) setContent(state, world, pos, Content.Salt);
+        }
     }
 
     /** Gets the outline shape of the block. */

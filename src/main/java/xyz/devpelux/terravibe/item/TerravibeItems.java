@@ -31,6 +31,12 @@ public class TerravibeItems {
     /** Beans item: Little edible seeds. */
     public static final BeansItem BEANS;
 
+    /** Corn item: Fruit composed by little yellow seeds (or grains). */
+    public static final CornItem CORN;
+
+    /** Corn grains item: Some grains of corn. */
+    public static final CornGrainsItem CORN_GRAINS;
+
     /** Dark sweet berries item: Little berry with a purplish color, mutation of the sweet berries. */
     public static final DarkSweetBerriesItem DARK_SWEET_BERRIES;
 
@@ -104,6 +110,8 @@ public class TerravibeItems {
     public static void load() {
         CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, BakedSweetPotatoItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(BEANS, BeansItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(CORN, CornItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, CornGrainsItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, DarkSweetBerriesItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT, EggplantItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, EggplantSeedsItem.COMPOSTING_CHANCE);
@@ -154,6 +162,8 @@ public class TerravibeItems {
         DARK_SWEET_BERRIES = register(DarkSweetBerriesItem.ID, new DarkSweetBerriesItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, DarkSweetBerriesItem.getSettings()));
         NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.getSettings()));
         BEANS = register(BeansItem.ID, new BeansItem(TerravibeBlocks.BEANS_CROP, BeansItem.getSettings()));
+        CORN = register(CornItem.ID, new CornItem(CornItem.getSettings()));
+        CORN_GRAINS = register(CornGrainsItem.ID, new CornGrainsItem(TerravibeBlocks.CORN_CROP, CornGrainsItem.getSettings()));
         EGGPLANT = register(EggplantItem.ID, new EggplantItem(EggplantItem.getSettings()));
         EGGPLANT_SEEDS = register(EggplantSeedsItem.ID, new EggplantSeedsItem(TerravibeBlocks.EGGPLANT_CROP, EggplantSeedsItem.getSettings()));
         KALE = register(KaleItem.ID, new KaleItem(KaleItem.getSettings()));

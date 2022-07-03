@@ -31,6 +31,9 @@ public class TerravibeBlocks {
     /** Bean crop block: Crop of the beans. */
     public static final BeansCropBlock BEANS_CROP;
 
+    /** Corn crop block: Crop of the corn. */
+    public static final CornCropBlock CORN_CROP;
+
     /** Dark sweet berry bush block: Bush of dark sweet berries. */
     public static final DarkSweetBerryBushBlock DARK_SWEET_BERRY_BUSH;
 
@@ -74,6 +77,7 @@ public class TerravibeBlocks {
     @Environment(EnvType.CLIENT)
     public static void loadRenderLayerMaps() {
         BlockRenderLayerMap.INSTANCE.putBlock(BEANS_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CORN_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_SWEET_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EGGPLANT_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
@@ -99,6 +103,7 @@ public class TerravibeBlocks {
         FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.getSettings()));
 
         BEANS_CROP = register(BeansCropBlock.ID, new BeansCropBlock(BeansCropBlock.getSettings()));
+        CORN_CROP = register(CornCropBlock.ID, new CornCropBlock(CornCropBlock.getSettings()));
         DARK_SWEET_BERRY_BUSH = register(DarkSweetBerryBushBlock.ID, new DarkSweetBerryBushBlock(DarkSweetBerryBushBlock.getSettings()));
         EGGPLANT_CROP = register(EggplantCropBlock.ID, new EggplantCropBlock(EggplantCropBlock.getSettings()));
         KALE_CROP = register(KaleCropBlock.ID, new KaleCropBlock(KaleCropBlock.getSettings()));

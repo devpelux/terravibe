@@ -157,7 +157,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
             double movementZ = Math.abs(entity.getZ() - entity.lastRenderZ);
             Vec3d movement = new Vec3d(movementX, movementY, movementZ);
             float damage = getThornsDamage(state, world, pos, entity, movement);
-            if (damage >= 0F) {
+            if (damage > 0F) {
                 entity.damage(DamageSource.SWEET_BERRY_BUSH, damage);
             }
         }
