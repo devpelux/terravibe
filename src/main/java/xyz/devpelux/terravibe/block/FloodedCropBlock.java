@@ -1,16 +1,16 @@
 package xyz.devpelux.terravibe.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CropBlock;
+import net.minecraft.block.Fertilizable;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
 
-/** Generic crop that can be planted partially underwater. */
+/** Crop that can be planted partially underwater. */
 public abstract class FloodedCropBlock extends CropBlock implements Fertilizable {
     /** Growing time. */
     public static final int GROWING_TIME = 6;
@@ -40,11 +40,5 @@ public abstract class FloodedCropBlock extends CropBlock implements Fertilizable
             //Increases the age by 1.
             world.setBlockState(pos, withAge(getAge(state) + 1), 2);
         }
-    }
-
-    /** Gets the outline shape of the block. */
-    @Override
-    public VoxelShape getOutlineShape(@NotNull BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.fullCube();
     }
 }

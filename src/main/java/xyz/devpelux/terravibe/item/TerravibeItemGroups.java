@@ -13,10 +13,12 @@ import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the item groups. */
 public class TerravibeItemGroups {
-    /** Terravibe icon item: Item used as icon for the terravibe tab. */
+    private TerravibeItemGroups() {}
+
+    /** Item used as icon for the "Terravibe" item group. */
     public static final Item TERRAVIBE_ICON;
 
-    /** Generic "terravibe" item group. */
+    /** "Terravibe" item group. */
     public static final ItemGroup TERRAVIBE;
 
     /** Loads all the item groups. */

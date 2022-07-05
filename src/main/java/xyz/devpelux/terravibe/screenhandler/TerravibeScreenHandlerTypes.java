@@ -11,7 +11,9 @@ import xyz.devpelux.terravibe.block.ShredderBlock;
 
 /** List of all the screen handler types. */
 public class TerravibeScreenHandlerTypes {
-    /** Shredder screen handler type: Screen handler type for the shredder block entity UI. */
+    private TerravibeScreenHandlerTypes() {}
+
+    /** Screen handler type for the shredder block entity UI. */
     public static final ScreenHandlerType<ShredderScreenHandler> SHREDDER;
 
     /** Loads all the screen handler types. */

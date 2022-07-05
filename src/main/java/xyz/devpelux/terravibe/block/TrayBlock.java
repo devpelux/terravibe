@@ -37,8 +37,11 @@ public class TrayBlock extends Block {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tray");
 
+    /** Settings of the block. */
+    public static final Settings SETTINGS;
+
     /** Content of the tray. */
-    public static final EnumProperty<Content> CONTENT = EnumProperty.of("content", Content.class);
+    public static final EnumProperty<Content> CONTENT;
 
     /** Max evaporation time. */
     public static final int MAX_EVAPORATION_TIME = 50;
@@ -50,19 +53,12 @@ public class TrayBlock extends Block {
     public static final float RAIN_FILLING_CHANCE = 0.2F;
 
     /** Voxel shape of the block. */
-    private static VoxelShape VOXEL_SHAPE = null;
+    private static final VoxelShape VOXEL_SHAPE;
 
     /** Initializes a new {@link TrayBlock}. */
     public TrayBlock(Settings settings) {
         super(settings);
         setDefaultState(getStateManager().getDefaultState().with(CONTENT, Content.Nothing));
-    }
-
-    /** Gets the block settings. */
-    public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.of(Material.STONE, MapColor.BLACK)
-                .breakInstantly()
-                .sounds(BlockSoundGroup.STONE);
     }
 
     /** Registers the properties of the block. */
@@ -98,12 +94,12 @@ public class TrayBlock extends Block {
     }
 
     /**
-     * Executed when the block is used.<br>
+     * Executed when the block is used.
      * Take the salt or put the water.
      */
     @SuppressWarnings("deprecation")
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack handStack = player.getStackInHand(hand);
         Content content = getContent(state);
         switch (content) {
@@ -190,21 +186,6 @@ public class TrayBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return getVoxelShape();
-    }
-
-    /** Gets the ray-cast shape of the block. */
-    @SuppressWarnings("deprecation")
-    @Override
-    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
-        return getVoxelShape();
-    }
-
-    /** Gets the voxel shape of the block. */
-    public static @NotNull VoxelShape getVoxelShape() {
-        if (VOXEL_SHAPE == null) {
-            VOXEL_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 4, 16);
-        }
         return VOXEL_SHAPE;
     }
 
@@ -213,6 +194,14 @@ public class TrayBlock extends Block {
     public static int getWaterColor(BlockState blockState, BlockRenderView blockRenderView, BlockPos blockPos, int i) {
         if (i != 1) return -1;
         return BiomeColors.getWaterColor(blockRenderView, blockPos);
+    }
+
+    static {
+        SETTINGS = FabricBlockSettings.of(Material.STONE, MapColor.BLACK)
+                .breakInstantly()
+                .sounds(BlockSoundGroup.STONE);
+        CONTENT = EnumProperty.of("content", Content.class);
+        VOXEL_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 4, 16);
     }
 
 

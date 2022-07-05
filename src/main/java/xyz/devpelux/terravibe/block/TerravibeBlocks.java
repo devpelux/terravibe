@@ -13,53 +13,61 @@ import net.minecraft.util.registry.Registry;
 
 /** List of all the blocks. */
 public class TerravibeBlocks {
-    /** Mortar block: Crushes an item to obtain another item. */
+    private TerravibeBlocks() {}
+
+    //Objects
+
+    /** Crushes an item to obtain another item. */
     public static final MortarBlock MORTAR;
 
-    /** Shredder block: Shreds a bunch of items to obtain something. */
+    /** Shreds a bunch of items to obtain something. */
     public static final ShredderBlock SHREDDER;
 
-    /** Tun block: Container for "non-lava" fluids. */
-    public static final TunBlock TUN;
-
-    /** Tray block: Tray used to make salt. */
+    /** Tray used to make salt. */
     public static final TrayBlock TRAY;
 
-    /** Flooded mud block: A mud block excavated and flooded with water. */
-    public static final FloodedMudBlock FLOODED_MUD;
+    /** Container for "non-lava" fluids. */
+    public static final TunBlock TUN;
 
-    /** Bean crop block: Crop of the beans. */
+    //Plants
+
+    /** Crop of the beans. */
     public static final BeansCropBlock BEANS_CROP;
 
-    /** Corn crop block: Crop of the corn. */
+    /** Crop of the corn. */
     public static final CornCropBlock CORN_CROP;
 
-    /** Dark sweet berry bush block: Bush of dark sweet berries. */
+    /** Bush of dark sweet berries. */
     public static final DarkSweetBerryBushBlock DARK_SWEET_BERRY_BUSH;
 
-    /** Eggplant crop block: Crop of the eggplant. */
+    /** Crop of the eggplant. */
     public static final EggplantCropBlock EGGPLANT_CROP;
 
-    /** Kale crop block: Crop of the kale. */
+    /** Crop of the kale. */
     public static final KaleCropBlock KALE_CROP;
 
-    /** Lettuce crop block: Crop of the lettuce. */
+    /** Crop of the lettuce. */
     public static final LettuceCropBlock LETTUCE_CROP;
 
-    /** Nightlock berry bush block: Bush of nightlock berries, without thorns. */
+    /** Bush of nightlock berries, without thorns. */
     public static final NightlockBerryBushBlock NIGHTLOCK_BERRY_BUSH;
 
-    /** Onion crop block: Crop of the onion. */
+    /** Crop of the onion. */
     public static final OnionCropBlock ONION_CROP;
 
-    /** Rice crop block: Crop of the rice. */
+    /** Crop of the rice. */
     public static final RiceCropBlock RICE_CROP;
 
-    /** Sweet potato crop block: Crop of the sweet potato. */
+    /** Crop of the sweet potato. */
     public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
 
-    /** Tomato crop block: Crop of the tomato. */
+    /** Crop of the tomato. */
     public static final TomatoCropBlock TOMATO_CROP;
+
+    //Terrain blocks
+
+    /** A mud block excavated and flooded with water. */
+    public static final FloodedMudBlock FLOODED_MUD;
 
     /** Loads all the blocks. */
     public static void load() {
@@ -95,23 +103,23 @@ public class TerravibeBlocks {
     }
 
     static {
-        MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.getSettings()));
-        SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.getSettings()));
-        TUN = register(TunBlock.ID, new TunBlock(TunBlock.getSettings()));
-        TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.getSettings()));
+        MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.SETTINGS));
+        SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.SETTINGS));
+        TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.SETTINGS));
+        TUN = register(TunBlock.ID, new TunBlock(TunBlock.SETTINGS));
 
-        FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.getSettings()));
+        BEANS_CROP = register(BeansCropBlock.ID, new BeansCropBlock(BeansCropBlock.SETTINGS));
+        CORN_CROP = register(CornCropBlock.ID, new CornCropBlock(CornCropBlock.SETTINGS));
+        DARK_SWEET_BERRY_BUSH = register(DarkSweetBerryBushBlock.ID, new DarkSweetBerryBushBlock(DarkSweetBerryBushBlock.SETTINGS));
+        EGGPLANT_CROP = register(EggplantCropBlock.ID, new EggplantCropBlock(EggplantCropBlock.SETTINGS));
+        KALE_CROP = register(KaleCropBlock.ID, new KaleCropBlock(KaleCropBlock.SETTINGS));
+        LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.SETTINGS));
+        NIGHTLOCK_BERRY_BUSH = register(NightlockBerryBushBlock.ID, new NightlockBerryBushBlock(NightlockBerryBushBlock.SETTINGS));
+        ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.SETTINGS));
+        RICE_CROP = register(RiceCropBlock.ID, new RiceCropBlock(RiceCropBlock.SETTINGS));
+        SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.SETTINGS));
+        TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.SETTINGS));
 
-        BEANS_CROP = register(BeansCropBlock.ID, new BeansCropBlock(BeansCropBlock.getSettings()));
-        CORN_CROP = register(CornCropBlock.ID, new CornCropBlock(CornCropBlock.getSettings()));
-        DARK_SWEET_BERRY_BUSH = register(DarkSweetBerryBushBlock.ID, new DarkSweetBerryBushBlock(DarkSweetBerryBushBlock.getSettings()));
-        EGGPLANT_CROP = register(EggplantCropBlock.ID, new EggplantCropBlock(EggplantCropBlock.getSettings()));
-        KALE_CROP = register(KaleCropBlock.ID, new KaleCropBlock(KaleCropBlock.getSettings()));
-        LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.getSettings()));
-        NIGHTLOCK_BERRY_BUSH = register(NightlockBerryBushBlock.ID, new NightlockBerryBushBlock(NightlockBerryBushBlock.getSettings()));
-        ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.getSettings()));
-        RICE_CROP = register(RiceCropBlock.ID, new RiceCropBlock(RiceCropBlock.getSettings()));
-        SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.getSettings()));
-        TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.getSettings()));
+        FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.SETTINGS));
     }
 }

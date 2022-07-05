@@ -16,11 +16,9 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -28,14 +26,17 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.TunBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Util;
 
 import java.util.HashMap;
-import java.util.stream.Stream;
 
 /** Container for "non-lava" fluids. */
 public class TunBlock extends BlockWithEntity {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tun");
+
+    /** Settings of the block. */
+    public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
 
     /** Level of the fluid contained when the tun is empty. */
     public static final int EMPTY_LEVEL = 0;
@@ -44,10 +45,10 @@ public class TunBlock extends BlockWithEntity {
     public static final int FULL_LEVEL = 16;
 
     /** Level of the fluid contained. */
-    public static final IntProperty LEVEL = IntProperty.of("level", EMPTY_LEVEL, FULL_LEVEL);
+    public static final IntProperty LEVEL;
 
     /** Voxel shape of the block. */
-    private static VoxelShape VOXEL_SHAPE = null;
+    private static final VoxelShape VOXEL_SHAPE;
 
     /** List of all containable items with their fluid colors. */
     private static final HashMap<Item, BlockColorProvider> CONTAINABLE = new HashMap<>();
@@ -56,11 +57,6 @@ public class TunBlock extends BlockWithEntity {
     public TunBlock(Settings settings) {
         super(settings);
         setDefaultState(getStateManager().getDefaultState().with(LEVEL, EMPTY_LEVEL));
-    }
-
-    /** Gets the block settings. */
-    public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.copyOf(Blocks.BARREL);
     }
 
     /** Registers the properties of the block. */
@@ -125,7 +121,7 @@ public class TunBlock extends BlockWithEntity {
     }
 
     /**
-     * Executed when the block is used.<br>
+     * Executed when the block is used.
      * Gets or pours the fluid.
      */
     @SuppressWarnings("deprecation")
@@ -202,27 +198,6 @@ public class TunBlock extends BlockWithEntity {
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return getVoxelShape();
-    }
-
-    /** Gets the ray-cast shape of the block. */
-    @SuppressWarnings("deprecation")
-    @Override
-    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
-        return getVoxelShape();
-    }
-
-    /** Gets the voxel shape of the block. */
-    public static @NotNull VoxelShape getVoxelShape() {
-        if (VOXEL_SHAPE == null) {
-            VOXEL_SHAPE = Stream.of(
-                            Block.createCuboidShape(2, 0, 2, 14, 2, 14),
-                            Block.createCuboidShape(0, 0, 2, 2, 16, 16),
-                            Block.createCuboidShape(14, 0, 0, 16, 16, 14),
-                            Block.createCuboidShape(2, 0, 14, 16, 16, 16),
-                            Block.createCuboidShape(0, 0, 0, 14, 16, 2))
-                    .reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
-        }
         return VOXEL_SHAPE;
     }
 
@@ -243,5 +218,16 @@ public class TunBlock extends BlockWithEntity {
         }
 
         return 0x241a09;
+    }
+
+    static {
+        LEVEL = IntProperty.of("level", EMPTY_LEVEL, FULL_LEVEL);
+        VOXEL_SHAPE = Util.combineVoxelShapes(
+                Block.createCuboidShape(2, 0, 2, 14, 2, 14),
+                Block.createCuboidShape(0, 0, 2, 2, 16, 16),
+                Block.createCuboidShape(14, 0, 0, 16, 16, 14),
+                Block.createCuboidShape(2, 0, 14, 16, 16, 16),
+                Block.createCuboidShape(0, 0, 0, 14, 16, 2)
+        );
     }
 }

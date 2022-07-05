@@ -175,7 +175,7 @@ public class ShreddingRecipe implements Recipe<Inventory> {
 
         /** Reads the recipe from a web packet. */
         @Override
-        public ShreddingRecipe read(Identifier id, PacketByteBuf buf) {
+        public ShreddingRecipe read(Identifier id, @NotNull PacketByteBuf buf) {
             int ingCount = buf.readInt();
             DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(ingCount);
             for (int i = 0; i < ingCount; i++) {
@@ -188,7 +188,7 @@ public class ShreddingRecipe implements Recipe<Inventory> {
 
         /** Writes the recipe into a web packet. */
         @Override
-        public void write(PacketByteBuf buf, ShreddingRecipe recipe) {
+        public void write(@NotNull PacketByteBuf buf, @NotNull ShreddingRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.write(buf);

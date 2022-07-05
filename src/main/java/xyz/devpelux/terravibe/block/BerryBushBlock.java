@@ -2,8 +2,10 @@ package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
@@ -17,6 +19,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
@@ -24,10 +28,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-/** Generic berry bush. */
+/** Berry bush. */
 public abstract class BerryBushBlock extends PlantBlock implements Fertilizable {
     /** Growing time. */
     public static final int GROWING_TIME = 5;
+
+    /** Voxel shapes of the block. */
+    private static final VoxelShape[] AGE_TO_SHAPE;
 
     /** Initializes a new {@link BerryBushBlock}. */
     public BerryBushBlock(Settings settings) {
@@ -66,18 +73,11 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
     /** Gets the age when the bush has fruits. */
     public abstract int getMatureAge();
 
-    /** Gets the thorns damage caused by the bush. (0 = no thorns) */
-    public abstract float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, @NotNull Vec3d entityMovement);
+    /** Gets the fruit item to pick from the plant. */
+    public abstract ItemConvertible getFruitItem();
 
-    /** Gets the movement slowing amount when inside the bush. */
-    public abstract Vec3d getSlowingAmount(BlockState state, World world, BlockPos pos, Entity entity);
-
-    /** Gets the stack to pick from the bush. */
-    @Override
-    public abstract ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state);
-
-    /** Gets the amount of the stack to pick from the bush. */
-    public abstract int getPickStackAmount(BlockView world, BlockPos pos, BlockState state);
+    /** Gets the amount of the fruit item to pick from the plant. */
+    public abstract int getFruitItemAmount(@NotNull Random random, @NotNull BlockState state);
 
     /** Gets the pick sound. */
     public abstract Optional<SoundEvent> getPickSound();
@@ -85,8 +85,14 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
     /** Gets the required light to grow. */
     public abstract int getMinLightToGrow();
 
+    /** Gets the thorns damage caused by the bush. (0 = no thorns) */
+    public abstract float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, @NotNull Vec3d entityMovement);
+
+    /** Gets the movement slowing amount when inside the bush. */
+    public abstract Vec3d getSlowingAmount(BlockState state, World world, BlockPos pos, Entity entity);
+
     /**
-     * Executed when the block is used.<br>
+     * Executed when the block is used.
      * Drops the stack to pick and decrement the age or bonemeals the bush.
      */
     @SuppressWarnings("deprecation")
@@ -99,8 +105,8 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
         }
         else if (isMature(state)) {
             //If the plant is mature to give fruits, then drops the fruits.
-            int fruitAmount = getPickStackAmount(world, pos, state);
-            dropStack(world, pos, new ItemStack(getPickStack(world, pos, state).getItem(), fruitAmount));
+            int nDrops = getFruitItemAmount(world.random, state);
+            dropStack(world, pos, new ItemStack(getFruitItem(), nDrops));
 
             //Plays the pick sound if not null.
             getPickSound().ifPresent(s -> {
@@ -149,7 +155,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
      */
     @SuppressWarnings("deprecation")
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, @NotNull Entity entity) {
         entity.slowMovement(state, getSlowingAmount(state, world, pos, entity));
         if (!world.isClient()) {
             double movementX = Math.abs(entity.getX() - entity.lastRenderX);
@@ -182,5 +188,27 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
         int age = Math.min(getMaxAge(), getAge(state) + 1);
         BlockState nextGrowState = state.with(getAgeProperty(), age);
         world.setBlockState(pos, nextGrowState, 2);
+    }
+
+    /** Gets the path node type. */
+    @Override
+    public Optional<PathNodeType> getPathNodeType() {
+        return Optional.of(PathNodeType.DAMAGE_OTHER);
+    }
+
+    /** Gets the outline shape of the block. */
+    @SuppressWarnings("deprecation")
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return AGE_TO_SHAPE[getAge(state)];
+    }
+
+    static {
+        AGE_TO_SHAPE = new VoxelShape[]{
+                Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 8.0, 13.0),
+                Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0),
+                Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0),
+                VoxelShapes.fullCube()
+        };
     }
 }

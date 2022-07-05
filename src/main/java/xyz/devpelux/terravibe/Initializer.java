@@ -14,7 +14,7 @@ import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
 
 /** Main mod initializer. */
 public class Initializer implements ModInitializer {
-	/** {@inheritDoc} */
+	/** Runs the mod initializer. */
 	@Override
 	public void onInitialize() {
 		TerravibeRecipeTypes.load();

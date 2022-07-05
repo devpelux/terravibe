@@ -19,6 +19,9 @@ public class CornCropBlock extends TallCropBlock {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "corn_crop");
 
+    /** Settings of the block. */
+    public static final Settings SETTINGS;
+
     /** Voxel shapes of the lower block the crop. */
     private static final VoxelShape[] LOWER_AGE_TO_SHAPE;
 
@@ -30,17 +33,8 @@ public class CornCropBlock extends TallCropBlock {
         super(settings);
     }
 
-    /** Gets the block settings. */
-    public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.of(Material.PLANT)
-                .nonOpaque()
-                .noCollision()
-                .ticksRandomly()
-                .breakInstantly()
-                .sounds(BlockSoundGroup.CROP);
-    }
-
     /** Gets the seeds item of the block. */
+    @Override
     public ItemConvertible getSeedsItem() {
         return TerravibeItems.CORN_GRAINS;
     }
@@ -70,6 +64,12 @@ public class CornCropBlock extends TallCropBlock {
     }
 
     static {
+        SETTINGS = FabricBlockSettings.of(Material.PLANT)
+                .nonOpaque()
+                .noCollision()
+                .ticksRandomly()
+                .breakInstantly()
+                .sounds(BlockSoundGroup.CROP);
         LOWER_AGE_TO_SHAPE = new VoxelShape[]{
                 Block.createCuboidShape(0.0, -1.0, 0.0, 16.0, 6.0, 16.0),
                 Block.createCuboidShape(0.0, -1.0, 0.0, 16.0, 8.0, 16.0),

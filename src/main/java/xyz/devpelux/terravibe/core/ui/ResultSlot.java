@@ -37,12 +37,14 @@ public class ResultSlot extends Slot {
     }
 
     /** Takes a specified amount of items and insert them into the output. */
+    @Override
     public ItemStack takeStack(int amount) {
         if (hasStack()) this.amount += Math.min(amount, getStack().getCount());
         return super.takeStack(amount);
     }
 
     /** Executed when a specified amount of items is taken. */
+    @Override
     protected void onTake(int amount) {
         this.amount += amount;
     }
@@ -56,12 +58,14 @@ public class ResultSlot extends Slot {
     }
 
     /** Executed when a crafting event is executed. */
+    @Override
     protected void onCrafted(ItemStack stack, int amount) {
         this.amount += amount;
         onCrafted(stack);
     }
 
     /** Executed when a crafting event is executed. */
+    @Override
     protected void onCrafted(ItemStack stack) {
         if (this.amount > 0) stack.onCraft(this.player.world, this.player, this.amount);
         this.amount = 0;

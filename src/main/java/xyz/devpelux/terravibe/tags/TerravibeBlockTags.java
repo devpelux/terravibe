@@ -7,6 +7,8 @@ import net.minecraft.util.registry.Registry;
 
 /** List of all the block tags. */
 public class TerravibeBlockTags {
+    private TerravibeBlockTags() {}
+
     /**
      * {@code c:flooded_farmland}<p/>
      * Tag used to flag all blocks in which can be planted flooded crops.

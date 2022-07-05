@@ -7,10 +7,12 @@ import org.jetbrains.annotations.NotNull;
 
 /** List of all the recipe types. */
 public class TerravibeRecipeTypes {
-    /** Crushing recipe: Crushes an item to obtain another item with a successful chance. */
+    private TerravibeRecipeTypes() {}
+
+    /** Crushes an item to obtain another item with a successful chance. */
     public static final RecipeType<CrushingRecipe> CRUSHING;
 
-    /** Shredding recipe: Shreds a bunch of items to obtain something into a container. */
+    /** Shreds a bunch of items to obtain something into a container. */
     public static final RecipeType<ShreddingRecipe> SHREDDING;
 
     /** Loads all the recipe types. */

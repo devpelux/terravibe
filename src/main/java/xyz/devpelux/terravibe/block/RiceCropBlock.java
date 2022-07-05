@@ -20,22 +20,15 @@ public class RiceCropBlock extends FloodedCropBlock {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "rice_crop");
 
+    /** Settings of the block. */
+    public static final Settings SETTINGS;
+
     /** Voxel shapes of the crop. */
     private static final VoxelShape[] AGE_TO_SHAPE;
 
     /** Initializes a new {@link RiceCropBlock}. */
     public RiceCropBlock(Settings settings) {
         super(settings);
-    }
-
-    /** Gets the block settings. */
-    public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.of(Material.PLANT)
-                .nonOpaque()
-                .noCollision()
-                .ticksRandomly()
-                .breakInstantly()
-                .sounds(BlockSoundGroup.CROP);
     }
 
     /** Gets the seeds item of the block. */
@@ -51,6 +44,12 @@ public class RiceCropBlock extends FloodedCropBlock {
     }
 
     static {
+        SETTINGS = FabricBlockSettings.of(Material.PLANT)
+                .nonOpaque()
+                .noCollision()
+                .ticksRandomly()
+                .breakInstantly()
+                .sounds(BlockSoundGroup.CROP);
         AGE_TO_SHAPE = new VoxelShape[]{
                 Block.createCuboidShape(0.0, -5.0, 0.0, 16.0, -3.0, 16.0),
                 Block.createCuboidShape(0.0, -5.0, 0.0, 16.0, 0.0, 16.0),

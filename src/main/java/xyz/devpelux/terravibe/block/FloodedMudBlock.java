@@ -38,8 +38,11 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "flooded_mud");
 
+    /** Settings of the block. */
+    public static final Settings SETTINGS;
+
     /** Voxel shapes of the block. */
-    protected static final VoxelShape[] VOXEL_SHAPES;
+    private static final VoxelShape[] VOXEL_SHAPES;
 
     /** North excavation. */
     public static final BooleanProperty NORTH = Properties.NORTH;
@@ -68,14 +71,8 @@ public class FloodedMudBlock extends Block implements Waterloggable {
         setDefaultState(defaultState);
     }
 
-    /** Gets the block settings. */
-    public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.copyOf(Blocks.DIRT)
-                .sounds(BlockSoundGroup.MUD)
-                .mapColor(MapColor.TERRACOTTA_CYAN);
-    }
-
     /** Registers the properties of the block. */
+    @Override
     protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(NORTH, EAST, SOUTH, WEST, WATERLOGGED);
@@ -87,7 +84,7 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     /**
-     * Executed when the block is used.<br>
+     * Executed when the block is used.
      * De-excavates the block by converting to mud.
      */
     @SuppressWarnings("deprecation")
@@ -109,7 +106,7 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     /**
-     * Executed at the block breaking.<br>
+     * Executed at the block breaking.
      * Removes the water.
      */
     @Override
@@ -139,10 +136,11 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     /**
-     * Executed when a neighbor block is updated.<br>
+     * Executed when a neighbor block is updated.
      * Updates the current excavation shape basing on the neighbor blocks.
      */
     @SuppressWarnings("deprecation")
+    @Override
     public BlockState getStateForNeighborUpdate(@NotNull BlockState state, Direction direction, BlockState neighborState,
                                                 @NotNull WorldAccess world, @NotNull BlockPos pos, BlockPos neighborPos) {
         //Gets the updated state with the required excavation shape basing on the neighbor blocks.
@@ -204,13 +202,6 @@ public class FloodedMudBlock extends Block implements Waterloggable {
         return 0.2F;
     }
 
-    /** Gets the ray-cast shape of the block. */
-    @SuppressWarnings("deprecation")
-    @Override
-    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
-        return getOutlineShape(state, world, pos, ShapeContext.absent());
-    }
-
     /** Gets the outline shape of the block. */
     @SuppressWarnings("deprecation")
     @Override
@@ -237,6 +228,10 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     static {
+        SETTINGS = FabricBlockSettings.copyOf(Blocks.DIRT)
+                .sounds(BlockSoundGroup.MUD)
+                .mapColor(MapColor.TERRACOTTA_CYAN);
+
         VoxelShape bottom = Block.createCuboidShape(0, 0, 0, 16, 11, 16);
         VoxelShape north = Block.createCuboidShape(0, 11, 0, 16, 16, 2);
         VoxelShape east = Block.createCuboidShape(14, 11, 0, 16, 16, 16);

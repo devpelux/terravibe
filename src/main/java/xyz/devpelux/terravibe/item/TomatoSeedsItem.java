@@ -4,13 +4,15 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** Seeds of tomato. */
 public class TomatoSeedsItem extends AliasedBlockItem {
     /** Identifier of the item. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tomato_seeds");
+
+    /** Settings of the item. */
+    public static final Settings SETTINGS;
 
     /** Composting chance of the item. */
     public static final float COMPOSTING_CHANCE = 0.3f;
@@ -20,9 +22,8 @@ public class TomatoSeedsItem extends AliasedBlockItem {
         super(block, settings);
     }
 
-    /** Gets the item settings. */
-    public static @NotNull FabricItemSettings getSettings() {
-        return new FabricItemSettings()
+    static {
+        SETTINGS = new FabricItemSettings()
                 .maxCount(64)
                 .group(TerravibeItemGroups.TERRAVIBE);
     }

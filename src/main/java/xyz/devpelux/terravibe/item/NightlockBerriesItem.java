@@ -12,7 +12,6 @@ import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.entity.damage.TerravibeDamageSources;
 
@@ -21,25 +20,18 @@ public class NightlockBerriesItem extends AliasedBlockItem {
     /** Identifier of the item. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "nightlock_berries");
 
+    /** Settings of the item. */
+    public static final Settings SETTINGS;
+
+    /** Food settings of the item. */
+    public static final FoodComponent FOOD_SETTINGS;
+
     /** Composting chance of the item. */
     public static final float COMPOSTING_CHANCE = 0.3F;
 
     /** Initializes a new {@link NightlockBerriesItem}. */
     public NightlockBerriesItem(Block block, Settings settings) {
         super(block, settings);
-    }
-
-    /** Gets the item settings. */
-    public static @NotNull FabricItemSettings getSettings() {
-        FoodComponent foodEffects = new FoodComponent.Builder()
-                .hunger(2)
-                .saturationModifier(0.1F)
-                .build();
-
-        return new FabricItemSettings()
-                .maxCount(64)
-                .food(foodEffects)
-                .group(TerravibeItemGroups.TERRAVIBE);
     }
 
     /**
@@ -65,5 +57,16 @@ public class NightlockBerriesItem extends AliasedBlockItem {
             return eatenStack;
         }
         return stack;
+    }
+
+    static {
+        FOOD_SETTINGS = new FoodComponent.Builder()
+                .hunger(2)
+                .saturationModifier(0.1F)
+                .build();
+        SETTINGS = new FabricItemSettings()
+                .maxCount(64)
+                .food(FOOD_SETTINGS)
+                .group(TerravibeItemGroups.TERRAVIBE);
     }
 }

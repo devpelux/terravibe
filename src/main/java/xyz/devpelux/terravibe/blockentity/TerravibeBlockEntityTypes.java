@@ -11,10 +11,12 @@ import xyz.devpelux.terravibe.block.TunBlock;
 
 /** List of all the block entity types. */
 public class TerravibeBlockEntityTypes {
-    /** Shredder block entity type: Block entity type for the shredder block. */
+    private TerravibeBlockEntityTypes() {}
+
+    /** Block entity type for the shredder block. */
     public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
 
-    /** Tun block entity type: Block entity type for the tun block. */
+    /** Block entity type for the tun block. */
     public static final BlockEntityType<TunBlockEntity> TUN;
 
     /** Loads all the block entity types. */

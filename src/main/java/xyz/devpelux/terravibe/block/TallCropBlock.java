@@ -23,10 +23,10 @@ import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/** Generic crop that can be 2 blocks tall. */
+/** Crop that can be 2 blocks tall. */
 public abstract class TallCropBlock extends CropBlock {
     /** Specifies which of the half side the block is in a two-blocks-tall crop. */
-    public static final EnumProperty<DoubleBlockHalf> HALF;
+    public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
 
     /** Initializes a new {@link TallCropBlock}. */
     public TallCropBlock(Settings settings) {
@@ -210,9 +210,5 @@ public abstract class TallCropBlock extends CropBlock {
     @Override
     public long getRenderingSeed(@NotNull BlockState state, @NotNull BlockPos pos) {
         return MathHelper.hashCode(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
-    }
-
-    static {
-        HALF = Properties.DOUBLE_BLOCK_HALF;
     }
 }

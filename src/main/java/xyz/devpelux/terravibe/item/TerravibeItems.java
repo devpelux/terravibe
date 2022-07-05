@@ -13,98 +13,114 @@ import xyz.devpelux.terravibe.block.TunBlock;
 
 /** List of all the items. */
 public class TerravibeItems {
-    /** Mortar item: Crushes an item to obtain another item. */
+    private TerravibeItems() {}
+
+    //Objects
+
+    /** Item of the mortar block. */
     public static final MortarItem MORTAR;
 
-    /** Shredder item: Shreds a bunch of items to obtain something. */
+    /** Item of the shredder block. */
     public static final ShredderItem SHREDDER;
 
-    /** Tray item: Tray used to make salt. */
+    /** Item of the tray block. */
     public static final TrayItem TRAY;
 
-    /** Tun item: Container for "non-lava" fluids. */
+    /** Item of the tun block. */
     public static final TunItem TUN;
 
-    /** Flooded mud item: A mud block excavated and flooded with water. */
-    public static final FloodedMudItem FLOODED_MUD;
+    //Fruits and seeds of plants
 
-    /** Beans item: Little edible seeds. */
+    /** Little edible seeds. */
     public static final BeansItem BEANS;
 
-    /** Corn item: Fruit composed by little yellow seeds (or grains). */
+    /** Fruit composed by little yellow seeds (or grains). */
     public static final CornItem CORN;
 
-    /** Corn grains item: Some grains of corn. */
+    /** Some grains of corn. */
     public static final CornGrainsItem CORN_GRAINS;
 
-    /** Dark sweet berries item: Little berry with a purplish color, mutation of the sweet berries. */
+    /** Little berry with a purplish color, mutation of the sweet berries. */
     public static final DarkSweetBerriesItem DARK_SWEET_BERRIES;
 
-    /** Eggplant item: Edible purple berry, spongy, absorbent, typically used as a vegetable in cooking. */
+    /** Edible purple berry, spongy, absorbent, typically used as a vegetable in cooking. */
     public static final EggplantItem EGGPLANT;
 
-    /** Eggplant seeds item: Seeds of eggplant. */
+    /** Seeds of eggplant. */
     public static final EggplantSeedsItem EGGPLANT_SEEDS;
 
-    /** Kale item: Vegetable mostly used to make soups. */
+    /** Vegetable mostly used to make soups. */
     public static final KaleItem KALE;
 
-    /** Kale seeds item: Seeds of kale. */
+    /** Seeds of kale. */
     public static final KaleSeedsItem KALE_SEEDS;
 
-    /** Lettuce leaves item: Vegetable that is mainly used to make salad. */
+    /** Vegetable that is mainly used to make salad. */
     public static final LettuceLeavesItem LETTUCE_LEAVES;
 
-    /** Lettuce seeds item: Seeds of lettuce. */
+    /** Seeds of lettuce. */
     public static final LettuceSeedsItem LETTUCE_SEEDS;
 
-    /** Nightlock berries item: Little poisonous berry with a black color. */
+    /** Little poisonous berry with a black color. */
     public static final NightlockBerriesItem NIGHTLOCK_BERRIES;
 
-    /** Olives item: Typical fruit used to make oil. */
-    public static final OlivesItem OLIVES;
-
-    /** Onion item: Vegetable that is the most widely cultivated species of the genus Allium. */
+    /** Vegetable that is the most widely cultivated species of the genus Allium. */
     public static final OnionItem ONION;
 
-    /** Onion seeds item: Seeds of onion. */
+    /** Seeds of onion. */
     public static final OnionSeedsItem ONION_SEEDS;
 
-    /** Red sweet potato item: Red sweet potato, a rare mutation of the sweet potato. */
+    /** Red sweet potato, a rare mutation of the sweet potato. */
     public static final RedSweetPotatoItem RED_SWEET_POTATO;
 
-    /** Rice item: Little white seed, one of the most consumed foods in the world. */
+    /** Little white seed, one of the most consumed foods in the world. */
     public static final RiceItem RICE;
 
-    /** Rice grains item: Some grains of rice. */
+    /** Some grains of rice. */
     public static final RiceGrainsItem RICE_GRAINS;
 
-    /** Sweet potato item: Sweet potato, a mutation of the potato. */
+    /** Sweet potato, a mutation of the potato. */
     public static final SweetPotatoItem SWEET_POTATO;
 
-    /** Sweet potato bud item: Buds of sweet potato. */
+    /** Buds of sweet potato. */
     public static final SweetPotatoBudsItem SWEET_POTATO_BUDS;
 
-    /** Tomato item: Edible red berry, commonly used to make sauces or for salad. */
+    /** Edible red berry, commonly used to make sauces or for salad. */
     public static final TomatoItem TOMATO;
 
-    /** Tomato seeds item: Seeds of tomato. */
+    /** Seeds of tomato. */
     public static final TomatoSeedsItem TOMATO_SEEDS;
 
-    /** Baked sweet potato item: Sweet potato, but baked. */
-    public static final BakedSweetPotatoItem BAKED_SWEET_POTATO;
+    //Fruits of trees
 
-    /** Oil bottle item: Bottle that contains oil. */
-    public static final OilBottleItem OIL_BOTTLE;
+    /** Typical fruit used to make oil. */
+    public static final OlivesItem OLIVES;
 
-    /** Salt item: Salt. */
-    public static final SaltItem SALT;
+    //Items from the earth
 
-    /** Salt crystals item: Salt crystals. */
+    /** Salt crystals. */
     public static final SaltCrystalsItem SALT_CRYSTALS;
 
-    /** Tomato sauce bottle item: Bottle that contains tomato sauce. */
+    //Cooked foods
+
+    /** Sweet potato, but baked. */
+    public static final BakedSweetPotatoItem BAKED_SWEET_POTATO;
+
+    //Crafted
+
+    /** Salt. */
+    public static final SaltItem SALT;
+
+    /** Bottle that contains oil. */
+    public static final OilBottleItem OIL_BOTTLE;
+
+    /** Bottle that contains tomato sauce. */
     public static final TomatoSauceBottleItem TOMATO_SAUCE_BOTTLE;
+
+    //Terrain blocks
+
+    /** Item of the flooded mud block. */
+    public static final FloodedMudItem FLOODED_MUD;
 
     /** Loads all the items. */
     public static void load() {
@@ -152,42 +168,42 @@ public class TerravibeItems {
     static {
         //Items loading order corresponds to the order of the creative tab "Terravibe".
 
-        MORTAR = register(MortarItem.ID, new MortarItem(TerravibeBlocks.MORTAR, MortarItem.getSettings()));
-        SHREDDER = register(ShredderItem.ID, new ShredderItem(TerravibeBlocks.SHREDDER, ShredderItem.getSettings()));
-        TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.getSettings()));
-        TUN = register(TunItem.ID, new TunItem(TerravibeBlocks.TUN, TunItem.getSettings()));
+        MORTAR = register(MortarItem.ID, new MortarItem(TerravibeBlocks.MORTAR, MortarItem.SETTINGS));
+        SHREDDER = register(ShredderItem.ID, new ShredderItem(TerravibeBlocks.SHREDDER, ShredderItem.SETTINGS));
+        TRAY = register(TrayItem.ID, new TrayItem(TerravibeBlocks.TRAY, TrayItem.SETTINGS));
+        TUN = register(TunItem.ID, new TunItem(TerravibeBlocks.TUN, TunItem.SETTINGS));
 
-        FLOODED_MUD = register(FloodedMudItem.ID, new FloodedMudItem(TerravibeBlocks.FLOODED_MUD, FloodedMudItem.getSettings()));
+        DARK_SWEET_BERRIES = register(DarkSweetBerriesItem.ID, new DarkSweetBerriesItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, DarkSweetBerriesItem.SETTINGS));
+        NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.SETTINGS));
+        BEANS = register(BeansItem.ID, new BeansItem(TerravibeBlocks.BEANS_CROP, BeansItem.SETTINGS));
+        CORN = register(CornItem.ID, new CornItem(CornItem.SETTINGS));
+        CORN_GRAINS = register(CornGrainsItem.ID, new CornGrainsItem(TerravibeBlocks.CORN_CROP, CornGrainsItem.SETTINGS));
+        EGGPLANT = register(EggplantItem.ID, new EggplantItem(EggplantItem.SETTINGS));
+        EGGPLANT_SEEDS = register(EggplantSeedsItem.ID, new EggplantSeedsItem(TerravibeBlocks.EGGPLANT_CROP, EggplantSeedsItem.SETTINGS));
+        KALE = register(KaleItem.ID, new KaleItem(KaleItem.SETTINGS));
+        KALE_SEEDS = register(KaleSeedsItem.ID, new KaleSeedsItem(TerravibeBlocks.KALE_CROP, KaleSeedsItem.SETTINGS));
+        LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.SETTINGS));
+        LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.SETTINGS));
+        ONION = register(OnionItem.ID, new OnionItem(OnionItem.SETTINGS));
+        ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.SETTINGS));
+        RICE = register(RiceItem.ID, new RiceItem(RiceItem.SETTINGS));
+        RICE_GRAINS = register(RiceGrainsItem.ID, new RiceGrainsItem(TerravibeBlocks.RICE_CROP, RiceGrainsItem.SETTINGS));
+        SWEET_POTATO_BUDS = register(SweetPotatoBudsItem.ID, new SweetPotatoBudsItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudsItem.SETTINGS));
+        SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoItem.SETTINGS));
+        RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.SETTINGS));
+        TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.SETTINGS));
+        TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.SETTINGS));
 
-        DARK_SWEET_BERRIES = register(DarkSweetBerriesItem.ID, new DarkSweetBerriesItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, DarkSweetBerriesItem.getSettings()));
-        NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.getSettings()));
-        BEANS = register(BeansItem.ID, new BeansItem(TerravibeBlocks.BEANS_CROP, BeansItem.getSettings()));
-        CORN = register(CornItem.ID, new CornItem(CornItem.getSettings()));
-        CORN_GRAINS = register(CornGrainsItem.ID, new CornGrainsItem(TerravibeBlocks.CORN_CROP, CornGrainsItem.getSettings()));
-        EGGPLANT = register(EggplantItem.ID, new EggplantItem(EggplantItem.getSettings()));
-        EGGPLANT_SEEDS = register(EggplantSeedsItem.ID, new EggplantSeedsItem(TerravibeBlocks.EGGPLANT_CROP, EggplantSeedsItem.getSettings()));
-        KALE = register(KaleItem.ID, new KaleItem(KaleItem.getSettings()));
-        KALE_SEEDS = register(KaleSeedsItem.ID, new KaleSeedsItem(TerravibeBlocks.KALE_CROP, KaleSeedsItem.getSettings()));
-        LETTUCE_LEAVES = register(LettuceLeavesItem.ID, new LettuceLeavesItem(LettuceLeavesItem.getSettings()));
-        LETTUCE_SEEDS = register(LettuceSeedsItem.ID, new LettuceSeedsItem(TerravibeBlocks.LETTUCE_CROP, LettuceSeedsItem.getSettings()));
-        ONION = register(OnionItem.ID, new OnionItem(OnionItem.getSettings()));
-        ONION_SEEDS = register(OnionSeedsItem.ID, new OnionSeedsItem(TerravibeBlocks.ONION_CROP, OnionSeedsItem.getSettings()));
-        RICE = register(RiceItem.ID, new RiceItem(RiceItem.getSettings()));
-        RICE_GRAINS = register(RiceGrainsItem.ID, new RiceGrainsItem(TerravibeBlocks.RICE_CROP, RiceGrainsItem.getSettings()));
-        SWEET_POTATO_BUDS = register(SweetPotatoBudsItem.ID, new SweetPotatoBudsItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoBudsItem.getSettings()));
-        SWEET_POTATO = register(SweetPotatoItem.ID, new SweetPotatoItem(TerravibeBlocks.SWEET_POTATO_CROP, SweetPotatoItem.getSettings()));
-        RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.getSettings()));
-        TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.getSettings()));
-        TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.getSettings()));
+        OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.SETTINGS));
 
-        OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.getSettings()));
+        SALT_CRYSTALS = register(SaltCrystalsItem.ID, new SaltCrystalsItem(SaltCrystalsItem.SETTINGS));
 
-        SALT_CRYSTALS = register(SaltCrystalsItem.ID, new SaltCrystalsItem(SaltCrystalsItem.getSettings()));
-        SALT = register(SaltItem.ID, new SaltItem(SaltItem.getSettings()));
+        BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.SETTINGS));
 
-        BAKED_SWEET_POTATO = register(BakedSweetPotatoItem.ID, new BakedSweetPotatoItem(BakedSweetPotatoItem.getSettings()));
+        SALT = register(SaltItem.ID, new SaltItem(SaltItem.SETTINGS));
+        OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.SETTINGS));
+        TOMATO_SAUCE_BOTTLE = register(TomatoSauceBottleItem.ID, new TomatoSauceBottleItem(TomatoSauceBottleItem.SETTINGS));
 
-        OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.getSettings()));
-        TOMATO_SAUCE_BOTTLE = register(TomatoSauceBottleItem.ID, new TomatoSauceBottleItem(TomatoSauceBottleItem.getSettings()));
+        FLOODED_MUD = register(FloodedMudItem.ID, new FloodedMudItem(TerravibeBlocks.FLOODED_MUD, FloodedMudItem.SETTINGS));
     }
 }

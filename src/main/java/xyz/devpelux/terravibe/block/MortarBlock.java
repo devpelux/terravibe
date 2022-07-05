@@ -35,8 +35,11 @@ public class MortarBlock extends Block {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "mortar");
 
+    /** Settings of the block. */
+    public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
+
     /** Voxel shape of the block. */
-    private static VoxelShape VOXEL_SHAPE = null;
+    private static final VoxelShape VOXEL_SHAPE;
 
     /** Spawn position of the fail particles. */
     private static final Vec3f FAIL_PARTICLES_SPAWN_POINT = new Vec3f(0.5f, 0.1875f, 0.5f);
@@ -46,23 +49,18 @@ public class MortarBlock extends Block {
         super(settings);
     }
 
-    /** Gets the block settings. */
-    public static @NotNull FabricBlockSettings getSettings() {
-        return FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
-    }
-
     /** Gets the crush sound. */
     protected SoundEvent getCrushSound() {
         return SoundEvents.BLOCK_ROOTED_DIRT_BREAK;
     }
 
     /**
-     * Executed when the block is used.<br>
+     * Executed when the block is used.
      * Tries to crush the item in hand to obtain another item.
      */
     @SuppressWarnings("deprecation")
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
         //Checks if exists a crushing recipe for the item in hand.
         Optional<CrushingRecipe> match = world.getRecipeManager()
                 .getFirstMatch(TerravibeRecipeTypes.CRUSHING, new SimpleInventory(player.getStackInHand(hand)), world);
@@ -124,21 +122,10 @@ public class MortarBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return getVoxelShape();
-    }
-
-    /** Gets the ray-cast shape of the block. */
-    @SuppressWarnings("deprecation")
-    @Override
-    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
-        return getVoxelShape();
-    }
-
-    /** Gets the voxel shape of the block. */
-    public static @NotNull VoxelShape getVoxelShape() {
-        if (VOXEL_SHAPE == null) {
-            VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
-        }
         return VOXEL_SHAPE;
+    }
+
+    static {
+        VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
     }
 }
