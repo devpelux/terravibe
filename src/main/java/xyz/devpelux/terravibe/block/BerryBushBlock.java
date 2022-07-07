@@ -95,7 +95,6 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
      * Executed when the block is used.
      * Drops the stack to pick and decrement the age or bonemeals the bush.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!isFullyGrown(state) && player.getStackInHand(hand).isOf(Items.BONE_MEAL)) {
@@ -137,7 +136,6 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
      * Executed every tick.
      * Handles the natural growing.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!isFullyGrown(state) && random.nextInt(GROWING_TIME) == 0
@@ -153,7 +151,6 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
      * Executed when an entity collides with the bush.
      * Slow down the entity and applies the thorns damage.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, @NotNull Entity entity) {
         entity.slowMovement(state, getSlowingAmount(state, world, pos, entity));
@@ -197,7 +194,6 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
     }
 
     /** Gets the outline shape of the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return AGE_TO_SHAPE[getAge(state)];

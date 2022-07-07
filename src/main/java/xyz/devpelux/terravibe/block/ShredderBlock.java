@@ -54,7 +54,6 @@ public class ShredderBlock extends BlockWithEntity {
 	 * Executed when the block is used.
 	 * Displays the UI of the block.
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 		if (!world.isClient) {
@@ -90,21 +89,18 @@ public class ShredderBlock extends BlockWithEntity {
 	}
 
 	/** Rotates the block in the specified direction. */
-	@SuppressWarnings("deprecation")
 	@Override
 	public BlockState rotate(@NotNull BlockState state, @NotNull BlockRotation rotation) {
 		return state.with(FACING, rotation.rotate(state.get(FACING)));
 	}
 
 	/** Mirrors the block in the specified direction. */
-	@SuppressWarnings("deprecation")
 	@Override
 	public BlockState mirror(@NotNull BlockState state, @NotNull BlockMirror mirror) {
 		return state.rotate(mirror.getRotation(state.get(FACING)));
 	}
 
 	/** Gets the outline shape of the block. */
-	@SuppressWarnings("deprecation")
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		return VOXEL_SHAPE;

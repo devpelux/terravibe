@@ -194,19 +194,16 @@ public abstract class TallCropBlock extends CropBlock {
     }
 
     /** Gets the outline shape of the lower block. */
-    @SuppressWarnings("unused")
     public VoxelShape getLowerOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.fullCube();
     }
 
     /** Gets the outline shape of the upper block. */
-    @SuppressWarnings("unused")
     public VoxelShape getUpperOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.fullCube();
     }
 
     /** Gets the rendering seed. */
-    @SuppressWarnings("deprecation")
     @Override
     public long getRenderingSeed(@NotNull BlockState state, @NotNull BlockPos pos) {
         return MathHelper.hashCode(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());

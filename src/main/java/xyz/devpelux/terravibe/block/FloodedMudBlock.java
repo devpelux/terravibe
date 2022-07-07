@@ -87,7 +87,6 @@ public class FloodedMudBlock extends Block implements Waterloggable {
      * Executed when the block is used.
      * De-excavates the block by converting to mud.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (player.getStackInHand(hand).getItem() instanceof ShovelItem) {
@@ -116,7 +115,6 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     /** Gets a value indicating if the block can be placed at the current position. */
-    @SuppressWarnings("deprecation")
     @Override
     public boolean canPlaceAt(BlockState state, @NotNull WorldView world, @NotNull BlockPos pos) {
         BlockState blockState = world.getBlockState(pos.up());
@@ -139,7 +137,6 @@ public class FloodedMudBlock extends Block implements Waterloggable {
      * Executed when a neighbor block is updated.
      * Updates the current excavation shape basing on the neighbor blocks.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(@NotNull BlockState state, Direction direction, BlockState neighborState,
                                                 @NotNull WorldAccess world, @NotNull BlockPos pos, BlockPos neighborPos) {
@@ -164,7 +161,6 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     /** Gets the current fluid state that submerges the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(@NotNull BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
@@ -189,21 +185,18 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     }
 
     /** Gets a value indicating if is possible to pass through the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
 
     /** Gets the ambient occlusion light level. */
-    @SuppressWarnings("deprecation")
     @Override
     public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
         return 0.2F;
     }
 
     /** Gets the outline shape of the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return getVoxelShape(state);

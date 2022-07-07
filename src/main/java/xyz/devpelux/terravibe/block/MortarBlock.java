@@ -58,7 +58,6 @@ public class MortarBlock extends Block {
      * Executed when the block is used.
      * Tries to crush the item in hand to obtain another item.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
         //Checks if exists a crushing recipe for the item in hand.
@@ -119,7 +118,6 @@ public class MortarBlock extends Block {
     }
 
     /** Gets the outline shape of the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VOXEL_SHAPE;

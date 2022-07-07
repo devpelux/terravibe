@@ -124,7 +124,6 @@ public class TunBlock extends BlockWithEntity {
      * Executed when the block is used.
      * Gets or pours the fluid.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
         //Gets the item in the main hand.
@@ -195,7 +194,6 @@ public class TunBlock extends BlockWithEntity {
     }
 
     /** Gets the outline shape of the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VOXEL_SHAPE;

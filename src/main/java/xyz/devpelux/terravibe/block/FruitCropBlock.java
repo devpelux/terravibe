@@ -41,7 +41,6 @@ public abstract class FruitCropBlock extends CropBlock {
      * Executed when the plant is used.
      * Gets the drops, then reset the plant age to the flowering age.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(@NotNull BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(AGE) == getMaxAge()) {

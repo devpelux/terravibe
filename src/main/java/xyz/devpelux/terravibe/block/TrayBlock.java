@@ -97,7 +97,6 @@ public class TrayBlock extends Block {
      * Executed when the block is used.
      * Take the salt or put the water.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack handStack = player.getStackInHand(hand);
@@ -170,7 +169,6 @@ public class TrayBlock extends Block {
     }
 
     /** Executed every tick. */
-    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, @NotNull ServerWorld world, @NotNull BlockPos pos, @NotNull Random random) {
         if (!world.hasRain(pos.up())) {
@@ -183,14 +181,12 @@ public class TrayBlock extends Block {
     }
 
     /** Gets the outline shape of the block. */
-    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VOXEL_SHAPE;
     }
 
     /** Gets the water color. */
-    @SuppressWarnings("unused")
     public static int getWaterColor(BlockState blockState, BlockRenderView blockRenderView, BlockPos blockPos, int i) {
         if (i != 1) return -1;
         return BiomeColors.getWaterColor(blockRenderView, blockPos);
