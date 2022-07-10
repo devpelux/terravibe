@@ -8,7 +8,7 @@
 		"particle": "terravibe:block/flowering_opuntia_yside",
 		"yside": "terravibe:block/flowering_opuntia_yside",
 		"xside": "terravibe:block/flowering_opuntia_xside",
-		"fruits": "terravibe:block/flowering_opuntia_fruits"
+		"flowers": "terravibe:block/flowering_opuntia_flowers"
 	},
 	"elements": [
 		{
@@ -36,80 +36,80 @@
 			}
 		},
 		{
-			"from": [8, 7, 2],
+			"from": [8, 7, 1],
 			"to": [10, 9, 3],
 			"faces": {
-				"north": {"uv": [10, 1, 12, 3], "texture": "#fruits"},
-				"east": {"uv": [12, 1, 13, 3], "texture": "#fruits"},
-				"west": {"uv": [9, 1, 10, 3], "texture": "#fruits"},
-				"up": {"uv": [10, 0, 12, 1], "texture": "#fruits"},
-				"down": {"uv": [10, 3, 12, 4], "texture": "#fruits"}
+				"north": {"uv": [9, 0, 11, 2], "texture": "#flowers"},
+				"east": {"uv": [10, 1, 12, 3], "rotation": 90, "texture": "#flowers"},
+				"west": {"uv": [8, 1, 10, 3], "rotation": 270, "texture": "#flowers"},
+				"up": {"uv": [9, 1, 11, 3], "texture": "#flowers"},
+				"down": {"uv": [10, 1, 12, 3], "rotation": 180, "texture": "#flowers"}
 			}
 		},
 		{
-			"from": [6, 1, 2],
+			"from": [6, 1, 1],
 			"to": [8, 3, 3],
 			"faces": {
-				"north": {"uv": [11, 0, 13, 2], "texture": "#fruits"},
-				"east": {"uv": [10, 0, 11, 2], "texture": "#fruits"},
-				"west": {"uv": [9, 0, 10, 2], "texture": "#fruits"},
-				"up": {"uv": [11, 2, 13, 3], "texture": "#fruits"},
-				"down": {"uv": [11, 3, 13, 4], "texture": "#fruits"}
+				"north": {"uv": [12, 0, 14, 2], "texture": "#flowers"},
+				"east": {"uv": [11, 1, 13, 3], "rotation": 90, "texture": "#flowers"},
+				"west": {"uv": [13, 1, 15, 3], "rotation": 270, "texture": "#flowers"},
+				"up": {"uv": [12, 1, 14, 3], "texture": "#flowers"},
+				"down": {"uv": [11, 1, 13, 3], "rotation": 180, "texture": "#flowers"}
 			}
 		},
 		{
-			"from": [2, 6, 7],
+			"from": [1, 6, 7],
 			"to": [3, 8, 9],
 			"faces": {
-				"north": {"uv": [9, 0, 10, 2], "texture": "#fruits"},
-				"south": {"uv": [10, 0, 11, 2], "texture": "#fruits"},
-				"west": {"uv": [9, 2, 11, 4], "texture": "#fruits"},
-				"up": {"uv": [11, 2, 12, 4], "texture": "#fruits"},
-				"down": {"uv": [12, 2, 13, 4], "texture": "#fruits"}
+				"north": {"uv": [6, 1, 8, 3], "rotation": 90, "texture": "#flowers"},
+				"south": {"uv": [5, 1, 7, 3], "rotation": 270, "texture": "#flowers"},
+				"west": {"uv": [6, 0, 8, 2], "texture": "#flowers"},
+				"up": {"uv": [7, 1, 9, 3], "rotation": 270, "texture": "#flowers"},
+				"down": {"uv": [6, 1, 8, 3], "rotation": 270, "texture": "#flowers"}
 			}
 		},
 		{
-			"from": [2, 2, 8],
+			"from": [1, 2, 8],
 			"to": [3, 4, 10],
 			"faces": {
-				"north": {"uv": [11, 0, 12, 2], "texture": "#fruits"},
-				"south": {"uv": [12, 0, 13, 2], "texture": "#fruits"},
-				"west": {"uv": [9, 0, 11, 2], "texture": "#fruits"},
-				"up": {"uv": [9, 2, 10, 4], "texture": "#fruits"},
-				"down": {"uv": [10, 2, 11, 4], "texture": "#fruits"}
+				"north": {"uv": [4, 1, 6, 3], "rotation": 90, "texture": "#flowers"},
+				"south": {"uv": [4, 1, 6, 3], "rotation": 270, "texture": "#flowers"},
+				"west": {"uv": [4, 0, 6, 2], "texture": "#flowers"},
+				"up": {"uv": [3, 1, 5, 3], "rotation": 270, "texture": "#flowers"},
+				"down": {"uv": [5, 1, 7, 3], "rotation": 270, "texture": "#flowers"}
 			}
 		},
 		{
 			"from": [6, 7, 13],
-			"to": [8, 9, 14],
+			"to": [8, 9, 15],
 			"faces": {
-				"east": {"uv": [12, 0, 13, 2], "texture": "#fruits"},
-				"south": {"uv": [10, 0, 12, 2], "texture": "#fruits"},
-				"west": {"uv": [9, 0, 10, 2], "texture": "#fruits"},
-				"up": {"uv": [10, 2, 12, 3], "texture": "#fruits"},
-				"down": {"uv": [10, 3, 12, 4], "texture": "#fruits"}
+				"east": {"uv": [6, 1, 8, 3], "rotation": 270, "texture": "#flowers"},
+				"south": {"uv": [6, 0, 8, 2], "texture": "#flowers"},
+				"west": {"uv": [6, 1, 8, 3], "rotation": 90, "texture": "#flowers"},
+				"up": {"uv": [5, 1, 7, 3], "rotation": 180, "texture": "#flowers"},
+				"down": {"uv": [7, 1, 9, 3], "texture": "#flowers"}
 			}
 		},
 		{
 			"from": [13, 1, 7],
-			"to": [14, 3, 9],
+			"to": [15, 3, 9],
 			"faces": {
-				"north": {"uv": [9, 0, 10, 2], "texture": "#fruits"},
-				"east": {"uv": [9, 2, 11, 4], "texture": "#fruits"},
-				"south": {"uv": [10, 0, 11, 2], "texture": "#fruits"},
-				"up": {"uv": [12, 2, 13, 4], "texture": "#fruits"},
-				"down": {"uv": [11, 2, 12, 4], "texture": "#fruits"}
+				"north": {"uv": [8, 1, 10, 3], "rotation": 270, "texture": "#flowers"},
+				"east": {"uv": [9, 0, 11, 2], "texture": "#flowers"},
+				"south": {"uv": [9, 1, 11, 3], "rotation": 90, "texture": "#flowers"},
+				"up": {"uv": [9, 1, 11, 3], "rotation": 90, "texture": "#flowers"},
+				"down": {"uv": [10, 1, 12, 3], "rotation": 90, "texture": "#flowers"}
 			}
 		},
 		{
 			"from": [7, 11, 7],
-			"to": [9, 12, 9],
+			"to": [9, 13, 9],
 			"faces": {
-				"north": {"uv": [9, 2, 11, 3], "texture": "#fruits"},
-				"east": {"uv": [9, 1, 11, 2], "texture": "#fruits"},
-				"south": {"uv": [9, 3, 11, 4], "texture": "#fruits"},
-				"west": {"uv": [9, 0, 11, 1], "texture": "#fruits"},
-				"up": {"uv": [11, 2, 13, 4], "texture": "#fruits"}
+				"north": {"uv": [11, 1, 13, 3], "texture": "#flowers"},
+				"east": {"uv": [10, 1, 12, 3], "texture": "#flowers"},
+				"south": {"uv": [10, 1, 12, 3], "texture": "#flowers"},
+				"west": {"uv": [12, 1, 14, 3], "texture": "#flowers"},
+				"up": {"uv": [11, 0, 13, 2], "texture": "#flowers"}
 			}
 		}
 	]
