@@ -96,6 +96,9 @@ public class TerravibeItems {
     /** Typical fruit used to make oil. */
     public static final OlivesItem OLIVES;
 
+    /** Fruit produced by opuntia cactus. */
+    public static final PricklyPearItem PRICKLY_PEAR;
+
     //Items from the earth
 
     /** Salt crystals. */
@@ -116,6 +119,14 @@ public class TerravibeItems {
 
     /** Bottle that contains tomato sauce. */
     public static final TomatoSauceBottleItem TOMATO_SAUCE_BOTTLE;
+
+    //Tree blocks
+
+    /** Item of the main block of the opuntia. */
+    public static final OpuntiaItem OPUNTIA;
+
+    /** Item of the flowering block of the opuntia. */
+    public static final FloweringOpuntiaItem FLOWERING_OPUNTIA;
 
     //Terrain blocks
 
@@ -140,6 +151,9 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(ONION, OnionItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(ONION_SEEDS, OnionSeedsItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(Items.POISONOUS_POTATO, 0.7f);
+        CompostingChanceRegistry.INSTANCE.add(OPUNTIA, OpuntiaItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(FLOWERING_OPUNTIA, FloweringOpuntiaItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(PRICKLY_PEAR, PricklyPearItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, RedSweetPotatoItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(RICE, RiceItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, RiceGrainsItem.COMPOSTING_CHANCE);
@@ -195,6 +209,7 @@ public class TerravibeItems {
         TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.SETTINGS));
 
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.SETTINGS));
+        PRICKLY_PEAR = register(PricklyPearItem.ID, new PricklyPearItem(PricklyPearItem.SETTINGS));
 
         SALT_CRYSTALS = register(SaltCrystalsItem.ID, new SaltCrystalsItem(SaltCrystalsItem.SETTINGS));
 
@@ -203,6 +218,9 @@ public class TerravibeItems {
         SALT = register(SaltItem.ID, new SaltItem(SaltItem.SETTINGS));
         OIL_BOTTLE = register(OilBottleItem.ID, new OilBottleItem(OilBottleItem.SETTINGS));
         TOMATO_SAUCE_BOTTLE = register(TomatoSauceBottleItem.ID, new TomatoSauceBottleItem(TomatoSauceBottleItem.SETTINGS));
+
+        OPUNTIA = register(OpuntiaItem.ID, new OpuntiaItem(TerravibeBlocks.OPUNTIA, OpuntiaItem.SETTINGS));
+        FLOWERING_OPUNTIA = register(FloweringOpuntiaItem.ID, new FloweringOpuntiaItem(TerravibeBlocks.FLOWERING_OPUNTIA, FloweringOpuntiaItem.SETTINGS));
 
         FLOODED_MUD = register(FloodedMudItem.ID, new FloodedMudItem(TerravibeBlocks.FLOODED_MUD, FloodedMudItem.SETTINGS));
     }

@@ -64,6 +64,14 @@ public class TerravibeBlocks {
     /** Crop of the tomato. */
     public static final TomatoCropBlock TOMATO_CROP;
 
+    //Tree blocks
+
+    /** Main block of the opuntia. */
+    public static final OpuntiaBlock OPUNTIA;
+
+    /** Flowering block of the opuntia. */
+    public static final FloweringOpuntiaBlock FLOWERING_OPUNTIA;
+
     //Terrain blocks
 
     /** A mud block excavated and flooded with water. */
@@ -95,6 +103,8 @@ public class TerravibeBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(RICE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TOMATO_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(OPUNTIA, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FLOWERING_OPUNTIA, RenderLayer.getCutout());
     }
 
     /** Registers the specified block with the specified id. */
@@ -119,6 +129,9 @@ public class TerravibeBlocks {
         RICE_CROP = register(RiceCropBlock.ID, new RiceCropBlock(RiceCropBlock.SETTINGS));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.SETTINGS));
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.SETTINGS));
+
+        OPUNTIA = register(OpuntiaBlock.ID, new OpuntiaBlock(OpuntiaBlock.SETTINGS));
+        FLOWERING_OPUNTIA = register(FloweringOpuntiaBlock.ID, new FloweringOpuntiaBlock(FloweringOpuntiaBlock.SETTINGS));
 
         FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.SETTINGS));
     }

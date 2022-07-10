@@ -2,10 +2,8 @@
   "block.terravibe.mortar" : "Mortar",
   "block.terravibe.shredder" : "Shredder",
   "block.terravibe.shredder.title" : "Shredding",
-  "block.terravibe.tun" : "Tun",
   "block.terravibe.tray" : "Tray",
-
-  "block.terravibe.flooded_mud" : "Flooded Mud",
+  "block.terravibe.tun" : "Tun",
 
   "block.terravibe.beans_crop" : "Beans Crop",
   "block.terravibe.corn_crop" : "Corn Crop",
@@ -19,14 +17,17 @@
   "block.terravibe.sweet_potato_crop" : "Sweet Potato Crop",
   "block.terravibe.tomato_crop" : "Tomato Crop",
 
+  "block.terravibe.opuntia" : "Opuntia",
+  "block.terravibe.flowering_opuntia" : "Flowering Opuntia",
+
+  "block.terravibe.flooded_mud" : "Flooded Mud",
+
   "item.terravibe.terravibe" : "Terravibe",
 
   "item.terravibe.mortar" : "Mortar",
   "item.terravibe.shredder" : "Shredder",
-  "item.terravibe.tun" : "Tun",
   "item.terravibe.tray" : "Tray",
-
-  "item.terravibe.flooded_mud" : "Flooded Mud",
+  "item.terravibe.tun" : "Tun",
 
   "item.terravibe.beans" : "Beans",
   "item.terravibe.corn" : "Corn",
@@ -39,7 +40,6 @@
   "item.terravibe.lettuce_leaves" : "Lettuce Leaves",
   "item.terravibe.lettuce_seeds" : "Lettuce Seeds",
   "item.terravibe.nightlock_berries" : "Nightlock Berries",
-  "item.terravibe.olives" : "Olives",
   "item.terravibe.onion" : "Onion",
   "item.terravibe.onion_seeds" : "Onion Seeds",
   "item.terravibe.red_sweet_potato" : "Red Sweet Potato",
@@ -49,12 +49,22 @@
   "item.terravibe.sweet_potato_buds" : "Sweet Potato Buds",
   "item.terravibe.tomato" : "Tomato",
   "item.terravibe.tomato_seeds" : "Tomato Seeds",
-  "item.terravibe.salt" : "Salt",
+
+  "item.terravibe.olives" : "Olives",
+  "item.terravibe.prickly_pear" : "Prickly Pear",
+
   "item.terravibe.salt_crystals" : "Salt Crystals",
 
   "item.terravibe.baked_sweet_potato" : "Baked Sweet Potato",
+
+  "item.terravibe.salt" : "Salt",
   "item.terravibe.oil_bottle" : "Oil Bottle",
   "item.terravibe.tomato_sauce_bottle" : "Tomato Sauce Bottle",
+
+  "item.terravibe.opuntia" : "Opuntia",
+  "item.terravibe.flowering_opuntia" : "Flowering Opuntia",
+
+  "item.terravibe.flooded_mud" : "Flooded Mud",
 
   "itemGroup.terravibe.terravibe" : "Terravibe",
 

@@ -1,0 +1,97 @@
+{
+  "variants": {
+    "facing=down,age=0": {
+      "model": "terravibe:block/opuntia_stage0",
+      "uvlock": false
+    },
+    "facing=up,age=0": {
+      "model": "terravibe:block/opuntia_stage0",
+      "uvlock": false,
+      "x": 180
+    },
+    "facing=south,age=0": {
+      "model": "terravibe:block/opuntia_stage0",
+      "uvlock": false,
+      "x": 90
+    },
+    "facing=north,age=0": {
+      "model": "terravibe:block/opuntia_stage0",
+      "uvlock": false,
+      "x": 270
+    },
+    "facing=west,age=0": {
+      "model": "terravibe:block/opuntia_stage0",
+      "uvlock": false,
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,age=0": {
+      "model": "terravibe:block/opuntia_stage0",
+      "uvlock": false,
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,age=1": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false
+    },
+    "facing=up,age=1": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 180
+    },
+    "facing=south,age=1": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 90
+    },
+    "facing=north,age=1": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 270
+    },
+    "facing=west,age=1": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,age=1": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,age=2": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false
+    },
+    "facing=up,age=2": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 180
+    },
+    "facing=south,age=2": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 90
+    },
+    "facing=north,age=2": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 270
+    },
+    "facing=west,age=2": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,age=2": {
+      "model": "terravibe:block/opuntia_stage1",
+      "uvlock": false,
+      "x": 90,
+      "y": 270
+    }
+  }
+}

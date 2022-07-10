@@ -50,7 +50,7 @@ public class TrayBlock extends Block {
     public static final int MIN_EVAPORATION_TIME = 10;
 
     /** Rain filling chance. */
-    public static final float RAIN_FILLING_CHANCE = 0.2F;
+    public static final float RAIN_FILLING_CHANCE = 0.1f;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;

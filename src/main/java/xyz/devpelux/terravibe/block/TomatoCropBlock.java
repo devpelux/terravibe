@@ -36,9 +36,9 @@ public class TomatoCropBlock extends FruitCropBlock {
         super(settings);
     }
 
-    /** Gets the age when the plant is fully grown, and is ready to make fruits. */
+    /** Gets the age when the plant is fully grown, and is ready to make flowers, then fruits. */
     @Override
-    public int getFloweringAge() {
+    public int getPreFloweringAge() {
         return 5;
     }
 

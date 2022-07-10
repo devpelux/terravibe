@@ -25,8 +25,8 @@ public abstract class FruitCropBlock extends CropBlock {
         super(settings);
     }
 
-    /** Gets the age when the plant is fully grown, and is ready to make fruits. */
-    public abstract int getFloweringAge();
+    /** Gets the age when the plant is fully grown, and is ready to make flowers, then fruits. */
+    public abstract int getPreFloweringAge();
 
     /** Gets the fruit item to pick from the plant. */
     public abstract ItemConvertible getFruitItem();
@@ -53,7 +53,7 @@ public abstract class FruitCropBlock extends CropBlock {
                     1.0F, 0.8F + world.random.nextFloat() * 0.4F));
 
             //Reset the plant age to the flowering age.
-            BlockState blockState = state.with(AGE, getFloweringAge());
+            BlockState blockState = state.with(AGE, getPreFloweringAge());
             world.setBlockState(pos, blockState, 2);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
             return ActionResult.success(world.isClient);
