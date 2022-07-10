@@ -5,6 +5,7 @@
   "block.terravibe.tray" : "Tray",
   "block.terravibe.tun" : "Tun",
 
+  "block.terravibe.basil_herb" : "Basil Herb",
   "block.terravibe.beans_crop" : "Beans Crop",
   "block.terravibe.corn_crop" : "Corn Crop",
   "block.terravibe.dark_sweet_berry_bush" : "Dark Sweet Berry Bush",
@@ -29,6 +30,7 @@
   "item.terravibe.tray" : "Tray",
   "item.terravibe.tun" : "Tun",
 
+  "item.terravibe.basil" : "Basil",
   "item.terravibe.beans" : "Beans",
   "item.terravibe.corn" : "Corn",
   "item.terravibe.corn_grains" : "Corn Grains",

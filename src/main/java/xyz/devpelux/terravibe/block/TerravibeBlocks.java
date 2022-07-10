@@ -31,6 +31,9 @@ public class TerravibeBlocks {
 
     //Plants
 
+    /** Herb of the basil. */
+    public static final BasilHerbBlock BASIL_HERB;
+
     /** Crop of the beans. */
     public static final BeansCropBlock BEANS_CROP;
 
@@ -92,6 +95,7 @@ public class TerravibeBlocks {
     /** Loads all the render layer maps for the blocks. */
     @Environment(EnvType.CLIENT)
     public static void loadRenderLayerMaps() {
+        BlockRenderLayerMap.INSTANCE.putBlock(BASIL_HERB, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BEANS_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CORN_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_SWEET_BERRY_BUSH, RenderLayer.getCutout());
@@ -118,6 +122,7 @@ public class TerravibeBlocks {
         TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.SETTINGS));
         TUN = register(TunBlock.ID, new TunBlock(TunBlock.SETTINGS));
 
+        BASIL_HERB = register(BasilHerbBlock.ID, new BasilHerbBlock(BasilHerbBlock.SETTINGS));
         BEANS_CROP = register(BeansCropBlock.ID, new BeansCropBlock(BeansCropBlock.SETTINGS));
         CORN_CROP = register(CornCropBlock.ID, new CornCropBlock(CornCropBlock.SETTINGS));
         DARK_SWEET_BERRY_BUSH = register(DarkSweetBerryBushBlock.ID, new DarkSweetBerryBushBlock(DarkSweetBerryBushBlock.SETTINGS));

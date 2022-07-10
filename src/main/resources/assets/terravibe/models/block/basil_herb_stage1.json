@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "terravibe:block/basil_herb_stage1"
+  }
+}

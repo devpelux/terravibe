@@ -31,6 +31,9 @@ public class TerravibeItems {
 
     //Fruits and seeds of plants
 
+    /** Basil spice. */
+    public static final BasilItem BASIL;
+
     /** Little edible seeds. */
     public static final BeansItem BEANS;
 
@@ -136,6 +139,7 @@ public class TerravibeItems {
     /** Loads all the items. */
     public static void load() {
         CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, BakedSweetPotatoItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(BASIL, BasilItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(BEANS, BeansItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(CORN, CornItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, CornGrainsItem.COMPOSTING_CHANCE);
@@ -189,6 +193,7 @@ public class TerravibeItems {
 
         DARK_SWEET_BERRIES = register(DarkSweetBerriesItem.ID, new DarkSweetBerriesItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, DarkSweetBerriesItem.SETTINGS));
         NIGHTLOCK_BERRIES = register(NightlockBerriesItem.ID, new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, NightlockBerriesItem.SETTINGS));
+        BASIL = register(BasilItem.ID, new BasilItem(TerravibeBlocks.BASIL_HERB, BasilItem.SETTINGS));
         BEANS = register(BeansItem.ID, new BeansItem(TerravibeBlocks.BEANS_CROP, BeansItem.SETTINGS));
         CORN = register(CornItem.ID, new CornItem(CornItem.SETTINGS));
         CORN_GRAINS = register(CornGrainsItem.ID, new CornGrainsItem(TerravibeBlocks.CORN_CROP, CornGrainsItem.SETTINGS));
