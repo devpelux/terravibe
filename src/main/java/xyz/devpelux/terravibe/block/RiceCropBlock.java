@@ -31,6 +31,18 @@ public class RiceCropBlock extends FloodedCropBlock {
         super(settings);
     }
 
+    /** Gets the time to grow. */
+    @Override
+    public int getGrowingTime() {
+        return 7;
+    }
+
+    /** Gets the required light to grow. */
+    @Override
+    public int getMinLightToGrow() {
+        return 9;
+    }
+
     /** Gets the seeds item of the block. */
     @Override
     public ItemConvertible getSeedsItem() {

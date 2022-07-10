@@ -86,6 +86,12 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
         return Optional.of(SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES);
     }
 
+    /** Gets the time to grow. */
+    @Override
+    public int getGrowingTime() {
+        return 10;
+    }
+
     /** Gets the required light to grow. */
     @Override
     public int getMinLightToGrow() {

@@ -18,6 +18,12 @@ public class BasilHerbBlock extends HerbBlock {
         super(settings);
     }
 
+    /** Gets the time to grow. */
+    @Override
+    public int getGrowingTime() {
+        return 20;
+    }
+
     /** Gets the required light to grow. */
     @Override
     public int getMinLightToGrow() {

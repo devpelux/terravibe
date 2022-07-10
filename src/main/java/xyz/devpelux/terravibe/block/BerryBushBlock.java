@@ -30,9 +30,6 @@ import java.util.Optional;
 
 /** Berry bush. */
 public abstract class BerryBushBlock extends PlantBlock implements Fertilizable {
-    /** Growing time. */
-    public static final int GROWING_TIME = 5;
-
     /** Voxel shapes of the block. */
     private static final VoxelShape[] AGE_TO_SHAPE;
 
@@ -81,6 +78,9 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 
     /** Gets the pick sound. */
     public abstract Optional<SoundEvent> getPickSound();
+
+    /** Gets the time to grow. */
+    public abstract int getGrowingTime();
 
     /** Gets the required light to grow. */
     public abstract int getMinLightToGrow();
@@ -138,7 +138,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
      */
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!isFullyGrown(state) && random.nextInt(GROWING_TIME) == 0
+        if (!isFullyGrown(state) && random.nextInt(getGrowingTime()) == 0
                 && world.getBaseLightLevel(pos.up(), 0) >= getMinLightToGrow()) {
             //Increases the age by 1.
             BlockState nextGrowState = state.with(getAgeProperty(), getAge(state) + 1);

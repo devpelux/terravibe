@@ -15,9 +15,6 @@ import org.jetbrains.annotations.NotNull;
 
 /** A herb with two stages that can be planted everywhere (in dirt). */
 public abstract class HerbBlock extends PlantBlock implements Fertilizable {
-    /** Growing time. */
-    public static final int GROWING_TIME = 20;
-
     /** Age of the herb. */
     public static final IntProperty AGE;
 
@@ -42,6 +39,9 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
         return state.get(AGE);
     }
 
+    /** Gets the time to grow. */
+    public abstract int getGrowingTime();
+
     /** Gets the required light to grow. */
     public abstract int getMinLightToGrow();
 
@@ -57,7 +57,7 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
      */
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (getAge(state) == 0 && random.nextInt(GROWING_TIME) == 0
+        if (getAge(state) == 0 && random.nextInt(getGrowingTime()) == 0
                 && world.getBaseLightLevel(pos.up(), 0) >= getMinLightToGrow()) {
             //Sets the age to 1.
             BlockState nextGrowState = state.with(AGE, 1);
