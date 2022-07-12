@@ -56,7 +56,7 @@ public class OpuntiaBlock extends FacingBlock {
     public static final int PLANT_GROWING_TIME = 15;
 
     /** Max distance. */
-    public static final int MAX_DISTANCE = 5;
+    public static final int MAX_DISTANCE = 4;
 
     /** Max age. */
     public static final int MAX_AGE = 2;
