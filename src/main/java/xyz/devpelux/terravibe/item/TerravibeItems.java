@@ -94,6 +94,14 @@ public class TerravibeItems {
     /** Seeds of tomato. */
     public static final TomatoSeedsItem TOMATO_SEEDS;
 
+    //Fruits and seeds of other plants
+
+    /** Dark mold. */
+    public static final DarkMoldItem DARK_MOLD;
+
+    /** Dust of dark mold. */
+    public static final DarkMoldDustItem DARK_MOLD_DUST;
+
     //Fruits of trees
 
     /** Typical fruit used to make oil. */
@@ -161,6 +169,8 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, RedSweetPotatoItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(RICE, RiceItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, RiceGrainsItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(DARK_MOLD, DarkMoldItem.COMPOSTING_CHANCE);
+        CompostingChanceRegistry.INSTANCE.add(DARK_MOLD_DUST, DarkMoldDustItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO, SweetPotatoItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, SweetPotatoBudsItem.COMPOSTING_CHANCE);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, TomatoItem.COMPOSTING_CHANCE);
@@ -212,6 +222,9 @@ public class TerravibeItems {
         RED_SWEET_POTATO = register(RedSweetPotatoItem.ID, new RedSweetPotatoItem(RedSweetPotatoItem.SETTINGS));
         TOMATO = register(TomatoItem.ID, new TomatoItem(TomatoItem.SETTINGS));
         TOMATO_SEEDS = register(TomatoSeedsItem.ID, new TomatoSeedsItem(TerravibeBlocks.TOMATO_CROP, TomatoSeedsItem.SETTINGS));
+
+        DARK_MOLD = register(DarkMoldItem.ID, new DarkMoldItem(DarkMoldItem.SETTINGS));
+        DARK_MOLD_DUST = register(DarkMoldDustItem.ID, new DarkMoldDustItem(TerravibeBlocks.DARK_MOLD, DarkMoldDustItem.SETTINGS));
 
         OLIVES = register(OlivesItem.ID, new OlivesItem(OlivesItem.SETTINGS));
         PRICKLY_PEAR = register(PricklyPearItem.ID, new PricklyPearItem(PricklyPearItem.SETTINGS));

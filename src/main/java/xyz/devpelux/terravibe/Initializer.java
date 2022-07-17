@@ -6,6 +6,7 @@ import xyz.devpelux.terravibe.blockentity.TerravibeBlockEntityTypes;
 import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItemGroups;
 import xyz.devpelux.terravibe.item.TerravibeItems;
+import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 import xyz.devpelux.terravibe.screenhandler.TerravibeScreenHandlerTypes;
 import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
@@ -17,16 +18,13 @@ public class Initializer implements ModInitializer {
 	/** Runs the mod initializer. */
 	@Override
 	public void onInitialize() {
-		TerravibeRecipeTypes.load();
-
-		TerravibeItemGroups.load();
-
-		TerravibeBlockTags.load();
-
 		TerravibeBlocks.load();
-		TerravibeBlockEntityTypes.load();
+		TerravibeItemGroups.load();
 		TerravibeItems.load();
-
+		TerravibeBlockEntityTypes.load();
+		TerravibeBlockTags.load();
+		TerravibeParticleTypes.load();
+		TerravibeRecipeTypes.load();
 		TerravibeScreenHandlerTypes.load();
 
 		Util.LOGGER.info("Loaded Terravibe components.");

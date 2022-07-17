@@ -11,9 +11,21 @@ public class TerravibeBlockTags {
 
     /**
      * {@code c:flooded_farmland}<p/>
-     * Tag used to flag all blocks in which can be planted flooded crops.
+     * Identifies a block in which can be planted flooded crops.
      */
     public static final TagKey<Block> FLOODED_FARMLAND;
+
+    /**
+     * {@code c:mold_infestable}<p/>
+     * Identifies a block that can be infested by molds.
+     */
+    public static final TagKey<Block> MOLD_INFESTABLE;
+
+    /**
+     * {@code c:mold_replaceable}<p/>
+     * Identifies a block that can be replaced by molds.
+     */
+    public static final TagKey<Block> MOLD_REPLACEABLE;
 
     /** Loads all the tags. */
     public static void load() {}
@@ -25,5 +37,7 @@ public class TerravibeBlockTags {
 
     static {
         FLOODED_FARMLAND = of(new Identifier("c", "flooded_farmland"));
+        MOLD_INFESTABLE = of(new Identifier("c", "mold_infestable"));
+        MOLD_REPLACEABLE = of(new Identifier("c", "mold_replaceable"));
     }
 }

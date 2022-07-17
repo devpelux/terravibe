@@ -18,6 +18,8 @@
   "block.terravibe.sweet_potato_crop" : "Sweet Potato Crop",
   "block.terravibe.tomato_crop" : "Tomato Crop",
 
+  "block.terravibe.dark_mold" : "Dark Mold",
+
   "block.terravibe.opuntia" : "Opuntia",
   "block.terravibe.flowering_opuntia" : "Flowering Opuntia",
 
@@ -51,6 +53,9 @@
   "item.terravibe.sweet_potato_buds" : "Sweet Potato Buds",
   "item.terravibe.tomato" : "Tomato",
   "item.terravibe.tomato_seeds" : "Tomato Seeds",
+
+  "item.terravibe.dark_mold" : "Dark Mold",
+  "item.terravibe.dark_mold_dust" : "Dust of Dark Mold",
 
   "item.terravibe.olives" : "Olives",
   "item.terravibe.prickly_pear" : "Prickly Pear",

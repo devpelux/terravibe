@@ -1,0 +1,9 @@
+{
+  "type": "terravibe:crushing",
+  "ingredient": {
+    "item": "terravibe:dark_mold"
+  },
+  "result": "terravibe:dark_mold_dust",
+  "count": 3,
+  "chance": 1
+}

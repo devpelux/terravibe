@@ -45,7 +45,7 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
     /** Gets the required light to grow. */
     public abstract int getMinLightToGrow();
 
-    /** Gets a property indicating if the block reacts with the ticking system. */
+    /** Gets a value indicating if the block reacts with the ticking system. */
     @Override
     public boolean hasRandomTicks(BlockState state) {
         return getAge(state) == 0;
@@ -94,8 +94,8 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
     static {
         AGE = Properties.AGE_1;
         AGE_TO_SHAPE = new VoxelShape[]{
-                Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 3.0D, 14.0D),
-                Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 14.0D, 14.0D)
+                Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D),
+                Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D)
         };
     }
 }

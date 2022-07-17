@@ -126,7 +126,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
         }
     }
 
-    /** Gets a property indicating if the block reacts with the ticking system. */
+    /** Gets a value indicating if the block reacts with the ticking system. */
     @Override
     public boolean hasRandomTicks(BlockState state) {
         return !this.isFullyGrown(state);

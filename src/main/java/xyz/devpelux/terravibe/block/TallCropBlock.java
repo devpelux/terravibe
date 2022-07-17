@@ -104,7 +104,7 @@ public abstract class TallCropBlock extends CropBlock {
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
-    /** Gets a property indicating if the block reacts with the ticking system. */
+    /** Gets a value indicating if the block reacts with the ticking system. */
     @Override
     public boolean hasRandomTicks(BlockState state) {
         //Only the lower block, if is not mature, can handle ticks. (The "root" of the plant)
