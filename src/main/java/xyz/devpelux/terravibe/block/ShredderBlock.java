@@ -85,7 +85,7 @@ public class ShredderBlock extends BlockWithEntity {
 	@Override
 	public BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
 		//When the player places the block, gets the opposite direction.
-		return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+		return getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
 	}
 
 	/** Rotates the block in the specified direction. */

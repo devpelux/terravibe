@@ -96,8 +96,8 @@ public class OpuntiaBlock extends FacingBlock {
     }
 
     /** Gets the default state with the specified facing. */
-    public BlockState withFacing(Direction facing) {
-        return getDefaultState().with(FACING, facing);
+    public static BlockState withFacing(Direction facing) {
+        return TerravibeBlocks.OPUNTIA.getDefaultState().with(FACING, facing);
     }
 
     /** Gets the block state when the block is placed. */
@@ -208,9 +208,9 @@ public class OpuntiaBlock extends FacingBlock {
             BlockState newState;
             if (random.nextFloat() < FloweringOpuntiaBlock.CHANCE) {
                 //Facing towards the generator block.
-                newState = TerravibeBlocks.FLOWERING_OPUNTIA.withFacing(face.getOpposite());
+                newState = FloweringOpuntiaBlock.withFacing(face.getOpposite());
                 //Applies a random sterility.
-                newState = FloweringOpuntiaBlock.withRandomSterility(newState, random);
+                newState = FloweringOpuntiaBlock.applyRandomSterility(newState, random);
             }
             else {
                 //Facing towards the generator block, distanced the generator distance + 1.

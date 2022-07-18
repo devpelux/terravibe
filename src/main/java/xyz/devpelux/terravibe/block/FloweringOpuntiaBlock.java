@@ -92,7 +92,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
     }
 
     /** Applies a random sterility to the block. */
-    public static BlockState withRandomSterility(@NotNull BlockState state, @NotNull Random random) {
+    public static BlockState applyRandomSterility(@NotNull BlockState state, @NotNull Random random) {
         return state.with(STERILE, random.nextFloat() < STERILITY_CHANCE);
     }
 
@@ -102,8 +102,8 @@ public class FloweringOpuntiaBlock extends FacingBlock {
     }
 
     /** Gets the default state with the specified facing. */
-    public BlockState withFacing(Direction facing) {
-        return getDefaultState().with(FACING, facing);
+    public static BlockState withFacing(Direction facing) {
+        return TerravibeBlocks.FLOWERING_OPUNTIA.getDefaultState().with(FACING, facing);
     }
 
     /** Gets the age when the plant is fully grown, and is ready to make flowers, then fruits. */

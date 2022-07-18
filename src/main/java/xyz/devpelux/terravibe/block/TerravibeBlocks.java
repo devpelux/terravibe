@@ -18,72 +18,72 @@ public class TerravibeBlocks {
     //Objects
 
     /** Crushes an item to obtain other items. */
-    public static final MortarBlock MORTAR;
+    public static final Block MORTAR;
 
     /** Shreds a bunch of items to obtain something. */
-    public static final ShredderBlock SHREDDER;
+    public static final Block SHREDDER;
 
     /** Tray used to make salt. */
-    public static final TrayBlock TRAY;
+    public static final Block TRAY;
 
     /** Container for "non-lava" fluids. */
-    public static final TunBlock TUN;
+    public static final Block TUN;
 
     //Plants
 
     /** Herb of the basil. */
-    public static final BasilHerbBlock BASIL_HERB;
+    public static final Block BASIL_HERB;
 
     /** Crop of the beans. */
-    public static final BeansCropBlock BEANS_CROP;
+    public static final Block BEANS_CROP;
 
     /** Crop of the corn. */
-    public static final CornCropBlock CORN_CROP;
+    public static final Block CORN_CROP;
 
     /** Bush of dark sweet berries. */
-    public static final DarkSweetBerryBushBlock DARK_SWEET_BERRY_BUSH;
+    public static final Block DARK_SWEET_BERRY_BUSH;
 
     /** Crop of the eggplant. */
-    public static final EggplantCropBlock EGGPLANT_CROP;
+    public static final Block EGGPLANT_CROP;
 
     /** Crop of the kale. */
-    public static final KaleCropBlock KALE_CROP;
+    public static final Block KALE_CROP;
 
     /** Crop of the lettuce. */
-    public static final LettuceCropBlock LETTUCE_CROP;
+    public static final Block LETTUCE_CROP;
 
     /** Bush of nightlock berries, without thorns. */
-    public static final NightlockBerryBushBlock NIGHTLOCK_BERRY_BUSH;
+    public static final Block NIGHTLOCK_BERRY_BUSH;
 
     /** Crop of the onion. */
-    public static final OnionCropBlock ONION_CROP;
+    public static final Block ONION_CROP;
 
     /** Crop of the rice. */
-    public static final RiceCropBlock RICE_CROP;
+    public static final Block RICE_CROP;
 
     /** Crop of the sweet potato. */
-    public static final SweetPotatoCropBlock SWEET_POTATO_CROP;
+    public static final Block SWEET_POTATO_CROP;
 
     /** Crop of the tomato. */
-    public static final TomatoCropBlock TOMATO_CROP;
+    public static final Block TOMATO_CROP;
 
     //Other plants
 
     /** Dark mold that can always spread. */
-    public static final DarkMoldBlock DARK_MOLD;
+    public static final Block DARK_MOLD;
 
     //Tree blocks
 
     /** Main block of the opuntia. */
-    public static final OpuntiaBlock OPUNTIA;
+    public static final Block OPUNTIA;
 
     /** Flowering block of the opuntia. */
-    public static final FloweringOpuntiaBlock FLOWERING_OPUNTIA;
+    public static final Block FLOWERING_OPUNTIA;
 
     //Terrain blocks
 
     /** A mud block excavated and flooded with water. */
-    public static final FloodedMudBlock FLOODED_MUD;
+    public static final Block FLOODED_MUD;
 
     /** Loads all the blocks. */
     public static void load() {
