@@ -1,6 +1,9 @@
 package xyz.devpelux.terravibe.recipe;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
@@ -8,14 +11,16 @@ import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Util;
 
-/** Crushes an item to obtain another item with a successful chance. */
+import java.util.Objects;
+
+/** Crushes an item to obtain other items. */
 public class CrushingRecipe extends CuttingRecipe {
     /** Identifier of the recipe. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "crushing");
@@ -24,16 +29,14 @@ public class CrushingRecipe extends CuttingRecipe {
     public static final RecipeSerializer<CrushingRecipe> CRUSHING_RECIPE_SERIALIZER =
             Registry.register(Registry.RECIPE_SERIALIZER, ID, new Serializer());
 
-    protected final Random random = Random.create();
-
-    protected final float chance;
-    protected final int experience;
+    protected final int minCount;
+    protected final int maxCount;
 
     /** Initializes a new {@link CrushingRecipe}. */
-    public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, float chance, int experience) {
+    public CrushingRecipe(Identifier id, String group, Ingredient input, ItemStack output, int minCount, int maxCount) {
         super(TerravibeRecipeTypes.CRUSHING, CRUSHING_RECIPE_SERIALIZER, id, group, input, output);
-        this.chance = chance;
-        this.experience = experience;
+        this.minCount = minCount;
+        this.maxCount = maxCount;
     }
 
     /** Gets the input ingredient. */
@@ -41,19 +44,19 @@ public class CrushingRecipe extends CuttingRecipe {
         return input;
     }
 
-    /** Gets the chance of success. */
-    public float getChance() {
-        return chance;
+    /** Gets the min count of the result. */
+    public int getMinCount() {
+        return minCount;
     }
 
-    /** Executes an attempt and returns if it was successful. */
-    public boolean isSuccessful() {
-        return random.nextFloat() <= getChance();
+    /** Gets the max count of the result. */
+    public int getMaxCount() {
+        return maxCount;
     }
 
-    /** Gets the experience amount value of the recipe. */
-    public int getExperience() {
-        return experience;
+    /** Gets a random count from min count and max count of the result. */
+    public int getRandomCount(@NotNull Random random) {
+        return random.nextBetween(minCount, maxCount);
     }
 
     /** Checks if the specified inventory matches the ingredient list. */
@@ -71,29 +74,26 @@ public class CrushingRecipe extends CuttingRecipe {
         /** Reads the recipe from a json object. */
         @Override
         public CrushingRecipe read(Identifier id, JsonObject json) {
+            //Deserializing recipe json
+            CrushingRecipeFormat recipe = new Gson().fromJson(json, CrushingRecipeFormat.class);
+
             //Group
-            String group = JsonHelper.getString(json, "group", "");
+            String group = Objects.requireNonNullElse(recipe.group, "");
 
-            //Input ingredient
-            Ingredient input;
-            if (JsonHelper.hasArray(json, "ingredient")) {
-                input = Ingredient.fromJson(JsonHelper.getArray(json, "ingredient"));
-            } else {
-                input = Ingredient.fromJson(JsonHelper.getObject(json, "ingredient"));
-            }
+            //Input
+            Ingredient input = Ingredient.fromJson(recipe.ingredient);
 
-            //Output ingredient
-            String outputItem = JsonHelper.getString(json, "result");
-            int itemCount = JsonHelper.getInt(json, "count");
-            ItemStack output = new ItemStack(Registry.ITEM.get(new Identifier(outputItem)), itemCount);
+            //Checking if there is a result
+            if (recipe.result == null) throw new JsonSyntaxException("No recipe result");
 
-            //Chance
-            float chance = JsonHelper.getFloat(json, "chance");
+            //Result
+            ItemStack output = Util.getStackFromName(recipe.result.item);
 
-            //Experience
-            int experience = JsonHelper.hasElement(json, "experience") ? JsonHelper.getInt(json, "experience") : 0;
+            //Result min and max count
+            int maxCount = recipe.result.max_count;
+            int minCount = Math.min(recipe.result.min_count, maxCount);
 
-            return new CrushingRecipe(id, group, input, output, chance, experience);
+            return new CrushingRecipe(id, group, input, output, minCount, maxCount);
         }
 
         /** Reads the recipe from a web packet. */
@@ -102,9 +102,9 @@ public class CrushingRecipe extends CuttingRecipe {
             String group = buf.readString();
             Ingredient input = Ingredient.fromPacket(buf);
             ItemStack output = buf.readItemStack();
-            float chance = buf.readFloat();
-            int experience = buf.readInt();
-            return new CrushingRecipe(id, group, input, output, chance, experience);
+            int minCount = buf.readInt();
+            int maxCount = buf.readInt();
+            return new CrushingRecipe(id, group, input, output, minCount, maxCount);
         }
 
         /** Writes the recipe into a web packet. */
@@ -113,8 +113,23 @@ public class CrushingRecipe extends CuttingRecipe {
             buf.writeString(recipe.getGroup());
             recipe.getInput().write(buf);
             buf.writeItemStack(recipe.getOutput());
-            buf.writeFloat(recipe.getChance());
-            buf.writeInt(recipe.getExperience());
+            buf.writeInt(recipe.getMinCount());
+            buf.writeInt(recipe.getMaxCount());
+        }
+
+
+        /** {@link CrushingRecipe} json format. */
+        private static class CrushingRecipeFormat {
+            public String group;
+            public JsonElement ingredient;
+            public ResultFormat result;
+
+            /** {@link CrushingRecipeFormat} result json format. */
+            public static class ResultFormat {
+                public String item;
+                public int min_count;
+                public int max_count;
+            }
         }
     }
 }

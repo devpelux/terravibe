@@ -59,13 +59,13 @@ public class OpuntiaBlock extends FacingBlock {
     public static final int MAX_DISTANCE = 4;
 
     /** Max age. */
-    public static final int MAX_AGE = 2;
+    public static final int MAX_AGE = Properties.AGE_2_MAX;
 
     /** Distance of the block from the root (0 = root, 7 = too distant). */
     public static final IntProperty DISTANCE;
 
     /** Age of the block. */
-    public static final IntProperty AGE;
+    public static final IntProperty AGE = Properties.AGE_2;
 
     /** Initializes a new {@link OpuntiaBlock}. */
     public OpuntiaBlock(Settings settings) {
@@ -280,7 +280,6 @@ public class OpuntiaBlock extends FacingBlock {
 
     static {
         DISTANCE = IntProperty.of("distance", 0, MAX_DISTANCE);
-        AGE = Properties.AGE_2;
 
         //age | facing
         SHAPES = new VoxelShape[][] {

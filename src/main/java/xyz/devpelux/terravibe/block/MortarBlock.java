@@ -5,11 +5,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -18,8 +16,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3f;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -30,7 +26,7 @@ import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 
 import java.util.Optional;
 
-/** Crushes an item to obtain another item. */
+/** Crushes an item to obtain other items. */
 public class MortarBlock extends Block {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "mortar");
@@ -40,9 +36,6 @@ public class MortarBlock extends Block {
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
-
-    /** Spawn position of the fail particles. */
-    private static final Vec3f FAIL_PARTICLES_SPAWN_POINT = new Vec3f(0.5f, 0.1875f, 0.5f);
 
     /** Initializes a new {@link MortarBlock}. */
     public MortarBlock(Settings settings) {
@@ -70,21 +63,19 @@ public class MortarBlock extends Block {
 
             //This is server side.
             if (!world.isClient()) {
-
-                //If the recipe exists, gets the item from the hand and tries to "crush" (convert) it.
-                //If the conversion is successful, then adds or drops the resulting item.
-                //Else, spawns fail particles to say that the item was consumed but nothing is returned.
+                //Gets the item from the player hand.
                 if (!player.getAbilities().creativeMode) {
                     //The item is consumed only if the player is not in creative mode.
                     player.getStackInHand(hand).decrement(1);
                 }
-                if (recipe.isSuccessful()) {
-                    player.getInventory().offerOrDrop(recipe.getOutput().copy());
 
-                    //If is successful, drops experience.
-                    ExperienceOrbEntity.spawn((ServerWorld)world, player.getPos(), recipe.getExperience());
+                //Gets a random count of the output item to return.
+                int resultCount = recipe.getRandomCount(world.random);
+                if (resultCount > 0) {
+                    ItemStack output = recipe.getOutput().copy();
+                    output.setCount(resultCount);
+                    player.getInventory().offerOrDrop(output);
                 }
-                else failEffects(world, pos);
 
                 //Plays the crush sound.
                 player.playSound(getCrushSound(), SoundCategory.BLOCKS, 1f, 1f);
@@ -95,26 +86,6 @@ public class MortarBlock extends Block {
         }
         
         else return ActionResult.PASS;
-    }
-
-    /** Spawn the fail effects. */
-    private static void failEffects(@NotNull World world, @NotNull BlockPos pos) {
-        Random random = world.getRandom();
-        double speed = random.nextGaussian() * 0.01d + 0.02d; // [0.02, 0.03]
-        double deltaX = random.nextGaussian() * 0.02d; // [0, 0.02]
-        double deltaY = random.nextGaussian() * 0.02d; // [0, 0.02]
-        double deltaZ = random.nextGaussian() * 0.02d; // [0, 0.02]
-
-        //Spawns random particles.
-        ((ServerWorld)world).spawnParticles(ParticleTypes.SMOKE,
-                pos.getX() + FAIL_PARTICLES_SPAWN_POINT.getX(),
-                pos.getY() + FAIL_PARTICLES_SPAWN_POINT.getY(),
-                pos.getZ() + FAIL_PARTICLES_SPAWN_POINT.getZ(),
-                10,
-                deltaX,
-                deltaY,
-                deltaZ,
-                speed);
     }
 
     /** Gets the outline shape of the block. */

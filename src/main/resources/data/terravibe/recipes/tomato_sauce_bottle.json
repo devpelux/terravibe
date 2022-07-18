@@ -17,5 +17,5 @@
   "container": {
     "item": "minecraft:glass_bottle"
   },
-  "output": "terravibe:tomato_sauce_bottle"
+  "result": "terravibe:tomato_sauce_bottle"
 }

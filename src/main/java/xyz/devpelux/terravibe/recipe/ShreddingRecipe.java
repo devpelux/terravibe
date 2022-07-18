@@ -2,7 +2,6 @@ package xyz.devpelux.terravibe.recipe;
 
 import com.google.gson.*;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
@@ -10,11 +9,13 @@ import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Util;
 
 import java.util.ArrayList;
 
@@ -143,41 +144,35 @@ public class ShreddingRecipe implements Recipe<Inventory> {
         /** Reads the recipe from a json object. */
         @Override
         public ShreddingRecipe read(Identifier id, JsonObject json) {
-            ShreddingRecipeFormat recipeJsonFormat = new Gson().fromJson(json, ShreddingRecipeFormat.class);
+            //Checking if there is an array of ingredients
+            if (!JsonHelper.hasArray(json, "ingredients")) throw new JsonSyntaxException("Required an array of ingredients");
 
-            if (recipeJsonFormat.ingredients != null && recipeJsonFormat.container != null && recipeJsonFormat.output != null) {
-                if (recipeJsonFormat.ingredients.size() > 0) {
-                    //Ingredients
-                    DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(recipeJsonFormat.ingredients.size());
-                    for (JsonElement je : recipeJsonFormat.ingredients) {
-                        if (je.isJsonObject()) ingredients.add(Ingredient.fromJson(je.getAsJsonObject()));
-                        else throw new JsonSyntaxException("ShreddingRecipe: All ingredients must be JsonObjects");
-                    }
+            //Deserializing recipe json
+            ShreddingRecipeFormat recipe = new Gson().fromJson(json, ShreddingRecipeFormat.class);
 
-                    //Container
-                    Ingredient container = Ingredient.fromJson(recipeJsonFormat.container);
-
-                    //Output
-                    Item outputItem = Registry.ITEM.getOrEmpty(new Identifier(recipeJsonFormat.output))
-                            .orElseThrow(() -> new JsonSyntaxException("ShreddingRecipe: No such output item: " + recipeJsonFormat.output));
-                    ItemStack output = new ItemStack(outputItem, 1);
-
-                    return new ShreddingRecipe(id, ingredients, container, output);
-                }
-                else {
-                    throw new JsonSyntaxException("ShreddingRecipe: Required at least 1 ingredient");
-                }
+            //Ingredients
+            DefaultedList<Ingredient> ingredients = DefaultedList.of();
+            for (JsonElement je : recipe.ingredients) {
+                ingredients.add(Ingredient.fromJson(je));
             }
-            else {
-                throw new JsonSyntaxException("ShreddingRecipe: Missing json attributes");
-            }
+
+            //Checking if there is at least one ingredient
+            if (ingredients.size() == 0) throw new JsonSyntaxException("Required at least one ingredient");
+
+            //Container
+            Ingredient container = Ingredient.fromJson(recipe.container);
+
+            //Result
+            ItemStack output = Util.getStackFromName(recipe.result);
+
+            return new ShreddingRecipe(id, ingredients, container, output);
         }
 
         /** Reads the recipe from a web packet. */
         @Override
         public ShreddingRecipe read(Identifier id, @NotNull PacketByteBuf buf) {
             int ingCount = buf.readInt();
-            DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(ingCount);
+            DefaultedList<Ingredient> ingredients = DefaultedList.of();
             for (int i = 0; i < ingCount; i++) {
                 ingredients.add(Ingredient.fromPacket(buf));
             }
@@ -196,13 +191,13 @@ public class ShreddingRecipe implements Recipe<Inventory> {
             recipe.getContainer().write(buf);
             buf.writeItemStack(recipe.getOutput());
         }
-    }
 
 
-    /** {@link ShreddingRecipe} json format. */
-    public static class ShreddingRecipeFormat {
-        public JsonArray ingredients;
-        public JsonObject container;
-        public String output;
+        /** {@link ShreddingRecipe} json format. */
+        private static class ShreddingRecipeFormat {
+            public JsonArray ingredients;
+            public JsonElement container;
+            public String result;
+        }
     }
 }

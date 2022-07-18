@@ -60,10 +60,10 @@ public class FloweringOpuntiaBlock extends FacingBlock {
     public static final int GROWING_TIME = 15;
 
     /** Max age. */
-    public static final int MAX_AGE = 3;
+    public static final int MAX_AGE = Properties.AGE_3_MAX;
 
     /** Age of the block. */
-    public static final IntProperty AGE;
+    public static final IntProperty AGE = Properties.AGE_3;
 
     /** Specifies if the block is sterile and will not produce prickly pears. */
     public static final BooleanProperty STERILE;
@@ -255,7 +255,6 @@ public class FloweringOpuntiaBlock extends FacingBlock {
     }
 
     static {
-        AGE = Properties.AGE_3;
         STERILE = BooleanProperty.of("sterile");
 
         //age | facing

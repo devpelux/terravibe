@@ -11,6 +11,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -36,15 +37,6 @@ public class DarkSweetBerryBushBlock extends BerryBushBlock {
     /** Minimum movement to get the thorns damage. */
     public static final double MIN_MOVEMENT_FOR_THORNS_DAMAGE = 0.003000000026077032;
 
-    /** Max age. */
-    public static final int MAX_AGE = 3;
-
-    /** Mature age. */
-    public static final int MATURE_AGE = 2;
-
-    /** Age of the bush. */
-    public static final IntProperty AGE;
-
     /** Initializes a new {@link DarkSweetBerryBushBlock}. */
     public DarkSweetBerryBushBlock(Settings settings) {
         super(settings);
@@ -53,19 +45,19 @@ public class DarkSweetBerryBushBlock extends BerryBushBlock {
     /** Gets the age property. */
     @Override
     public @NotNull IntProperty getAgeProperty() {
-        return AGE;
+        return Properties.AGE_3;
     }
 
     /** Gets the max age. */
     @Override
     public int getMaxAge() {
-        return MAX_AGE;
+        return Properties.AGE_3_MAX;
     }
 
     /** Gets the age when the bush has fruits. */
     @Override
     public int getMatureAge() {
-        return MATURE_AGE;
+        return 2;
     }
 
     /** Gets the fruit item to pick from the plant. */
@@ -131,6 +123,5 @@ public class DarkSweetBerryBushBlock extends BerryBushBlock {
                 .ticksRandomly()
                 .breakInstantly()
                 .sounds(BlockSoundGroup.SWEET_BERRY_BUSH);
-        AGE = IntProperty.of("age", 0, MAX_AGE);
     }
 }

@@ -17,7 +17,7 @@ public class TerravibeBlocks {
 
     //Objects
 
-    /** Crushes an item to obtain another item. */
+    /** Crushes an item to obtain other items. */
     public static final MortarBlock MORTAR;
 
     /** Shreds a bunch of items to obtain something. */
