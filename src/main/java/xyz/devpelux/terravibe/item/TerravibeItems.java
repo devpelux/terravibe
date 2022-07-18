@@ -18,17 +18,6 @@ import xyz.devpelux.terravibe.core.ModInfo;
 public class TerravibeItems {
     private TerravibeItems() {}
 
-    //Item settings
-
-    /** Generic item settings, with stack of 16. */
-    private static final Item.Settings STACK16;
-
-    /** Generic item settings, with stack of 64. */
-    private static final Item.Settings STACK64;
-
-    /** Generic item settings, with stack of 64 without any group. */
-    private static final Item.Settings STACK64_HIDED;
-
     //Objects
 
     /** Item of the mortar block. */
@@ -208,60 +197,74 @@ public class TerravibeItems {
     }
 
     static {
-        //Item settings.
-        STACK16 = new FabricItemSettings().maxCount(16).group(TerravibeItemGroups.TERRAVIBE);
-        STACK64 = new FabricItemSettings().maxCount(64).group(TerravibeItemGroups.TERRAVIBE);
-        STACK64_HIDED = new FabricItemSettings().maxCount(64);
-
         //Items loading order corresponds to the order of the creative tab "Terravibe".
-        MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, STACK64));
-        SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, STACK64));
-        TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, STACK64));
-        TUN = register("tun", new AliasedBlockItem(TerravibeBlocks.TUN, STACK64));
+        MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, Settings.stack64()));
+        SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, Settings.stack64()));
+        TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, Settings.stack64()));
+        TUN = register("tun", new AliasedBlockItem(TerravibeBlocks.TUN, Settings.stack64()));
 
         DARK_SWEET_BERRIES = register("dark_sweet_berries", new AliasedBlockItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH,
-                STACK64.food(TerravibeFoodComponents.DARK_SWEET_BERRIES)));
+                Settings.stack64().food(TerravibeFoodComponents.DARK_SWEET_BERRIES)));
         NIGHTLOCK_BERRIES = register("nightlock_berries", new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH,
-                STACK64.food(TerravibeFoodComponents.NIGHTLOCK_BERRIES)));
-        BASIL = register("basil", new AliasedBlockItem(TerravibeBlocks.BASIL_HERB, STACK64));
-        BEANS = register("beans", new AliasedBlockItem(TerravibeBlocks.BEANS_CROP, STACK64.food(TerravibeFoodComponents.BEANS)));
-        CORN = register("corn", new Item(STACK64));
-        CORN_GRAINS = register("corn_grains", new AliasedBlockItem(TerravibeBlocks.CORN_CROP, STACK64));
-        EGGPLANT = register("eggplant", new Item(STACK64.food(TerravibeFoodComponents.EGGPLANT)));
-        EGGPLANT_SEEDS = register("eggplant_seeds", new AliasedBlockItem(TerravibeBlocks.EGGPLANT_CROP, STACK64));
-        KALE = register("kale", new Item(STACK64.food(TerravibeFoodComponents.KALE)));
-        KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, STACK64));
-        LETTUCE_LEAVES = register("lettuce_leaves", new Item(STACK64.food(TerravibeFoodComponents.LETTUCE_LEAVES)));
-        LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, STACK64));
-        ONION = register("onion", new Item(STACK64.food(TerravibeFoodComponents.ONION)));
-        ONION_SEEDS = register("onion_seeds", new AliasedBlockItem(TerravibeBlocks.ONION_CROP, STACK64));
-        RICE = register("rice", new Item(STACK64));
-        RICE_GRAINS = register("rice_grains", new AliasedBlockItem(TerravibeBlocks.RICE_CROP, STACK64));
+                Settings.stack64().food(TerravibeFoodComponents.NIGHTLOCK_BERRIES)));
+        BASIL = register("basil", new AliasedBlockItem(TerravibeBlocks.BASIL_HERB, Settings.stack64()));
+        BEANS = register("beans", new AliasedBlockItem(TerravibeBlocks.BEANS_CROP, Settings.stack64().food(TerravibeFoodComponents.BEANS)));
+        CORN = register("corn", new Item(Settings.stack64()));
+        CORN_GRAINS = register("corn_grains", new AliasedBlockItem(TerravibeBlocks.CORN_CROP, Settings.stack64()));
+        EGGPLANT = register("eggplant", new Item(Settings.stack64().food(TerravibeFoodComponents.EGGPLANT)));
+        EGGPLANT_SEEDS = register("eggplant_seeds", new AliasedBlockItem(TerravibeBlocks.EGGPLANT_CROP, Settings.stack64()));
+        KALE = register("kale", new Item(Settings.stack64().food(TerravibeFoodComponents.KALE)));
+        KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, Settings.stack64()));
+        LETTUCE_LEAVES = register("lettuce_leaves", new Item(Settings.stack64().food(TerravibeFoodComponents.LETTUCE_LEAVES)));
+        LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, Settings.stack64()));
+        ONION = register("onion", new Item(Settings.stack64().food(TerravibeFoodComponents.ONION)));
+        ONION_SEEDS = register("onion_seeds", new AliasedBlockItem(TerravibeBlocks.ONION_CROP, Settings.stack64()));
+        RICE = register("rice", new Item(Settings.stack64()));
+        RICE_GRAINS = register("rice_grains", new AliasedBlockItem(TerravibeBlocks.RICE_CROP, Settings.stack64()));
         SWEET_POTATO_BUDS = register("sweet_potato_buds", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP,
-                STACK64_HIDED.food(TerravibeFoodComponents.SWEET_POTATO_BUDS)));
+                Settings.stack64Hided().food(TerravibeFoodComponents.SWEET_POTATO_BUDS)));
         SWEET_POTATO = register("sweet_potato", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP,
-                STACK64.food(TerravibeFoodComponents.SWEET_POTATO)));
-        RED_SWEET_POTATO = register("red_sweet_potato", new Item(STACK64.food(TerravibeFoodComponents.RED_SWEET_POTATO)));
-        TOMATO = register("tomato", new Item(STACK64.food(TerravibeFoodComponents.TOMATO)));
-        TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, STACK64));
+                Settings.stack64().food(TerravibeFoodComponents.SWEET_POTATO)));
+        RED_SWEET_POTATO = register("red_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.RED_SWEET_POTATO)));
+        TOMATO = register("tomato", new Item(Settings.stack64().food(TerravibeFoodComponents.TOMATO)));
+        TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, Settings.stack64()));
 
-        DARK_MOLD = register("dark_mold", new Item(STACK64));
-        DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, STACK64));
+        DARK_MOLD = register("dark_mold", new Item(Settings.stack64()));
+        DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, Settings.stack64()));
 
-        OLIVES = register("olives", new Item(STACK64));
-        PRICKLY_PEAR = register("prickly_pear", new Item(STACK64.food(TerravibeFoodComponents.PRICKLY_PEAR)));
+        OLIVES = register("olives", new Item(Settings.stack64()));
+        PRICKLY_PEAR = register("prickly_pear", new Item(Settings.stack64().food(TerravibeFoodComponents.PRICKLY_PEAR)));
 
-        SALT_CRYSTALS = register("salt_crystals", new Item(STACK64));
+        SALT_CRYSTALS = register("salt_crystals", new Item(Settings.stack64()));
 
-        BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(STACK64.food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
+        BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
 
-        SALT = register("salt", new Item(STACK64));
-        OIL_BOTTLE = register("oil_bottle", new Item(STACK16));
-        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new Item(STACK16));
+        SALT = register("salt", new Item(Settings.stack64()));
+        OIL_BOTTLE = register("oil_bottle", new Item(Settings.stack16()));
+        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new Item(Settings.stack16()));
 
-        OPUNTIA = register("opuntia", new AliasedBlockItem(TerravibeBlocks.OPUNTIA, STACK64));
-        FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, STACK64));
+        OPUNTIA = register("opuntia", new AliasedBlockItem(TerravibeBlocks.OPUNTIA, Settings.stack64()));
+        FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, Settings.stack64()));
 
-        FLOODED_MUD = register("flooded_mud", new AliasedBlockItem(TerravibeBlocks.FLOODED_MUD, STACK64));
+        FLOODED_MUD = register("flooded_mud", new AliasedBlockItem(TerravibeBlocks.FLOODED_MUD, Settings.stack64()));
+    }
+
+
+    /** Generic item settings. */
+    private static class Settings {
+        /** Generates generic item settings, with stack of 16. */
+        private static Item.Settings stack16() {
+            return new FabricItemSettings().maxCount(16).group(TerravibeItemGroups.TERRAVIBE);
+        }
+
+        /** Generates generic item settings, with stack of 64. */
+        private static Item.Settings stack64() {
+            return new FabricItemSettings().maxCount(64).group(TerravibeItemGroups.TERRAVIBE);
+        }
+
+        /** Generates generic item settings, with stack of 64, without any group. */
+        private static Item.Settings stack64Hided() {
+            return new FabricItemSettings().maxCount(64);
+        }
     }
 }
