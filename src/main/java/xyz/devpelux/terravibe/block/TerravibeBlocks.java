@@ -72,6 +72,9 @@ public class TerravibeBlocks {
     /** Dark mold that can always spread. */
     public static final Block DARK_MOLD;
 
+    /** Glowing dark mold that can always spread. */
+    public static final Block GLOWING_DARK_MOLD;
+
     //Tree blocks
 
     /** Main block of the opuntia. */
@@ -107,6 +110,7 @@ public class TerravibeBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_MOLD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EGGPLANT_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FLOWERING_OPUNTIA, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NIGHTLOCK_BERRY_BUSH, RenderLayer.getCutout());
@@ -142,6 +146,7 @@ public class TerravibeBlocks {
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.SETTINGS));
 
         DARK_MOLD = register(DarkMoldBlock.ID, new DarkMoldBlock(DarkMoldBlock.SETTINGS));
+        GLOWING_DARK_MOLD = register(GlowingDarkMoldBlock.ID, new GlowingDarkMoldBlock(GlowingDarkMoldBlock.SETTINGS));
 
         OPUNTIA = register(OpuntiaBlock.ID, new OpuntiaBlock(OpuntiaBlock.SETTINGS));
         FLOWERING_OPUNTIA = register(FloweringOpuntiaBlock.ID, new FloweringOpuntiaBlock(FloweringOpuntiaBlock.SETTINGS));

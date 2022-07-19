@@ -58,7 +58,7 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (getAge(state) == 0 && random.nextInt(getGrowingTime()) == 0
-                && world.getBaseLightLevel(pos.up(), 0) >= getMinLightToGrow()) {
+                && world.getBaseLightLevel(pos, 0) >= getMinLightToGrow()) {
             //Sets the age to 1.
             BlockState nextGrowState = state.with(AGE, 1);
             world.setBlockState(pos, nextGrowState, 2);

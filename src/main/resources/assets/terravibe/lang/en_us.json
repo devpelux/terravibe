@@ -19,6 +19,7 @@
   "block.terravibe.tomato_crop" : "Tomato Crop",
 
   "block.terravibe.dark_mold" : "Dark Mold",
+  "block.terravibe.glowing_dark_mold" : "Glowing Dark Mold",
 
   "block.terravibe.opuntia" : "Opuntia",
   "block.terravibe.flowering_opuntia" : "Flowering Opuntia",
@@ -56,6 +57,8 @@
 
   "item.terravibe.dark_mold" : "Dark Mold",
   "item.terravibe.dark_mold_dust" : "Dust of Dark Mold",
+  "item.terravibe.glowing_dark_mold" : "Glowing Dark Mold",
+  "item.terravibe.glowing_dark_mold_dust" : "Dust of Glowing Dark Mold",
 
   "item.terravibe.olives" : "Olives",
   "item.terravibe.prickly_pear" : "Prickly Pear",

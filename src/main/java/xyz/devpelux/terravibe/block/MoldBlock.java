@@ -2,6 +2,7 @@ package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.particle.DefaultParticleType;
@@ -14,6 +15,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
@@ -70,9 +72,6 @@ public abstract class MoldBlock extends PlantBlock {
     /** Gets the time to grow. */
     public abstract int getGrowingTime();
 
-    /** Gets the required light to grow. */
-    public abstract int getMinLightToGrow();
-
     /** Gets the max light to grow. */
     public abstract int getMaxLightToGrow();
 
@@ -106,6 +105,17 @@ public abstract class MoldBlock extends PlantBlock {
         return world.getBaseLightLevel(pos, 0) <= getMaxLightToPlant() && super.canPlaceAt(state, world, pos);
     }
 
+    /** Gets the required block state basing on the neighbor blocks. */
+    @Override
+    public BlockState getStateForNeighborUpdate(@NotNull BlockState state, @NotNull Direction direction, BlockState neighborState,
+                                                WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (direction == Direction.DOWN) {
+            //If the floor is changed, check if it can be planted on the new floor.
+            if (!canPlantOnTop(neighborState, world, pos)) return Blocks.AIR.getDefaultState();
+        }
+        return state;
+    }
+
     /** Gets a value indicating if the block reacts with the ticking system. */
     @Override
     public boolean hasRandomTicks(BlockState state) {
@@ -127,8 +137,7 @@ public abstract class MoldBlock extends PlantBlock {
      */
     public void growingTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!isFullyGrown(state) && random.nextInt(getGrowingTime()) == 0) {
-            int light = world.getBaseLightLevel(pos.up(), 0);
-            if (light >= getMinLightToGrow() && light <= getMaxLightToGrow()) {
+            if (world.getBaseLightLevel(pos, 0) <= getMaxLightToGrow()) {
                 //Increases the age by 1.
                 BlockState nextGrowState = state.with(getAgeProperty(), getAge(state) + 1);
                 world.setBlockState(pos, nextGrowState, 2);

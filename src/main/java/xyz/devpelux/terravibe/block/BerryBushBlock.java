@@ -139,7 +139,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!isFullyGrown(state) && random.nextInt(getGrowingTime()) == 0
-                && world.getBaseLightLevel(pos.up(), 0) >= getMinLightToGrow()) {
+                && world.getBaseLightLevel(pos, 0) >= getMinLightToGrow()) {
             //Increases the age by 1.
             BlockState nextGrowState = state.with(getAgeProperty(), getAge(state) + 1);
             world.setBlockState(pos, nextGrowState, 2);

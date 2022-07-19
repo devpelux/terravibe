@@ -17,23 +17,26 @@ import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 
-/** Dark mold that can always spread. */
-public class DarkMoldBlock extends MoldBlock {
+/** Glowing dark mold that can always spread. */
+public class GlowingDarkMoldBlock extends MoldBlock {
     /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "dark_mold");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "glowing_dark_mold");
 
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
-    /** Initializes a new {@link DarkMoldBlock}. */
-    public DarkMoldBlock(Settings settings) {
+    /** Initializes a new {@link GlowingDarkMoldBlock}. */
+    public GlowingDarkMoldBlock(Settings settings) {
         super(settings);
     }
+
+    /** Age of the block. */
+    public static final IntProperty AGE = Properties.AGE_1;
 
     /** Gets the age property. */
     @Override
     public @Nullable IntProperty getAgeProperty() {
-        return Properties.AGE_1;
+        return AGE;
     }
 
     /** Gets the max age. */
@@ -45,19 +48,19 @@ public class DarkMoldBlock extends MoldBlock {
     /** Gets the time to grow. */
     @Override
     public int getGrowingTime() {
-        return 20;
+        return 30;
     }
 
     /** Gets the max light to grow. */
     @Override
     public int getMaxLightToGrow() {
-        return 11;
+        return 7;
     }
 
     /** Gets the maximum light to plant the mold. */
     @Override
     public int getMaxLightToPlant() {
-        return 12;
+        return 8;
     }
 
     /** Gets a value indicating if the mold can randomly spread into the world. */
@@ -69,7 +72,7 @@ public class DarkMoldBlock extends MoldBlock {
     /** Gets the time to spread the mold. */
     @Override
     public int getSpreadingTime() {
-        return 20;
+        return 40;
     }
 
     /** Gets the number of spores to spread from the block every tick. */
@@ -87,7 +90,7 @@ public class DarkMoldBlock extends MoldBlock {
     /** Gets the spore particle type. */
     @Override
     public @NotNull DefaultParticleType getSporeParticleType() {
-        return TerravibeParticleTypes.DARK_MOLD_SPORE;
+        return TerravibeParticleTypes.GLOWING_DARK_MOLD_SPORE;
     }
 
     static {
@@ -95,6 +98,7 @@ public class DarkMoldBlock extends MoldBlock {
                 .noCollision()
                 .breakInstantly()
                 .sounds(BlockSoundGroup.MOSS_BLOCK)
-                .offsetType(OffsetType.XYZ);
+                .offsetType(OffsetType.XYZ)
+                .luminance(s -> s.get(AGE) == 0 ? 1 : 3);
     }
 }

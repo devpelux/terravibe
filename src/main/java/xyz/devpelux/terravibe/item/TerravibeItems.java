@@ -105,6 +105,12 @@ public class TerravibeItems {
     /** Dust of dark mold. */
     public static final Item DARK_MOLD_DUST;
 
+    /** Glowing dark mold. */
+    public static final Item GLOWING_DARK_MOLD;
+
+    /** Dust of glowing dark mold. */
+    public static final Item GLOWING_DARK_MOLD_DUST;
+
     //Fruits of trees
 
     /** Typical fruit used to make oil. */
@@ -157,6 +163,8 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3F);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD, 0.2f);
+        CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD_DUST, 0.04f);
         CompostingChanceRegistry.INSTANCE.add(KALE, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, 0.5f);
@@ -231,6 +239,8 @@ public class TerravibeItems {
 
         DARK_MOLD = register("dark_mold", new Item(Settings.stack64()));
         DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, Settings.stack64()));
+        GLOWING_DARK_MOLD = register("glowing_dark_mold", new Item(Settings.stack64()));
+        GLOWING_DARK_MOLD_DUST = register("glowing_dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.GLOWING_DARK_MOLD, Settings.stack64()));
 
         OLIVES = register("olives", new Item(Settings.stack64()));
         PRICKLY_PEAR = register("prickly_pear", new Item(Settings.stack64().food(TerravibeFoodComponents.PRICKLY_PEAR)));

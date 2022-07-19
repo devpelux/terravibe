@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "terravibe:block/glowing_dark_mold_stage0"
+    },
+    "age=1": {
+      "model": "terravibe:block/glowing_dark_mold_stage1"
+    }
+  }
+}

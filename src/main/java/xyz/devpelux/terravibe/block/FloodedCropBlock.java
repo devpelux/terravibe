@@ -36,7 +36,7 @@ public abstract class FloodedCropBlock extends CropBlock implements Fertilizable
     @Override
     public void randomTick(BlockState state, @NotNull ServerWorld world, BlockPos pos, Random random) {
         if (!isMature(state) && random.nextInt(getGrowingTime()) == 0
-                && world.getBaseLightLevel(pos.up(), 0) >= getMinLightToGrow()) {
+                && world.getBaseLightLevel(pos, 0) >= getMinLightToGrow()) {
             //Increases the age by 1.
             world.setBlockState(pos, withAge(getAge(state) + 1), 2);
         }
