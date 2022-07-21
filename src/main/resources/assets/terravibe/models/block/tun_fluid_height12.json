@@ -5,8 +5,8 @@
 	},
 	"elements": [
 		{
-			"from": [2, 2, 2],
-			"to": [14, 14, 14],
+			"from": [2, 13, 2],
+			"to": [14, 13, 14],
 			"faces": {
 				"up": {"texture": "#content", "tintindex": 1}
 			}

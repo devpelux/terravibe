@@ -10,7 +10,14 @@
         "model": "terravibe:block/tun_fluid_height1"
       },
       "when": {
-        "level": "1"
+        "OR" : [
+          {
+            "level": "1"
+          },
+          {
+            "level": "2"
+          }
+        ]
       }
     },
     {
@@ -18,7 +25,14 @@
         "model": "terravibe:block/tun_fluid_height2"
       },
       "when": {
-        "level": "2"
+        "OR" : [
+          {
+            "level": "3"
+          },
+          {
+            "level": "4"
+          }
+        ]
       }
     },
     {
@@ -26,7 +40,14 @@
         "model": "terravibe:block/tun_fluid_height3"
       },
       "when": {
-        "level": "3"
+        "OR" : [
+          {
+            "level": "5"
+          },
+          {
+            "level": "6"
+          }
+        ]
       }
     },
     {
@@ -34,7 +55,14 @@
         "model": "terravibe:block/tun_fluid_height4"
       },
       "when": {
-        "level": "4"
+        "OR" : [
+          {
+            "level": "7"
+          },
+          {
+            "level": "8"
+          }
+        ]
       }
     },
     {
@@ -42,7 +70,14 @@
         "model": "terravibe:block/tun_fluid_height5"
       },
       "when": {
-        "level": "5"
+        "OR" : [
+          {
+            "level": "9"
+          },
+          {
+            "level": "10"
+          }
+        ]
       }
     },
     {
@@ -50,7 +85,14 @@
         "model": "terravibe:block/tun_fluid_height6"
       },
       "when": {
-        "level": "6"
+        "OR" : [
+          {
+            "level": "11"
+          },
+          {
+            "level": "12"
+          }
+        ]
       }
     },
     {
@@ -58,7 +100,14 @@
         "model": "terravibe:block/tun_fluid_height7"
       },
       "when": {
-        "level": "7"
+        "OR" : [
+          {
+            "level": "13"
+          },
+          {
+            "level": "14"
+          }
+        ]
       }
     },
     {
@@ -66,7 +115,14 @@
         "model": "terravibe:block/tun_fluid_height8"
       },
       "when": {
-        "level": "8"
+        "OR" : [
+          {
+            "level": "15"
+          },
+          {
+            "level": "16"
+          }
+        ]
       }
     },
     {
@@ -74,7 +130,14 @@
         "model": "terravibe:block/tun_fluid_height9"
       },
       "when": {
-        "level": "9"
+        "OR" : [
+          {
+            "level": "17"
+          },
+          {
+            "level": "18"
+          }
+        ]
       }
     },
     {
@@ -84,10 +147,10 @@
       "when": {
         "OR" : [
           {
-            "level": "10"
+            "level": "19"
           },
           {
-            "level": "11"
+            "level": "20"
           }
         ]
       }
@@ -99,10 +162,10 @@
       "when": {
         "OR" : [
           {
-            "level": "12"
+            "level": "21"
           },
           {
-            "level": "13"
+            "level": "22"
           }
         ]
       }
@@ -114,10 +177,10 @@
       "when": {
         "OR" : [
           {
-            "level": "14"
+            "level": "23"
           },
           {
-            "level": "15"
+            "level": "24"
           }
         ]
       }
@@ -127,7 +190,22 @@
         "model": "terravibe:block/tun_fluid_height13"
       },
       "when": {
-        "level": "16"
+        "OR" : [
+          {
+            "level": "25"
+          },
+          {
+            "level": "26"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/tun_fluid_height14"
+      },
+      "when": {
+        "level": "27"
       }
     }
   ]

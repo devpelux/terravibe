@@ -3,6 +3,7 @@ package xyz.devpelux.terravibe.core;
 import com.google.gson.JsonSyntaxException;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.registry.Registry;
@@ -37,5 +38,18 @@ public class Util {
             }
         }
         throw new JsonSyntaxException("Invalid item '" + id + "'");
+    }
+
+    /** Get an item stack from a nbt. */
+    public static @NotNull ItemStack getStackFromNbt(@NotNull NbtCompound nbt) {
+        NbtCompound stackNbt = nbt.getCompound("Stack");
+        return ItemStack.fromNbt(stackNbt);
+    }
+
+    /** Put an item stack to a nbt. */
+    public static void putStackToNbt(@NotNull NbtCompound nbt, @NotNull ItemStack stack) {
+        NbtCompound stackNbt = new NbtCompound();
+        stack.writeNbt(stackNbt);
+        nbt.put("Stack", stackNbt);
     }
 }

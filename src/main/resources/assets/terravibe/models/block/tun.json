@@ -11,7 +11,7 @@
 	"elements": [
 		{
 			"from": [2, 0, 2],
-			"to": [14, 2, 14],
+			"to": [14, 1, 14],
 			"faces": {
 				"up": {"uv": [2, 2, 14, 14], "texture": "#top"},
 				"down": {"uv": [2, 2, 14, 14], "texture": "#bottom"}

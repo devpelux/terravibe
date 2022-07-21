@@ -3,7 +3,6 @@ package xyz.devpelux.terravibe.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,6 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.TunBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
+import xyz.devpelux.terravibe.core.rendering.ContainableColorProvider;
 
 import java.util.HashMap;
 
@@ -42,7 +42,7 @@ public class TunBlock extends BlockWithEntity {
     public static final int EMPTY_LEVEL = 0;
 
     /** Level of the fluid contained when the tun is full. */
-    public static final int FULL_LEVEL = 16;
+    public static final int FULL_LEVEL = 27;
 
     /** Level of the fluid contained. */
     public static final IntProperty LEVEL;
@@ -51,7 +51,7 @@ public class TunBlock extends BlockWithEntity {
     private static final VoxelShape VOXEL_SHAPE;
 
     /** List of all containable items with their fluid colors. */
-    private static final HashMap<Item, BlockColorProvider> CONTAINABLE = new HashMap<>();
+    private static final HashMap<Item, ContainableColorProvider> CONTAINABLE = new HashMap<>();
 
     /** Initializes a new {@link MortarBlock}. */
     public TunBlock(Settings settings) {
@@ -97,26 +97,27 @@ public class TunBlock extends BlockWithEntity {
     }
 
     /** Registers a containable item in the tun with its fluid color. */
-    public static void registerContainable(Item item, BlockColorProvider colorProvider) {
+    public static void registerContainable(Item item, ContainableColorProvider colorProvider) {
         CONTAINABLE.putIfAbsent(item, colorProvider);
     }
 
-    /** Gets a value indicating if the specified item has a fluid containable in the tun. */
-    public static boolean isItemContainable(Item item) {
+    /** Gets a value indicating if the specified item is a fluid containable in the tun. */
+    public static boolean isContainable(Item item) {
         return CONTAINABLE.containsKey(item);
     }
 
-    /** Gets the contained item. */
-    protected static @Nullable Item getContainedItem(@NotNull World world, BlockPos pos) {
-        TunBlockEntity tunEntity = (TunBlockEntity) world.getBlockEntity(pos);
-        return tunEntity != null ? tunEntity.getContained() : null;
+    /** Gets the contained stack. */
+    protected static @NotNull ItemStack getContained(@NotNull BlockView world, @NotNull BlockPos pos) {
+        if (world.getBlockEntity(pos) instanceof TunBlockEntity tunEntity) {
+            return tunEntity.getContained();
+        }
+        return ItemStack.EMPTY;
     }
 
-    /** Sets the contained item. */
-    protected static void setContainedItem(@NotNull World world, BlockPos pos, Item item) {
-        TunBlockEntity tunEntity = (TunBlockEntity) world.getBlockEntity(pos);
-        if (tunEntity != null) {
-            tunEntity.setContained(item);
+    /** Sets the contained stack. */
+    protected static void setContained(@NotNull BlockView world, @NotNull BlockPos pos, @NotNull ItemStack stack) {
+        if (world.getBlockEntity(pos) instanceof TunBlockEntity tunEntity) {
+            tunEntity.setContained(stack);
         }
     }
 
@@ -126,51 +127,61 @@ public class TunBlock extends BlockWithEntity {
      */
     @Override
     public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
-        //Gets the item in the main hand.
-        Item itemInHand = player.getStackInHand(Hand.MAIN_HAND).getItem();
+        //Gets the stack in the main hand.
+        ItemStack stackInHand = player.getStackInHand(Hand.MAIN_HAND);
 
-        if (isItemContainable(itemInHand) && !isFull(state)) {
-            //If the item is containable.
-            //Checks if the item can be contained (the tun contains nothing or the item is the same).
-            if (getContainedItem(world, pos) == itemInHand || getContainedItem(world, pos) == null) {
+        //Checks if the item of the stack is containable.
+        if (isContainable(stackInHand.getItem()) && !isFull(state)) {
+            //Checks if the stack can be contained (the stack is the same or the tun is empty).
+            if (ItemStack.canCombine(getContained(world, pos), stackInHand) || isEmpty(state)) {
                 if (!world.isClient()) {
                     //Increments the level by 1.
-                    int level = getLevel(state);
-                    setLevel(state, world, pos, level + 1);
-                    //Coverts the item into a glass bottle.
+                    setLevel(state, world, pos, getLevel(state) + 1);
+
+                    //Gets the stack to store, then sets the count to 1.
+                    ItemStack toContain = stackInHand.copy();
+                    toContain.setCount(1);
+
+                    //Sets the contained stack.
+                    setContained(world, pos, toContain);
+
+                    //Coverts an item from the stack into a glass bottle.
                     if (!player.getAbilities().creativeMode) {
                         //The inventory is changed only if the player is not in creative mode.
-                        player.getStackInHand(Hand.MAIN_HAND).decrement(1);
+                        stackInHand.decrement(1);
                         player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
                     }
+
                     //Plays the empty sound.
                     player.playSound(getEmptySound(), SoundCategory.BLOCKS, 1f, 1f);
-
-                    //Sets the contained item.
-                    setContainedItem(world, pos, itemInHand);
                 }
 
                 //Client: SUCCESS / Server: CONSUME
                 return ActionResult.success(world.isClient());
             }
         }
-        else if(player.getStackInHand(Hand.MAIN_HAND).isOf(Items.GLASS_BOTTLE) && !isEmpty(state)) {
+        else if(stackInHand.isOf(Items.GLASS_BOTTLE) && !isEmpty(state)) {
+            //Checks if the item of the stack is a glass bottle.
             if (!world.isClient()) {
-                //If the item is a glass bottle.
                 //Decrements the level by 1.
                 int level = getLevel(state);
                 setLevel(state, world, pos, level - 1);
+
+                //Gets the contained stack to drop.
+                ItemStack contained = getContained(world, pos).copy();
+
+                //If the tun becomes empty, removes the contained item.
+                if (level == 1) setContained(world, pos, ItemStack.EMPTY);
+
                 //Coverts the bottle into the original item.
                 if (!player.getAbilities().creativeMode) {
                     //The inventory is changed only if the player is not in creative mode.
                     player.getStackInHand(Hand.MAIN_HAND).decrement(1);
-                    player.getInventory().offerOrDrop(new ItemStack(getContainedItem(world, pos)));
+                    player.getInventory().offerOrDrop(contained);
                 }
+
                 //Plays the fill sound.
                 player.playSound(getFillSound(), SoundCategory.BLOCKS, 1f, 1f);
-
-                //If is empty, removes the contained item.
-                if (level == 1) setContainedItem(world, pos, null);
             }
 
             //Client: SUCCESS / Server: CONSUME
@@ -209,9 +220,14 @@ public class TunBlock extends BlockWithEntity {
     public static int getContainedFluidColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
         if (i != 1) return -1;
 
-        if (view.getBlockEntity(pos) instanceof TunBlockEntity tunEntity) {
-            if (tunEntity.hasContained()) {
-                return CONTAINABLE.get(tunEntity.getContained()).getColor(state, view, pos, i);
+        //Gets the contained stack.
+        ItemStack contained = getContained(view, pos);
+
+        //Checks if the contained stack is not empty.
+        if (!contained.isEmpty()) {
+            ContainableColorProvider colorProvider = CONTAINABLE.get(contained.getItem());
+            if (colorProvider != null) {
+                return colorProvider.getColor(contained, state, view, pos, i);
             }
         }
 
@@ -221,7 +237,7 @@ public class TunBlock extends BlockWithEntity {
     static {
         LEVEL = IntProperty.of("level", EMPTY_LEVEL, FULL_LEVEL);
         VOXEL_SHAPE = Util.combineVoxelShapes(
-                Block.createCuboidShape(2, 0, 2, 14, 2, 14),
+                Block.createCuboidShape(2, 0, 2, 14, 1, 14),
                 Block.createCuboidShape(0, 0, 2, 2, 16, 16),
                 Block.createCuboidShape(14, 0, 0, 16, 16, 14),
                 Block.createCuboidShape(2, 0, 14, 16, 16, 16),
