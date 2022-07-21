@@ -63,7 +63,7 @@ public abstract class ContainerBlockEntity extends BlockEntity {
     }
 
     /**
-     * Executed when the contained item is changed.
+     * Executed when the contained stack is changed.
      * Syncs with the client.
      */
     @Override
