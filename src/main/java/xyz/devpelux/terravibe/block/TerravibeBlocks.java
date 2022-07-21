@@ -69,6 +69,9 @@ public class TerravibeBlocks {
 
     //Other plants
 
+    /** Birch mold that can always spread. */
+    public static final Block BIRCH_MOLD;
+
     /** Dark mold that can always spread. */
     public static final Block DARK_MOLD;
 
@@ -91,6 +94,7 @@ public class TerravibeBlocks {
     /** Loads all the blocks. */
     public static void load() {
         FlattenableBlockRegistry.register(Blocks.MUD, FLOODED_MUD.getDefaultState());
+        FlattenableBlockRegistry.register(FLOODED_MUD, Blocks.MUD.getDefaultState());
     }
 
     /** Loads all the color providers for the items. */
@@ -105,12 +109,13 @@ public class TerravibeBlocks {
     public static void loadRenderLayerMaps() {
         BlockRenderLayerMap.INSTANCE.putBlock(BASIL_HERB, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BEANS_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_MOLD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CORN_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_SWEET_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_MOLD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EGGPLANT_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FLOWERING_OPUNTIA, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NIGHTLOCK_BERRY_BUSH, RenderLayer.getCutout());
@@ -145,6 +150,7 @@ public class TerravibeBlocks {
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.SETTINGS));
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.SETTINGS));
 
+        BIRCH_MOLD = register(BirchMoldBlock.ID, new BirchMoldBlock(BirchMoldBlock.SETTINGS));
         DARK_MOLD = register(DarkMoldBlock.ID, new DarkMoldBlock(DarkMoldBlock.SETTINGS));
         GLOWING_DARK_MOLD = register(GlowingDarkMoldBlock.ID, new GlowingDarkMoldBlock(GlowingDarkMoldBlock.SETTINGS));
 

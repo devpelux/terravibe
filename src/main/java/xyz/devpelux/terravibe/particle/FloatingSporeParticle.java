@@ -2,16 +2,10 @@ package xyz.devpelux.terravibe.particle;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleFactory;
-import net.minecraft.client.particle.ParticleGroup;
-import net.minecraft.client.particle.ParticleTextureSheet;
-import net.minecraft.client.particle.SpriteProvider;
+import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 
 import java.util.Optional;
 
@@ -42,12 +36,38 @@ public class FloatingSporeParticle extends GlowingDustParticle {
         this.group = group;
     }
 
+
+    /** Factory for the birch mold spore particle. */
+    @Environment(EnvType.CLIENT)
+    public static class BirchMoldSporeFactory implements ParticleFactory<DefaultParticleType> {
+        /** Contains some common settings. */
+        private static final ParticleGroup GROUP = new ParticleGroup(1000);
+
+        /** Sprite provider. */
+        private final SpriteProvider spriteProvider;
+
+        /** Initializes a new {@link DarkMoldSporeFactory}. */
+        public BirchMoldSporeFactory(SpriteProvider spriteProvider) {
+            this.spriteProvider = spriteProvider;
+        }
+
+        /** Creates the particle. */
+        @Override
+        public Particle createParticle(DefaultParticleType particle, ClientWorld world, double x, double y, double z, double vX, double vY, double vZ) {
+            FloatingSporeParticle spore = new FloatingSporeParticle(world, this.spriteProvider, x, y, z, vX + 0d, vY -0.8d, vZ + 0d);
+            spore.setGroup(GROUP);
+            spore.maxAge = world.random.nextBetween(600, 1200);
+            spore.scale *= world.random.nextFloat() * 0.4f + 0.4f; //0.4 <-> 0.8
+            spore.setWind(5, 20, 0.001d);
+            spore.setColor(0.82f, 0.82f, 0.78f); //0xd1d1c7
+            spore.setLuminescence(0.1f, 0.1f, 0);
+            return spore;
+        }
+    }
+
     /** Factory for the dark mold spore particle. */
     @Environment(EnvType.CLIENT)
     public static class DarkMoldSporeFactory implements ParticleFactory<DefaultParticleType> {
-        /** Identifier of the particle. */
-        public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "dark_mold_spore");
-
         /** Contains some common settings. */
         private static final ParticleGroup GROUP = new ParticleGroup(1000);
 
@@ -75,9 +95,6 @@ public class FloatingSporeParticle extends GlowingDustParticle {
     /** Factory for the glowing dark mold spore particle. */
     @Environment(EnvType.CLIENT)
     public static class GlowingDarkMoldSporeFactory implements ParticleFactory<DefaultParticleType> {
-        /** Identifier of the particle. */
-        public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "glowing_dark_mold_spore");
-
         /** Contains some common settings. */
         private static final ParticleGroup GROUP = new ParticleGroup(800);
 

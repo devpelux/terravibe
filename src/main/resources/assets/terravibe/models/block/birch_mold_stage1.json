@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "terravibe:block/birch_mold_stage1"
+  }
+}

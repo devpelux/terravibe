@@ -9,18 +9,11 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -76,32 +69,6 @@ public class FloodedMudBlock extends Block implements Waterloggable {
     protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(NORTH, EAST, SOUTH, WEST, WATERLOGGED);
-    }
-
-    /** Gets the excavation sound. */
-    protected SoundEvent getExcavationSound() {
-        return SoundEvents.ITEM_SHOVEL_FLATTEN;
-    }
-
-    /**
-     * Executed when the block is used.
-     * De-excavates the block by converting to mud.
-     */
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (player.getStackInHand(hand).getItem() instanceof ShovelItem) {
-            if (!world.isClient) {
-                //Converts the block to mud.
-                world.setBlockState(pos, Blocks.MUD.getDefaultState());
-                //Plays the excavation sound.
-                player.playSound(getExcavationSound(), SoundCategory.BLOCKS, 1f, 1f);
-            }
-
-            //Client: SUCCESS / Server: CONSUME
-            return ActionResult.success(world.isClient());
-        }
-
-        return ActionResult.PASS;
     }
 
     /**

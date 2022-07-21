@@ -18,6 +18,7 @@
   "block.terravibe.sweet_potato_crop" : "Sweet Potato Crop",
   "block.terravibe.tomato_crop" : "Tomato Crop",
 
+  "block.terravibe.birch_mold" : "Birch Mold",
   "block.terravibe.dark_mold" : "Dark Mold",
   "block.terravibe.glowing_dark_mold" : "Glowing Dark Mold",
 
@@ -55,6 +56,8 @@
   "item.terravibe.tomato" : "Tomato",
   "item.terravibe.tomato_seeds" : "Tomato Seeds",
 
+  "item.terravibe.birch_mold" : "Birch Mold",
+  "item.terravibe.birch_mold_dust" : "Dust of Birch Mold",
   "item.terravibe.dark_mold" : "Dark Mold",
   "item.terravibe.dark_mold_dust" : "Dust of Dark Mold",
   "item.terravibe.glowing_dark_mold" : "Glowing Dark Mold",

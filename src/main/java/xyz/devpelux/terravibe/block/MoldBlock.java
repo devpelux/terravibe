@@ -1,10 +1,6 @@
 package xyz.devpelux.terravibe.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PlantBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -21,6 +17,8 @@ import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
+
+import java.util.Iterator;
 
 /** Mold that grows in darkness (with a minimum light). */
 public abstract class MoldBlock extends PlantBlock {
@@ -69,8 +67,11 @@ public abstract class MoldBlock extends PlantBlock {
     /** Gets the max age. */
     public abstract int getMaxAge();
 
-    /** Gets the time to grow. */
-    public abstract int getGrowingTime();
+    /** Gets the min light to grow. */
+    public abstract int getMinLightToGrow();
+
+    /** Gets the min light to plant. */
+    public abstract int getMinLightToPlant();
 
     /** Gets the max light to grow. */
     public abstract int getMaxLightToGrow();
@@ -81,8 +82,14 @@ public abstract class MoldBlock extends PlantBlock {
     /** Gets a value indicating if the mold can randomly spread into the world. */
     public abstract boolean canSpread(BlockState state, World world, BlockPos pos, Random random);
 
+    /** Gets the time to grow. */
+    public abstract int getGrowingTime();
+
     /** Gets the time to spread the mold. */
     public abstract int getSpreadingTime();
+
+    /** Gets the time to spread the mold in the neighbor blocks. */
+    public abstract int getNeighborSpreadingTime();
 
     /** Gets the number of spores to spread from the block every tick. */
     public abstract int getSporesPerTick();
@@ -102,7 +109,8 @@ public abstract class MoldBlock extends PlantBlock {
     /** Gets a value indicating if the block can be placed at the specified position. */
     @Override
     public boolean canPlaceAt(BlockState state, @NotNull WorldView world, @NotNull BlockPos pos) {
-        return world.getBaseLightLevel(pos, 0) <= getMaxLightToPlant() && super.canPlaceAt(state, world, pos);
+        int light = world.getBaseLightLevel(pos, 0);
+        return light >= getMinLightToPlant() && light <= getMaxLightToPlant() && super.canPlaceAt(state, world, pos);
     }
 
     /** Gets the required block state basing on the neighbor blocks. */
@@ -128,7 +136,10 @@ public abstract class MoldBlock extends PlantBlock {
         //Natural growing.
         if (getAgeProperty() != null) growingTick(state, world, pos, random);
         //Spreading.
-        if (canSpread(state, world, pos, random)) spreadingTick(state, world, pos, random);
+        if (canSpread(state, world, pos, random)) {
+            spreadingTick(state, world, pos, random);
+            neighborSpreadingTick(state, world, pos, random);
+        }
     }
 
     /**
@@ -137,7 +148,8 @@ public abstract class MoldBlock extends PlantBlock {
      */
     public void growingTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!isFullyGrown(state) && random.nextInt(getGrowingTime()) == 0) {
-            if (world.getBaseLightLevel(pos, 0) <= getMaxLightToGrow()) {
+            int light = world.getBaseLightLevel(pos, 0);
+            if (light >= getMinLightToGrow() && light <= getMaxLightToGrow()) {
                 //Increases the age by 1.
                 BlockState nextGrowState = state.with(getAgeProperty(), getAge(state) + 1);
                 world.setBlockState(pos, nextGrowState, 2);
@@ -150,8 +162,8 @@ public abstract class MoldBlock extends PlantBlock {
      * Executed every tick.
      * Handles the spreading into the world.
      */
-    public void spreadingTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (isFullyGrown(state) && random.nextInt(getSpreadingTime()) == 0) {
+    public void spreadingTick(BlockState state, ServerWorld world, BlockPos pos, @NotNull Random random) {
+        if (random.nextInt(getSpreadingTime()) == 0) {
             //Gets a random position.
             int posX = pos.getX() + random.nextBetween(-SPREADING_RADIUS, SPREADING_RADIUS);
             int posZ = pos.getZ() + random.nextBetween(-SPREADING_RADIUS, SPREADING_RADIUS);
@@ -193,10 +205,44 @@ public abstract class MoldBlock extends PlantBlock {
         }
     }
 
+    /**
+     * Executed every tick.
+     * Handles the spreading into the neighbor blocks.
+     */
+    public void neighborSpreadingTick(BlockState state, ServerWorld world, BlockPos pos, @NotNull Random random) {
+        if (random.nextInt(getNeighborSpreadingTime()) == 0) {
+            //Randomized directions.
+            Iterator<Direction> directions = Direction.Type.HORIZONTAL.getShuffled(random).iterator();
+
+            //Mold to place.
+            BlockState mold = getDefaultState();
+
+            //Tries to place the mold in a neighbor position with a max y difference of 1.
+            while (directions.hasNext()) {
+                //Get a random neighbor position (note that the directions are randomly shuffled).
+                Direction direction = directions.next();
+                BlockPos.Mutable neighborPos = pos.mutableCopy().move(direction).move(Direction.UP);
+
+                //Search for a valid position in the neighbor, neighbor up, and neighbor down.
+                for (int i = 0; i < 3; i++) {
+                    BlockState neighborState = world.getBlockState(neighborPos);
+                    if (neighborState.isAir() || neighborState.isIn(TerravibeBlockTags.MOLD_REPLACEABLE)) {
+                        if (mold.canPlaceAt(world, neighborPos)) {
+                            world.setBlockState(neighborPos, mold);
+                            return;
+                        }
+                    }
+
+                    neighborPos.move(Direction.DOWN);
+                }
+            }
+        }
+    }
+
     /** Executed every tick randomly to handle effects. */
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (canSpread(state, world, pos, random) && isFullyGrown(state)) {
+        if (canSpread(state, world, pos, random)) {
             BlockPos.Mutable randomPos = new BlockPos.Mutable();
 
             //Generates the spores from the block.

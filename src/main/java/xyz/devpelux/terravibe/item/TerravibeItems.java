@@ -99,6 +99,12 @@ public class TerravibeItems {
 
     //Fruits and seeds of other plants
 
+    /** Birch mold. */
+    public static final Item BIRCH_MOLD;
+
+    /** Dust of birch mold. */
+    public static final Item BIRCH_MOLD_DUST;
+
     /** Dark mold. */
     public static final Item DARK_MOLD;
 
@@ -158,9 +164,13 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, 0.85f);
         CompostingChanceRegistry.INSTANCE.add(BASIL, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(BEANS, 0.7f);
+        CompostingChanceRegistry.INSTANCE.add(BIRCH_MOLD, 0.2f);
+        CompostingChanceRegistry.INSTANCE.add(BIRCH_MOLD_DUST, 0.04f);
         CompostingChanceRegistry.INSTANCE.add(CORN, 0.6f);
         CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.05f);
         CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3F);
+        CompostingChanceRegistry.INSTANCE.add(DARK_MOLD, 0.2f);
+        CompostingChanceRegistry.INSTANCE.add(DARK_MOLD_DUST, 0.04f);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD, 0.2f);
@@ -180,8 +190,6 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, 0.8f);
         CompostingChanceRegistry.INSTANCE.add(RICE, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, 0.05f);
-        CompostingChanceRegistry.INSTANCE.add(DARK_MOLD, 0.2f);
-        CompostingChanceRegistry.INSTANCE.add(DARK_MOLD_DUST, 0.04f);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.4f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
@@ -237,6 +245,8 @@ public class TerravibeItems {
         TOMATO = register("tomato", new Item(Settings.stack64().food(TerravibeFoodComponents.TOMATO)));
         TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, Settings.stack64()));
 
+        BIRCH_MOLD = register("birch_mold", new Item(Settings.stack64()));
+        BIRCH_MOLD_DUST = register("birch_mold_dust", new AliasedBlockItem(TerravibeBlocks.BIRCH_MOLD, Settings.stack64()));
         DARK_MOLD = register("dark_mold", new Item(Settings.stack64()));
         DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, Settings.stack64()));
         GLOWING_DARK_MOLD = register("glowing_dark_mold", new Item(Settings.stack64()));

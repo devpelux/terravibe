@@ -2,7 +2,6 @@ package xyz.devpelux.terravibe.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.sound.BlockSoundGroup;
@@ -42,34 +41,52 @@ public class DarkMoldBlock extends MoldBlock {
         return Properties.AGE_1_MAX;
     }
 
-    /** Gets the time to grow. */
+    /** Gets the min light to grow. */
     @Override
-    public int getGrowingTime() {
-        return 20;
+    public int getMinLightToGrow() {
+        return 2;
+    }
+
+    /** Gets the min light to plant. */
+    @Override
+    public int getMinLightToPlant() {
+        return 1;
     }
 
     /** Gets the max light to grow. */
     @Override
     public int getMaxLightToGrow() {
-        return 11;
+        return 9;
     }
 
     /** Gets the maximum light to plant the mold. */
     @Override
     public int getMaxLightToPlant() {
-        return 12;
+        return 10;
     }
 
     /** Gets a value indicating if the mold can randomly spread into the world. */
     @Override
     public boolean canSpread(BlockState state, World world, BlockPos pos, Random random) {
-        return true;
+        return isFullyGrown(state);
+    }
+
+    /** Gets the time to grow. */
+    @Override
+    public int getGrowingTime() {
+        return 32;
     }
 
     /** Gets the time to spread the mold. */
     @Override
     public int getSpreadingTime() {
-        return 20;
+        return 48;
+    }
+
+    /** Gets the time to spread the mold in the neighbor blocks. */
+    @Override
+    public int getNeighborSpreadingTime() {
+        return 32;
     }
 
     /** Gets the number of spores to spread from the block every tick. */

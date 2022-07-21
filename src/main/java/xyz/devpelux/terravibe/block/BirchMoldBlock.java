@@ -16,26 +16,23 @@ import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 
-/** Glowing dark mold that can always spread. */
-public class GlowingDarkMoldBlock extends MoldBlock {
+/** Birch mold that can always spread. */
+public class BirchMoldBlock extends MoldBlock {
     /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "glowing_dark_mold");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "birch_mold");
 
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
-    /** Initializes a new {@link GlowingDarkMoldBlock}. */
-    public GlowingDarkMoldBlock(Settings settings) {
+    /** Initializes a new {@link BirchMoldBlock}. */
+    public BirchMoldBlock(Settings settings) {
         super(settings);
     }
-
-    /** Age of the block. */
-    public static final IntProperty AGE = Properties.AGE_1;
 
     /** Gets the age property. */
     @Override
     public @Nullable IntProperty getAgeProperty() {
-        return AGE;
+        return Properties.AGE_1;
     }
 
     /** Gets the max age. */
@@ -47,25 +44,25 @@ public class GlowingDarkMoldBlock extends MoldBlock {
     /** Gets the min light to grow. */
     @Override
     public int getMinLightToGrow() {
-        return 0;
+        return 2;
     }
 
     /** Gets the min light to plant. */
     @Override
     public int getMinLightToPlant() {
-        return 0;
+        return 1;
     }
 
     /** Gets the max light to grow. */
     @Override
     public int getMaxLightToGrow() {
-        return 4;
+        return 11;
     }
 
     /** Gets the maximum light to plant the mold. */
     @Override
     public int getMaxLightToPlant() {
-        return 5;
+        return 12;
     }
 
     /** Gets a value indicating if the mold can randomly spread into the world. */
@@ -77,19 +74,19 @@ public class GlowingDarkMoldBlock extends MoldBlock {
     /** Gets the time to grow. */
     @Override
     public int getGrowingTime() {
-        return 64;
+        return 16;
     }
 
     /** Gets the time to spread the mold. */
     @Override
     public int getSpreadingTime() {
-        return 96;
+        return 24;
     }
 
     /** Gets the time to spread the mold in the neighbor blocks. */
     @Override
     public int getNeighborSpreadingTime() {
-        return 64;
+        return 16;
     }
 
     /** Gets the number of spores to spread from the block every tick. */
@@ -107,7 +104,7 @@ public class GlowingDarkMoldBlock extends MoldBlock {
     /** Gets the spore particle type. */
     @Override
     public @NotNull DefaultParticleType getSporeParticleType() {
-        return TerravibeParticleTypes.GLOWING_DARK_MOLD_SPORE;
+        return TerravibeParticleTypes.BIRCH_MOLD_SPORE;
     }
 
     static {
@@ -115,7 +112,6 @@ public class GlowingDarkMoldBlock extends MoldBlock {
                 .noCollision()
                 .breakInstantly()
                 .sounds(BlockSoundGroup.MOSS_BLOCK)
-                .offsetType(OffsetType.XYZ)
-                .luminance(s -> s.get(AGE) == 0 ? 1 : 3);
+                .offsetType(OffsetType.XYZ);
     }
 }
