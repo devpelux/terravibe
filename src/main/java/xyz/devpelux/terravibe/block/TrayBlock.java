@@ -73,11 +73,6 @@ public class TrayBlock extends Block {
         return state.get(CONTENT);
     }
 
-    /** Sets the content of the tray. */
-    protected void setContent(@NotNull BlockState state, @NotNull World world, BlockPos pos, Content content) {
-        world.setBlockState(pos, state.with(CONTENT, content));
-    }
-
     /** Gets the take salt sound. */
     protected SoundEvent getTakeSaltSound() {
         return SoundEvents.BLOCK_SAND_BREAK;
@@ -105,7 +100,7 @@ public class TrayBlock extends Block {
             case Nothing -> {
                 if (PotionUtil.getPotion(handStack) == Potions.WATER) {
                     if (!world.isClient()) {
-                        setContent(state, world, pos, Content.Water);
+                        world.setBlockState(pos, state.with(CONTENT, Content.Water));
                         //Takes the bottle with water and gives a glass bottle.
                         if (!player.getAbilities().creativeMode) {
                             //The inventory is changed only if the player is not in creative mode.
@@ -122,7 +117,7 @@ public class TrayBlock extends Block {
             case Water -> {
                 if (handStack.isOf(Items.GLASS_BOTTLE)) {
                     if (!world.isClient()) {
-                        setContent(state, world, pos, Content.Nothing);
+                        world.setBlockState(pos, state.with(CONTENT, Content.Nothing));
                         //Takes the glass bottle and gives a bottle with water.
                         if (!player.getAbilities().creativeMode) {
                             //The inventory is changed only if the player is not in creative mode.
@@ -138,7 +133,7 @@ public class TrayBlock extends Block {
             }
             case Salt -> {
                 if (!world.isClient()) {
-                    setContent(state, world, pos, Content.Nothing);
+                    world.setBlockState(pos, state.with(CONTENT, Content.Nothing));
                     //Gives salt crystals.
                     dropStack(world, pos, new ItemStack(TerravibeItems.SALT_CRYSTALS));
                     player.playSound(getTakeSaltSound(), SoundCategory.BLOCKS, 1f, 1f);
@@ -158,7 +153,7 @@ public class TrayBlock extends Block {
     @Override
     public void precipitationTick(BlockState state, World world, BlockPos pos, Biome.Precipitation precipitation) {
         if (precipitation == Biome.Precipitation.RAIN && world.getRandom().nextFloat() < RAIN_FILLING_CHANCE) {
-            setContent(state, world, pos, Content.Water);
+            world.setBlockState(pos, state.with(CONTENT, Content.Water));
         }
     }
 
@@ -176,7 +171,7 @@ public class TrayBlock extends Block {
             int lightBonus = (int)((MAX_EVAPORATION_TIME - MIN_EVAPORATION_TIME) * (light / 15d));
             int evaporationTime = MAX_EVAPORATION_TIME - lightBonus;
             int attempt = random.nextInt(evaporationTime + 1);
-            if (attempt == 0) setContent(state, world, pos, Content.Salt);
+            if (attempt == 0) world.setBlockState(pos, state.with(CONTENT, Content.Salt));
         }
     }
 
@@ -186,10 +181,10 @@ public class TrayBlock extends Block {
         return VOXEL_SHAPE;
     }
 
-    /** Gets the water color. */
-    public static int getWaterColor(BlockState blockState, BlockRenderView blockRenderView, BlockPos blockPos, int i) {
+    /** Gets the content color. */
+    public static int getContentColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
         if (i != 1) return -1;
-        return BiomeColors.getWaterColor(blockRenderView, blockPos);
+        return BiomeColors.getWaterColor(view, pos);
     }
 
     static {

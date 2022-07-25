@@ -100,8 +100,8 @@ public class TerravibeBlocks {
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
-        ColorProviderRegistry.BLOCK.register(TunBlock::getContainedFluidColor, TUN);
-        ColorProviderRegistry.BLOCK.register(TrayBlock::getWaterColor, TRAY);
+        ColorProviderRegistry.BLOCK.register(TunBlock::getContainedColor, TUN);
+        ColorProviderRegistry.BLOCK.register(TrayBlock::getContentColor, TRAY);
     }
 
     /** Loads all the render layer maps for the blocks. */

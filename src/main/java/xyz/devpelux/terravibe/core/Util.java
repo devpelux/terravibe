@@ -52,4 +52,11 @@ public class Util {
         stack.writeNbt(stackNbt);
         nbt.put("Stack", stackNbt);
     }
+
+    /** Copies an item stack with the specified amount. */
+    public static @NotNull ItemStack copyStack(@NotNull ItemStack stack, int amount) {
+        ItemStack copied = stack.copy();
+        copied.setCount(amount);
+        return copied;
+    }
 }

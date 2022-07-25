@@ -8,11 +8,9 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.potion.PotionUtil;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
-import xyz.devpelux.terravibe.block.TunBlock;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the items. */
@@ -195,11 +193,6 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.4f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
-
-        TunBlock.registerContainable(Items.HONEY_BOTTLE, (c, s, v, p, i) -> 0x976018);
-        TunBlock.registerContainable(OIL_BOTTLE, (c, s, v, p, i) -> 0x808000);
-        TunBlock.registerContainable(Items.POTION, (c, s, v, p, i) -> PotionUtil.getColor(c));
-        TunBlock.registerContainable(TOMATO_SAUCE_BOTTLE, (c, s, v, p, i) -> 0xf61815);
     }
 
     /** Loads all the color providers for the items. */
