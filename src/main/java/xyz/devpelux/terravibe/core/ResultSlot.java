@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.core.ui;
+package xyz.devpelux.terravibe.core;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;

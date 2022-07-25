@@ -34,7 +34,7 @@
     "loom:injected_interfaces": {
       "net/minecraft/class_2248": ["xyz/devpelux/terravibe/core/compatibility/sodium/SodiumColorBlendable"],
       "net/minecraft/class_3611": ["xyz/devpelux/terravibe/core/compatibility/sodium/SodiumColorBlendable"],
-      "net/minecraft/class_4970": ["xyz/devpelux/terravibe/core/ai/pathing/PathNodeTypeProvider"]
+      "net/minecraft/class_4970": ["xyz/devpelux/terravibe/core/PathNodeTypeProvider"]
     }
   },
 

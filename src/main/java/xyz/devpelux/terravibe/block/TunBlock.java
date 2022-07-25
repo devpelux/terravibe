@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.TunBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
-import xyz.devpelux.terravibe.core.rendering.ContainableColorProvider;
+import xyz.devpelux.terravibe.core.ContainableColorProvider;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.core.rendering;
+package xyz.devpelux.terravibe.core;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

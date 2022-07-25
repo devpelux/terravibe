@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.core.ai.pathing;
+package xyz.devpelux.terravibe.core;
 
 import net.minecraft.entity.ai.pathing.PathNodeType;
 

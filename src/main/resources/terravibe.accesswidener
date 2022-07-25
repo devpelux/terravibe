@@ -1,4 +1,12 @@
 accessWidener	v1	named
 
 accessible field net/minecraft/state/State owner Ljava/lang/Object;
-accessible field net/minecraft/item/ShovelItem PATH_STATES Ljava/util/Map;
+
+# Creating custom damage sources
+accessible method net/minecraft/entity/damage/DamageSource <init> (Ljava/lang/String;)V
+accessible method net/minecraft/entity/damage/DamageSource setBypassesArmor ()Lnet/minecraft/entity/damage/DamageSource;
+accessible method net/minecraft/entity/damage/DamageSource setFallingBlock ()Lnet/minecraft/entity/damage/DamageSource;
+accessible method net/minecraft/entity/damage/DamageSource setOutOfWorld ()Lnet/minecraft/entity/damage/DamageSource;
+accessible method net/minecraft/entity/damage/DamageSource setUnblockable ()Lnet/minecraft/entity/damage/DamageSource;
+accessible method net/minecraft/entity/damage/DamageSource setBypassesProtection ()Lnet/minecraft/entity/damage/DamageSource;
+accessible method net/minecraft/entity/damage/DamageSource setFire ()Lnet/minecraft/entity/damage/DamageSource;

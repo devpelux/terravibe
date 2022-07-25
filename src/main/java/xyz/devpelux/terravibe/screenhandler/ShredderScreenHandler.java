@@ -13,7 +13,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.blockentity.ShredderBlockEntity;
-import xyz.devpelux.terravibe.core.ui.ResultSlot;
+import xyz.devpelux.terravibe.core.ResultSlot;
 import xyz.devpelux.terravibe.recipe.ShreddingRecipe;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 
