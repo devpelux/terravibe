@@ -6,11 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
@@ -19,6 +19,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
@@ -28,8 +29,10 @@ import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.block.container.ContainableColorProvider;
 import xyz.devpelux.terravibe.block.container.ContainerBlock;
 import xyz.devpelux.terravibe.block.container.ContainerInteraction;
-import xyz.devpelux.terravibe.blockentity.TunBlockEntity;
+import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.item.ColoredItem;
+import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -56,6 +59,9 @@ public class JarBlock extends ContainerBlock {
 
     /** Default color. */
     private static final int DEFAULT_COLOR = 0x241a09;
+
+    /** Default plug color. */
+    private static final int DEFAULT_PLUG_COLOR = 0xb8945f;
 
     /** List of all containable items with their colors. */
     private static final HashMap<Item, ContainableColorProvider> CONTAINABLE = new HashMap<>();
@@ -109,6 +115,30 @@ public class JarBlock extends ContainerBlock {
         return Optional.ofNullable(INTERACTIONS.get(Pair.of(used, contained)));
     }
 
+    /** Gets the plug. */
+    public static @Nullable Item getPlug(@NotNull BlockView world, @NotNull BlockPos pos) {
+        if (world.getBlockEntity(pos) instanceof ContainerBlockEntity container) {
+            NbtCompound nbt = (NbtCompound) container.getNbt("Plug");
+            if (nbt != null && nbt.contains("id")) {
+               Item item = Registry.ITEM.get(new Identifier(nbt.getString("id")));
+               if (item != Items.AIR) return item;
+            }
+        }
+        return null;
+    }
+
+    /** Sets the plug. (null to remove) */
+    public static void setPlug(@NotNull BlockView world, @NotNull BlockPos pos, @Nullable Item plug) {
+        if (world.getBlockEntity(pos) instanceof ContainerBlockEntity container) {
+            if (plug != null) {
+                NbtCompound nbt = new NbtCompound();
+                nbt.putString("id", Registry.ITEM.getId(plug).toString());
+                container.putNbt("Plug", nbt);
+            }
+            else container.removeNbt("Plug");
+        }
+    }
+
     /**
      * Executed when the block is used.
      * Closes or opens the jar.
@@ -122,10 +152,12 @@ public class JarBlock extends ContainerBlock {
                 if (!world.isClient()) {
                     //Opens the jar.
                     world.setBlockState(pos, state.with(CLOSED, false));
+                    Item plug = getPlug(world, pos);
+                    setPlug(world, pos, null);
 
                     //Drops the button (only if the player is not in creative).
-                    if (!player.getAbilities().creativeMode) {
-                        player.getInventory().offerOrDrop(new ItemStack(Blocks.OAK_BUTTON));
+                    if (!player.getAbilities().creativeMode && plug != null) {
+                        player.getInventory().offerOrDrop(new ItemStack(plug));
                     }
                 }
 
@@ -136,10 +168,11 @@ public class JarBlock extends ContainerBlock {
             return ActionResult.PASS;
         }
         else {
-            if (inHand.isOf(Items.OAK_BUTTON)) {
+            if (inHand.isIn(TerravibeItemTags.JAR_PLUGS)) {
                 if (!world.isClient()) {
                     //Closes the jar.
                     world.setBlockState(pos, state.with(CLOSED, true));
+                    setPlug(world, pos, inHand.getItem());
 
                     //Consumes the hand stack (only if the player is not in creative).
                     if (!player.getAbilities().creativeMode) {
@@ -154,31 +187,30 @@ public class JarBlock extends ContainerBlock {
         }
     }
 
-    /** Creates the block entity for the block. */
-    @Nullable
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new TunBlockEntity(pos, state);
-    }
-
     /** Gets the outline shape of the block. */
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VOXEL_SHAPE;
     }
 
-    /** Gets the contained color. */
-    public static int getContainedColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
-        if (i != 1) return -1;
+    /** Gets the contained and plug color. */
+    public static int getContainedAndPlugColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
+        if (i == 1) {
+            //Gets the contained stack.
+            ItemStack contained = getContained(view, pos);
 
-        //Gets the contained stack.
-        ItemStack contained = getContained(view, pos);
+            //Gets the contained color provider, basing on the contained item.
+            Optional<ContainableColorProvider> colorProvider = getColorProvider(contained.getItem());
 
-        //Gets the container color provider, basing on the contained item.
-        Optional<ContainableColorProvider> colorProvider = getColorProvider(contained.getItem());
+            //Gets the contained color.
+            return colorProvider.map(provider -> provider.getColor(contained, state, view, pos, i)).orElse(DEFAULT_COLOR);
+        }
+        else if (i == 2) {
+            //Gets the plug color.
+            return getPlug(view, pos) instanceof ColoredItem coloredPlug ? coloredPlug.getColor(null, 1) : DEFAULT_PLUG_COLOR;
+        }
 
-        //Gets the container color.
-        return colorProvider.map(provider -> provider.getColor(contained, state, view, pos, i)).orElse(DEFAULT_COLOR);
+        return -1;
     }
 
     static {

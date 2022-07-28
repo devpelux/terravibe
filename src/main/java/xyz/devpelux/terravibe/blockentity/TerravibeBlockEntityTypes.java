@@ -6,8 +6,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
-import xyz.devpelux.terravibe.block.ShredderBlock;
-import xyz.devpelux.terravibe.block.TunBlock;
 
 /** List of all the block entity types. */
 public class TerravibeBlockEntityTypes {
@@ -16,8 +14,8 @@ public class TerravibeBlockEntityTypes {
     /** Block entity type for the shredder block. */
     public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
 
-    /** Block entity type for the tun block. */
-    public static final BlockEntityType<TunBlockEntity> TUN;
+    /** Block entity type for containers. */
+    public static final BlockEntityType<ContainerBlockEntity> CONTAINER;
 
     /** Loads all the block entity types. */
     public static void load() {}
@@ -28,7 +26,9 @@ public class TerravibeBlockEntityTypes {
     }
 
     static {
-        SHREDDER = register(ShredderBlock.ID, FabricBlockEntityTypeBuilder.create(ShredderBlockEntity::new, TerravibeBlocks.SHREDDER).build());
-        TUN = register(TunBlock.ID, FabricBlockEntityTypeBuilder.create(TunBlockEntity::new, TerravibeBlocks.TUN).build());
+        SHREDDER = register(ShredderBlockEntity.ID, FabricBlockEntityTypeBuilder.create(ShredderBlockEntity::new,
+                TerravibeBlocks.SHREDDER).build());
+        CONTAINER = register(ContainerBlockEntity.ID, FabricBlockEntityTypeBuilder.create(ContainerBlockEntity::new,
+                TerravibeBlocks.TUN, TerravibeBlocks.JAR).build());
     }
 }

@@ -5,12 +5,15 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
+import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the items. */
@@ -33,6 +36,32 @@ public class TerravibeItems {
 
     /** Item of the tun block. */
     public static final Item TUN;
+
+    //Cork objects
+
+    /** Material obtained from stripping crimson stems. */
+    public static final Item CRIMSON_CORK;
+
+    /** Plug obtained from crimson cork. */
+    public static final Item CRIMSON_CORK_PLUG;
+
+    /** Material obtained from stripping dark oak logs. */
+    public static final Item DARK_OAK_CORK;
+
+    /** Plug obtained from dark oak cork. */
+    public static final Item DARK_OAK_CORK_PLUG;
+
+    /** Material obtained from stripping oak logs. */
+    public static final Item OAK_CORK;
+
+    /** Plug obtained from oak cork. */
+    public static final Item OAK_CORK_PLUG;
+
+    /** Material obtained from stripping warped stems. */
+    public static final Item WARPED_CORK;
+
+    /** Plug obtained from warped cork. */
+    public static final Item WARPED_CORK_PLUG;
 
     //Fruits and seeds of plants
 
@@ -196,13 +225,26 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.4f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
+
+        CorkStrippableBlockRegistry.register(Blocks.CRIMSON_STEM, CRIMSON_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.CRIMSON_HYPHAE, CRIMSON_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_LOG, DARK_OAK_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_WOOD, DARK_OAK_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.OAK_LOG, OAK_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, OAK_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.WARPED_STEM, WARPED_CORK);
+        CorkStrippableBlockRegistry.register(Blocks.WARPED_HYPHAE, WARPED_CORK);
     }
 
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
-        ColorProviderRegistry.ITEM.register((s, i) -> i == 1 ? 0x808000 : -1, OIL_BOTTLE);
-        ColorProviderRegistry.ITEM.register((s, i) -> i == 1 ? 0xf61815 : -1, TOMATO_SAUCE_BOTTLE);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) DARK_OAK_CORK_PLUG, DARK_OAK_CORK_PLUG);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) OIL_BOTTLE, OIL_BOTTLE);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) TOMATO_SAUCE_BOTTLE, TOMATO_SAUCE_BOTTLE);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) WARPED_CORK_PLUG, WARPED_CORK_PLUG);
     }
 
     /** Registers the specified item with the specified id. */
@@ -213,6 +255,11 @@ public class TerravibeItems {
     static {
         //Items loading order corresponds to the order of the creative tab "Terravibe".
         JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, Settings.stack64()));
+        DARK_OAK_CORK_PLUG = register("dark_oak_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0x4f3218 : -1));
+        OAK_CORK_PLUG = register("oak_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0xb8945f : -1));
+        CRIMSON_CORK_PLUG = register("crimson_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0x7e3a56 : -1));
+        WARPED_CORK_PLUG = register("warped_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0x398382 : -1));
+
         MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, Settings.stack64()));
         SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, Settings.stack64()));
         TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, Settings.stack64()));
@@ -259,13 +306,18 @@ public class TerravibeItems {
         BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
 
         SALT = register("salt", new Item(Settings.stack64()));
-        OIL_BOTTLE = register("oil_bottle", new Item(Settings.stack16()));
-        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new Item(Settings.stack16()));
+        OIL_BOTTLE = register("oil_bottle", new ColoredItem(Settings.stack16(), (s, i) -> i == 1 ? 0x808000 : -1));
+        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(Settings.stack16(), (s, i) -> i == 1 ? 0xf61815 : -1));
 
         OPUNTIA = register("opuntia", new AliasedBlockItem(TerravibeBlocks.OPUNTIA, Settings.stack64()));
         FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, Settings.stack64()));
 
         FLOODED_MUD = register("flooded_mud", new AliasedBlockItem(TerravibeBlocks.FLOODED_MUD, Settings.stack64()));
+
+        DARK_OAK_CORK = register("dark_oak_cork", new Item(Settings.stack64()));
+        OAK_CORK = register("oak_cork", new Item(Settings.stack64()));
+        CRIMSON_CORK = register("crimson_cork", new Item(Settings.stack64()));
+        WARPED_CORK = register("warped_cork", new Item(Settings.stack64()));
     }
 
 

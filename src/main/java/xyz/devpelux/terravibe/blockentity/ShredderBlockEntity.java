@@ -7,13 +7,18 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.block.ShredderBlock;
+import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.screenhandler.ShredderScreenHandler;
 
 /** Block entity for the {@link ShredderBlock}. */
 public class ShredderBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
+    /** Identifier of the block entity. */
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "shredder");
+
     /** Initializes a new {@link ShredderBlockEntity}. */
     public ShredderBlockEntity(BlockPos pos, BlockState state) {
         super(TerravibeBlockEntityTypes.SHREDDER, pos, state);

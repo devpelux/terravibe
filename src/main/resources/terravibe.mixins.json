@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "terravibe.AbstractBlockMixin",
+    "terravibe.AxeItemMixin",
     "terravibe.LandPathNodeMakerMixin"
   ],
   "client": [

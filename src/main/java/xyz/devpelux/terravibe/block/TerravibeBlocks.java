@@ -103,7 +103,7 @@ public class TerravibeBlocks {
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
-        ColorProviderRegistry.BLOCK.register(JarBlock::getContainedColor, JAR);
+        ColorProviderRegistry.BLOCK.register(JarBlock::getContainedAndPlugColor, JAR);
         ColorProviderRegistry.BLOCK.register(TunBlock::getContainedColor, TUN);
         ColorProviderRegistry.BLOCK.register(TrayBlock::getContentColor, TRAY);
     }

@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.IntProperty;
@@ -16,11 +15,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.block.container.ContainableColorProvider;
 import xyz.devpelux.terravibe.block.container.ContainerBlock;
 import xyz.devpelux.terravibe.block.container.ContainerInteraction;
-import xyz.devpelux.terravibe.blockentity.TunBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 
@@ -91,13 +88,6 @@ public class TunBlock extends ContainerBlock {
         return Optional.ofNullable(INTERACTIONS.get(Pair.of(used, contained)));
     }
 
-    /** Creates the block entity for the block. */
-    @Nullable
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new TunBlockEntity(pos, state);
-    }
-
     /** Gets the outline shape of the block. */
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -111,10 +101,10 @@ public class TunBlock extends ContainerBlock {
         //Gets the contained stack.
         ItemStack contained = getContained(view, pos);
 
-        //Gets the container color provider, basing on the contained item.
+        //Gets the contained color provider, basing on the contained item.
         Optional<ContainableColorProvider> colorProvider = getColorProvider(contained.getItem());
 
-        //Gets the container color.
+        //Gets the contained color.
         return colorProvider.map(provider -> provider.getColor(contained, state, view, pos, i)).orElse(DEFAULT_COLOR);
     }
 

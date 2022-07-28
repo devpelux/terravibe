@@ -36,6 +36,15 @@
   "item.terravibe.tray" : "Tray",
   "item.terravibe.tun" : "Tun",
 
+  "item.terravibe.crimson_cork" : "Crimson Cork",
+  "item.terravibe.crimson_cork_plug" : "Crimson Cork Plug",
+  "item.terravibe.dark_oak_cork" : "Dark Oak Cork",
+  "item.terravibe.dark_oak_cork_plug" : "Dark Oak Cork Plug",
+  "item.terravibe.oak_cork" : "Oak Cork",
+  "item.terravibe.oak_cork_plug" : "Oak Cork Plug",
+  "item.terravibe.warped_cork" : "Warped Cork",
+  "item.terravibe.warped_cork_plug" : "Warped Cork Plug",
+
   "item.terravibe.basil" : "Basil",
   "item.terravibe.beans" : "Beans",
   "item.terravibe.corn" : "Corn",

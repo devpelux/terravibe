@@ -11,6 +11,7 @@ import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 import xyz.devpelux.terravibe.screenhandler.TerravibeScreenHandlerTypes;
 import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
+import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
 //1346728994490959230
 
@@ -24,6 +25,7 @@ public class Initializer implements ModInitializer {
 		TerravibeItems.load();
 		TerravibeBlockEntityTypes.load();
 		TerravibeBlockTags.load();
+		TerravibeItemTags.load();
 		TerravibeParticleTypes.load();
 		TerravibeRecipeTypes.load();
 		TerravibeScreenHandlerTypes.load();

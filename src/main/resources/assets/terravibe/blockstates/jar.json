@@ -7,6 +7,14 @@
     },
     {
       "apply": {
+        "model": "terravibe:block/cork_jar_plug"
+      },
+      "when": {
+        "closed": "true"
+      }
+    },
+    {
+      "apply": {
         "model": "terravibe:block/jar_fluid_height1"
       },
       "when": {
@@ -27,14 +35,6 @@
       },
       "when": {
         "level": "3"
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/oak_jar_plug"
-      },
-      "when": {
-        "closed": "true"
       }
     }
   ]
