@@ -1,0 +1,7 @@
+{
+	"credit": "devpelux",
+	"parent": "terravibe:block/jar_plug",
+	"textures": {
+		"texture": "block/oak_planks"
+	}
+}

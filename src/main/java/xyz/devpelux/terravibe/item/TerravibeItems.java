@@ -19,6 +19,9 @@ public class TerravibeItems {
 
     //Objects
 
+    /** Item of the jar block. */
+    public static final Item JAR;
+
     /** Item of the mortar block. */
     public static final Item MORTAR;
 
@@ -209,6 +212,7 @@ public class TerravibeItems {
 
     static {
         //Items loading order corresponds to the order of the creative tab "Terravibe".
+        JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, Settings.stack64()));
         MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, Settings.stack64()));
         SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, Settings.stack64()));
         TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, Settings.stack64()));

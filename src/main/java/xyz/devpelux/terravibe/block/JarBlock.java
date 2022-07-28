@@ -7,14 +7,22 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.block.container.ContainableColorProvider;
@@ -22,24 +30,26 @@ import xyz.devpelux.terravibe.block.container.ContainerBlock;
 import xyz.devpelux.terravibe.block.container.ContainerInteraction;
 import xyz.devpelux.terravibe.blockentity.TunBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.core.Util;
 
 import java.util.HashMap;
 import java.util.Optional;
 
-/** Container for "non-lava" fluids. */
-public class TunBlock extends ContainerBlock {
+/** Container for things. */
+public class JarBlock extends ContainerBlock {
     /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tun");
+    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "jar");
 
     /** Settings of the block. */
-    public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
+    public static final Settings SETTINGS;
 
     /** Level of the contained when full. */
-    public static final int MAX_LEVEL = 27;
+    public static final int MAX_LEVEL = 3;
 
     /** Level of the contained. */
     public static final IntProperty LEVEL;
+
+    /** Specifies if the jar is closed. */
+    public static final BooleanProperty CLOSED;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
@@ -53,9 +63,10 @@ public class TunBlock extends ContainerBlock {
     /** List of all the possible interactions with items of the player. */
     private static final HashMap<Pair<Item, Item>, ContainerInteraction> INTERACTIONS = new HashMap<>();
 
-    /** Initializes a new {@link TunBlock}. */
-    public TunBlock(Settings settings) {
+    /** Initializes a new {@link JarBlock}. */
+    public JarBlock(Settings settings) {
         super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false));
     }
 
     /** Registers a color provider for the item specified. */
@@ -71,6 +82,13 @@ public class TunBlock extends ContainerBlock {
     /** Registers an interaction for the items specified. */
     public static void registerInteraction(@NotNull Item used, @NotNull Item contained, @NotNull ContainerInteraction interaction) {
         INTERACTIONS.putIfAbsent(Pair.of(used, contained), interaction);
+    }
+
+    /** Registers the properties of the block. */
+    @Override
+    protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(CLOSED);
     }
 
     /** Gets the level property. */
@@ -89,6 +107,51 @@ public class TunBlock extends ContainerBlock {
     @Override
     public Optional<ContainerInteraction> getInteraction(@NotNull Item used, @NotNull Item contained) {
         return Optional.ofNullable(INTERACTIONS.get(Pair.of(used, contained)));
+    }
+
+    /**
+     * Executed when the block is used.
+     * Closes or opens the jar.
+     */
+    @Override
+    public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack inHand = player.getStackInHand(Hand.MAIN_HAND);
+        boolean isClosed = world.getBlockState(pos).get(CLOSED);
+        if (isClosed) {
+            if (inHand.isEmpty()) {
+                if (!world.isClient()) {
+                    //Opens the jar.
+                    world.setBlockState(pos, state.with(CLOSED, false));
+
+                    //Drops the button (only if the player is not in creative).
+                    if (!player.getAbilities().creativeMode) {
+                        player.getInventory().offerOrDrop(new ItemStack(Blocks.OAK_BUTTON));
+                    }
+                }
+
+                //Client: SUCCESS / Server: CONSUME
+                return ActionResult.success(world.isClient());
+            }
+
+            return ActionResult.PASS;
+        }
+        else {
+            if (inHand.isOf(Items.OAK_BUTTON)) {
+                if (!world.isClient()) {
+                    //Closes the jar.
+                    world.setBlockState(pos, state.with(CLOSED, true));
+
+                    //Consumes the hand stack (only if the player is not in creative).
+                    if (!player.getAbilities().creativeMode) {
+                        inHand.decrement(1);
+                    }
+                }
+
+                return ActionResult.success(world.isClient());
+            }
+
+            return super.onUse(state, world, pos, player, hand, hit);
+        }
     }
 
     /** Creates the block entity for the block. */
@@ -119,13 +182,9 @@ public class TunBlock extends ContainerBlock {
     }
 
     static {
+        SETTINGS = FabricBlockSettings.copyOf(Blocks.GLASS).breakInstantly();
         LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
-        VOXEL_SHAPE = Util.combineVoxelShapes(
-                Block.createCuboidShape(2, 0, 2, 14, 1, 14),
-                Block.createCuboidShape(0, 0, 2, 2, 16, 16),
-                Block.createCuboidShape(14, 0, 0, 16, 16, 14),
-                Block.createCuboidShape(2, 0, 14, 16, 16, 16),
-                Block.createCuboidShape(0, 0, 0, 14, 16, 2)
-        );
+        CLOSED = BooleanProperty.of("closed");
+        VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
     }
 }

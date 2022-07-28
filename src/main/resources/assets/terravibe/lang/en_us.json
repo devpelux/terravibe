@@ -1,4 +1,5 @@
 {
+  "block.terravibe.jar" : "Jar",
   "block.terravibe.mortar" : "Mortar",
   "block.terravibe.shredder" : "Shredder",
   "block.terravibe.shredder.title" : "Shredding",
@@ -29,6 +30,7 @@
 
   "item.terravibe.terravibe" : "Terravibe",
 
+  "item.terravibe.jar" : "Jar",
   "item.terravibe.mortar" : "Mortar",
   "item.terravibe.shredder" : "Shredder",
   "item.terravibe.tray" : "Tray",

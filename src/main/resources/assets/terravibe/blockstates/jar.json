@@ -1,0 +1,41 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "terravibe:block/jar"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_fluid_height1"
+      },
+      "when": {
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_fluid_height2"
+      },
+      "when": {
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_fluid_height3"
+      },
+      "when": {
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/oak_jar_plug"
+      },
+      "when": {
+        "closed": "true"
+      }
+    }
+  ]
+}
