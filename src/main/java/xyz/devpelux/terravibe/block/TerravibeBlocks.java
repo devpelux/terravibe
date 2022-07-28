@@ -20,6 +20,9 @@ public class TerravibeBlocks {
     /** Container for things. */
     public static final Block JAR;
 
+    /** A jar for mold dusts. */
+    public static final Block MOLD_DUST_JAR;
+
     /** Crushes an item to obtain other items. */
     public static final Block MORTAR;
 
@@ -103,6 +106,7 @@ public class TerravibeBlocks {
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
+        ColorProviderRegistry.BLOCK.register(JarBlock::getContainedAndPlugColor, MOLD_DUST_JAR);
         ColorProviderRegistry.BLOCK.register(JarBlock::getContainedAndPlugColor, JAR);
         ColorProviderRegistry.BLOCK.register(TunBlock::getContainedColor, TUN);
         ColorProviderRegistry.BLOCK.register(TrayBlock::getContentColor, TRAY);
@@ -117,6 +121,7 @@ public class TerravibeBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(CORN_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_SWEET_BERRY_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_MOLD, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MOLD_DUST_JAR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EGGPLANT_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FLOWERING_OPUNTIA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD, RenderLayer.getCutout());
@@ -138,6 +143,7 @@ public class TerravibeBlocks {
 
     static {
         JAR = register(JarBlock.ID, new JarBlock(JarBlock.SETTINGS));
+        MOLD_DUST_JAR = register(MoldDustJarBlock.ID, new MoldDustJarBlock(MoldDustJarBlock.SETTINGS));
         MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.SETTINGS));
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.SETTINGS));
         TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.SETTINGS));

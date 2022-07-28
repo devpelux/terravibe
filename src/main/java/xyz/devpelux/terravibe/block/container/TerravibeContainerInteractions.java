@@ -8,6 +8,8 @@ import net.minecraft.potion.Potions;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import xyz.devpelux.terravibe.block.JarBlock;
+import xyz.devpelux.terravibe.block.MoldDustJarBlock;
+import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.block.TunBlock;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
@@ -32,6 +34,12 @@ public class TerravibeContainerInteractions {
 
     /** Extract water bucket. */
     public static final ContainerInteraction WATER_BUCKET_EXTRACT;
+
+    /** Insert mold dust into jar. */
+    public static final ContainerInteraction JAR_MOLD_DUST_INSERT;
+
+    /** Extract mold dust from jar. */
+    public static final ContainerInteraction JAR_MOLD_DUST_EXTRACT;
 
     /** Loads all the interactions. */
     public static void load() {
@@ -72,6 +80,18 @@ public class TerravibeContainerInteractions {
         JarBlock.registerInteraction(TerravibeItems.TOMATO_SAUCE_BOTTLE, Items.AIR, TerravibeContainerInteractions.BOTTLE_INSERT);
         JarBlock.registerInteraction(TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeContainerInteractions.BOTTLE_INSERT);
         JarBlock.registerInteraction(Items.GLASS_BOTTLE, TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeContainerInteractions.BOTTLE_EXTRACT);
+
+        JarBlock.registerInteraction(TerravibeItems.BIRCH_MOLD_DUST, Items.AIR, TerravibeContainerInteractions.JAR_MOLD_DUST_INSERT);
+        JarBlock.registerInteraction(TerravibeItems.BIRCH_MOLD_DUST, TerravibeItems.BIRCH_MOLD_DUST, TerravibeContainerInteractions.JAR_MOLD_DUST_INSERT);
+        JarBlock.registerInteraction(Items.AIR, TerravibeItems.BIRCH_MOLD_DUST, TerravibeContainerInteractions.JAR_MOLD_DUST_EXTRACT);
+
+        JarBlock.registerInteraction(TerravibeItems.DARK_MOLD_DUST, Items.AIR, TerravibeContainerInteractions.JAR_MOLD_DUST_INSERT);
+        JarBlock.registerInteraction(TerravibeItems.DARK_MOLD_DUST, TerravibeItems.DARK_MOLD_DUST, TerravibeContainerInteractions.JAR_MOLD_DUST_INSERT);
+        JarBlock.registerInteraction(Items.AIR, TerravibeItems.DARK_MOLD_DUST, TerravibeContainerInteractions.JAR_MOLD_DUST_EXTRACT);
+
+        JarBlock.registerInteraction(TerravibeItems.GLOWING_DARK_MOLD_DUST, Items.AIR, TerravibeContainerInteractions.JAR_MOLD_DUST_INSERT);
+        JarBlock.registerInteraction(TerravibeItems.GLOWING_DARK_MOLD_DUST, TerravibeItems.GLOWING_DARK_MOLD_DUST, TerravibeContainerInteractions.JAR_MOLD_DUST_INSERT);
+        JarBlock.registerInteraction(Items.AIR, TerravibeItems.GLOWING_DARK_MOLD_DUST, TerravibeContainerInteractions.JAR_MOLD_DUST_EXTRACT);
     }
 
     /** Loads the {@link TunBlock} interactions. */
@@ -172,6 +192,26 @@ public class TerravibeContainerInteractions {
                 );
             }
             else return ContainerInteractionResult.none(ActionResult.PASS);
+        };
+        JAR_MOLD_DUST_INSERT = (state, world, pos, player, hand, contained, level) -> {
+            MoldDustJarBlock.Dust dust = MoldDustJarBlock.Dust.fromItem(hand.getItem());
+            world.setBlockState(pos, MoldDustJarBlock.withDust(dust).with(JarBlock.LEVEL, level));
+            return ContainerInteractionResult.insert(
+                    hand, //contained
+                    ItemStack.EMPTY, //drop
+                    1, //consumed
+                    level + 1, //level
+                    SoundEvents.BLOCK_MOSS_PLACE //sound
+            );
+        };
+        JAR_MOLD_DUST_EXTRACT = (state, world, pos, player, hand, contained, level) -> {
+            if (level <= 1) world.setBlockState(pos, TerravibeBlocks.JAR.getDefaultState());
+            return ContainerInteractionResult.extract(
+                    contained, //drop
+                    0, //consumed
+                    level - 1, //level
+                    SoundEvents.BLOCK_MOSS_BREAK //sound
+            );
         };
     }
 }

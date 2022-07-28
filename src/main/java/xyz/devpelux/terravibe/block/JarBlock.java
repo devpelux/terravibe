@@ -63,8 +63,8 @@ public class JarBlock extends ContainerBlock {
     /** Default plug color. */
     private static final int DEFAULT_PLUG_COLOR = 0xb8945f;
 
-    /** List of all containable items with their colors. */
-    private static final HashMap<Item, ContainableColorProvider> CONTAINABLE = new HashMap<>();
+    /** List of all the color providers to color the contained. */
+    private static final HashMap<Item, ContainableColorProvider> COLOR_PROVIDERS = new HashMap<>();
 
     /** List of all the possible interactions with items of the player. */
     private static final HashMap<Pair<Item, Item>, ContainerInteraction> INTERACTIONS = new HashMap<>();
@@ -77,12 +77,12 @@ public class JarBlock extends ContainerBlock {
 
     /** Registers a color provider for the item specified. */
     public static void registerColorProvider(@NotNull Item item, @NotNull ContainableColorProvider colorProvider) {
-        CONTAINABLE.putIfAbsent(item, colorProvider);
+        COLOR_PROVIDERS.putIfAbsent(item, colorProvider);
     }
 
     /** Gets the color provider for the item specified. */
     public static Optional<ContainableColorProvider> getColorProvider(@NotNull Item item) {
-        return Optional.ofNullable(CONTAINABLE.get(item));
+        return Optional.ofNullable(COLOR_PROVIDERS.get(item));
     }
 
     /** Registers an interaction for the items specified. */
@@ -184,6 +184,22 @@ public class JarBlock extends ContainerBlock {
             }
 
             return super.onUse(state, world, pos, player, hand, hit);
+        }
+    }
+
+    /**
+     * Executed at the block breaking.
+     * Drops the plug.
+     */
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        super.onBreak(world, pos, state, player);
+        //Drops the plug in server world, if the player is not in creative mode.
+        if (!world.isClient() && !player.getAbilities().creativeMode) {
+            Item plug = getPlug(world, pos);
+            if (plug != null) {
+                dropStack(world, pos, new ItemStack(plug));
+            }
         }
     }
 

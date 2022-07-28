@@ -44,8 +44,8 @@ public class TunBlock extends ContainerBlock {
     /** Default color. */
     private static final int DEFAULT_COLOR = 0x241a09;
 
-    /** List of all containable items with their colors. */
-    private static final HashMap<Item, ContainableColorProvider> CONTAINABLE = new HashMap<>();
+    /** List of all the color providers to color the contained. */
+    private static final HashMap<Item, ContainableColorProvider> COLOR_PROVIDERS = new HashMap<>();
 
     /** List of all the possible interactions with items of the player. */
     private static final HashMap<Pair<Item, Item>, ContainerInteraction> INTERACTIONS = new HashMap<>();
@@ -57,12 +57,12 @@ public class TunBlock extends ContainerBlock {
 
     /** Registers a color provider for the item specified. */
     public static void registerColorProvider(@NotNull Item item, @NotNull ContainableColorProvider colorProvider) {
-        CONTAINABLE.putIfAbsent(item, colorProvider);
+        COLOR_PROVIDERS.putIfAbsent(item, colorProvider);
     }
 
     /** Gets the color provider for the item specified. */
     public static Optional<ContainableColorProvider> getColorProvider(@NotNull Item item) {
-        return Optional.ofNullable(CONTAINABLE.get(item));
+        return Optional.ofNullable(COLOR_PROVIDERS.get(item));
     }
 
     /** Registers an interaction for the items specified. */

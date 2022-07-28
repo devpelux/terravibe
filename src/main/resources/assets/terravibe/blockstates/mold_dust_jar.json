@@ -1,0 +1,152 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "terravibe:block/jar"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/cork_jar_plug"
+      },
+      "when": {
+        "closed": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_birch_mold_dust_height1"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "1"
+          },
+          {
+            "dust": "birch_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_birch_mold_dust_height2"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "2"
+          },
+          {
+            "dust": "birch_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_birch_mold_dust_height3"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "3"
+          },
+          {
+            "dust": "birch_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_dark_mold_dust_height1"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "1"
+          },
+          {
+            "dust": "dark_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_dark_mold_dust_height2"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "2"
+          },
+          {
+            "dust": "dark_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_dark_mold_dust_height3"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "3"
+          },
+          {
+            "dust": "dark_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_glowing_dark_mold_dust_height1"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "1"
+          },
+          {
+            "dust": "glowing_dark_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_glowing_dark_mold_dust_height2"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "2"
+          },
+          {
+            "dust": "glowing_dark_mold_dust"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "terravibe:block/jar_glowing_dark_mold_dust_height3"
+      },
+      "when": {
+        "AND" : [
+          {
+            "level": "3"
+          },
+          {
+            "dust": "glowing_dark_mold_dust"
+          }
+        ]
+      }
+    }
+  ]
+}

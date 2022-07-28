@@ -196,21 +196,21 @@ public class TrayBlock extends Block {
     }
 
 
-    /** Represents the content of the {@link TrayBlock}. */
+    /** Represents the content type of {@link TrayBlock}. */
     public enum Content implements StringIdentifiable {
-        /** The {@link TrayBlock} contains nothing. */
+        /** The block contains nothing. */
         Nothing("nothing"),
 
-        /** The {@link TrayBlock} contains water. */
+        /** The block contains water. */
         Water("water"),
 
-        /** The {@link TrayBlock} contains salt. */
+        /** The block contains salt. */
         Salt("salt");
 
         /** Name representing the value. */
         private final String name;
 
-        /** Initializes a new {@link Content} with the name specified. */
+        /** Initializes a new value with the name specified. */
         Content(String name) {
             this.name = name;
         }
