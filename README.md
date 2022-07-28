@@ -1,7 +1,7 @@
 <!-- icon -->
 
 <p align="center">
-  <img width="90px" align="center" src="https://raw.githubusercontent.com/devpelux/terravibe/36ffedec3591a9c30f101dd63b72fd889d394838/assets/icon.png" />
+  <img width="90px" align="center" src="https://raw.githubusercontent.com/devpelux/terravibe/873fc8935435c3e70d679cd172f34bb413e458df/assets/icon.png" />
 </p>
 <h1 align="center">Terravibe</h1>
 <p align="center">Vibes from the overworld...</p>
@@ -27,8 +27,41 @@
 This Minecraft mod adds new game mechanics with new food, new tools, and new mechanics
 for existing things.
 
-> The readme will be updated soon, with the full description, after the development
-reaches a certain level... stay tuned!
+## Crops
+10 new plants and crops, and 2 new berry bushes (beware! some of them are dangerous).
+
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/plants.jpg"/>
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/rice.jpg"/>
+
+## Containers
+Jar and Tun can contain all the fluids, and other things.
+
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/tuns.jpg"/>
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/jars.jpg"/>
+
+## Salt
+A mineral that can be obtained by filling trays with water and leave it to evaporate.
+
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/trays.jpg"/>
+
+## Flooded mud
+An excavated variant of the mud, obtained by removing some mud from the top by using a shovel.
+Mud blocks are filled with water, so this variant is always waterlogged.
+You can plant rice on it... or make funny puddles.
+
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/puddle.jpg"/>
+
+## Tools
+Shredder can be used to shred items and obtain shredded things.
+You can obtain oil from olives, tomato sauce from tomatoes, minced meat, and other things...
+
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/shredder.jpg"/>
+
+Mortar is similar to shredder but for solid things, generally to smash things.
+You can pulverize salt crystals to get salt, or molds to get their dust.
+You can also use it to get sweet potato buds from poisonous potatoes.
+
+<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/mortar.jpg"/>
 
 
 <!-- license -->
