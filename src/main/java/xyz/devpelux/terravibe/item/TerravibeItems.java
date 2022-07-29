@@ -168,6 +168,15 @@ public class TerravibeItems {
 
     //Crafted
 
+    /** Dust of birch mold burned. */
+    public static final Item BURNED_BIRCH_MOLD_DUST;
+
+    /** Dust of dark mold burned. */
+    public static final Item BURNED_DARK_MOLD_DUST;
+
+    /** Dust of glowing dark mold burned. */
+    public static final Item BURNED_GLOWING_DARK_MOLD_DUST;
+
     /** Salt. */
     public static final Item SALT;
 
@@ -305,6 +314,9 @@ public class TerravibeItems {
 
         BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
 
+        BURNED_BIRCH_MOLD_DUST = register("burned_birch_mold_dust", new Item(Settings.stack64()));
+        BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(Settings.stack64()));
+        BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(Settings.stack64()));
         SALT = register("salt", new Item(Settings.stack64()));
         OIL_BOTTLE = register("oil_bottle", new ColoredItem(Settings.stack16(), (s, i) -> i == 1 ? 0x808000 : -1));
         TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(Settings.stack16(), (s, i) -> i == 1 ? 0xf61815 : -1));
