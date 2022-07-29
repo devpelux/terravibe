@@ -32,6 +32,9 @@ public class MoldDustJarBlock extends JarBlock {
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
+    /** Dust consuming time. */
+    public static final int CONSUMING_TIME = 32;
+
     /** Mold spreading time. */
     public static final int SPREADING_TIME = 48;
 
@@ -98,10 +101,22 @@ public class MoldDustJarBlock extends JarBlock {
      * Spreads the mold of the corresponding mold dust into the world.
      */
     @Override
-    public void randomTick(@NotNull BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void randomTick(@NotNull BlockState state, ServerWorld world, BlockPos pos, @NotNull Random random) {
+        //Consumes the dust.
+        if (random.nextInt(CONSUMING_TIME) == 0) {
+            int level = Math.max(getLevel(world, pos) - 1, 0);
+            setLevel(world, pos, level);
+            if (level == 0) {
+                setContained(world, pos, ItemStack.EMPTY);
+                world.setBlockState(pos, TerravibeBlocks.JAR.getDefaultState());
+                return;
+            }
+        }
+
         //Mold to place.
         BlockState mold = getMoldState(state.get(DUST));
 
+        //Tries to place the mold.
         if (mold != null) {
             int time = SPREADING_TIME * (MAX_LEVEL - state.get(LEVEL) + 1);
             if (random.nextInt(time) == 0) {
