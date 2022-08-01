@@ -31,7 +31,7 @@ public class DustJarBlock extends JarBlock {
     public static final Settings SETTINGS;
 
     /** Dust consuming time. */
-    public static final int CONSUMING_TIME = 32;
+    public static final int CONSUMING_TIME = 48;
 
     /** Max height from the current position to spread the wandering dust. */
     public static final int DUST_SPREADING_HEIGHT = 4;

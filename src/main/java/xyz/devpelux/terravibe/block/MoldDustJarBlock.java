@@ -33,7 +33,7 @@ public class MoldDustJarBlock extends JarBlock {
     public static final Settings SETTINGS;
 
     /** Dust consuming time. */
-    public static final int CONSUMING_TIME = 32;
+    public static final int CONSUMING_TIME = 48;
 
     /** Mold spreading time. */
     public static final int SPREADING_TIME = 48;

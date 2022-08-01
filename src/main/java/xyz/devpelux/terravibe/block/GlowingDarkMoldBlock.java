@@ -94,13 +94,13 @@ public class GlowingDarkMoldBlock extends MoldBlock {
 
     /** Gets the number of spores to spread from the block every tick. */
     @Override
-    public int getSporesPerTick() {
-        return 1;
+    public int getSporesPerTick(@NotNull Random random) {
+        return random.nextBetween(0, 1);
     }
 
     /** Gets the number of spores to spread in the air per tick. */
     @Override
-    public int getWanderingSporesPerTick() {
+    public int getWanderingSporesPerTick(@NotNull Random random) {
         return 2;
     }
 

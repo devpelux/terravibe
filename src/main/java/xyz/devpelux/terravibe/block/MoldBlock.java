@@ -92,10 +92,10 @@ public abstract class MoldBlock extends PlantBlock {
     public abstract int getNeighborSpreadingTime();
 
     /** Gets the number of spores to spread from the block every tick. */
-    public abstract int getSporesPerTick();
+    public abstract int getSporesPerTick(@NotNull Random random);
 
     /** Gets the number of spores to spread in the air per tick. */
-    public abstract int getWanderingSporesPerTick();
+    public abstract int getWanderingSporesPerTick(@NotNull Random random);
 
     /** Gets the spore particle type. */
     public abstract @NotNull DefaultParticleType getSporeParticleType();
@@ -246,7 +246,8 @@ public abstract class MoldBlock extends PlantBlock {
             BlockPos.Mutable randomPos = new BlockPos.Mutable();
 
             //Generates the spores from the block.
-            for(int i = 0; i < getSporesPerTick(); ++i) {
+            int sporesPerTick = getSporesPerTick(random);
+            for(int i = 0; i < sporesPerTick; ++i) {
                 //Spawns a particle in a random position in the block.
                 double x = pos.getX() + random.nextDouble();
                 double y = pos.getY() + (random.nextDouble() * 0.4d);
@@ -255,7 +256,8 @@ public abstract class MoldBlock extends PlantBlock {
             }
 
             //Generates the wandering air spores.
-            for(int i = 0; i < getWanderingSporesPerTick(); ++i) {
+            int wanderingSporesPerTick = getWanderingSporesPerTick(random);
+            for(int i = 0; i < wanderingSporesPerTick; ++i) {
                 //Select a random spawn position between a radius of 10.
                 int posX = pos.getX() + random.nextBetween(-SPORE_SPREADING_RADIUS, SPORE_SPREADING_RADIUS);
                 int posY = pos.getY() + random.nextInt(SPORE_SPREADING_HEIGHT);
