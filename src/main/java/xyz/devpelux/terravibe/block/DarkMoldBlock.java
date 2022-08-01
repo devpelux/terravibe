@@ -98,7 +98,7 @@ public class DarkMoldBlock extends MoldBlock {
     /** Gets the number of spores to spread in the air per tick. */
     @Override
     public int getWanderingSporesPerTick() {
-        return 4;
+        return 3;
     }
 
     /** Gets the spore particle type. */
