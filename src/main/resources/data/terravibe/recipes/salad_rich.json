@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "terravibe:tomato"
+    },
+    {
+      "item": "terravibe:lettuce_leaves"
+    },
+    {
+      "item": "terravibe:mozzarella_flakes"
+    },
+    {
+      "item": "terravibe:onion"
+    },
+    {
+      "item": "terravibe:corn_grains"
+    }
+  ],
+  "result": {
+    "item": "terravibe:salad_rich",
+    "count": 1
+  }
+}

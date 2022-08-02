@@ -161,10 +161,46 @@ public class TerravibeItems {
     /** Salt crystals. */
     public static final Item SALT_CRYSTALS;
 
-    //Cooked foods
+    //Crafted foods
 
-    /** Sweet potato, but baked. */
+    /** Sweet potato baked. */
     public static final Item BAKED_SWEET_POTATO;
+
+    /** Cheese. */
+    public static final Item CHEESE;
+
+    /** Flakes of cheese. */
+    public static final Item CHEESE_FLAKES;
+
+    /** Cheese with mold. */
+    public static final Item GORGONZOLA;
+
+    /** Flakes of gorgonzola. */
+    public static final Item GORGONZOLA_FLAKES;
+
+    /** Mozzarella. */
+    public static final Item MOZZARELLA;
+
+    /** Flakes of mozzarella. */
+    public static final Item MOZZARELLA_FLAKES;
+
+    /** Salad with tomato, lettuce, mozzarella. */
+    public static final Item SALAD;
+
+    /** Salad with tomato, lettuce. */
+    public static final Item SALAD_SIMPLE;
+
+    /** Salad with tomato, lettuce, mozzarella, onion. */
+    public static final Item SALAD_MIXED;
+
+    /** Salad with tomato, lettuce, mozzarella, onion, corn grains. */
+    public static final Item SALAD_RICH;
+
+    /** Salad with tomato, lettuce, mozzarella, onion, corn grains, olives. */
+    public static final Item SALAD_FULL;
+
+    /** Pottage with vegetables. */
+    public static final Item POTTAGE;
 
     //Crafted
 
@@ -313,6 +349,18 @@ public class TerravibeItems {
         SALT_CRYSTALS = register("salt_crystals", new Item(Settings.stack64()));
 
         BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
+        CHEESE = register("cheese", new Item(Settings.stack64().food(TerravibeFoodComponents.CHEESE)));
+        CHEESE_FLAKES = register("cheese_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.CHEESE_FLAKES)));
+        GORGONZOLA = register("gorgonzola", new Item(Settings.stack64().food(TerravibeFoodComponents.GORGONZOLA)));
+        GORGONZOLA_FLAKES = register("gorgonzola_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.GORGONZOLA_FLAKES)));
+        MOZZARELLA = register("mozzarella", new Item(Settings.stack64().food(TerravibeFoodComponents.MOZZARELLA)));
+        MOZZARELLA_FLAKES = register("mozzarella_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.MOZZARELLA_FLAKES)));
+        SALAD = register("salad", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD)));
+        SALAD_SIMPLE = register("salad_simple", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_SIMPLE)));
+        SALAD_MIXED = register("salad_mixed", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_MIXED)));
+        SALAD_RICH = register("salad_rich", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_RICH)));
+        SALAD_FULL = register("salad_full", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_FULL)));
+        POTTAGE = register("pottage", new StewItem(Settings.stack16().food(TerravibeFoodComponents.POTTAGE)));
 
         BURNED_BIRCH_MOLD_DUST = register("burned_birch_mold_dust", new Item(Settings.stack64()));
         BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(Settings.stack64()));

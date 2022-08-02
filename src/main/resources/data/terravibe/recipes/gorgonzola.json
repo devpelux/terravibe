@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "terravibe:salt"
+    },
+    {
+      "tag": "c:molds"
+    }
+  ],
+  "result": {
+    "item": "terravibe:gorgonzola",
+    "count": 1
+  }
+}

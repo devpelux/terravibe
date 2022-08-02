@@ -95,7 +95,8 @@ public class DustJarBlock extends JarBlock {
     @Override
     public void randomTick(@NotNull BlockState state, ServerWorld world, BlockPos pos, @NotNull Random random) {
         //Consumes the dust.
-        if (random.nextInt(CONSUMING_TIME) == 0) {
+        int consumingTime = CONSUMING_TIME * (MAX_LEVEL - state.get(LEVEL) + 1);
+        if (random.nextInt(consumingTime) == 0) {
             int level = Math.max(getLevel(world, pos) - 1, 0);
             setLevel(world, pos, level);
             if (level == 0) {

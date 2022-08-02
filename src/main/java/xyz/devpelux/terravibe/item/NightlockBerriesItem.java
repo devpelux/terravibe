@@ -24,22 +24,19 @@ public class NightlockBerriesItem extends AliasedBlockItem {
      */
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
-        if (this.isFood()) {
-            ItemStack eatenStack = entity.eatFood(world, stack);
-            if (entity.getType() != EntityType.FOX) {
-                //The nightlock kills the entity after being eaten.
-                if (entity instanceof PlayerEntity player && player.getAbilities().creativeMode) {
-                    //Even in creative mode!
-                    entity.damage(TerravibeDamageSources.NIGHTLOCK_CREATIVE, Float.MAX_VALUE);
-                }
-                else entity.damage(TerravibeDamageSources.NIGHTLOCK, Float.MAX_VALUE);
+        ItemStack usedStack = super.finishUsing(stack, world, entity);
+        if (entity.getType() != EntityType.FOX) {
+            //The nightlock kills the entity after being eaten.
+            if (entity instanceof PlayerEntity player && player.getAbilities().creativeMode) {
+                //Even in creative mode!
+                entity.damage(TerravibeDamageSources.NIGHTLOCK_CREATIVE, Float.MAX_VALUE);
             }
-            else {
-                //Foxes are only poisoned, not killed.
-                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 80, 0));
-            }
-            return eatenStack;
+            else entity.damage(TerravibeDamageSources.NIGHTLOCK, Float.MAX_VALUE);
         }
-        return stack;
+        else {
+            //Foxes are only poisoned, not killed.
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 80, 0));
+        }
+        return usedStack;
     }
 }

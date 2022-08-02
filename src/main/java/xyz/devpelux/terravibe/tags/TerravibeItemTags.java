@@ -2,8 +2,8 @@ package xyz.devpelux.terravibe.tags;
 
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+
+import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 
 /** List of all the item tags. */
 public class TerravibeItemTags {
@@ -15,15 +15,17 @@ public class TerravibeItemTags {
      */
     public static final TagKey<Item> JAR_PLUGS;
 
+    /**
+     * {@code c:molds}<p/>
+     * Identifies all the molds.
+     */
+    public static final TagKey<Item> MOLDS;
+
     /** Loads all the tags. */
     public static void load() {}
 
-    /** Registers a new tag with the specified identifier. */
-    private static TagKey<Item> of(Identifier id) {
-        return TagKey.of(Registry.ITEM_KEY, id);
-    }
-
     static {
-        JAR_PLUGS = of(new Identifier("c", "jar_plugs"));
+        JAR_PLUGS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("jar_plugs");
+        MOLDS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("molds");
     }
 }
