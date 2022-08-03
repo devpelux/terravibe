@@ -57,7 +57,6 @@ public class TerravibeContainerInteractions {
         JarBlock.registerColorProvider(Items.HONEY_BOTTLE, (c, s, v, p, i) -> 0x976018);
         JarBlock.registerColorProvider(Items.POTION, (c, s, v, p, i) ->
                 PotionUtil.getPotion(c) == Potions.WATER ? BiomeColors.getWaterColor(v, p) : PotionUtil.getColor(c));
-        JarBlock.registerColorProvider(TerravibeItems.OIL_BOTTLE, (c, s, v, p, i) -> 0x808000);
         JarBlock.registerColorProvider(TerravibeItems.TOMATO_SAUCE_BOTTLE, (c, s, v, p, i) -> 0xf61815);
 
         //Interactions
@@ -75,10 +74,6 @@ public class TerravibeContainerInteractions {
         JarBlock.registerInteraction(Items.WATER_BUCKET, Items.AIR, TerravibeContainerInteractions.WATER_BUCKET_INSERT);
         JarBlock.registerInteraction(Items.WATER_BUCKET, Items.POTION, TerravibeContainerInteractions.WATER_BUCKET_INSERT);
         JarBlock.registerInteraction(Items.BUCKET, Items.POTION, TerravibeContainerInteractions.WATER_BUCKET_EXTRACT);
-
-        JarBlock.registerInteraction(TerravibeItems.OIL_BOTTLE, Items.AIR, TerravibeContainerInteractions.BOTTLE_INSERT);
-        JarBlock.registerInteraction(TerravibeItems.OIL_BOTTLE, TerravibeItems.OIL_BOTTLE, TerravibeContainerInteractions.BOTTLE_INSERT);
-        JarBlock.registerInteraction(Items.GLASS_BOTTLE, TerravibeItems.OIL_BOTTLE, TerravibeContainerInteractions.BOTTLE_EXTRACT);
 
         JarBlock.registerInteraction(TerravibeItems.TOMATO_SAUCE_BOTTLE, Items.AIR, TerravibeContainerInteractions.BOTTLE_INSERT);
         JarBlock.registerInteraction(TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeContainerInteractions.BOTTLE_INSERT);
@@ -116,7 +111,6 @@ public class TerravibeContainerInteractions {
         TunBlock.registerColorProvider(Items.HONEY_BOTTLE, (c, s, v, p, i) -> 0x976018);
         TunBlock.registerColorProvider(Items.POTION, (c, s, v, p, i) ->
                 PotionUtil.getPotion(c) == Potions.WATER ? BiomeColors.getWaterColor(v, p) : PotionUtil.getColor(c));
-        TunBlock.registerColorProvider(TerravibeItems.OIL_BOTTLE, (c, s, v, p, i) -> 0x808000);
         TunBlock.registerColorProvider(TerravibeItems.TOMATO_SAUCE_BOTTLE, (c, s, v, p, i) -> 0xf61815);
 
         //Interactions
@@ -134,10 +128,6 @@ public class TerravibeContainerInteractions {
         TunBlock.registerInteraction(Items.WATER_BUCKET, Items.AIR, TerravibeContainerInteractions.WATER_BUCKET_INSERT);
         TunBlock.registerInteraction(Items.WATER_BUCKET, Items.POTION, TerravibeContainerInteractions.WATER_BUCKET_INSERT);
         TunBlock.registerInteraction(Items.BUCKET, Items.POTION, TerravibeContainerInteractions.WATER_BUCKET_EXTRACT);
-
-        TunBlock.registerInteraction(TerravibeItems.OIL_BOTTLE, Items.AIR, TerravibeContainerInteractions.BOTTLE_INSERT);
-        TunBlock.registerInteraction(TerravibeItems.OIL_BOTTLE, TerravibeItems.OIL_BOTTLE, TerravibeContainerInteractions.BOTTLE_INSERT);
-        TunBlock.registerInteraction(Items.GLASS_BOTTLE, TerravibeItems.OIL_BOTTLE, TerravibeContainerInteractions.BOTTLE_EXTRACT);
 
         TunBlock.registerInteraction(TerravibeItems.TOMATO_SAUCE_BOTTLE, Items.AIR, TerravibeContainerInteractions.BOTTLE_INSERT);
         TunBlock.registerInteraction(TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeItems.TOMATO_SAUCE_BOTTLE, TerravibeContainerInteractions.BOTTLE_INSERT);

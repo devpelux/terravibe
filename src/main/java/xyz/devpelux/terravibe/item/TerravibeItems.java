@@ -150,7 +150,7 @@ public class TerravibeItems {
 
     //Fruits of trees
 
-    /** Typical fruit used to make oil, or in salads and stews. */
+    /** Fruit used in salads, stews and various recipes. */
     public static final Item OLIVES;
 
     /** Fruit produced by opuntia cactus. */
@@ -227,9 +227,6 @@ public class TerravibeItems {
 
     /** Salt. */
     public static final Item SALT;
-
-    /** Bottle that contains oil. */
-    public static final Item OIL_BOTTLE;
 
     /** Bottle that contains tomato sauce. */
     public static final Item TOMATO_SAUCE_BOTTLE;
@@ -316,7 +313,6 @@ public class TerravibeItems {
         ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);
         ColorProviderRegistry.ITEM.register((ItemColorProvider) DARK_OAK_CORK_PLUG, DARK_OAK_CORK_PLUG);
         ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
-        ColorProviderRegistry.ITEM.register((ItemColorProvider) OIL_BOTTLE, OIL_BOTTLE);
         ColorProviderRegistry.ITEM.register((ItemColorProvider) TOMATO_SAUCE_BOTTLE, TOMATO_SAUCE_BOTTLE);
         ColorProviderRegistry.ITEM.register((ItemColorProvider) WARPED_CORK_PLUG, WARPED_CORK_PLUG);
     }
@@ -401,8 +397,6 @@ public class TerravibeItems {
         BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(Settings.stack64()));
         BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(Settings.stack64()));
         SALT = register("salt", new Item(Settings.stack64()));
-        OIL_BOTTLE = register("oil_bottle", new ColoredItem(
-                Settings.stack16().recipeRemainder(Items.GLASS_BOTTLE), (s, i) -> i == 1 ? 0x808000 : -1));
         TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(
                 Settings.stack16().recipeRemainder(Items.GLASS_BOTTLE), (s, i) -> i == 1 ? 0xf61815 : -1));
 
