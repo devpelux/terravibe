@@ -199,6 +199,18 @@ public class TerravibeItems {
     /** Salad with tomato, lettuce, mozzarella, onion, corn grains, olives. */
     public static final Item SALAD_FULL;
 
+    /** Basic pizza plus all the cheese variants. */
+    public static final Item PIZZA_FOUR_CHEESE;
+
+    /** Slice of pizza four cheese. */
+    public static final Item PIZZA_SLICE_FOUR_CHEESE;
+
+    /** Basic pizza with tomato sauce, mozzarella, and basil. */
+    public static final Item PIZZA_MARGHERITA;
+
+    /** Slice of pizza margherita. */
+    public static final Item PIZZA_SLICE_MARGHERITA;
+
     /** Pottage with vegetables. */
     public static final Item POTTAGE;
 
@@ -242,20 +254,32 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(BEANS, 0.7f);
         CompostingChanceRegistry.INSTANCE.add(BIRCH_MOLD, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(BIRCH_MOLD_DUST, 0.04f);
+        CompostingChanceRegistry.INSTANCE.add(BURNED_BIRCH_MOLD_DUST, 0.01f);
+        CompostingChanceRegistry.INSTANCE.add(BURNED_DARK_MOLD_DUST, 0.01f);
+        CompostingChanceRegistry.INSTANCE.add(BURNED_GLOWING_DARK_MOLD_DUST, 0.01f);
+        CompostingChanceRegistry.INSTANCE.add(CHEESE, 0.65f);
+        CompostingChanceRegistry.INSTANCE.add(CHEESE_FLAKES, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(CORN, 0.6f);
         CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.05f);
+        CompostingChanceRegistry.INSTANCE.add(CRIMSON_CORK, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3F);
         CompostingChanceRegistry.INSTANCE.add(DARK_MOLD, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(DARK_MOLD_DUST, 0.04f);
+        CompostingChanceRegistry.INSTANCE.add(DARK_OAK_CORK, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD_DUST, 0.04f);
+        CompostingChanceRegistry.INSTANCE.add(GORGONZOLA, 0.65f);
+        CompostingChanceRegistry.INSTANCE.add(GORGONZOLA_FLAKES, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(KALE, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, 0.5f);
         CompostingChanceRegistry.INSTANCE.add(LETTUCE_SEEDS, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(MOZZARELLA, 0.5f);
+        CompostingChanceRegistry.INSTANCE.add(MOZZARELLA_FLAKES, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(NIGHTLOCK_BERRIES, 0.3F);
+        CompostingChanceRegistry.INSTANCE.add(OAK_CORK, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(OLIVES, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(ONION, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(ONION_SEEDS, 0.3f);
@@ -263,6 +287,10 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(OPUNTIA, 0.5f);
         CompostingChanceRegistry.INSTANCE.add(FLOWERING_OPUNTIA, 0.6f);
         CompostingChanceRegistry.INSTANCE.add(PRICKLY_PEAR, 0.65f);
+        CompostingChanceRegistry.INSTANCE.add(PIZZA_FOUR_CHEESE, 1f);
+        CompostingChanceRegistry.INSTANCE.add(PIZZA_MARGHERITA, 1f);
+        CompostingChanceRegistry.INSTANCE.add(PIZZA_SLICE_FOUR_CHEESE, 0.65f);
+        CompostingChanceRegistry.INSTANCE.add(PIZZA_SLICE_MARGHERITA, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, 0.8f);
         CompostingChanceRegistry.INSTANCE.add(RICE, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, 0.05f);
@@ -270,6 +298,7 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.4f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(WARPED_CORK, 0.2f);
 
         CorkStrippableBlockRegistry.register(Blocks.CRIMSON_STEM, CRIMSON_CORK);
         CorkStrippableBlockRegistry.register(Blocks.CRIMSON_HYPHAE, CRIMSON_CORK);
@@ -361,13 +390,21 @@ public class TerravibeItems {
         SALAD_RICH = register("salad_rich", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_RICH)));
         SALAD_FULL = register("salad_full", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_FULL)));
         POTTAGE = register("pottage", new StewItem(Settings.stack16().food(TerravibeFoodComponents.POTTAGE)));
+        PIZZA_FOUR_CHEESE = register("pizza_four_cheese", new AliasedBlockItem(TerravibeBlocks.PIZZA_FOUR_CHEESE, Settings.stack1()));
+        PIZZA_MARGHERITA = register("pizza_margherita", new AliasedBlockItem(TerravibeBlocks.PIZZA_MARGHERITA, Settings.stack1()));
+        PIZZA_SLICE_FOUR_CHEESE = register("pizza_slice_four_cheese", new Item(
+                Settings.stack4().food(TerravibeFoodComponents.PIZZA_SLICE_FOUR_CHEESE)));
+        PIZZA_SLICE_MARGHERITA = register("pizza_slice_margherita", new Item(
+                Settings.stack4().food(TerravibeFoodComponents.PIZZA_SLICE_MARGHERITA)));
 
         BURNED_BIRCH_MOLD_DUST = register("burned_birch_mold_dust", new Item(Settings.stack64()));
         BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(Settings.stack64()));
         BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(Settings.stack64()));
         SALT = register("salt", new Item(Settings.stack64()));
-        OIL_BOTTLE = register("oil_bottle", new ColoredItem(Settings.stack16(), (s, i) -> i == 1 ? 0x808000 : -1));
-        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(Settings.stack16(), (s, i) -> i == 1 ? 0xf61815 : -1));
+        OIL_BOTTLE = register("oil_bottle", new ColoredItem(
+                Settings.stack16().recipeRemainder(Items.GLASS_BOTTLE), (s, i) -> i == 1 ? 0x808000 : -1));
+        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(
+                Settings.stack16().recipeRemainder(Items.GLASS_BOTTLE), (s, i) -> i == 1 ? 0xf61815 : -1));
 
         OPUNTIA = register("opuntia", new AliasedBlockItem(TerravibeBlocks.OPUNTIA, Settings.stack64()));
         FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, Settings.stack64()));
@@ -383,6 +420,16 @@ public class TerravibeItems {
 
     /** Generic item settings. */
     private static class Settings {
+        /** Generates generic item settings, with stack of 1. */
+        private static Item.Settings stack1() {
+            return new FabricItemSettings().maxCount(1).group(TerravibeItemGroups.TERRAVIBE);
+        }
+
+        /** Generates generic item settings, with stack of 4. */
+        private static Item.Settings stack4() {
+            return new FabricItemSettings().maxCount(4).group(TerravibeItemGroups.TERRAVIBE);
+        }
+
         /** Generates generic item settings, with stack of 16. */
         private static Item.Settings stack16() {
             return new FabricItemSettings().maxCount(16).group(TerravibeItemGroups.TERRAVIBE);

@@ -100,6 +100,14 @@ public class TerravibeBlocks {
     /** A mud block excavated and flooded with water. */
     public static final Block FLOODED_MUD;
 
+    //Food blocks
+
+    /** Basic pizza plus all the cheese variants. */
+    public static final Block PIZZA_FOUR_CHEESE;
+
+    /** Basic pizza with tomato sauce, mozzarella, and basil. */
+    public static final Block PIZZA_MARGHERITA;
+
     /** Loads all the blocks. */
     public static void load() {
         FlattenableBlockRegistry.register(Blocks.MUD, FLOODED_MUD.getDefaultState());
@@ -176,5 +184,8 @@ public class TerravibeBlocks {
         FLOWERING_OPUNTIA = register(FloweringOpuntiaBlock.ID, new FloweringOpuntiaBlock(FloweringOpuntiaBlock.SETTINGS));
 
         FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.SETTINGS));
+
+        PIZZA_FOUR_CHEESE = register(PizzaBlock.getID("four_cheese"), PizzaBlock.pizzaFourCheese(PizzaBlock.SETTINGS));
+        PIZZA_MARGHERITA = register(PizzaBlock.getID("margherita"), PizzaBlock.pizzaMargherita(PizzaBlock.SETTINGS));
     }
 }

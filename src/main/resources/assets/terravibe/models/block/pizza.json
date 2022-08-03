@@ -1,0 +1,56 @@
+{
+	"credit": "devpelux",
+	"textures": {
+		"particle": "#pizza"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [15, 1, 15],
+			"faces": {
+				"north": {"uv": [1, 0, 15, 1], "texture": "#pizza_bottom"},
+				"east": {"uv": [15, 1, 16, 15], "rotation": 270, "texture": "#pizza_bottom"},
+				"south": {"uv": [1, 15, 15, 16], "rotation": 180, "texture": "#pizza_bottom"},
+				"west": {"uv": [0, 1, 1, 15], "rotation": 90, "texture": "#pizza_bottom"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#pizza"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#pizza_bottom"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [45, 45, 0],
+			"translation": [0, 4, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [45, 45, 0],
+			"translation": [0, 4, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 25, 0],
+			"translation": [4, 5, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 25, 0],
+			"translation": [4, 5, 0]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [90, 0, 0],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"head": {
+			"translation": [0, 14.5, 0]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -8]
+		}
+	}
+}

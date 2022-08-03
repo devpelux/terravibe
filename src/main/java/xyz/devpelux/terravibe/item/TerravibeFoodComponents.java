@@ -32,12 +32,14 @@ public class TerravibeFoodComponents {
     public static final FoodComponent GORGONZOLA_FLAKES;
     public static final FoodComponent MOZZARELLA;
     public static final FoodComponent MOZZARELLA_FLAKES;
+    public static final FoodComponent PIZZA_SLICE_FOUR_CHEESE;
+    public static final FoodComponent PIZZA_SLICE_MARGHERITA;
+    public static final FoodComponent POTTAGE;
     public static final FoodComponent SALAD;
     public static final FoodComponent SALAD_SIMPLE;
     public static final FoodComponent SALAD_MIXED;
     public static final FoodComponent SALAD_RICH;
     public static final FoodComponent SALAD_FULL;
-    public static final FoodComponent POTTAGE;
 
     static {
         BEANS = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
@@ -65,11 +67,13 @@ public class TerravibeFoodComponents {
         GORGONZOLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build();
         MOZZARELLA = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
         MOZZARELLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.15f).build();
+        POTTAGE = new FoodComponent.Builder().hunger(9).saturationModifier(0.9f).build();
+        PIZZA_SLICE_FOUR_CHEESE = new FoodComponent.Builder().hunger(4).saturationModifier(0.4f).build();
+        PIZZA_SLICE_MARGHERITA = new FoodComponent.Builder().hunger(2).saturationModifier(0.2f).build();
         SALAD_SIMPLE = new FoodComponent.Builder().hunger(5).saturationModifier(0.6f).build();
         SALAD = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f).build();
         SALAD_MIXED = new FoodComponent.Builder().hunger(6).saturationModifier(0.7f).build();
         SALAD_RICH = new FoodComponent.Builder().hunger(7).saturationModifier(0.7f).build();
         SALAD_FULL = new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build();
-        POTTAGE = new FoodComponent.Builder().hunger(9).saturationModifier(0.9f).build();
     }
 }

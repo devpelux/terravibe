@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBG",
+    "MTM",
+    "WWW"
+  ],
+  "key": {
+    "W" : {
+      "item": "minecraft:wheat"
+    },
+    "T" : {
+      "item": "terravibe:tomato_sauce_bottle"
+    },
+    "M" : {
+      "item": "terravibe:mozzarella_flakes"
+    },
+    "B" : {
+      "item": "terravibe:basil"
+    },
+    "C" : {
+      "item": "terravibe:cheese_flakes"
+    },
+    "G" : {
+      "item": "terravibe:gorgonzola_flakes"
+    }
+  },
+  "result": {
+    "item": "terravibe:pizza_four_cheese",
+    "count": 1
+  }
+}

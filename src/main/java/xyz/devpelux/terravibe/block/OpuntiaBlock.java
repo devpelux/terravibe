@@ -136,7 +136,6 @@ public class OpuntiaBlock extends FacingBlock {
      * Executed when a neighbor block is updated.
      * Calculates the distance from the root of the block.
      * Schedules a tick if block is too distant from the root.
-     *
      * If a block is too distant, is broken, then this causes another neighbor update, and so on...
      * This will break in cascade all the blocks connected to the broken block.
      */
