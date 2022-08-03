@@ -150,7 +150,7 @@ public class TerravibeItems {
 
     //Fruits of trees
 
-    /** Typical fruit used to make oil. */
+    /** Typical fruit used to make oil, or in salads and stews. */
     public static final Item OLIVES;
 
     /** Fruit produced by opuntia cactus. */

@@ -59,4 +59,9 @@ public class Util {
         copied.setCount(amount);
         return copied;
     }
+
+    /** Converts a value from a range 0 ... maxValue to a range 0 ... newMaxValue. */
+    public static float lerpFromMaxToMax(float value, float maxValue, float newMaxValue) {
+        return value / maxValue * newMaxValue;
+    }
 }

@@ -53,6 +53,7 @@ public class TunBlock extends ContainerBlock {
     /** Initializes a new {@link TunBlock}. */
     public TunBlock(Settings settings) {
         super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0));
     }
 
     /** Registers a color provider for the item specified. */

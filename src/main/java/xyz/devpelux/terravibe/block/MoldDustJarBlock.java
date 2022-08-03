@@ -88,7 +88,7 @@ public class MoldDustJarBlock extends JarBlock {
         if (!world.isClient() && !player.getAbilities().creativeMode) {
             ItemStack contained = getContained(world, pos);
             if (!contained.isEmpty()) {
-                dropStack(world, pos, Util.copyStack(contained, getLevel(world, pos)));
+                dropStack(world, pos, Util.copyStack(contained, getLevel(state)));
             }
         }
     }
@@ -105,15 +105,16 @@ public class MoldDustJarBlock extends JarBlock {
      */
     @Override
     public void randomTick(@NotNull BlockState state, ServerWorld world, BlockPos pos, @NotNull Random random) {
+        int level = getLevel(state);
+
         //Consumes the dust.
-        int consumingTime = CONSUMING_TIME * (MAX_LEVEL - state.get(LEVEL) + 1);
+        int consumingTime = CONSUMING_TIME * (MAX_LEVEL - level + 1);
         if (random.nextInt(consumingTime) == 0) {
-            int level = Math.max(getLevel(world, pos) - 1, 0);
-            setLevel(world, pos, level);
-            if (level == 0) {
+            int newLevel = Math.max(level - 1, 0);
+            setLevel(world, pos, newLevel);
+            if (newLevel == 0) {
                 setContained(world, pos, ItemStack.EMPTY);
                 world.setBlockState(pos, TerravibeBlocks.JAR.getDefaultState());
-                return;
             }
         }
 
@@ -122,7 +123,7 @@ public class MoldDustJarBlock extends JarBlock {
 
         //Tries to place the mold.
         if (mold != null) {
-            int time = SPREADING_TIME * (MAX_LEVEL - state.get(LEVEL) + 1);
+            int time = SPREADING_TIME * (MAX_LEVEL - level + 1);
             if (random.nextInt(time) == 0) {
                 //Gets a random position.
                 int posX = pos.getX() + random.nextBetween(-SPREADING_RADIUS, SPREADING_RADIUS);
@@ -172,10 +173,11 @@ public class MoldDustJarBlock extends JarBlock {
 
             if (particle != null) {
                 BlockPos.Mutable randomPos = new BlockPos.Mutable();
+                int level = getLevel(state);
 
                 //Generates the spores from the block.
                 for(int i = 0; i < SPORES_PER_TICK; ++i) {
-                    int time = MAX_LEVEL - state.get(LEVEL);
+                    int time = MAX_LEVEL - level;
                     if (time == 0 || random.nextInt(time) == 0) {
                         //Spawns a particle in a random position in the block.
                         double x = pos.getX() + (0.4d + (random.nextDouble() * 0.4d));
@@ -186,7 +188,7 @@ public class MoldDustJarBlock extends JarBlock {
                 }
 
                 //Generates the wandering air spores.
-                for(int i = 0; i < state.get(LEVEL); ++i) {
+                for(int i = 0; i < level; ++i) {
                     //Select a random spawn position between a radius of 10.
                     int posX = pos.getX() + random.nextBetween(-SPORE_SPREADING_RADIUS, SPORE_SPREADING_RADIUS);
                     int posY = pos.getY() + random.nextInt(SPORE_SPREADING_HEIGHT);
@@ -207,38 +209,22 @@ public class MoldDustJarBlock extends JarBlock {
 
     /** Gets the mold block state of the corresponding mold dust. */
     private @Nullable BlockState getMoldState(@NotNull Dust dust) {
-        switch (dust) {
-            case BirchMoldDust -> {
-                return TerravibeBlocks.BIRCH_MOLD.getDefaultState();
-            }
-            case DarkMoldDust -> {
-                return TerravibeBlocks.DARK_MOLD.getDefaultState();
-            }
-            case GlowingDarkMoldDust -> {
-                return TerravibeBlocks.GLOWING_DARK_MOLD.getDefaultState();
-            }
-            default -> {
-                return null;
-            }
-        }
+        return switch (dust) {
+            case BirchMoldDust -> TerravibeBlocks.BIRCH_MOLD.getDefaultState();
+            case DarkMoldDust -> TerravibeBlocks.DARK_MOLD.getDefaultState();
+            case GlowingDarkMoldDust -> TerravibeBlocks.GLOWING_DARK_MOLD.getDefaultState();
+            default -> null;
+        };
     }
 
     /** Gets the mold spore particle type of the corresponding mold dust. */
     private @Nullable DefaultParticleType getMoldSporeParticleType(@NotNull Dust dust) {
-        switch (dust) {
-            case BirchMoldDust -> {
-                return TerravibeParticleTypes.BIRCH_MOLD_SPORE;
-            }
-            case DarkMoldDust -> {
-                return TerravibeParticleTypes.DARK_MOLD_SPORE;
-            }
-            case GlowingDarkMoldDust -> {
-                return TerravibeParticleTypes.GLOWING_DARK_MOLD_SPORE;
-            }
-            default -> {
-                return null;
-            }
-        }
+        return switch (dust) {
+            case BirchMoldDust -> TerravibeParticleTypes.BIRCH_MOLD_SPORE;
+            case DarkMoldDust -> TerravibeParticleTypes.DARK_MOLD_SPORE;
+            case GlowingDarkMoldDust -> TerravibeParticleTypes.GLOWING_DARK_MOLD_SPORE;
+            default -> null;
+        };
     }
 
     /** Gets the luminance for the current block state. */

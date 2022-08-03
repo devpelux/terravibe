@@ -34,7 +34,6 @@ public abstract class ContainerBlock extends BlockWithEntity {
     /** Initializes a new {@link ContainerBlock}. */
     public ContainerBlock(Settings settings) {
         super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(getLevelProperty(), 0));
     }
 
     /** Registers the properties of the block. */
@@ -52,6 +51,11 @@ public abstract class ContainerBlock extends BlockWithEntity {
 
     /** Gets the interaction for the items specified. */
     public abstract Optional<ContainerInteraction> getInteraction(@NotNull Item used, @NotNull Item contained);
+
+    /** Gets the level of the container from its block state. */
+    protected int getLevel(@NotNull BlockState state) {
+        return state.get(getLevelProperty());
+    }
 
     /** Gets the level of the container in the specified position. */
     protected int getLevel(@NotNull World world, @NotNull BlockPos pos) {
@@ -175,5 +179,17 @@ public abstract class ContainerBlock extends BlockWithEntity {
     @Override
     public boolean enableSodiumColorBlending() {
         return false;
+    }
+
+    /** Gets a value indicating if the block gives an output to comparators. */
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    /** Gets the comparator output value. */
+    @Override
+    public int getComparatorOutput(@NotNull BlockState state, World world, BlockPos pos) {
+        return (int) Util.lerpFromMaxToMax(getLevel(state), getMaxLevel(), 15f);
     }
 }

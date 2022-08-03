@@ -175,6 +175,22 @@ public class TrayBlock extends Block {
         }
     }
 
+    /** Gets a value indicating if the block gives an output to comparators. */
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    /** Gets the comparator output value. */
+    @Override
+    public int getComparatorOutput(@NotNull BlockState state, World world, BlockPos pos) {
+        return switch (state.get(CONTENT)) {
+            case Salt -> 4;
+            case Water -> 2;
+            default -> 0;
+        };
+    }
+
     /** Gets the outline shape of the block. */
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
