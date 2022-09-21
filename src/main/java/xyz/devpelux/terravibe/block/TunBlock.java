@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -15,40 +15,39 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.block.container.ContainableColorProvider;
+import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.block.container.ContainerBlock;
-import xyz.devpelux.terravibe.block.container.ContainerInteraction;
+import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 
 import java.util.HashMap;
-import java.util.Optional;
 
 /** Container for "non-lava" fluids. */
-public class TunBlock extends ContainerBlock {
+public class TunBlock extends ContainerBlock implements BlockColorProvider {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tun");
 
     /** Settings of the block. */
     public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
 
-    /** Level of the contained when full. */
+    /** Level of the content when full. */
     public static final int MAX_LEVEL = 27;
 
-    /** Level of the contained. */
+    /** Level of the content. */
     public static final IntProperty LEVEL;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
 
-    /** Default color. */
-    private static final int DEFAULT_COLOR = 0x241a09;
+    /** Default content color. */
+    private static final int DEFAULT_CONTENT_COLOR = 0x241a09;
 
-    /** List of all the color providers to color the contained. */
-    private static final HashMap<Item, ContainableColorProvider> COLOR_PROVIDERS = new HashMap<>();
+    /** List of all the color providers to color the content. */
+    private static final HashMap<String, ContainerBlockEntity.ContainerBlockColorProvider> COLOR_PROVIDERS = new HashMap<>();
 
-    /** List of all the possible interactions with items of the player. */
-    private static final HashMap<Pair<Item, Item>, ContainerInteraction> INTERACTIONS = new HashMap<>();
+    /** List of all the possible behaviors of the container. */
+    private static final HashMap<Pair<String, Item>, ContainerBehavior> BEHAVIORS = new HashMap<>();
 
     /** Initializes a new {@link TunBlock}. */
     public TunBlock(Settings settings) {
@@ -56,19 +55,25 @@ public class TunBlock extends ContainerBlock {
         setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0));
     }
 
-    /** Registers a color provider for the item specified. */
-    public static void registerColorProvider(@NotNull Item item, @NotNull ContainableColorProvider colorProvider) {
-        COLOR_PROVIDERS.putIfAbsent(item, colorProvider);
+    /** Registers a color provider for the content specified. */
+    public static void registerColorProvider(@NotNull String content, @NotNull ContainerBlockEntity.ContainerBlockColorProvider colorProvider) {
+        COLOR_PROVIDERS.putIfAbsent(content, colorProvider);
     }
 
-    /** Gets the color provider for the item specified. */
-    public static Optional<ContainableColorProvider> getColorProvider(@NotNull Item item) {
-        return Optional.ofNullable(COLOR_PROVIDERS.get(item));
+    /** Gets the color provider for the content specified. */
+    public static @Nullable ContainerBlockEntity.ContainerBlockColorProvider getColorProvider(@NotNull String content) {
+        return COLOR_PROVIDERS.get(content);
     }
 
-    /** Registers an interaction for the items specified. */
-    public static void registerInteraction(@NotNull Item used, @NotNull Item contained, @NotNull ContainerInteraction interaction) {
-        INTERACTIONS.putIfAbsent(Pair.of(used, contained), interaction);
+    /** Registers a behavior for the content and input specified. */
+    public static void registerBehavior(@NotNull String content, @NotNull Item used, @NotNull ContainerBehavior interaction) {
+        BEHAVIORS.putIfAbsent(Pair.of(content, used), interaction);
+    }
+
+    /** Gets the identifier of the block. */
+    @Override
+    public Identifier getId() {
+        return ID;
     }
 
     /** Gets the level property. */
@@ -83,10 +88,10 @@ public class TunBlock extends ContainerBlock {
         return MAX_LEVEL;
     }
 
-    /** Gets the interaction for the items specified. */
+    /** Gets the behavior for the content and input specified. */
     @Override
-    public Optional<ContainerInteraction> getInteraction(@NotNull Item used, @NotNull Item contained) {
-        return Optional.ofNullable(INTERACTIONS.get(Pair.of(used, contained)));
+    public @Nullable ContainerBehavior getBehavior(@NotNull String content, @NotNull Item input) {
+        return BEHAVIORS.get(Pair.of(content, input));
     }
 
     /** Gets the outline shape of the block. */
@@ -95,18 +100,24 @@ public class TunBlock extends ContainerBlock {
         return VOXEL_SHAPE;
     }
 
-    /** Gets the contained color. */
-    public static int getContainedColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
-        if (i != 1) return -1;
+    /** Gets the colors of the block. */
+    @Override
+    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
+        if (tintIndex != 1) return -1;
 
-        //Gets the contained stack.
-        ItemStack contained = getContained(view, pos);
+        //Gets the container.
+        ContainerBlockEntity container = getContainerEntity(world, pos);
+        if (container != null) {
+            //Gets the color provider for the container content.
+            ContainerBlockEntity.ContainerBlockColorProvider colorProvider = getColorProvider(getContent(container));
 
-        //Gets the contained color provider, basing on the contained item.
-        Optional<ContainableColorProvider> colorProvider = getColorProvider(contained.getItem());
+            if (colorProvider != null) {
+                //Gets the color.
+                return colorProvider.getColor(container, state, world, pos, tintIndex);
+            }
+        }
 
-        //Gets the contained color.
-        return colorProvider.map(provider -> provider.getColor(contained, state, view, pos, i)).orElse(DEFAULT_COLOR);
+        return DEFAULT_CONTENT_COLOR;
     }
 
     static {

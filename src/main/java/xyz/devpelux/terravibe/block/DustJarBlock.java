@@ -6,6 +6,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -14,13 +16,15 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
+
+import java.util.Objects;
 
 /** A jar for dusts. */
 public class DustJarBlock extends JarBlock {
@@ -31,7 +35,7 @@ public class DustJarBlock extends JarBlock {
     public static final Settings SETTINGS;
 
     /** Dust consuming time. */
-    public static final int CONSUMING_TIME = 48;
+    public static final int CONSUMING_TIME = 144;
 
     /** Max height from the current position to spread the wandering dust. */
     public static final int DUST_SPREADING_HEIGHT = 4;
@@ -54,6 +58,11 @@ public class DustJarBlock extends JarBlock {
         setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false).with(DUST, Dust.Unspecified));
     }
 
+    /** Gets the default state with the specified dust. */
+    public static BlockState withDust(Dust dust) {
+        return TerravibeBlocks.DUST_JAR.getDefaultState().with(DUST, dust);
+    }
+
     /** Registers the properties of the block. */
     @Override
     protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
@@ -61,24 +70,38 @@ public class DustJarBlock extends JarBlock {
         builder.add(DUST);
     }
 
-    /** Gets the default state with the specified dust. */
-    public static BlockState withDust(Dust dust) {
-        return TerravibeBlocks.DUST_JAR.getDefaultState().with(DUST, dust);
+    /** Gets the identifier of the block. */
+    @Override
+    public Identifier getId() {
+        return ID;
+    }
+
+    /** Gets the block state from nbt container data. */
+    @Override
+    public BlockState getStateFromContainerData(@NotNull NbtCompound nbt) {
+        String dust = nbt.getString("Dust");
+        return super.getStateFromContainerData(nbt).with(DUST, Objects.requireNonNullElse(Dust.byName(dust), Dust.Unspecified));
+    }
+
+    /** Save extra container data to nbt. */
+    @Override
+    protected void saveToNbt(@NotNull BlockState state, @NotNull BlockView world, @NotNull BlockPos pos, @NotNull NbtCompound nbt) {
+        super.saveToNbt(state, world, pos, nbt);
+        nbt.putString("Dust", state.get(DUST).asString());
     }
 
     /**
-     * Executed at the block breaking.
+     * Executed at the block breaking when opened.
      * Drops the contained.
      */
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        super.onBreak(world, pos, state, player);
-        //Drops the contained in server world, if the player is not in creative mode.
-        if (!world.isClient() && !player.getAbilities().creativeMode) {
-            ItemStack contained = getContained(world, pos);
-            if (!contained.isEmpty()) {
-                dropStack(world, pos, Util.copyStack(contained, getLevel(state)));
-            }
+    public void onBreakOpened(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        super.onBreakOpened(world, pos, state, player);
+        //Drops the content in server world, if the player is not in creative mode.
+        Dust dust = state.get(DUST);
+        if (!world.isClient() && !player.getAbilities().creativeMode && dust != Dust.Unspecified) {
+            ItemStack contained = new ItemStack(dust.toItem(), getLevel(state));
+            dropStack(world, pos, contained);
         }
     }
 
@@ -99,9 +122,10 @@ public class DustJarBlock extends JarBlock {
         int consumingTime = CONSUMING_TIME * (MAX_LEVEL - level + 1);
         if (random.nextInt(consumingTime) == 0) {
             int newLevel = Math.max(level - 1, 0);
-            setLevel(world, pos, newLevel);
-            if (newLevel == 0) {
-                setContained(world, pos, ItemStack.EMPTY);
+            if (newLevel > 0) {
+                world.setBlockState(pos, state.with(getLevelProperty(), newLevel));
+            }
+            else {
                 world.setBlockState(pos, TerravibeBlocks.JAR.getDefaultState());
             }
         }
@@ -172,7 +196,9 @@ public class DustJarBlock extends JarBlock {
     }
 
 
-    /** Represents the dust type contained in a {@link DustJarBlock}. */
+    /**
+     * Represents the dust type contained in a {@link DustJarBlock}.
+     */
     public enum Dust implements StringIdentifiable {
         /** The block contains unspecified dust. */
         Unspecified("unspecified"),
@@ -188,6 +214,9 @@ public class DustJarBlock extends JarBlock {
 
         /** Name representing the value. */
         private final String name;
+
+        /** Codec for converting from string. */
+        private static final Codec<Dust> CODEC = StringIdentifiable.createCodec(Dust::values);
 
         /** Initializes a new value with the name specified. */
         Dust(String name) {
@@ -206,12 +235,20 @@ public class DustJarBlock extends JarBlock {
             return asString();
         }
 
-        /** Gets the dust type of the corresponding item. */
-        public static Dust fromItem(Item item) {
-            if (item == TerravibeItems.BURNED_BIRCH_MOLD_DUST) return BurnedBirchMoldDust;
-            else if (item == TerravibeItems.BURNED_DARK_MOLD_DUST) return BurnedDarkMoldDust;
-            else if (item == TerravibeItems.BURNED_GLOWING_DARK_MOLD_DUST) return BurnedGlowingDarkMoldDust;
-            else return Unspecified;
+        /** Returns the dust value representing the string specified. */
+        @Nullable
+        public static Dust byName(@Nullable String name) {
+            return CODEC.byId(name);
+        }
+
+        /** Returns the item representing this instance. */
+        public @NotNull Item toItem() {
+            return switch (this) {
+                case BurnedBirchMoldDust -> TerravibeItems.BURNED_BIRCH_MOLD_DUST;
+                case BurnedDarkMoldDust -> TerravibeItems.BURNED_DARK_MOLD_DUST;
+                case BurnedGlowingDarkMoldDust -> TerravibeItems.BURNED_GLOWING_DARK_MOLD_DUST;
+                default -> Items.AIR;
+            };
         }
     }
 }

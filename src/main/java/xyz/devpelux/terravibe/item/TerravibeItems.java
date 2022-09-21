@@ -37,6 +37,14 @@ public class TerravibeItems {
     /** Item of the tun block. */
     public static final Item TUN;
 
+    //Closed jars
+
+    /** Item of the empty closed jar block. */
+    public static final Item CLOSED_JAR_EMPTY;
+
+    /** Item of the filled closed jar block. */
+    public static final Item CLOSED_JAR_FILLED;
+
     //Cork objects
 
     /** Material obtained from stripping crimson stems. */
@@ -315,6 +323,8 @@ public class TerravibeItems {
         ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
         ColorProviderRegistry.ITEM.register((ItemColorProvider) TOMATO_SAUCE_BOTTLE, TOMATO_SAUCE_BOTTLE);
         ColorProviderRegistry.ITEM.register((ItemColorProvider) WARPED_CORK_PLUG, WARPED_CORK_PLUG);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) CLOSED_JAR_EMPTY, CLOSED_JAR_EMPTY);
+        ColorProviderRegistry.ITEM.register((ItemColorProvider) CLOSED_JAR_FILLED, CLOSED_JAR_FILLED);
     }
 
     /** Registers the specified item with the specified id. */
@@ -409,6 +419,9 @@ public class TerravibeItems {
         OAK_CORK = register("oak_cork", new Item(Settings.stack64()));
         CRIMSON_CORK = register("crimson_cork", new Item(Settings.stack64()));
         WARPED_CORK = register("warped_cork", new Item(Settings.stack64()));
+
+        CLOSED_JAR_EMPTY = register("closed_jar_empty", new ClosedJarItem(Settings.stack16Hided()));
+        CLOSED_JAR_FILLED = register("closed_jar_filled", new ClosedJarItem(Settings.stack16Hided()));
     }
 
 
@@ -426,12 +439,17 @@ public class TerravibeItems {
 
         /** Generates generic item settings, with stack of 16. */
         private static Item.Settings stack16() {
-            return new FabricItemSettings().maxCount(16).group(TerravibeItemGroups.TERRAVIBE);
+            return stack16Hided().group(TerravibeItemGroups.TERRAVIBE);
+        }
+
+        /** Generates generic item settings, with stack of 16, without any group. */
+        private static Item.Settings stack16Hided() {
+            return new FabricItemSettings().maxCount(16);
         }
 
         /** Generates generic item settings, with stack of 64. */
         private static Item.Settings stack64() {
-            return new FabricItemSettings().maxCount(64).group(TerravibeItemGroups.TERRAVIBE);
+            return stack64Hided().group(TerravibeItemGroups.TERRAVIBE);
         }
 
         /** Generates generic item settings, with stack of 64, without any group. */

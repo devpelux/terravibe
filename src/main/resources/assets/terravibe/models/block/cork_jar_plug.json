@@ -1,8 +1,7 @@
 {
 	"credit": "devpelux",
 	"textures": {
-		"cork": "terravibe:block/cork_plug",
-		"particle": "#texture"
+		"cork": "terravibe:block/cork_plug"
 	},
 	"elements": [
 		{

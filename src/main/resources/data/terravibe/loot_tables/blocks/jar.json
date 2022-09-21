@@ -6,6 +6,13 @@
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "terravibe:jar",
+          "properties": {
+            "closed": "false"
+          }
         }
       ],
       "entries": [

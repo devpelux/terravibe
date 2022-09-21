@@ -16,7 +16,7 @@ public class ColoredItem extends Item implements ItemColorProvider {
         this.provider = provider;
     }
 
-    /** Gets the color of the item. */
+    /** Gets the colors of the item. */
     @Override
     public int getColor(ItemStack stack, int tintIndex) {
         return provider.getColor(stack, tintIndex);

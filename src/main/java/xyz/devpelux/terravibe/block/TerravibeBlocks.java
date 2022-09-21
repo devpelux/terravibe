@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.registry.FlattenableBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -117,11 +118,11 @@ public class TerravibeBlocks {
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
-        ColorProviderRegistry.BLOCK.register(JarBlock::getContainedAndPlugColor, DUST_JAR);
-        ColorProviderRegistry.BLOCK.register(JarBlock::getContainedAndPlugColor, MOLD_DUST_JAR);
-        ColorProviderRegistry.BLOCK.register(JarBlock::getContainedAndPlugColor, JAR);
-        ColorProviderRegistry.BLOCK.register(TunBlock::getContainedColor, TUN);
-        ColorProviderRegistry.BLOCK.register(TrayBlock::getContentColor, TRAY);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) DUST_JAR, DUST_JAR);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) MOLD_DUST_JAR, MOLD_DUST_JAR);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) JAR, JAR);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) TUN, TUN);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) TRAY, TRAY);
     }
 
     /** Loads all the render layer maps for the blocks. */

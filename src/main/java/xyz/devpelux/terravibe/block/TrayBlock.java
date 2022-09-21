@@ -2,6 +2,7 @@ package xyz.devpelux.terravibe.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -29,11 +30,12 @@ import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Tray used to make salt. */
-public class TrayBlock extends Block {
+public class TrayBlock extends Block implements BlockColorProvider {
     /** Identifier of the block. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tray");
 
@@ -197,10 +199,11 @@ public class TrayBlock extends Block {
         return VOXEL_SHAPE;
     }
 
-    /** Gets the content color. */
-    public static int getContentColor(BlockState state, BlockRenderView view, BlockPos pos, int i) {
-        if (i != 1) return -1;
-        return BiomeColors.getWaterColor(view, pos);
+    /** Gets the colors of the block. */
+    @Override
+    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
+        if (tintIndex != 1 || world == null || pos == null) return -1;
+        return BiomeColors.getWaterColor(world, pos);
     }
 
     static {

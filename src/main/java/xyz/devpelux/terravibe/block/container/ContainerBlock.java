@@ -8,7 +8,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundCategory;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
@@ -21,15 +21,12 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
-
-import java.util.Optional;
 
 /** Container. */
 public abstract class ContainerBlock extends BlockWithEntity {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "jar");
+    /** Empty content. */
+    public static final String CONTENT_EMPTY = "minecraft:empty";
 
     /** Initializes a new {@link ContainerBlock}. */
     public ContainerBlock(Settings settings) {
@@ -43,130 +40,111 @@ public abstract class ContainerBlock extends BlockWithEntity {
         builder.add(getLevelProperty());
     }
 
+    /** Gets the identifier of the block. */
+    public abstract Identifier getId();
+
     /** Gets the level property. */
     public abstract IntProperty getLevelProperty();
 
     /** Gets the max level. */
     public abstract int getMaxLevel();
 
-    /** Gets the interaction for the items specified. */
-    public abstract Optional<ContainerInteraction> getInteraction(@NotNull Item used, @NotNull Item contained);
+    /** Gets the behavior for the content and input specified. */
+    public abstract @Nullable ContainerBehavior getBehavior(@NotNull String content, @NotNull Item input);
 
     /** Gets the level of the container from its block state. */
     protected int getLevel(@NotNull BlockState state) {
         return state.get(getLevelProperty());
     }
 
-    /** Gets the level of the container in the specified position. */
-    protected int getLevel(@NotNull World world, @NotNull BlockPos pos) {
-        return world.getBlockState(pos).get(getLevelProperty());
+    /** Gets the content. */
+    public static String getContent(@NotNull ContainerBlockEntity container) {
+        NbtCompound value = container.getValue("Content");
+        return value.getString("Id");
     }
 
-    /** Sets the level of the container in the specified position. */
-    protected void setLevel(@NotNull World world, @NotNull BlockPos pos, int level) {
-        world.setBlockState(pos, world.getBlockState(pos).with(getLevelProperty(), level));
+    /** Sets the content. */
+    public static void setContent(@NotNull ContainerBlockEntity container, String content) {
+        NbtCompound value = new NbtCompound();
+        value.putString("Id", content);
+        container.setValue("Content", value);
     }
 
-    /** Gets the contained stack. */
-    public static @NotNull ItemStack getContained(@NotNull BlockView world, @NotNull BlockPos pos) {
-        if (world.getBlockEntity(pos) instanceof ContainerBlockEntity container) {
-            return container.getContained();
+    /** Gets the container block entity. */
+    public static @Nullable ContainerBlockEntity getContainerEntity(BlockView world, BlockPos pos) {
+        if (world == null || pos == null) return null;
+        return world.getBlockEntity(pos) instanceof ContainerBlockEntity container ? container : null;
+    }
+
+    /** Gets the block state from nbt container data. */
+    public BlockState getStateFromContainerData(@NotNull NbtCompound nbt) {
+        int level = nbt.getInt("Level");
+        return getDefaultState().with(getLevelProperty(), level);
+    }
+
+    /** Gets the container data as nbt. */
+    public NbtCompound getContainerData(@NotNull BlockState state, @NotNull BlockView world, @NotNull BlockPos pos) {
+        NbtCompound nbt = new NbtCompound();
+        ContainerBlockEntity container = getContainerEntity(world, pos);
+        if (container != null) {
+            //Adds a copy of the content.
+            NbtCompound content = container.getContent().copy();
+            nbt.put("ContentData", content);
         }
-        return ItemStack.EMPTY;
+        //Adds other container data.
+        saveToNbt(state, world, pos, nbt);
+        return nbt;
     }
 
-    /** Sets the contained stack. */
-    public static void setContained(@NotNull BlockView world, @NotNull BlockPos pos, @NotNull ItemStack stack) {
-        if (world.getBlockEntity(pos) instanceof ContainerBlockEntity container) {
-            container.setContained(stack);
-        }
+    /** Save container data to nbt. */
+    protected void saveToNbt(@NotNull BlockState state, @NotNull BlockView world, @NotNull BlockPos pos, @NotNull NbtCompound nbt) {
+        nbt.putString("Block", getId().toString());
+        nbt.putInt("Level", getLevel(state));
     }
 
     /**
      * Executed when the block is used.
-     * Inserts or extracts the fluid.
+     * Interacts with the block entity.
      */
     @Override
     public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, @NotNull PlayerEntity player, Hand hand, BlockHitResult hit) {
-        //Gets the stack in the main hand and the contained items, then gets the interaction for them.
-        ItemStack inHand = player.getStackInHand(Hand.MAIN_HAND);
-        ItemStack contained = getContained(world, pos);
-        Optional<ContainerInteraction> interaction = getInteraction(inHand.getItem(), contained.getItem());
+        ContainerBlockEntity container = getContainerEntity(world, pos);
+        if (container != null) {
+            return onUseBlockEntity(state, world, pos, player, container);
+        }
+        return ActionResult.PASS;
+    }
 
-        if (interaction.isPresent()) {
-            //Gets the level.
-            int level = getLevel(world, pos);
+    /**
+     * Executed when the block entity is used.
+     * Inserts or extracts the content.
+     */
+    public ActionResult onUseBlockEntity(BlockState state, World world, BlockPos pos, PlayerEntity player, ContainerBlockEntity container) {
+        //Gets the stack in the main hand and the content nbt.
+        ItemStack inHand = player.getStackInHand(Hand.MAIN_HAND);
+
+        //Gets the interaction for the current content, and the current item in hand.
+        ContainerBehavior behavior = getBehavior(getContent(container), inHand.getItem());
+
+        if (behavior != null) {
+            //Gets the level property, the current level, and the max level.
+            IntProperty level = getLevelProperty();
+            int currentLevel = getLevel(state);
+            int maxLevel = getMaxLevel();
 
             //Gets the result of the interaction.
-            ContainerInteractionResult result = interaction.get().onUse(state, world, pos, player, inHand, contained, level);
-
-            if (result.getInteraction() == ContainerInteractionResult.Interaction.INSERT) {
-                //If the tun can contain the extra fluid, insert into the tun.
-                if (result.getLevel() <= getMaxLevel()) {
-                    if (!world.isClient()) {
-                        //Increments the level.
-                        setLevel(world, pos, result.getLevel());
-
-                        //Sets the contained to the new contained.
-                        setContained(world, pos, Util.copyStack(result.getContained(), 1));
-
-                        //Consumes the main stack and drops the drop (only if the player is not in creative).
-                        if (!player.getAbilities().creativeMode) {
-                            inHand.decrement(result.getConsumed());
-                            player.getInventory().offerOrDrop(result.getDrop().copy());
-                        }
-
-                        //Plays the sound.
-                        result.getSound().ifPresent(sound -> player.playSound(sound, SoundCategory.BLOCKS, 1f, 1f));
-                    }
-
-                    //Client: SUCCESS / Server: CONSUME
-                    return ActionResult.success(world.isClient());
-                }
-            }
-            else if (result.getInteraction() == ContainerInteractionResult.Interaction.EXTRACT) {
-                //If the tun contains enough fluid, extract from the tun.
-                if (result.getLevel() >= 0) {
-                    if (!world.isClient()) {
-                        //Decrements the level.
-                        setLevel(world, pos, result.getLevel());
-
-                        if (result.getLevel() > 0) {
-                            //Sets the contained to the new contained.
-                            setContained(world, pos, Util.copyStack(contained, 1));
-                        }
-                        else {
-                            //If the tun becomes empty, removes the contained.
-                            setContained(world, pos, ItemStack.EMPTY);
-                        }
-
-                        //Consumes the main stack and drops the drop (only if the player is not in creative).
-                        if (!player.getAbilities().creativeMode) {
-                            inHand.decrement(result.getConsumed());
-                            player.getInventory().offerOrDrop(result.getDrop().copy());
-                        }
-
-                        //Plays the fill sound.
-                        result.getSound().ifPresent(sound -> player.playSound(sound, SoundCategory.BLOCKS, 1f, 1f));
-                    }
-
-                    //Client: SUCCESS / Server: CONSUME
-                    return ActionResult.success(world.isClient());
-                }
-            }
-            else {
-                return result.getAction();
-            }
+            return behavior.interact(state, world, pos, player, inHand, container, level, currentLevel, maxLevel);
         }
 
         return ActionResult.PASS;
     }
 
     /** Creates the block entity for the block. */
-    @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ContainerBlockEntity(pos, state);
+    public final @NotNull BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        ContainerBlockEntity container = new ContainerBlockEntity(pos, state);
+        setContent(container, CONTENT_EMPTY);
+        return container;
     }
 
     /** Gets the render type of the block. */
@@ -191,5 +169,13 @@ public abstract class ContainerBlock extends BlockWithEntity {
     @Override
     public int getComparatorOutput(@NotNull BlockState state, World world, BlockPos pos) {
         return (int) Util.lerpFromMaxToMax(getLevel(state), getMaxLevel(), 15f);
+    }
+
+
+    /** Defines an interaction of the player with a container. */
+    public interface ContainerBehavior {
+        /** Executed when the player interacts with the container with an item. */
+        ActionResult interact(BlockState state, World world, BlockPos pos, PlayerEntity player, ItemStack stack,
+                              ContainerBlockEntity container, IntProperty level, int currentLevel, int maxLevel);
     }
 }

@@ -93,7 +93,7 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
             //The time passed in a range between 0 and 2PI.
             float piTime = time / maxTime * MathHelper.PI * 2f;
 
-            return MathHelper.lerpFromProgress(MathHelper.sin(piTime), -1f, 1f, minLuminescence, maxLuminescence);
+            return MathHelper.map(MathHelper.sin(piTime), -1f, 1f, minLuminescence, maxLuminescence);
         }
         return maxLuminescence;
     }

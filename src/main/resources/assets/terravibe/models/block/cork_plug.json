@@ -2,8 +2,7 @@
 	"credit": "devpelux",
 	"parent": "block/block",
 	"textures": {
-		"cork": "terravibe:block/cork_plug",
-		"particle": "#texture"
+		"cork": "terravibe:block/cork_plug"
 	},
 	"elements": [
 		{
