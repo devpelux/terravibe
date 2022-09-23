@@ -11,6 +11,7 @@ import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import xyz.devpelux.terravibe.block.container.TerravibeContainerBehaviors;
 
 /** List of all the blocks. */
 public class TerravibeBlocks {
@@ -23,6 +24,9 @@ public class TerravibeBlocks {
 
     /** A jar for dusts. */
     public static final Block DUST_JAR;
+
+    /** A cauldron that contains milk. */
+    public static final Block MILK_CAULDRON;
 
     /** A jar for mold dusts. */
     public static final Block MOLD_DUST_JAR;
@@ -115,10 +119,17 @@ public class TerravibeBlocks {
         FlattenableBlockRegistry.register(FLOODED_MUD, Blocks.MUD.getDefaultState());
     }
 
+    /** Loads all the containers behaviors. */
+    public static void loadContainerBehaviors() {
+        TerravibeContainerBehaviors.loadBehaviors();
+        MilkCauldronBlock.loadBehaviors();
+    }
+
     /** Loads all the color providers for the items. */
     @Environment(EnvType.CLIENT)
     public static void loadColorProviders() {
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) DUST_JAR, DUST_JAR);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) MILK_CAULDRON, MILK_CAULDRON);
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) MOLD_DUST_JAR, MOLD_DUST_JAR);
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) JAR, JAR);
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) TUN, TUN);
@@ -158,6 +169,7 @@ public class TerravibeBlocks {
     static {
         JAR = register(JarBlock.ID, new JarBlock(JarBlock.SETTINGS));
         DUST_JAR = register(DustJarBlock.ID, new DustJarBlock(DustJarBlock.SETTINGS));
+        MILK_CAULDRON = register(MilkCauldronBlock.ID, new MilkCauldronBlock(MilkCauldronBlock.SETTINGS));
         MOLD_DUST_JAR = register(MoldDustJarBlock.ID, new MoldDustJarBlock(MoldDustJarBlock.SETTINGS));
         MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.SETTINGS));
         SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.SETTINGS));

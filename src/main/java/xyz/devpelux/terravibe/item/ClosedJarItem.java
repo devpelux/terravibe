@@ -32,10 +32,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 
-import static xyz.devpelux.terravibe.block.container.TerravibeContainerBehaviors.*;
-
 /** Jar with plug and content. */
 public class ClosedJarItem extends Item implements ItemColorProvider {
+    public static final String CONTENT_WATER = "minecraft:water";
+    public static final String CONTENT_HONEY = "minecraft:honey";
+    public static final String CONTENT_MILK = "minecraft:milk";
+    public static final String CONTENT_TOMATO_SAUCE = "terravibe:tomato_sauce";
+    public static final String CONTENT_BIRCH_MOLD_DUST = "terravibe:birch_mold_dust";
+    public static final String CONTENT_DARK_MOLD_DUST = "terravibe:dark_mold_dust";
+    public static final String CONTENT_GLOWING_DARK_MOLD_DUST = "terravibe:glowing_dark_mold_dust";
+    public static final String CONTENT_BURNED_BIRCH_MOLD_DUST = "terravibe:burned_birch_mold_dust";
+    public static final String CONTENT_BURNED_DARK_MOLD_DUST = "terravibe:burned_dark_mold_dust";
+    public static final String CONTENT_BURNED_GLOWING_DARK_MOLD_DUST = "terravibe:burned_glowing_dark_mold_dust";
+
     /** Default content color. */
     private static final int DEFAULT_CONTENT_COLOR = 0x241a09;
 

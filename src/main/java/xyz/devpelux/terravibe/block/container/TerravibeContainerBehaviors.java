@@ -26,7 +26,7 @@ import java.util.Objects;
 public class TerravibeContainerBehaviors {
     private TerravibeContainerBehaviors() {}
 
-    public static final String CONTENT_EMPTY = ContainerBlock.CONTENT_EMPTY;
+    public static final String CONTENT_EMPTY = "minecraft:empty";
     public static final String CONTENT_WATER = "minecraft:water";
     public static final String CONTENT_HONEY = "minecraft:honey";
     public static final String CONTENT_MILK = "minecraft:milk";
@@ -60,7 +60,7 @@ public class TerravibeContainerBehaviors {
     public static final ContainerBlock.ContainerBehavior PUT_BURNED_GLOWING_DARK_MOLD_DUST_JAR;
 
     /** Loads all the behaviors. */
-    public static void load() {
+    public static void loadBehaviors() {
         loadJarBehaviors();
         loadTunBehaviors();
     }
