@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "cookingtime": 200,
-  "experience": 0.2,
+  "experience": 0.5,
   "ingredient": {
     "item": "terravibe:dark_mold_dust"
   },

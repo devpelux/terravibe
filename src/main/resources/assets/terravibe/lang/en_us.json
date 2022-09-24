@@ -17,6 +17,7 @@
   "block.terravibe.onion_crop" : "Onion Crop",
   "block.terravibe.rice_crop" : "Rice Crop",
   "block.terravibe.sweet_potato_crop" : "Sweet Potato Crop",
+  "block.terravibe.thistle_plant" : "Thistle Plant",
   "block.terravibe.tomato_crop" : "Tomato Crop",
 
   "block.terravibe.birch_mold" : "Birch Mold",
@@ -77,6 +78,7 @@
   "item.terravibe.rice_grains" : "Rice Grains",
   "item.terravibe.sweet_potato" : "Sweet Potato",
   "item.terravibe.sweet_potato_buds" : "Sweet Potato Buds",
+  "item.terravibe.thistle" : "Thistle",
   "item.terravibe.tomato" : "Tomato",
   "item.terravibe.tomato_seeds" : "Tomato Seeds",
 
@@ -114,6 +116,9 @@
   "item.terravibe.burned_dark_mold_dust" : "Burned Dust of Dark Mold",
   "item.terravibe.burned_glowing_dark_mold_dust" : "Burned Dust of Glowing Dark Mold",
   "item.terravibe.salt" : "Salt",
+  "item.terravibe.thistle_leaves" : "Leaves of Thistle",
+  "item.terravibe.thistle_stamens" : "Stamens of Thistle",
+  "item.terravibe.thistle_stamens_and_salt" : "Stamens of Thistle and Salt",
   "item.terravibe.tomato_sauce_bottle" : "Tomato Sauce Bottle",
 
   "item.terravibe.opuntia" : "Opuntia",

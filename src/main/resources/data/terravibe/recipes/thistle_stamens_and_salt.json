@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "terravibe:thistle_stamens"
+    },
+    {
+      "item": "terravibe:thistle_stamens"
+    },
+    {
+      "item": "terravibe:salt"
+    }
+  ],
+  "result": {
+    "item": "terravibe:thistle_stamens_and_salt",
+    "count": 1
+  }
+}

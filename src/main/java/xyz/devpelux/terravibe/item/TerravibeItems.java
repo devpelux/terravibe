@@ -130,6 +130,9 @@ public class TerravibeItems {
     /** Buds of sweet potato. */
     public static final Item SWEET_POTATO_BUDS;
 
+    /** Edible plant with purple flowers. */
+    public static final Item THISTLE;
+
     /** Edible red berry, commonly used to make sauces or for salad. */
     public static final Item TOMATO;
 
@@ -238,6 +241,15 @@ public class TerravibeItems {
 
     /** Bottle that contains tomato sauce. */
     public static final Item TOMATO_SAUCE_BOTTLE;
+
+    /** Leaves of thistle. */
+    public static final Item THISTLE_LEAVES;
+
+    /** Stamens of thistle. */
+    public static final Item THISTLE_STAMENS;
+
+    /** Stamens of thistle and salt, used to coagulate milk. */
+    public static final Item THISTLE_STAMENS_AND_SALT;
 
     //Tree blocks
 
@@ -368,6 +380,7 @@ public class TerravibeItems {
         SWEET_POTATO = register("sweet_potato", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP,
                 Settings.stack64().food(TerravibeFoodComponents.SWEET_POTATO)));
         RED_SWEET_POTATO = register("red_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.RED_SWEET_POTATO)));
+        THISTLE = register("thistle", new AliasedBlockItem(TerravibeBlocks.THISTLE_PLANT, Settings.stack64()));
         TOMATO = register("tomato", new Item(Settings.stack64().food(TerravibeFoodComponents.TOMATO)));
         TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, Settings.stack64()));
 
@@ -407,6 +420,9 @@ public class TerravibeItems {
         BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(Settings.stack64()));
         BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(Settings.stack64()));
         SALT = register("salt", new Item(Settings.stack64()));
+        THISTLE_LEAVES = register("thistle_leaves", new Item(Settings.stack64().food(TerravibeFoodComponents.THISTLE_LEAVES)));
+        THISTLE_STAMENS = register("thistle_stamens", new Item(Settings.stack64()));
+        THISTLE_STAMENS_AND_SALT = register("thistle_stamens_and_salt", new Item(Settings.stack64()));
         TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(
                 Settings.stack16().recipeRemainder(Items.GLASS_BOTTLE), (s, i) -> i == 1 ? 0xf61815 : -1));
 

@@ -40,6 +40,7 @@ public class TerravibeFoodComponents {
     public static final FoodComponent SALAD_MIXED;
     public static final FoodComponent SALAD_RICH;
     public static final FoodComponent SALAD_FULL;
+    public static final FoodComponent THISTLE_LEAVES;
 
     static {
         BEANS = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
@@ -75,5 +76,6 @@ public class TerravibeFoodComponents {
         SALAD_MIXED = new FoodComponent.Builder().hunger(6).saturationModifier(0.7f).build();
         SALAD_RICH = new FoodComponent.Builder().hunger(7).saturationModifier(0.7f).build();
         SALAD_FULL = new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build();
+        THISTLE_LEAVES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
     }
 }

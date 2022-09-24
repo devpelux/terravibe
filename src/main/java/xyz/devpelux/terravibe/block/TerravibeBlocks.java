@@ -78,6 +78,9 @@ public class TerravibeBlocks {
     /** Crop of the sweet potato. */
     public static final Block SWEET_POTATO_CROP;
 
+    /** Plant of the thistle. */
+    public static final Block THISTLE_PLANT;
+
     /** Crop of the tomato. */
     public static final Block TOMATO_CROP;
 
@@ -158,6 +161,7 @@ public class TerravibeBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(OPUNTIA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(RICE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(THISTLE_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TOMATO_CROP, RenderLayer.getCutout());
     }
 
@@ -187,6 +191,7 @@ public class TerravibeBlocks {
         ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.SETTINGS));
         RICE_CROP = register(RiceCropBlock.ID, new RiceCropBlock(RiceCropBlock.SETTINGS));
         SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.SETTINGS));
+        THISTLE_PLANT = register(ThistlePlantBlock.ID, new ThistlePlantBlock(ThistlePlantBlock.SETTINGS));
         TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.SETTINGS));
 
         BIRCH_MOLD = register(BirchMoldBlock.ID, new BirchMoldBlock(BirchMoldBlock.SETTINGS));

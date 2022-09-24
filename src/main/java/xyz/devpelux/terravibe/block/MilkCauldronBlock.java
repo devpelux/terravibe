@@ -215,8 +215,8 @@ public class MilkCauldronBlock extends AbstractCauldronBlock implements BlockCol
         if (tintIndex == 0) {
             return switch (state.get(CONTENT)) {
                 case Milk -> 0xffffff;
-                case AcidMilk-> 0xf0f0d0;
-                case AcidMoldyMilk -> 0xd8ebd8;
+                case AcidMilk-> 0xf0f0dd;
+                case AcidMoldyMilk -> 0xddeedd;
                 default -> -1;
             };
         }

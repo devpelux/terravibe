@@ -22,15 +22,19 @@ public class TerravibeParticleTypes {
     /** Glowing dark mold spore particle. */
     public static final DefaultParticleType GLOWING_DARK_MOLD_SPORE;
 
+    /** Thistle pollen particle. */
+    public static final DefaultParticleType THISTLE_POLLEN;
+
     /** Loads all the tags. */
     public static void load() {}
 
     /** Loads all the particle factories. */
     @Environment(EnvType.CLIENT)
     public static void loadFactories() {
-        ParticleFactoryRegistry.getInstance().register(BIRCH_MOLD_SPORE, FloatingSporeParticle.BirchMoldSporeFactory::new);
-        ParticleFactoryRegistry.getInstance().register(DARK_MOLD_SPORE, FloatingSporeParticle.DarkMoldSporeFactory::new);
-        ParticleFactoryRegistry.getInstance().register(GLOWING_DARK_MOLD_SPORE, FloatingSporeParticle.GlowingDarkMoldSporeFactory::new);
+        ParticleFactoryRegistry.getInstance().register(BIRCH_MOLD_SPORE, FloatingSporeParticleFactories.BirchMoldSporeFactory::new);
+        ParticleFactoryRegistry.getInstance().register(DARK_MOLD_SPORE, FloatingSporeParticleFactories.DarkMoldSporeFactory::new);
+        ParticleFactoryRegistry.getInstance().register(GLOWING_DARK_MOLD_SPORE, FloatingSporeParticleFactories.GlowingDarkMoldSporeFactory::new);
+        ParticleFactoryRegistry.getInstance().register(THISTLE_POLLEN, FloatingSporeParticleFactories.ThistlePollenFactory::new);
     }
 
     /** Registers a new particle type. */
@@ -42,5 +46,6 @@ public class TerravibeParticleTypes {
         BIRCH_MOLD_SPORE = register("birch_mold_spore", false);
         DARK_MOLD_SPORE = register("dark_mold_spore", false);
         GLOWING_DARK_MOLD_SPORE = register("glowing_dark_mold_spore", false);
+        THISTLE_POLLEN = register("thistle_pollen", false);
     }
 }

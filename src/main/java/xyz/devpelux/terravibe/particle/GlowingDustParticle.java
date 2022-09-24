@@ -60,6 +60,16 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
         gravityStrength = 0.001f;
     }
 
+    /** Gets the scale of the particle. */
+    public float getScale() {
+        return scale;
+    }
+
+    /** Sets the scale of the particle. */
+    public void setScale(float scale) {
+        this.scale = scale;
+    }
+
     /** Accelerates the particle. */
     public void accelerate(@NotNull Vec3d acceleration) {
         velocityX += acceleration.x;
