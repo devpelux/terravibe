@@ -44,7 +44,7 @@ public class BirchMoldBlock extends MoldBlock {
     /** Gets the min light to grow. */
     @Override
     public int getMinLightToGrow() {
-        return 2;
+        return 1;
     }
 
     /** Gets the min light to plant. */
@@ -56,13 +56,13 @@ public class BirchMoldBlock extends MoldBlock {
     /** Gets the max light to grow. */
     @Override
     public int getMaxLightToGrow() {
-        return 11;
+        return 10;
     }
 
     /** Gets the maximum light to plant the mold. */
     @Override
     public int getMaxLightToPlant() {
-        return 12;
+        return 11;
     }
 
     /** Gets a value indicating if the mold can randomly spread into the world. */
@@ -98,7 +98,7 @@ public class BirchMoldBlock extends MoldBlock {
     /** Gets the number of spores to spread in the air per tick. */
     @Override
     public int getWanderingSporesPerTick(@NotNull Random random) {
-        return 3;
+        return 2;
     }
 
     /** Gets the spore particle type. */

@@ -275,6 +275,12 @@ public abstract class MoldBlock extends PlantBlock {
         }
     }
 
+    /** Gets the maximum horizontal offset allowed. */
+    @Override
+    public float getMaxHorizontalModelOffset() {
+        return 0.05F;
+    }
+
     /** Gets the outline shape of the block. */
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

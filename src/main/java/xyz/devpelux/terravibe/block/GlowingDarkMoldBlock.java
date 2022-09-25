@@ -59,13 +59,13 @@ public class GlowingDarkMoldBlock extends MoldBlock {
     /** Gets the max light to grow. */
     @Override
     public int getMaxLightToGrow() {
-        return 4;
+        return 2;
     }
 
     /** Gets the maximum light to plant the mold. */
     @Override
     public int getMaxLightToPlant() {
-        return 5;
+        return 3;
     }
 
     /** Gets a value indicating if the mold can randomly spread into the world. */
