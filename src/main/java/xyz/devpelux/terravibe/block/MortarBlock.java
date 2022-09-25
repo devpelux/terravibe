@@ -24,6 +24,7 @@ import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.recipe.CrushingRecipe;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 
+import java.util.List;
 import java.util.Optional;
 
 /** Crushes an item to obtain other items. */
@@ -70,10 +71,8 @@ public class MortarBlock extends Block {
                 }
 
                 //Gets a random count of the output item to return.
-                int resultCount = recipe.getRandomCount(world.random);
-                if (resultCount > 0) {
-                    ItemStack output = recipe.getOutput().copy();
-                    output.setCount(resultCount);
+                List<ItemStack> outputs = recipe.multiCraft(player.getInventory(), world.random);
+                for (ItemStack output : outputs) {
                     player.getInventory().offerOrDrop(output);
                 }
 

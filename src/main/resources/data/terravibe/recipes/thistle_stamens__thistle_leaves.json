@@ -1,0 +1,18 @@
+{
+  "type": "terravibe:crushing",
+  "ingredient": {
+    "item": "terravibe:thistle"
+  },
+  "results": [
+    {
+      "item": "terravibe:thistle_stamens",
+      "min_count": "1",
+      "max_count": "1"
+    },
+    {
+      "item": "terravibe:thistle_leaves",
+      "min_count": "0",
+      "max_count": "1"
+    }
+  ]
+}

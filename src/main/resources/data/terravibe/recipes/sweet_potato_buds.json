@@ -3,9 +3,11 @@
   "ingredient": {
     "item": "minecraft:poisonous_potato"
   },
-  "result": {
-    "item": "terravibe:sweet_potato_buds",
-    "min_count": "0",
-    "max_count": "1"
-  }
+  "results": [
+    {
+      "item": "terravibe:sweet_potato_buds",
+      "min_count": "0",
+      "max_count": "1"
+    }
+  ]
 }

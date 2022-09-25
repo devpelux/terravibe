@@ -5,9 +5,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
@@ -20,7 +18,7 @@ import xyz.devpelux.terravibe.core.Util;
 import java.util.ArrayList;
 
 /** Shreds a bunch of items to obtain something into a container. */
-public class ShreddingRecipe implements Recipe<Inventory> {
+public class ShreddingRecipe extends InventoryRecipe {
     /** Identifier of the recipe. */
     public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "shredding");
 
@@ -28,34 +26,14 @@ public class ShreddingRecipe implements Recipe<Inventory> {
     public static final RecipeSerializer<ShreddingRecipe> SHREDDING_RECIPE_SERIALIZER =
             Registry.register(Registry.RECIPE_SERIALIZER, ID, new ShreddingRecipe.Serializer());
 
-    protected final Identifier id;
-    private final RecipeType<?> type;
-    private final RecipeSerializer<?> serializer;
-
-    protected final DefaultedList<Ingredient> ingredients;
     protected final Ingredient container;
     protected final ItemStack output;
 
     /** Initializes a new {@link ShreddingRecipe}. */
     public ShreddingRecipe(Identifier id, DefaultedList<Ingredient> ingredients, Ingredient container, ItemStack output) {
-        this(TerravibeRecipeTypes.SHREDDING, SHREDDING_RECIPE_SERIALIZER, id, ingredients, container, output);
-    }
-
-    /** Initializes a new {@link ShreddingRecipe}. */
-    public ShreddingRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, Identifier id,
-                           DefaultedList<Ingredient> ingredients, Ingredient container,  ItemStack output) {
-        this.type = type;
-        this.serializer = serializer;
-        this.id = id;
-        this.ingredients = ingredients;
+        super(TerravibeRecipeTypes.SHREDDING, SHREDDING_RECIPE_SERIALIZER, id, "", ingredients);
         this.container = container;
         this.output = output;
-    }
-
-    /** Gets the ingredients. */
-    @Override
-    public DefaultedList<Ingredient> getIngredients() {
-        return ingredients;
     }
 
     /** Gets the container. */
@@ -100,39 +78,6 @@ public class ShreddingRecipe implements Recipe<Inventory> {
         //Checks if all the items in the inventory are valid ingredient (no item left in the list).
         //Then checks if the container is valid (the container must be the last item stack of the inventory).
         return itemStacks.size() == 0 && container.test(inventory.getStack(inventory.size() - 1));
-    }
-
-    /** Crafts the result. */
-    @Override
-    public ItemStack craft(Inventory inventory) {
-        return getOutput().copy();
-    }
-
-    /**
-     * Gets a value indicating if the shape of the recipe fits the recipe.
-     * This is a shapeless recipe, so it will return always true.
-     */
-    @Override
-    public boolean fits(int width, int height) {
-        return true;
-    }
-
-    /** Gets the recipe id. */
-    @Override
-    public Identifier getId() {
-        return id;
-    }
-
-    /** Gets the recipe serializer. */
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return serializer;
-    }
-
-    /** Gets the recipe type. */
-    @Override
-    public RecipeType<?> getType() {
-        return type;
     }
 
 

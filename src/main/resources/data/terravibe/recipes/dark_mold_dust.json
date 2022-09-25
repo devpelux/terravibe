@@ -3,9 +3,11 @@
   "ingredient": {
     "item": "terravibe:dark_mold"
   },
-  "result": {
-    "item": "terravibe:dark_mold_dust",
-    "min_count": "1",
-    "max_count": "3"
-  }
+  "results": [
+    {
+      "item": "terravibe:dark_mold_dust",
+      "min_count": "1",
+      "max_count": "3"
+    }
+  ]
 }

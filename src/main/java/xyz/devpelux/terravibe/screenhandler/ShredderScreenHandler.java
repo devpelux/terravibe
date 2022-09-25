@@ -101,7 +101,7 @@ public class ShredderScreenHandler extends ScreenHandler {
             //Plays the take sound.
             player.playSound(getTakeSound(), SoundCategory.BLOCKS, 1f, 1f);
 
-            onUpdatedInputs(null);
+            onUpdatedInputs(player.getInventory());
         }
     }
 
@@ -120,7 +120,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 
             if (match.isPresent()) {
                 //If the recipe exists then set the output item stack to the crafting result.
-                if (!getSlot(5).hasStack()) getSlot(5).setStack(match.get().getOutput().copy());
+                if (!getSlot(5).hasStack()) getSlot(5).setStack(match.get().craft(inventory));
             }
             else {
                 //If the recipe does not exist then clean the output item stack.

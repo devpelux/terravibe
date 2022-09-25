@@ -3,9 +3,11 @@
   "ingredient": {
     "item": "terravibe:salt_crystals"
   },
-  "result": {
-    "item": "terravibe:salt",
-    "min_count": "1",
-    "max_count": "2"
-  }
+  "results": [
+    {
+      "item": "terravibe:salt",
+      "min_count": "1",
+      "max_count": "2"
+    }
+  ]
 }
