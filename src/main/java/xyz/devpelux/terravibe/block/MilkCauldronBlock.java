@@ -90,12 +90,12 @@ public class MilkCauldronBlock extends AbstractCauldronBlock implements BlockCol
                 return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_HONEY_BLOCK_BREAK);
             }
             if (content == Content.Cheese) {
-                ItemStack drop = new ItemStack(TerravibeItems.CHEESE, 4);
-                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_HONEY_BLOCK_BREAK);
+                ItemStack drop = new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
+                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
             }
             if (content == Content.Gorgonzola) {
-                ItemStack drop = new ItemStack(TerravibeItems.GORGONZOLA, 4);
-                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_HONEY_BLOCK_BREAK);
+                ItemStack drop = new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
+                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
             }
         }
         else if (stack.isIn(TerravibeItemTags.MILK_COAGULANTS) && content == Content.Milk) {

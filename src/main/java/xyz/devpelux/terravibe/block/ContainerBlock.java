@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.block.container;
+package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;

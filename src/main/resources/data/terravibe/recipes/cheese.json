@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "terravibe:cheese_wheel"
+    }
+  ],
+  "result": {
+    "item": "terravibe:cheese",
+    "count": 4
+  }
+}

@@ -1,0 +1,69 @@
+{
+	"credit": "devpelux",
+	"parent": "block/block",
+	"textures": {
+		"cheese": "terravibe:block/cheese",
+		"particle": "#cheese"
+	},
+	"elements": [
+		{
+			"from": [2, 2, 2],
+			"to": [14, 4, 14],
+			"faces": {
+				"north": {"uv": [2, 0, 14, 2], "rotation": 180, "texture": "#cheese"},
+				"east": {"uv": [14, 2, 16, 14], "rotation": 90, "texture": "#cheese"},
+				"south": {"uv": [2, 14, 14, 16], "texture": "#cheese"},
+				"west": {"uv": [0, 2, 2, 14], "rotation": 270, "texture": "#cheese"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#cheese"}
+			}
+		},
+		{
+			"from": [2, 0, 2],
+			"to": [14, 2, 14],
+			"faces": {
+				"north": {"uv": [2, 14, 14, 16], "rotation": 180, "texture": "#cheese"},
+				"east": {"uv": [0, 2, 2, 14], "rotation": 90, "texture": "#cheese"},
+				"south": {"uv": [2, 0, 14, 2], "texture": "#cheese"},
+				"west": {"uv": [14, 2, 16, 14], "rotation": 270, "texture": "#cheese"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#cheese"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [45, 45, 0],
+			"translation": [0, 1.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [45, 45, 0],
+			"translation": [0, 1.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 25, 0],
+			"translation": [4, 4, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 25, 0],
+			"translation": [4, 4, 0]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"gui": {
+			"rotation": [25, 45, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"head": {
+			"translation": [0, 14.4, 0]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -4.8],
+			"scale": [0.6, 0.6, 0.6]
+		}
+	}
+}

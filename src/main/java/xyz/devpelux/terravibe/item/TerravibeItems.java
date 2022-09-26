@@ -183,11 +183,17 @@ public class TerravibeItems {
     /** Flakes of cheese. */
     public static final Item CHEESE_FLAKES;
 
+    /** Cheese wheel. */
+    public static final Item CHEESE_WHEEL;
+
     /** Cheese with mold. */
     public static final Item GORGONZOLA;
 
     /** Flakes of gorgonzola. */
     public static final Item GORGONZOLA_FLAKES;
+
+    /** Gorgonzola wheel. */
+    public static final Item GORGONZOLA_WHEEL;
 
     /** Mozzarella. */
     public static final Item MOZZARELLA;
@@ -399,8 +405,10 @@ public class TerravibeItems {
         BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
         CHEESE = register("cheese", new Item(Settings.stack64().food(TerravibeFoodComponents.CHEESE)));
         CHEESE_FLAKES = register("cheese_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.CHEESE_FLAKES)));
+        CHEESE_WHEEL = register("cheese_wheel", new AliasedBlockItem(TerravibeBlocks.CHEESE_WHEEL, Settings.stack16()));
         GORGONZOLA = register("gorgonzola", new Item(Settings.stack64().food(TerravibeFoodComponents.GORGONZOLA)));
         GORGONZOLA_FLAKES = register("gorgonzola_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.GORGONZOLA_FLAKES)));
+        GORGONZOLA_WHEEL = register("gorgonzola_wheel", new AliasedBlockItem(TerravibeBlocks.GORGONZOLA_WHEEL, Settings.stack16()));
         MOZZARELLA = register("mozzarella", new Item(Settings.stack64().food(TerravibeFoodComponents.MOZZARELLA)));
         MOZZARELLA_FLAKES = register("mozzarella_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.MOZZARELLA_FLAKES)));
         SALAD = register("salad", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD)));

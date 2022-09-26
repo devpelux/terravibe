@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.block.container;
+package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +15,6 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import xyz.devpelux.terravibe.block.*;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;

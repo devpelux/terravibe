@@ -1,0 +1,6 @@
+{
+	"parent": "terravibe:block/cheese_wheel",
+	"textures": {
+		"cheese": "terravibe:block/gorgonzola"
+	}
+}

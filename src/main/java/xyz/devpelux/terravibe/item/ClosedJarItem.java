@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.block.container.ContainerBlock;
+import xyz.devpelux.terravibe.block.ContainerBlock;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 
 import java.util.HashMap;

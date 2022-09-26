@@ -11,7 +11,6 @@ import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.block.container.TerravibeContainerBehaviors;
 
 /** List of all the blocks. */
 public class TerravibeBlocks {
@@ -110,6 +109,12 @@ public class TerravibeBlocks {
 
     //Food blocks
 
+    /** Food made from milk coagulation. */
+    public static final Block CHEESE_WHEEL;
+
+    /** Variant of cheese with mold. */
+    public static final Block GORGONZOLA_WHEEL;
+
     /** Basic pizza plus all the cheese variants. */
     public static final Block PIZZA_FOUR_CHEESE;
 
@@ -203,6 +208,8 @@ public class TerravibeBlocks {
 
         FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.SETTINGS));
 
+        CHEESE_WHEEL = register(CheeseWheelBlock.CHEESE_ID, new CheeseWheelBlock(CheeseWheelBlock.SETTINGS));
+        GORGONZOLA_WHEEL = register(CheeseWheelBlock.GORGONZOLA_ID, new CheeseWheelBlock(CheeseWheelBlock.SETTINGS));
         PIZZA_FOUR_CHEESE = register(PizzaBlock.getID("four_cheese"), PizzaBlock.pizzaFourCheese(PizzaBlock.SETTINGS));
         PIZZA_MARGHERITA = register(PizzaBlock.getID("margherita"), PizzaBlock.pizzaMargherita(PizzaBlock.SETTINGS));
     }
