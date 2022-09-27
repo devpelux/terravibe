@@ -9,7 +9,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -18,16 +17,12 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 
 import java.util.Optional;
 
 /** Plant of the thistle. */
 public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "thistle_plant");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
@@ -48,6 +43,11 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 
     /** Voxel shape of the block. */
     protected static final VoxelShape VOXEL_SHAPE;
+
+    /** Initializes a new {@link ThistlePlantBlock} with default settings. */
+    public static ThistlePlantBlock of() {
+        return new ThistlePlantBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link ThistlePlantBlock}. */
     public ThistlePlantBlock(Settings settings) {
@@ -154,7 +154,11 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
     }
 
     static {
-        SETTINGS = FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(OffsetType.XYZ);
+        SETTINGS = FabricBlockSettings.of(Material.PLANT)
+                .noCollision()
+                .breakInstantly()
+                .sounds(BlockSoundGroup.GRASS)
+                .offsetType(OffsetType.XYZ);
         VOXEL_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
     }
 }

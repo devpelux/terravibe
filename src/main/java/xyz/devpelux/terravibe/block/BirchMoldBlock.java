@@ -2,27 +2,28 @@ package xyz.devpelux.terravibe.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 
 /** Birch mold that can always spread. */
 public class BirchMoldBlock extends MoldBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "birch_mold");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
+
+    /** Initializes a new {@link BirchMoldBlock} with default settings. */
+    public static BirchMoldBlock of() {
+        return new BirchMoldBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link BirchMoldBlock}. */
     public BirchMoldBlock(Settings settings) {
@@ -109,6 +110,7 @@ public class BirchMoldBlock extends MoldBlock {
 
     static {
         SETTINGS = FabricBlockSettings.of(Material.REPLACEABLE_PLANT)
+                .mapColor(MapColor.BLACK)
                 .noCollision()
                 .breakInstantly()
                 .sounds(BlockSoundGroup.MOSS_BLOCK)

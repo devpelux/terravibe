@@ -5,28 +5,28 @@ import net.minecraft.block.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Crop of the sweet potato. */
 public class SweetPotatoCropBlock extends CropBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "sweet_potato_crop");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
     /** Voxel shapes of the block. */
     private static final VoxelShape[] AGE_TO_SHAPE;
 
+    /** Initializes a new {@link SweetPotatoCropBlock} with default settings. */
+    public static SweetPotatoCropBlock of() {
+        return new SweetPotatoCropBlock(SETTINGS);
+    }
+
     /** Initializes a new {@link SweetPotatoCropBlock}. */
-    public SweetPotatoCropBlock(AbstractBlock.Settings settings) {
+    public SweetPotatoCropBlock(Settings settings) {
         super(settings);
     }
 

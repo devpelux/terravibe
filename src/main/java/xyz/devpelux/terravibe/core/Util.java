@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 /** Contains some utilities. */
-public class Util {
+public final class Util {
     private Util() {}
 
     /** This logger is used to write text to the console and the log file. */

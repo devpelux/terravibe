@@ -10,7 +10,7 @@ import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the particle types. */
-public class TerravibeParticleTypes {
+public final class TerravibeParticleTypes {
     private TerravibeParticleTypes() {}
 
     /** Birch mold spore particle. */

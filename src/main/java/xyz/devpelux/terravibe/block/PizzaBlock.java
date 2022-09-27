@@ -11,7 +11,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -22,9 +21,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
@@ -152,34 +149,6 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
         return Util.combineVoxelShapes(shapeList.toArray(shapes));
     }
 
-    /** Gets the identifier of the block with the specified name. */
-    @Contract("_ -> new")
-    public static @NotNull Identifier getID(String name) {
-        return new Identifier(ModInfo.MOD_ID, "pizza_" + name);
-    }
-
-    /** Generates a new block of pizza four cheese. */
-    public static @NotNull PizzaBlock pizzaFourCheese(Settings settings) {
-        return new PizzaBlock(settings) {
-            /** Gets the item of the slice. */
-            @Override
-            public @NotNull Item getSliceItem() {
-                return TerravibeItems.PIZZA_SLICE_FOUR_CHEESE;
-            }
-        };
-    }
-
-    /** Generates a new block of pizza margherita. */
-    public static @NotNull PizzaBlock pizzaMargherita(Settings settings) {
-        return new PizzaBlock(settings) {
-            /** Gets the item of the slice. */
-            @Override
-            public @NotNull Item getSliceItem() {
-                return TerravibeItems.PIZZA_SLICE_MARGHERITA;
-            }
-        };
-    }
-
     static {
         SETTINGS = FabricBlockSettings.copyOf(Blocks.CAKE);
         SLICES = IntProperty.of("slices", 1, MAX_SLICES);
@@ -215,6 +184,29 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
                         generateVoxelShape(true, true, false, true),
                         generateVoxelShape(true, true, true, true),
                 }
+        };
+    }
+
+
+    /** Generates a new block of pizza four cheese. */
+    public static PizzaBlock fourCheese() {
+        return new PizzaBlock(SETTINGS) {
+            /** Gets the item of the slice. */
+            @Override
+            public @NotNull Item getSliceItem() {
+                return TerravibeItems.PIZZA_SLICE_FOUR_CHEESE;
+            }
+        };
+    }
+
+    /** Generates a new block of pizza margherita. */
+    public static PizzaBlock margherita() {
+        return new PizzaBlock(SETTINGS) {
+            /** Gets the item of the slice. */
+            @Override
+            public @NotNull Item getSliceItem() {
+                return TerravibeItems.PIZZA_SLICE_MARGHERITA;
+            }
         };
     }
 }

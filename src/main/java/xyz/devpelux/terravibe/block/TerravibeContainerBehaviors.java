@@ -22,7 +22,7 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
 import java.util.Objects;
 
 /** List of all the behaviors of the container blocks. */
-public class TerravibeContainerBehaviors {
+public final class TerravibeContainerBehaviors {
     private TerravibeContainerBehaviors() {}
 
     public static final String CONTENT_EMPTY = "minecraft:empty";

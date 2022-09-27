@@ -3,7 +3,7 @@ package xyz.devpelux.terravibe.entity.damage;
 import net.minecraft.entity.damage.DamageSource;
 
 /** List of all the damage sources. */
-public class TerravibeDamageSources {
+public final class TerravibeDamageSources {
     private TerravibeDamageSources() {}
 
     /** Entity was killed by nightlock. */

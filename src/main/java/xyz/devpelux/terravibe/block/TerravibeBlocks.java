@@ -11,9 +11,10 @@ import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the blocks. */
-public class TerravibeBlocks {
+public final class TerravibeBlocks {
     private TerravibeBlocks() {}
 
     //Objects
@@ -24,11 +25,11 @@ public class TerravibeBlocks {
     /** A jar for dusts. */
     public static final Block DUST_JAR;
 
-    /** A cauldron that contains milk. */
-    public static final Block MILK_CAULDRON;
-
     /** A jar for mold dusts. */
     public static final Block MOLD_DUST_JAR;
+
+    /** A cauldron that contains milk. */
+    public static final Block MILK_CAULDRON;
 
     /** Crushes an item to obtain other items. */
     public static final Block MORTAR;
@@ -49,6 +50,15 @@ public class TerravibeBlocks {
 
     /** Crop of the beans. */
     public static final Block BEANS_CROP;
+
+    /** Birch mold that can always spread. */
+    public static final Block BIRCH_MOLD;
+
+    /** Dark mold that can always spread. */
+    public static final Block DARK_MOLD;
+
+    /** Glowing dark mold that can always spread. */
+    public static final Block GLOWING_DARK_MOLD;
 
     /** Crop of the corn. */
     public static final Block CORN_CROP;
@@ -83,17 +93,6 @@ public class TerravibeBlocks {
     /** Crop of the tomato. */
     public static final Block TOMATO_CROP;
 
-    //Other plants
-
-    /** Birch mold that can always spread. */
-    public static final Block BIRCH_MOLD;
-
-    /** Dark mold that can always spread. */
-    public static final Block DARK_MOLD;
-
-    /** Glowing dark mold that can always spread. */
-    public static final Block GLOWING_DARK_MOLD;
-
     //Tree blocks
 
     /** Main block of the opuntia. */
@@ -107,7 +106,7 @@ public class TerravibeBlocks {
     /** A mud block excavated and flooded with water. */
     public static final Block FLOODED_MUD;
 
-    //Food blocks
+    //Foods
 
     /** Food made from milk coagulation. */
     public static final Block CHEESE_WHEEL;
@@ -140,8 +139,8 @@ public class TerravibeBlocks {
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) MILK_CAULDRON, MILK_CAULDRON);
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) MOLD_DUST_JAR, MOLD_DUST_JAR);
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) JAR, JAR);
-        ColorProviderRegistry.BLOCK.register((BlockColorProvider) TUN, TUN);
         ColorProviderRegistry.BLOCK.register((BlockColorProvider) TRAY, TRAY);
+        ColorProviderRegistry.BLOCK.register((BlockColorProvider) TUN, TUN);
     }
 
     /** Loads all the render layer maps for the blocks. */
@@ -171,46 +170,41 @@ public class TerravibeBlocks {
     }
 
     /** Registers the specified block with the specified id. */
-    private static <T extends Block> T register(Identifier id, T block) {
-        return Registry.register(Registry.BLOCK, id, block);
+    private static <T extends Block> T register(String id, T block) {
+        return Registry.register(Registry.BLOCK, new Identifier(ModInfo.MOD_ID, id), block);
     }
 
     static {
-        JAR = register(JarBlock.ID, new JarBlock(JarBlock.SETTINGS));
-        DUST_JAR = register(DustJarBlock.ID, new DustJarBlock(DustJarBlock.SETTINGS));
-        MILK_CAULDRON = register(MilkCauldronBlock.ID, new MilkCauldronBlock(MilkCauldronBlock.SETTINGS));
-        MOLD_DUST_JAR = register(MoldDustJarBlock.ID, new MoldDustJarBlock(MoldDustJarBlock.SETTINGS));
-        MORTAR = register(MortarBlock.ID, new MortarBlock(MortarBlock.SETTINGS));
-        SHREDDER = register(ShredderBlock.ID, new ShredderBlock(ShredderBlock.SETTINGS));
-        TRAY = register(TrayBlock.ID, new TrayBlock(TrayBlock.SETTINGS));
-        TUN = register(TunBlock.ID, new TunBlock(TunBlock.SETTINGS));
-
-        BASIL_HERB = register(BasilHerbBlock.ID, new BasilHerbBlock(BasilHerbBlock.SETTINGS));
-        BEANS_CROP = register(BeansCropBlock.ID, new BeansCropBlock(BeansCropBlock.SETTINGS));
-        CORN_CROP = register(CornCropBlock.ID, new CornCropBlock(CornCropBlock.SETTINGS));
-        DARK_SWEET_BERRY_BUSH = register(DarkSweetBerryBushBlock.ID, new DarkSweetBerryBushBlock(DarkSweetBerryBushBlock.SETTINGS));
-        EGGPLANT_CROP = register(EggplantCropBlock.ID, new EggplantCropBlock(EggplantCropBlock.SETTINGS));
-        KALE_CROP = register(KaleCropBlock.ID, new KaleCropBlock(KaleCropBlock.SETTINGS));
-        LETTUCE_CROP = register(LettuceCropBlock.ID, new LettuceCropBlock(LettuceCropBlock.SETTINGS));
-        NIGHTLOCK_BERRY_BUSH = register(NightlockBerryBushBlock.ID, new NightlockBerryBushBlock(NightlockBerryBushBlock.SETTINGS));
-        ONION_CROP = register(OnionCropBlock.ID, new OnionCropBlock(OnionCropBlock.SETTINGS));
-        RICE_CROP = register(RiceCropBlock.ID, new RiceCropBlock(RiceCropBlock.SETTINGS));
-        SWEET_POTATO_CROP = register(SweetPotatoCropBlock.ID, new SweetPotatoCropBlock(SweetPotatoCropBlock.SETTINGS));
-        THISTLE_PLANT = register(ThistlePlantBlock.ID, new ThistlePlantBlock(ThistlePlantBlock.SETTINGS));
-        TOMATO_CROP = register(TomatoCropBlock.ID, new TomatoCropBlock(TomatoCropBlock.SETTINGS));
-
-        BIRCH_MOLD = register(BirchMoldBlock.ID, new BirchMoldBlock(BirchMoldBlock.SETTINGS));
-        DARK_MOLD = register(DarkMoldBlock.ID, new DarkMoldBlock(DarkMoldBlock.SETTINGS));
-        GLOWING_DARK_MOLD = register(GlowingDarkMoldBlock.ID, new GlowingDarkMoldBlock(GlowingDarkMoldBlock.SETTINGS));
-
-        OPUNTIA = register(OpuntiaBlock.ID, new OpuntiaBlock(OpuntiaBlock.SETTINGS));
-        FLOWERING_OPUNTIA = register(FloweringOpuntiaBlock.ID, new FloweringOpuntiaBlock(FloweringOpuntiaBlock.SETTINGS));
-
-        FLOODED_MUD = register(FloodedMudBlock.ID, new FloodedMudBlock(FloodedMudBlock.SETTINGS));
-
-        CHEESE_WHEEL = register(CheeseWheelBlock.CHEESE_ID, new CheeseWheelBlock(CheeseWheelBlock.SETTINGS));
-        GORGONZOLA_WHEEL = register(CheeseWheelBlock.GORGONZOLA_ID, new CheeseWheelBlock(CheeseWheelBlock.SETTINGS));
-        PIZZA_FOUR_CHEESE = register(PizzaBlock.getID("four_cheese"), PizzaBlock.pizzaFourCheese(PizzaBlock.SETTINGS));
-        PIZZA_MARGHERITA = register(PizzaBlock.getID("margherita"), PizzaBlock.pizzaMargherita(PizzaBlock.SETTINGS));
+        BASIL_HERB = register("basil_herb", BasilHerbBlock.of());
+        BEANS_CROP = register("beans_crop", BeansCropBlock.of());
+        BIRCH_MOLD = register("birch_mold", BirchMoldBlock.of());
+        CHEESE_WHEEL = register("cheese_wheel", CheeseWheelBlock.of());
+        CORN_CROP = register("corn_crop", CornCropBlock.of());
+        DARK_MOLD = register("dark_mold", DarkMoldBlock.of());
+        DUST_JAR = register("dust_jar", DustJarBlock.of());
+        FLOODED_MUD = register("flooded_mud", FloodedMudBlock.of());
+        FLOWERING_OPUNTIA = register("flowering_opuntia", FloweringOpuntiaBlock.of());
+        GLOWING_DARK_MOLD = register("glowing_dark_mold", GlowingDarkMoldBlock.of());
+        GORGONZOLA_WHEEL = register("gorgonzola_wheel", CheeseWheelBlock.of());
+        DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", DarkSweetBerryBushBlock.of());
+        EGGPLANT_CROP = register("eggplant_crop", EggplantCropBlock.of());
+        JAR = register("jar", JarBlock.of());
+        KALE_CROP = register("kale_crop", KaleCropBlock.of());
+        LETTUCE_CROP = register("lettuce_crop", LettuceCropBlock.of());
+        MILK_CAULDRON = register("milk_cauldron", MilkCauldronBlock.of());
+        MOLD_DUST_JAR = register("mold_dust_jar", MoldDustJarBlock.of());
+        MORTAR = register("mortar", MortarBlock.of());
+        NIGHTLOCK_BERRY_BUSH = register("nightlock_berry_bush", NightlockBerryBushBlock.of());
+        ONION_CROP = register("onion_crop", OnionCropBlock.of());
+        OPUNTIA = register("opuntia", OpuntiaBlock.of());
+        PIZZA_FOUR_CHEESE = register("pizza_four_cheese", PizzaBlock.fourCheese());
+        PIZZA_MARGHERITA = register("pizza_margherita", PizzaBlock.margherita());
+        RICE_CROP = register("rice_crop", RiceCropBlock.of());
+        SHREDDER = register("shredder", ShredderBlock.of());
+        SWEET_POTATO_CROP = register("sweet_potato_crop", SweetPotatoCropBlock.of());
+        THISTLE_PLANT = register("thistle_plant", ThistlePlantBlock.of());
+        TOMATO_CROP = register("tomato_crop", TomatoCropBlock.of());
+        TRAY = register("tray", TrayBlock.of());
+        TUN = register("tun", TunBlock.of());
     }
 }

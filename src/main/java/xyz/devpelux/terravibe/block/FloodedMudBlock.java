@@ -13,7 +13,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -23,14 +22,10 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 
 /** A mud block excavated and flooded with water. */
 public class FloodedMudBlock extends Block implements Waterloggable {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "flooded_mud");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
@@ -51,6 +46,11 @@ public class FloodedMudBlock extends Block implements Waterloggable {
 
     /** Waterlogged state. */
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+
+    /** Initializes a new {@link FloodedMudBlock} with default settings. */
+    public static FloodedMudBlock of() {
+        return new FloodedMudBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link FloodedMudBlock}. */
     public FloodedMudBlock(Settings settings) {

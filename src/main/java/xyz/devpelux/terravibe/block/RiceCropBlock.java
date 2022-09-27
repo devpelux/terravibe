@@ -7,24 +7,24 @@ import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Crop of the rice. */
 public class RiceCropBlock extends FloodedCropBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "rice_crop");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
     /** Voxel shapes of the crop. */
     private static final VoxelShape[] AGE_TO_SHAPE;
+
+    /** Initializes a new {@link RiceCropBlock} with default settings. */
+    public static RiceCropBlock of() {
+        return new RiceCropBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link RiceCropBlock}. */
     public RiceCropBlock(Settings settings) {

@@ -1,7 +1,7 @@
 package xyz.devpelux.terravibe.core;
 
 /** Contains some information about the mod. */
-public class ModInfo {
+public final class ModInfo {
     private ModInfo() {}
 
     /** This is the identifier of the mod. */

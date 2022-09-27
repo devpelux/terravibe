@@ -18,7 +18,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -31,14 +30,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Tray used to make salt. */
 public class TrayBlock extends Block implements BlockColorProvider {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tray");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
@@ -56,6 +51,11 @@ public class TrayBlock extends Block implements BlockColorProvider {
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
+
+    /** Initializes a new {@link TrayBlock} with default settings. */
+    public static TrayBlock of() {
+        return new TrayBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link TrayBlock}. */
     public TrayBlock(Settings settings) {

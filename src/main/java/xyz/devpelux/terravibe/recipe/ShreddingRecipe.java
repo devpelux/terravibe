@@ -9,29 +9,20 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 
 import java.util.ArrayList;
 
 /** Shreds a bunch of items to obtain something into a container. */
 public class ShreddingRecipe extends InventoryRecipe {
-    /** Identifier of the recipe. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "shredding");
-
-    /** Json serializer of the {@link ShreddingRecipe}. */
-    public static final RecipeSerializer<ShreddingRecipe> SHREDDING_RECIPE_SERIALIZER =
-            Registry.register(Registry.RECIPE_SERIALIZER, ID, new ShreddingRecipe.Serializer());
-
     protected final Ingredient container;
     protected final ItemStack output;
 
     /** Initializes a new {@link ShreddingRecipe}. */
     public ShreddingRecipe(Identifier id, DefaultedList<Ingredient> ingredients, Ingredient container, ItemStack output) {
-        super(TerravibeRecipeTypes.SHREDDING, SHREDDING_RECIPE_SERIALIZER, id, "", ingredients);
+        super(TerravibeRecipeTypes.SHREDDING, TerravibeRecipeSerializers.SHREDDING, id, "", ingredients);
         this.container = container;
         this.output = output;
     }

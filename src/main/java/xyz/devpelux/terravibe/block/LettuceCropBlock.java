@@ -4,24 +4,24 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Crop of the lettuce. */
 public class LettuceCropBlock extends CropBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "lettuce_crop");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
     /** Voxel shapes of the block. */
     private static final VoxelShape[] AGE_TO_SHAPE;
+
+    /** Initializes a new {@link LettuceCropBlock} with default settings. */
+    public static LettuceCropBlock of() {
+        return new LettuceCropBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link LettuceCropBlock}. */
     public LettuceCropBlock(Settings settings) {

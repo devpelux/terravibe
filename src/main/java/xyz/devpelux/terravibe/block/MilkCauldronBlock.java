@@ -18,7 +18,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +28,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
@@ -37,10 +35,7 @@ import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 import java.util.Map;
 
 /** A cauldron that contains milk. */
-public class MilkCauldronBlock extends AbstractCauldronBlock implements BlockColorProvider {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "milk_cauldron");
-
+public final class MilkCauldronBlock extends AbstractCauldronBlock implements BlockColorProvider {
     /** Settings of the block. */
     public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CAULDRON);
 
@@ -58,6 +53,11 @@ public class MilkCauldronBlock extends AbstractCauldronBlock implements BlockCol
 
     /** Behavior map for milk cauldron. */
     private static final Map<Item, CauldronBehavior> MILK_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
+
+    /** Initializes a new {@link MilkCauldronBlock} with default settings. */
+    public static MilkCauldronBlock of() {
+        return new MilkCauldronBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link MilkCauldronBlock}. */
     public MilkCauldronBlock(Settings settings) {

@@ -10,7 +10,10 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -20,14 +23,10 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ShredderBlockEntity;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 
 /** Shreds a bunch of items to obtain something. */
 public class ShredderBlock extends BlockWithEntity {
-	/** Identifier of the block. */
-	public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "shredder");
-
 	/** Settings of the block. */
 	public static final Settings SETTINGS;
 
@@ -36,6 +35,11 @@ public class ShredderBlock extends BlockWithEntity {
 
 	/** Voxel shape of the block. */
 	private static final VoxelShape VOXEL_SHAPE;
+
+	/** Initializes a new {@link ShredderBlock} with default settings. */
+	public static ShredderBlock of() {
+		return new ShredderBlock(SETTINGS);
+	}
 
 	/** Initializes a new {@link ShredderBlock}. */
 	public ShredderBlock(Settings settings) {

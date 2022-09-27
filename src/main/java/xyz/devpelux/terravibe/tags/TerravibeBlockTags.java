@@ -1,12 +1,11 @@
 package xyz.devpelux.terravibe.tags;
 
+import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.tag.TagKey;
 
-import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
-
 /** List of all the block tags. */
-public class TerravibeBlockTags {
+public final class TerravibeBlockTags {
     private TerravibeBlockTags() {}
 
     /**

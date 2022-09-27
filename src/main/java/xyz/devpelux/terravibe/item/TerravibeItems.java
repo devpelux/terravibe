@@ -3,7 +3,6 @@ package xyz.devpelux.terravibe.item;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.color.item.ItemColorProvider;
@@ -17,13 +16,19 @@ import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the items. */
-public class TerravibeItems {
+public final class TerravibeItems {
     private TerravibeItems() {}
 
     //Objects
 
     /** Item of the jar block. */
     public static final Item JAR;
+
+    /** Item of the empty closed jar block. */
+    public static final Item CLOSED_JAR_EMPTY;
+
+    /** Item of the filled closed jar block. */
+    public static final Item CLOSED_JAR_FILLED;
 
     /** Item of the mortar block. */
     public static final Item MORTAR;
@@ -37,47 +42,22 @@ public class TerravibeItems {
     /** Item of the tun block. */
     public static final Item TUN;
 
-    //Closed jars
-
-    /** Item of the empty closed jar block. */
-    public static final Item CLOSED_JAR_EMPTY;
-
-    /** Item of the filled closed jar block. */
-    public static final Item CLOSED_JAR_FILLED;
-
-    //Cork objects
-
-    /** Material obtained from stripping crimson stems. */
-    public static final Item CRIMSON_CORK;
-
-    /** Plug obtained from crimson cork. */
-    public static final Item CRIMSON_CORK_PLUG;
-
-    /** Material obtained from stripping dark oak logs. */
-    public static final Item DARK_OAK_CORK;
-
-    /** Plug obtained from dark oak cork. */
-    public static final Item DARK_OAK_CORK_PLUG;
-
-    /** Material obtained from stripping oak logs. */
-    public static final Item OAK_CORK;
-
-    /** Plug obtained from oak cork. */
-    public static final Item OAK_CORK_PLUG;
-
-    /** Material obtained from stripping warped stems. */
-    public static final Item WARPED_CORK;
-
-    /** Plug obtained from warped cork. */
-    public static final Item WARPED_CORK_PLUG;
-
-    //Fruits and seeds of plants
+    //Items dropped from plants
 
     /** Basil spice. */
     public static final Item BASIL;
 
     /** Little edible seeds. */
     public static final Item BEANS;
+
+    /** Birch mold. */
+    public static final Item BIRCH_MOLD;
+
+    /** Dark mold. */
+    public static final Item DARK_MOLD;
+
+    /** Glowing dark mold. */
+    public static final Item GLOWING_DARK_MOLD;
 
     /** Fruit composed by little yellow seeds (or grains). */
     public static final Item CORN;
@@ -87,6 +67,9 @@ public class TerravibeItems {
 
     /** Little berry with a purplish color, mutation of the sweet berries. */
     public static final Item DARK_SWEET_BERRIES;
+
+    /** Little poisonous berry with a black color. */
+    public static final Item NIGHTLOCK_BERRIES;
 
     /** Edible purple berry, spongy, absorbent, typically used as a vegetable in cooking. */
     public static final Item EGGPLANT;
@@ -106,17 +89,11 @@ public class TerravibeItems {
     /** Seeds of lettuce. */
     public static final Item LETTUCE_SEEDS;
 
-    /** Little poisonous berry with a black color. */
-    public static final Item NIGHTLOCK_BERRIES;
-
     /** Vegetable that is the most widely cultivated species of the genus Allium. */
     public static final Item ONION;
 
     /** Seeds of onion. */
     public static final Item ONION_SEEDS;
-
-    /** Red sweet potato, a rare mutation of the sweet potato. */
-    public static final Item RED_SWEET_POTATO;
 
     /** Little white seed, one of the most consumed foods in the world. */
     public static final Item RICE;
@@ -130,6 +107,9 @@ public class TerravibeItems {
     /** Buds of sweet potato. */
     public static final Item SWEET_POTATO_BUDS;
 
+    /** Red sweet potato, a rare mutation of the sweet potato. */
+    public static final Item RED_SWEET_POTATO;
+
     /** Edible plant with purple flowers. */
     public static final Item THISTLE;
 
@@ -139,27 +119,19 @@ public class TerravibeItems {
     /** Seeds of tomato. */
     public static final Item TOMATO_SEEDS;
 
-    //Fruits and seeds of other plants
+    //Items dropped from trees
 
-    /** Birch mold. */
-    public static final Item BIRCH_MOLD;
+    /** Material obtained from stripping crimson stems. */
+    public static final Item CRIMSON_CORK;
 
-    /** Dust of birch mold. */
-    public static final Item BIRCH_MOLD_DUST;
+    /** Material obtained from stripping dark oak logs. */
+    public static final Item DARK_OAK_CORK;
 
-    /** Dark mold. */
-    public static final Item DARK_MOLD;
+    /** Material obtained from stripping oak logs. */
+    public static final Item OAK_CORK;
 
-    /** Dust of dark mold. */
-    public static final Item DARK_MOLD_DUST;
-
-    /** Glowing dark mold. */
-    public static final Item GLOWING_DARK_MOLD;
-
-    /** Dust of glowing dark mold. */
-    public static final Item GLOWING_DARK_MOLD_DUST;
-
-    //Fruits of trees
+    /** Material obtained from stripping warped stems. */
+    public static final Item WARPED_CORK;
 
     /** Fruit used in salads, stews and various recipes. */
     public static final Item OLIVES;
@@ -167,12 +139,15 @@ public class TerravibeItems {
     /** Fruit produced by opuntia cactus. */
     public static final Item PRICKLY_PEAR;
 
-    //Items from the earth
+    //Tree blocks
 
-    /** Salt crystals. */
-    public static final Item SALT_CRYSTALS;
+    /** Item of the main block of the opuntia. */
+    public static final Item OPUNTIA;
 
-    //Crafted foods
+    /** Item of the flowering block of the opuntia. */
+    public static final Item FLOWERING_OPUNTIA;
+
+    //Food crafted items
 
     /** Sweet potato baked. */
     public static final Item BAKED_SWEET_POTATO;
@@ -183,17 +158,11 @@ public class TerravibeItems {
     /** Flakes of cheese. */
     public static final Item CHEESE_FLAKES;
 
-    /** Cheese wheel. */
-    public static final Item CHEESE_WHEEL;
-
     /** Cheese with mold. */
     public static final Item GORGONZOLA;
 
     /** Flakes of gorgonzola. */
     public static final Item GORGONZOLA_FLAKES;
-
-    /** Gorgonzola wheel. */
-    public static final Item GORGONZOLA_WHEEL;
 
     /** Mozzarella. */
     public static final Item MOZZARELLA;
@@ -201,11 +170,20 @@ public class TerravibeItems {
     /** Flakes of mozzarella. */
     public static final Item MOZZARELLA_FLAKES;
 
-    /** Salad with tomato, lettuce, mozzarella. */
-    public static final Item SALAD;
+    /** Slice of pizza four cheese. */
+    public static final Item PIZZA_SLICE_FOUR_CHEESE;
+
+    /** Slice of pizza margherita. */
+    public static final Item PIZZA_SLICE_MARGHERITA;
+
+    /** Pottage with vegetables. */
+    public static final Item POTTAGE;
 
     /** Salad with tomato, lettuce. */
     public static final Item SALAD_SIMPLE;
+
+    /** Salad with tomato, lettuce, mozzarella. */
+    public static final Item SALAD;
 
     /** Salad with tomato, lettuce, mozzarella, onion. */
     public static final Item SALAD_MIXED;
@@ -216,22 +194,19 @@ public class TerravibeItems {
     /** Salad with tomato, lettuce, mozzarella, onion, corn grains, olives. */
     public static final Item SALAD_FULL;
 
-    /** Basic pizza plus all the cheese variants. */
-    public static final Item PIZZA_FOUR_CHEESE;
+    /** Leaves of thistle. */
+    public static final Item THISTLE_LEAVES;
 
-    /** Slice of pizza four cheese. */
-    public static final Item PIZZA_SLICE_FOUR_CHEESE;
+    //Non-food crafted items
 
-    /** Basic pizza with tomato sauce, mozzarella, and basil. */
-    public static final Item PIZZA_MARGHERITA;
+    /** Dust of birch mold. */
+    public static final Item BIRCH_MOLD_DUST;
 
-    /** Slice of pizza margherita. */
-    public static final Item PIZZA_SLICE_MARGHERITA;
+    /** Dust of dark mold. */
+    public static final Item DARK_MOLD_DUST;
 
-    /** Pottage with vegetables. */
-    public static final Item POTTAGE;
-
-    //Crafted
+    /** Dust of glowing dark mold. */
+    public static final Item GLOWING_DARK_MOLD_DUST;
 
     /** Dust of birch mold burned. */
     public static final Item BURNED_BIRCH_MOLD_DUST;
@@ -242,14 +217,35 @@ public class TerravibeItems {
     /** Dust of glowing dark mold burned. */
     public static final Item BURNED_GLOWING_DARK_MOLD_DUST;
 
+    /** Cheese wheel. */
+    public static final Item CHEESE_WHEEL;
+
+    /** Gorgonzola wheel. */
+    public static final Item GORGONZOLA_WHEEL;
+
+    /** Basic pizza plus all the cheese variants. */
+    public static final Item PIZZA_FOUR_CHEESE;
+
+    /** Basic pizza with tomato sauce, mozzarella, and basil. */
+    public static final Item PIZZA_MARGHERITA;
+
+    /** Plug obtained from crimson cork. */
+    public static final Item CRIMSON_CORK_PLUG;
+
+    /** Plug obtained from dark oak cork. */
+    public static final Item DARK_OAK_CORK_PLUG;
+
+    /** Plug obtained from oak cork. */
+    public static final Item OAK_CORK_PLUG;
+
+    /** Plug obtained from warped cork. */
+    public static final Item WARPED_CORK_PLUG;
+
     /** Salt. */
     public static final Item SALT;
 
-    /** Bottle that contains tomato sauce. */
-    public static final Item TOMATO_SAUCE_BOTTLE;
-
-    /** Leaves of thistle. */
-    public static final Item THISTLE_LEAVES;
+    /** Salt crystals. */
+    public static final Item SALT_CRYSTALS;
 
     /** Stamens of thistle. */
     public static final Item THISTLE_STAMENS;
@@ -257,13 +253,10 @@ public class TerravibeItems {
     /** Stamens of thistle and salt, used to coagulate milk. */
     public static final Item THISTLE_STAMENS_AND_SALT;
 
-    //Tree blocks
+    //Bottles
 
-    /** Item of the main block of the opuntia. */
-    public static final Item OPUNTIA;
-
-    /** Item of the flowering block of the opuntia. */
-    public static final Item FLOWERING_OPUNTIA;
+    /** Bottle that contains tomato sauce. */
+    public static final Item TOMATO_SAUCE_BOTTLE;
 
     //Terrain blocks
 
@@ -282,6 +275,7 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(BURNED_GLOWING_DARK_MOLD_DUST, 0.01f);
         CompostingChanceRegistry.INSTANCE.add(CHEESE, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(CHEESE_FLAKES, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(CHEESE_WHEEL, 1f);
         CompostingChanceRegistry.INSTANCE.add(CORN, 0.6f);
         CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.05f);
         CompostingChanceRegistry.INSTANCE.add(CRIMSON_CORK, 0.2f);
@@ -295,6 +289,7 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD_DUST, 0.04f);
         CompostingChanceRegistry.INSTANCE.add(GORGONZOLA, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(GORGONZOLA_FLAKES, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(GORGONZOLA_WHEEL, 1f);
         CompostingChanceRegistry.INSTANCE.add(KALE, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, 0.5f);
@@ -312,13 +307,16 @@ public class TerravibeItems {
         CompostingChanceRegistry.INSTANCE.add(PRICKLY_PEAR, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(PIZZA_FOUR_CHEESE, 1f);
         CompostingChanceRegistry.INSTANCE.add(PIZZA_MARGHERITA, 1f);
-        CompostingChanceRegistry.INSTANCE.add(PIZZA_SLICE_FOUR_CHEESE, 0.65f);
-        CompostingChanceRegistry.INSTANCE.add(PIZZA_SLICE_MARGHERITA, 0.65f);
+        CompostingChanceRegistry.INSTANCE.add(PIZZA_SLICE_FOUR_CHEESE, 0.4f);
+        CompostingChanceRegistry.INSTANCE.add(PIZZA_SLICE_MARGHERITA, 0.4f);
         CompostingChanceRegistry.INSTANCE.add(RED_SWEET_POTATO, 0.8f);
         CompostingChanceRegistry.INSTANCE.add(RICE, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, 0.05f);
         CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO, 0.65f);
-        CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.4f);
+        CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.2f);
+        CompostingChanceRegistry.INSTANCE.add(THISTLE, 0.4f);
+        CompostingChanceRegistry.INSTANCE.add(THISTLE_LEAVES, 0.2f);
+        CompostingChanceRegistry.INSTANCE.add(THISTLE_STAMENS, 0.2f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
         CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(WARPED_CORK, 0.2f);
@@ -346,139 +344,103 @@ public class TerravibeItems {
     }
 
     /** Registers the specified item with the specified id. */
-    private static <T extends Item> T register(String path, T item) {
-        return Registry.register(Registry.ITEM, new Identifier(ModInfo.MOD_ID, path) , item);
+    private static <T extends Item> T register(String id, T item) {
+        return Registry.register(Registry.ITEM, new Identifier(ModInfo.MOD_ID, id), item);
     }
 
     static {
-        //Items loading order corresponds to the order of the creative tab "Terravibe".
-        JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, Settings.stack64()));
-        DARK_OAK_CORK_PLUG = register("dark_oak_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0x4f3218 : -1));
-        OAK_CORK_PLUG = register("oak_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0xb8945f : -1));
-        CRIMSON_CORK_PLUG = register("crimson_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0x7e3a56 : -1));
-        WARPED_CORK_PLUG = register("warped_cork_plug", new ColoredItem(Settings.stack64(), (s, i) -> i == 1 ? 0x398382 : -1));
+        //The loading order corresponds of the order in the creative tab "Terravibe".
 
-        MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, Settings.stack64()));
-        SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, Settings.stack64()));
-        TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, Settings.stack64()));
-        TUN = register("tun", new AliasedBlockItem(TerravibeBlocks.TUN, Settings.stack64()));
+        //Objects
+        JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, TerravibeItemSettings.jar()));
+        CLOSED_JAR_EMPTY = register("closed_jar_empty", new ClosedJarItem(TerravibeItemSettings.closed_jar_empty()));
+        CLOSED_JAR_FILLED = register("closed_jar_filled", new ClosedJarItem(TerravibeItemSettings.closed_jar_filled()));
+        MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, TerravibeItemSettings.mortar()));
+        SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, TerravibeItemSettings.shredder()));
+        TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, TerravibeItemSettings.tray()));
+        TUN = register("tun", new AliasedBlockItem(TerravibeBlocks.TUN, TerravibeItemSettings.tun()));
 
-        DARK_SWEET_BERRIES = register("dark_sweet_berries", new AliasedBlockItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH,
-                Settings.stack64().food(TerravibeFoodComponents.DARK_SWEET_BERRIES)));
-        NIGHTLOCK_BERRIES = register("nightlock_berries", new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH,
-                Settings.stack64().food(TerravibeFoodComponents.NIGHTLOCK_BERRIES)));
-        BASIL = register("basil", new AliasedBlockItem(TerravibeBlocks.BASIL_HERB, Settings.stack64()));
-        BEANS = register("beans", new AliasedBlockItem(TerravibeBlocks.BEANS_CROP, Settings.stack64().food(TerravibeFoodComponents.BEANS)));
-        CORN = register("corn", new Item(Settings.stack64()));
-        CORN_GRAINS = register("corn_grains", new AliasedBlockItem(TerravibeBlocks.CORN_CROP, Settings.stack64()));
-        EGGPLANT = register("eggplant", new Item(Settings.stack64().food(TerravibeFoodComponents.EGGPLANT)));
-        EGGPLANT_SEEDS = register("eggplant_seeds", new AliasedBlockItem(TerravibeBlocks.EGGPLANT_CROP, Settings.stack64()));
-        KALE = register("kale", new Item(Settings.stack64().food(TerravibeFoodComponents.KALE)));
-        KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, Settings.stack64()));
-        LETTUCE_LEAVES = register("lettuce_leaves", new Item(Settings.stack64().food(TerravibeFoodComponents.LETTUCE_LEAVES)));
-        LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, Settings.stack64()));
-        ONION = register("onion", new Item(Settings.stack64().food(TerravibeFoodComponents.ONION)));
-        ONION_SEEDS = register("onion_seeds", new AliasedBlockItem(TerravibeBlocks.ONION_CROP, Settings.stack64()));
-        RICE = register("rice", new Item(Settings.stack64()));
-        RICE_GRAINS = register("rice_grains", new AliasedBlockItem(TerravibeBlocks.RICE_CROP, Settings.stack64()));
-        SWEET_POTATO_BUDS = register("sweet_potato_buds", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP,
-                Settings.stack64Hided().food(TerravibeFoodComponents.SWEET_POTATO_BUDS)));
-        SWEET_POTATO = register("sweet_potato", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP,
-                Settings.stack64().food(TerravibeFoodComponents.SWEET_POTATO)));
-        RED_SWEET_POTATO = register("red_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.RED_SWEET_POTATO)));
-        THISTLE = register("thistle", new AliasedBlockItem(TerravibeBlocks.THISTLE_PLANT, Settings.stack64()));
-        TOMATO = register("tomato", new Item(Settings.stack64().food(TerravibeFoodComponents.TOMATO)));
-        TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, Settings.stack64()));
+        //Items dropped from plants
+        BASIL = register("basil", new AliasedBlockItem(TerravibeBlocks.BASIL_HERB, TerravibeItemSettings.basil()));
+        BEANS = register("beans", new AliasedBlockItem(TerravibeBlocks.BEANS_CROP, TerravibeItemSettings.beans()));
+        BIRCH_MOLD = register("birch_mold", new Item(TerravibeItemSettings.birch_mold()));
+        DARK_MOLD = register("dark_mold", new Item(TerravibeItemSettings.dark_mold()));
+        GLOWING_DARK_MOLD = register("glowing_dark_mold", new Item(TerravibeItemSettings.glowing_dark_mold()));
+        CORN = register("corn", new Item(TerravibeItemSettings.corn()));
+        CORN_GRAINS = register("corn_grains", new AliasedBlockItem(TerravibeBlocks.CORN_CROP, TerravibeItemSettings.corn_grains()));
+        DARK_SWEET_BERRIES = register("dark_sweet_berries", new AliasedBlockItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, TerravibeItemSettings.dark_sweet_berries()));
+        NIGHTLOCK_BERRIES = register("nightlock_berries", new AliasedBlockItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, TerravibeItemSettings.nightlock_berries()));
+        EGGPLANT = register("eggplant", new Item(TerravibeItemSettings.eggplant()));
+        EGGPLANT_SEEDS = register("eggplant_seeds", new AliasedBlockItem(TerravibeBlocks.EGGPLANT_CROP, TerravibeItemSettings.eggplant_seeds()));
+        KALE = register("kale", new Item(TerravibeItemSettings.kale()));
+        KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, TerravibeItemSettings.kale_seeds()));
+        LETTUCE_LEAVES = register("lettuce_leaves", new Item(TerravibeItemSettings.lettuce_leaves()));
+        LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, TerravibeItemSettings.lettuce_seeds()));
+        ONION = register("onion", new Item(TerravibeItemSettings.onion()));
+        ONION_SEEDS = register("onion_seeds", new AliasedBlockItem(TerravibeBlocks.ONION_CROP, TerravibeItemSettings.onion_seeds()));
+        RICE = register("rice", new Item(TerravibeItemSettings.rice()));
+        RICE_GRAINS = register("rice_grains", new AliasedBlockItem(TerravibeBlocks.RICE_CROP, TerravibeItemSettings.rice_grains()));
+        SWEET_POTATO = register("sweet_potato", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP, TerravibeItemSettings.sweet_potato()));
+        SWEET_POTATO_BUDS = register("sweet_potato_buds", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP, TerravibeItemSettings.sweet_potato_buds()));
+        RED_SWEET_POTATO = register("red_sweet_potato", new Item(TerravibeItemSettings.red_sweet_potato()));
+        THISTLE = register("thistle", new AliasedBlockItem(TerravibeBlocks.THISTLE_PLANT, TerravibeItemSettings.thistle()));
+        TOMATO = register("tomato", new Item(TerravibeItemSettings.tomato()));
+        TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, TerravibeItemSettings.tomato_seeds()));
 
-        BIRCH_MOLD = register("birch_mold", new Item(Settings.stack64()));
-        BIRCH_MOLD_DUST = register("birch_mold_dust", new AliasedBlockItem(TerravibeBlocks.BIRCH_MOLD, Settings.stack64()));
-        DARK_MOLD = register("dark_mold", new Item(Settings.stack64()));
-        DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, Settings.stack64()));
-        GLOWING_DARK_MOLD = register("glowing_dark_mold", new Item(Settings.stack64()));
-        GLOWING_DARK_MOLD_DUST = register("glowing_dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.GLOWING_DARK_MOLD, Settings.stack64()));
+        //Items dropped from trees
+        CRIMSON_CORK = register("crimson_cork", new Item(TerravibeItemSettings.crimson_cork()));
+        DARK_OAK_CORK = register("dark_oak_cork", new Item(TerravibeItemSettings.dark_oak_cork()));
+        OAK_CORK = register("oak_cork", new Item(TerravibeItemSettings.oak_cork()));
+        WARPED_CORK = register("warped_cork", new Item(TerravibeItemSettings.warped_cork()));
+        OLIVES = register("olives", new Item(TerravibeItemSettings.olives()));
+        PRICKLY_PEAR = register("prickly_pear", new Item(TerravibeItemSettings.prickly_pear()));
 
-        OLIVES = register("olives", new Item(Settings.stack64()));
-        PRICKLY_PEAR = register("prickly_pear", new Item(Settings.stack64().food(TerravibeFoodComponents.PRICKLY_PEAR)));
+        //Tree blocks
+        OPUNTIA = register("opuntia", new AliasedBlockItem(TerravibeBlocks.OPUNTIA, TerravibeItemSettings.opuntia()));
+        FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, TerravibeItemSettings.flowering_opuntia()));
 
-        SALT_CRYSTALS = register("salt_crystals", new Item(Settings.stack64()));
+        //Food crafted items
+        BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(TerravibeItemSettings.baked_sweet_potato()));
+        CHEESE = register("cheese", new Item(TerravibeItemSettings.cheese()));
+        CHEESE_FLAKES = register("cheese_flakes", new Item(TerravibeItemSettings.cheese_flakes()));
+        GORGONZOLA = register("gorgonzola", new Item(TerravibeItemSettings.gorgonzola()));
+        GORGONZOLA_FLAKES = register("gorgonzola_flakes", new Item(TerravibeItemSettings.gorgonzola_flakes()));
+        MOZZARELLA = register("mozzarella", new Item(TerravibeItemSettings.mozzarella()));
+        MOZZARELLA_FLAKES = register("mozzarella_flakes", new Item(TerravibeItemSettings.mozzarella_flakes()));
+        PIZZA_SLICE_FOUR_CHEESE = register("pizza_slice_four_cheese", new Item(TerravibeItemSettings.pizza_slice_four_cheese()));
+        PIZZA_SLICE_MARGHERITA = register("pizza_slice_margherita", new Item(TerravibeItemSettings.pizza_slice_margherita()));
+        POTTAGE = register("pottage", new StewItem(TerravibeItemSettings.pottage()));
+        SALAD_SIMPLE = register("salad_simple", new StewItem(TerravibeItemSettings.salad_simple()));
+        SALAD = register("salad", new StewItem(TerravibeItemSettings.salad()));
+        SALAD_MIXED = register("salad_mixed", new StewItem(TerravibeItemSettings.salad_mixed()));
+        SALAD_RICH = register("salad_rich", new StewItem(TerravibeItemSettings.salad_rich()));
+        SALAD_FULL = register("salad_full", new StewItem(TerravibeItemSettings.salad_full()));
+        THISTLE_LEAVES = register("thistle_leaves", new Item(TerravibeItemSettings.thistle_leaves()));
 
-        BAKED_SWEET_POTATO = register("baked_sweet_potato", new Item(Settings.stack64().food(TerravibeFoodComponents.BAKED_SWEET_POTATO)));
-        CHEESE = register("cheese", new Item(Settings.stack64().food(TerravibeFoodComponents.CHEESE)));
-        CHEESE_FLAKES = register("cheese_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.CHEESE_FLAKES)));
-        CHEESE_WHEEL = register("cheese_wheel", new AliasedBlockItem(TerravibeBlocks.CHEESE_WHEEL, Settings.stack16()));
-        GORGONZOLA = register("gorgonzola", new Item(Settings.stack64().food(TerravibeFoodComponents.GORGONZOLA)));
-        GORGONZOLA_FLAKES = register("gorgonzola_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.GORGONZOLA_FLAKES)));
-        GORGONZOLA_WHEEL = register("gorgonzola_wheel", new AliasedBlockItem(TerravibeBlocks.GORGONZOLA_WHEEL, Settings.stack16()));
-        MOZZARELLA = register("mozzarella", new Item(Settings.stack64().food(TerravibeFoodComponents.MOZZARELLA)));
-        MOZZARELLA_FLAKES = register("mozzarella_flakes", new Item(Settings.stack64().food(TerravibeFoodComponents.MOZZARELLA_FLAKES)));
-        SALAD = register("salad", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD)));
-        SALAD_SIMPLE = register("salad_simple", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_SIMPLE)));
-        SALAD_MIXED = register("salad_mixed", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_MIXED)));
-        SALAD_RICH = register("salad_rich", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_RICH)));
-        SALAD_FULL = register("salad_full", new StewItem(Settings.stack16().food(TerravibeFoodComponents.SALAD_FULL)));
-        POTTAGE = register("pottage", new StewItem(Settings.stack16().food(TerravibeFoodComponents.POTTAGE)));
-        PIZZA_FOUR_CHEESE = register("pizza_four_cheese", new AliasedBlockItem(TerravibeBlocks.PIZZA_FOUR_CHEESE, Settings.stack1()));
-        PIZZA_MARGHERITA = register("pizza_margherita", new AliasedBlockItem(TerravibeBlocks.PIZZA_MARGHERITA, Settings.stack1()));
-        PIZZA_SLICE_FOUR_CHEESE = register("pizza_slice_four_cheese", new Item(
-                Settings.stack4().food(TerravibeFoodComponents.PIZZA_SLICE_FOUR_CHEESE)));
-        PIZZA_SLICE_MARGHERITA = register("pizza_slice_margherita", new Item(
-                Settings.stack4().food(TerravibeFoodComponents.PIZZA_SLICE_MARGHERITA)));
+        //Non-food crafted items
+        BIRCH_MOLD_DUST = register("birch_mold_dust", new AliasedBlockItem(TerravibeBlocks.BIRCH_MOLD, TerravibeItemSettings.birch_mold_dust()));
+        DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, TerravibeItemSettings.dark_mold_dust()));
+        GLOWING_DARK_MOLD_DUST = register("glowing_dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.GLOWING_DARK_MOLD, TerravibeItemSettings.glowing_dark_mold_dust()));
+        BURNED_BIRCH_MOLD_DUST = register("burned_birch_mold_dust", new Item(TerravibeItemSettings.burned_birch_mold_dust()));
+        BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(TerravibeItemSettings.burned_dark_mold_dust()));
+        BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(TerravibeItemSettings.burned_glowing_dark_mold_dust()));
+        CHEESE_WHEEL = register("cheese_wheel", new AliasedBlockItem(TerravibeBlocks.CHEESE_WHEEL, TerravibeItemSettings.cheese_wheel()));
+        GORGONZOLA_WHEEL = register("gorgonzola_wheel", new AliasedBlockItem(TerravibeBlocks.GORGONZOLA_WHEEL, TerravibeItemSettings.gorgonzola_wheel()));
+        PIZZA_FOUR_CHEESE = register("pizza_four_cheese", new AliasedBlockItem(TerravibeBlocks.PIZZA_FOUR_CHEESE, TerravibeItemSettings.pizza_four_cheese()));
+        PIZZA_MARGHERITA = register("pizza_margherita", new AliasedBlockItem(TerravibeBlocks.PIZZA_MARGHERITA, TerravibeItemSettings.pizza_margherita()));
+        CRIMSON_CORK_PLUG = register("crimson_cork_plug", new ColoredItem(TerravibeItemSettings.crimson_cork_plug(), ColoredItem.color1(0x7e3a56)));
+        DARK_OAK_CORK_PLUG = register("dark_oak_cork_plug", new ColoredItem(TerravibeItemSettings.dark_oak_cork_plug(), ColoredItem.color1(0x4f3218)));
+        OAK_CORK_PLUG = register("oak_cork_plug", new ColoredItem(TerravibeItemSettings.oak_cork_plug(), ColoredItem.color1(0xb8945f)));
+        WARPED_CORK_PLUG = register("warped_cork_plug", new ColoredItem(TerravibeItemSettings.warped_cork_plug(), ColoredItem.color1(0x398382)));
+        SALT = register("salt", new Item(TerravibeItemSettings.salt()));
+        SALT_CRYSTALS = register("salt_crystals", new Item(TerravibeItemSettings.salt_crystals()));
+        THISTLE_STAMENS = register("thistle_stamens", new Item(TerravibeItemSettings.thistle_stamens()));
+        THISTLE_STAMENS_AND_SALT = register("thistle_stamens_and_salt", new Item(TerravibeItemSettings.thistle_stamens_and_salt()));
 
-        BURNED_BIRCH_MOLD_DUST = register("burned_birch_mold_dust", new Item(Settings.stack64()));
-        BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(Settings.stack64()));
-        BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(Settings.stack64()));
-        SALT = register("salt", new Item(Settings.stack64()));
-        THISTLE_LEAVES = register("thistle_leaves", new Item(Settings.stack64().food(TerravibeFoodComponents.THISTLE_LEAVES)));
-        THISTLE_STAMENS = register("thistle_stamens", new Item(Settings.stack64()));
-        THISTLE_STAMENS_AND_SALT = register("thistle_stamens_and_salt", new Item(Settings.stack64()));
-        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(
-                Settings.stack16().recipeRemainder(Items.GLASS_BOTTLE), (s, i) -> i == 1 ? 0xf61815 : -1));
+        //Bottles
+        TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(TerravibeItemSettings.tomato_sauce_bottle(), ColoredItem.color1(0xf61815)));
 
-        OPUNTIA = register("opuntia", new AliasedBlockItem(TerravibeBlocks.OPUNTIA, Settings.stack64()));
-        FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, Settings.stack64()));
-
-        FLOODED_MUD = register("flooded_mud", new AliasedBlockItem(TerravibeBlocks.FLOODED_MUD, Settings.stack64()));
-
-        DARK_OAK_CORK = register("dark_oak_cork", new Item(Settings.stack64()));
-        OAK_CORK = register("oak_cork", new Item(Settings.stack64()));
-        CRIMSON_CORK = register("crimson_cork", new Item(Settings.stack64()));
-        WARPED_CORK = register("warped_cork", new Item(Settings.stack64()));
-
-        CLOSED_JAR_EMPTY = register("closed_jar_empty", new ClosedJarItem(Settings.stack16Hided()));
-        CLOSED_JAR_FILLED = register("closed_jar_filled", new ClosedJarItem(Settings.stack16Hided()));
-    }
-
-
-    /** Generic item settings. */
-    private static class Settings {
-        /** Generates generic item settings, with stack of 1. */
-        private static Item.Settings stack1() {
-            return new FabricItemSettings().maxCount(1).group(TerravibeItemGroups.TERRAVIBE);
-        }
-
-        /** Generates generic item settings, with stack of 4. */
-        private static Item.Settings stack4() {
-            return new FabricItemSettings().maxCount(4).group(TerravibeItemGroups.TERRAVIBE);
-        }
-
-        /** Generates generic item settings, with stack of 16. */
-        private static Item.Settings stack16() {
-            return stack16Hided().group(TerravibeItemGroups.TERRAVIBE);
-        }
-
-        /** Generates generic item settings, with stack of 16, without any group. */
-        private static Item.Settings stack16Hided() {
-            return new FabricItemSettings().maxCount(16);
-        }
-
-        /** Generates generic item settings, with stack of 64. */
-        private static Item.Settings stack64() {
-            return stack64Hided().group(TerravibeItemGroups.TERRAVIBE);
-        }
-
-        /** Generates generic item settings, with stack of 64, without any group. */
-        private static Item.Settings stack64Hided() {
-            return new FabricItemSettings().maxCount(64);
-        }
+        //Terrain blocks
+        FLOODED_MUD = register("flooded_mud", new AliasedBlockItem(TerravibeBlocks.FLOODED_MUD, TerravibeItemSettings.flooded_mud()));
     }
 }

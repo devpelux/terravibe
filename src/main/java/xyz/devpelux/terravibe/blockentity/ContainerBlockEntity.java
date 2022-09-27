@@ -10,20 +10,15 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 
 import java.util.Objects;
 
 /** Block entity for containers. */
 public class ContainerBlockEntity extends BlockEntity {
-    /** Identifier of the block entity. */
-    public static final Identifier ID = new Identifier(ModInfo.MOD_ID, "container");
-
     /** Content data. */
     @NotNull
     private NbtCompound content = new NbtCompound();

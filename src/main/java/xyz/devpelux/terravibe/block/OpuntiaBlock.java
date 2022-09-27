@@ -13,7 +13,6 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -25,15 +24,11 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 
 import java.util.Optional;
 
 /** Main block of the opuntia. */
 public class OpuntiaBlock extends FacingBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "opuntia");
-
     /** Settings of the block. */
     public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CACTUS);
 
@@ -66,6 +61,11 @@ public class OpuntiaBlock extends FacingBlock {
 
     /** Age of the block. */
     public static final IntProperty AGE = Properties.AGE_2;
+
+    /** Initializes a new {@link OpuntiaBlock} with default settings. */
+    public static OpuntiaBlock of() {
+        return new OpuntiaBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link OpuntiaBlock}. */
     public OpuntiaBlock(Settings settings) {

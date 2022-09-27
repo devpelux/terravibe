@@ -6,29 +6,30 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
+import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the block entity types. */
-public class TerravibeBlockEntityTypes {
+public final class TerravibeBlockEntityTypes {
     private TerravibeBlockEntityTypes() {}
-
-    /** Block entity type for the shredder block. */
-    public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
 
     /** Block entity type for containers. */
     public static final BlockEntityType<ContainerBlockEntity> CONTAINER;
+
+    /** Block entity type for the shredder block. */
+    public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
 
     /** Loads all the block entity types. */
     public static void load() {}
 
     /** Registers the specified block entity type with the specified id. */
-    private static <B extends BlockEntity, T extends BlockEntityType<B>> T register(Identifier id, T blockEntity) {
-        return Registry.register(Registry.BLOCK_ENTITY_TYPE, id, blockEntity);
+    private static <B extends BlockEntity, T extends BlockEntityType<B>> T register(String id, T blockEntity) {
+        return Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, id), blockEntity);
     }
 
     static {
-        SHREDDER = register(ShredderBlockEntity.ID, FabricBlockEntityTypeBuilder.create(ShredderBlockEntity::new,
-                TerravibeBlocks.SHREDDER).build());
-        CONTAINER = register(ContainerBlockEntity.ID, FabricBlockEntityTypeBuilder.create(ContainerBlockEntity::new,
+        CONTAINER = register("container", FabricBlockEntityTypeBuilder.create(ContainerBlockEntity::new,
                 TerravibeBlocks.TUN, TerravibeBlocks.JAR).build());
+        SHREDDER = register("shredder", FabricBlockEntityTypeBuilder.create(ShredderBlockEntity::new,
+                TerravibeBlocks.SHREDDER).build());
     }
 }

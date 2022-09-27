@@ -12,31 +12,31 @@ import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the item groups. */
-public class TerravibeItemGroups {
+public final class TerravibeItemGroups {
     private TerravibeItemGroups() {}
-
-    /** Item used as icon for the "Terravibe" item group. */
-    public static final Item TERRAVIBE_ICON;
 
     /** "Terravibe" item group. */
     public static final ItemGroup TERRAVIBE;
+
+    /** Item used as icon for the "Terravibe" item group. */
+    public static final Item TERRAVIBE_ICON;
 
     /** Loads all the item groups. */
     public static void load() {}
 
     /** Registers the specified item group with the specified id. */
     @Contract("_, _ -> new")
-    private static @NotNull ItemGroup register(Identifier id, ItemStack iconItem) {
-        return FabricItemGroupBuilder.build(id, () -> iconItem);
+    private static @NotNull ItemGroup register(String id, ItemStack iconItem) {
+        return FabricItemGroupBuilder.build(new Identifier(ModInfo.MOD_ID, id), () -> iconItem);
     }
 
     /** Registers the specified icon item with the specified id. */
-    private static Item registerIcon(Identifier id) {
-        return Registry.register(Registry.ITEM, id, new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+    private static Item registerIcon(String id) {
+        return Registry.register(Registry.ITEM, new Identifier(ModInfo.MOD_ID, id), new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
     }
 
     static {
-        TERRAVIBE_ICON = registerIcon(new Identifier(ModInfo.MOD_ID, "terravibe"));
-        TERRAVIBE = register(new Identifier(ModInfo.MOD_ID, "terravibe"), new ItemStack(TERRAVIBE_ICON));
+        TERRAVIBE_ICON = registerIcon("terravibe");
+        TERRAVIBE = register("terravibe", TERRAVIBE_ICON.getDefaultStack());
     }
 }

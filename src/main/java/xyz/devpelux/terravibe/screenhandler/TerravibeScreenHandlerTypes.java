@@ -7,10 +7,10 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.block.ShredderBlock;
+import xyz.devpelux.terravibe.core.ModInfo;
 
 /** List of all the screen handler types. */
-public class TerravibeScreenHandlerTypes {
+public final class TerravibeScreenHandlerTypes {
     private TerravibeScreenHandlerTypes() {}
 
     /** Screen handler type for the shredder block entity UI. */
@@ -26,11 +26,11 @@ public class TerravibeScreenHandlerTypes {
     }
 
     /** Registers the specified screen handler type with the specified id. */
-    private static <T extends ScreenHandler> ScreenHandlerType<T> register(Identifier id, ScreenHandlerType.Factory<T> factory) {
-        return Registry.register(Registry.SCREEN_HANDLER, id, new ScreenHandlerType<>(factory));
+    private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
+        return Registry.register(Registry.SCREEN_HANDLER, new Identifier(ModInfo.MOD_ID, id), new ScreenHandlerType<>(factory));
     }
 
     static {
-        SHREDDER = register(ShredderBlock.ID, ShredderScreenHandler::new);
+        SHREDDER = register("shredder", ShredderScreenHandler::new);
     }
 }

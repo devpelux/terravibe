@@ -18,7 +18,10 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -31,16 +34,12 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Optional;
 
 /** Flowering block of the opuntia. */
 public class FloweringOpuntiaBlock extends FacingBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "flowering_opuntia");
-
     /** Settings of the block. */
     public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CACTUS);
 
@@ -67,6 +66,11 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 
     /** Specifies if the block is sterile and will not produce prickly pears. */
     public static final BooleanProperty STERILE;
+
+    /** Initializes a new {@link FloweringOpuntiaBlock} with default settings. */
+    public static FloweringOpuntiaBlock of() {
+        return new FloweringOpuntiaBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link FloweringOpuntiaBlock}. */
     public FloweringOpuntiaBlock(Settings settings) {

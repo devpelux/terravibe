@@ -12,27 +12,27 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Optional;
 
 /** Bush of nightlock berries, without thorns. */
 public class NightlockBerryBushBlock extends BerryBushBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "nightlock_berry_bush");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
     /** Movement slow amount. */
     public static final Vec3d MOVEMENT_SLOWING_AMOUNT = new Vec3d(0.800000011920929, 0.75, 0.800000011920929);
+
+    /** Initializes a new {@link NightlockBerryBushBlock} with default settings. */
+    public static NightlockBerryBushBlock of() {
+        return new NightlockBerryBushBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link NightlockBerryBushBlock}. */
     public NightlockBerryBushBlock(Settings settings) {

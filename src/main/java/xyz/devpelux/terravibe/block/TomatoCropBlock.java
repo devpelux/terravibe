@@ -9,27 +9,27 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Optional;
 
 /** Crop of the tomato. */
 public class TomatoCropBlock extends FruitCropBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tomato_crop");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
     /** Voxel shapes of the block. */
     private static final VoxelShape[] AGE_TO_SHAPE;
+
+    /** Initializes a new {@link TomatoCropBlock} with default settings. */
+    public static TomatoCropBlock of() {
+        return new TomatoCropBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link TomatoCropBlock}. */
     public TomatoCropBlock(Settings settings) {

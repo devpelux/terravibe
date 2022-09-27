@@ -5,20 +5,15 @@ import net.minecraft.block.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 /** Crop of the corn. */
 public class CornCropBlock extends TallCropBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "corn_crop");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
@@ -27,6 +22,11 @@ public class CornCropBlock extends TallCropBlock {
 
     /** Voxel shapes of the upper block the crop. */
     private static final VoxelShape[] UPPER_AGE_TO_SHAPE;
+
+    /** Initializes a new {@link CornCropBlock} with default settings. */
+    public static CornCropBlock of() {
+        return new CornCropBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link CornCropBlock}. */
     public CornCropBlock(Settings settings) {

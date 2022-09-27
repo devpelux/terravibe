@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import java.util.HashMap;
 
 /** Registry for logs that will drop cork when stripped, with the type of cork dropped. */
-public class CorkStrippableBlockRegistry {
+public final class CorkStrippableBlockRegistry {
     /** Singleton instance. */
     private static final CorkStrippableBlockRegistry INSTANCE = new CorkStrippableBlockRegistry();
 

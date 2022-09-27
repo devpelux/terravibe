@@ -37,9 +37,6 @@ import java.util.HashMap;
 
 /** Container for things. */
 public class JarBlock extends ContainerBlock implements BlockColorProvider {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "jar");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
@@ -51,6 +48,9 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 
     /** Specifies if the jar is closed. */
     public static final BooleanProperty CLOSED;
+
+    /** Identifier of the block. */
+    private static final Identifier ID;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
@@ -66,6 +66,11 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 
     /** List of all the possible behaviors of the container. */
     private static final HashMap<Pair<String, Item>, ContainerBehavior> BEHAVIORS = new HashMap<>();
+
+    /** Initializes a new {@link JarBlock} with default settings. */
+    public static JarBlock of() {
+        return new JarBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link JarBlock}. */
     public JarBlock(Settings settings) {
@@ -284,6 +289,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
         SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
         LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
         CLOSED = BooleanProperty.of("closed");
+        ID = new Identifier(ModInfo.MOD_ID, "jar");
         VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
     }
 }

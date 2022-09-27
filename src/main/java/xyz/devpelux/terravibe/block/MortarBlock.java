@@ -1,10 +1,7 @@
 package xyz.devpelux.terravibe.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -13,14 +10,12 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.recipe.CrushingRecipe;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 
@@ -29,14 +24,16 @@ import java.util.Optional;
 
 /** Crushes an item to obtain other items. */
 public class MortarBlock extends Block {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "mortar");
-
     /** Settings of the block. */
-    public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
+    public static final Settings SETTINGS;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
+
+    /** Initializes a new {@link MortarBlock} with default settings. */
+    public static MortarBlock of() {
+        return new MortarBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link MortarBlock}. */
     public MortarBlock(Settings settings) {
@@ -94,6 +91,8 @@ public class MortarBlock extends Block {
     }
 
     static {
+        SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT)
+                .mapColor(MapColor.OAK_TAN);
         VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
     }
 }

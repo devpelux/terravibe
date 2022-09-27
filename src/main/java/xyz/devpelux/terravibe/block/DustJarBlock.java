@@ -3,6 +3,7 @@ package xyz.devpelux.terravibe.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,10 +28,7 @@ import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 import java.util.Objects;
 
 /** A jar for dusts. */
-public class DustJarBlock extends JarBlock {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "dust_jar");
-
+public final class DustJarBlock extends JarBlock {
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
@@ -51,6 +49,14 @@ public class DustJarBlock extends JarBlock {
 
     /** Dust contained in the block. */
     public static final EnumProperty<Dust> DUST;
+
+    /** Identifier of the block. */
+    private static final Identifier ID;
+
+    /** Initializes a new {@link DustJarBlock} with default settings. */
+    public static DustJarBlock of() {
+        return new DustJarBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link DustJarBlock}. */
     public DustJarBlock(Settings settings) {
@@ -190,9 +196,10 @@ public class DustJarBlock extends JarBlock {
     }
 
     static {
-        SETTINGS = FabricBlockSettings.copyOf(TerravibeBlocks.JAR)
+        SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT)
                 .luminance(DustJarBlock::getLuminance);
         DUST = EnumProperty.of("dust", Dust.class);
+        ID = new Identifier(ModInfo.MOD_ID, "dust_jar");
     }
 
 

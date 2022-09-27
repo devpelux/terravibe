@@ -5,27 +5,24 @@ import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 
 /** Food made from milk coagulation and eventually other ingredients. */
 public class CheeseWheelBlock extends HorizontalFacingBlock {
-    /** Identifier of the cheese block. */
-    public static final Identifier CHEESE_ID =  new Identifier(ModInfo.MOD_ID, "cheese_wheel");
-
-    /** Identifier of the gorgonzola block. */
-    public static final Identifier GORGONZOLA_ID =  new Identifier(ModInfo.MOD_ID, "gorgonzola_wheel");
-
     /** Settings of the block. */
     public static final Settings SETTINGS;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
+
+    /** Initializes a new {@link CheeseWheelBlock} with default settings. */
+    public static CheeseWheelBlock of() {
+        return new CheeseWheelBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link CheeseWheelBlock}. */
     public CheeseWheelBlock(Settings settings) {

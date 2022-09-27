@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
 
 /** List of all the item tags. */
-public class TerravibeItemTags {
+public final class TerravibeItemTags {
     private TerravibeItemTags() {}
 
     /**

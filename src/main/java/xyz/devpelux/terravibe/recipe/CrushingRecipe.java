@@ -12,11 +12,9 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
 import xyz.devpelux.terravibe.core.Util;
 
 import java.util.ArrayList;
@@ -25,19 +23,11 @@ import java.util.Objects;
 
 /** Crushes an item to obtain other items. */
 public class CrushingRecipe extends InventoryRecipe {
-    /** Identifier of the recipe. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "crushing");
-
-    /** Json serializer of the {@link CrushingRecipe}. */
-    public static final RecipeSerializer<CrushingRecipe> CRUSHING_RECIPE_SERIALIZER =
-            Registry.register(Registry.RECIPE_SERIALIZER, ID, new Serializer());
-
-    /** List of stacks to drop. */
     protected List<Triple<ItemStack, Integer, Integer>> outputs;
 
     /** Initializes a new {@link CrushingRecipe}. */
     public CrushingRecipe(Identifier id, String group, Ingredient input, List<Triple<ItemStack, Integer, Integer>> outputs) {
-        super(TerravibeRecipeTypes.CRUSHING, CRUSHING_RECIPE_SERIALIZER, id, group, DefaultedList.copyOf(null, input));
+        super(TerravibeRecipeTypes.CRUSHING, TerravibeRecipeSerializers.CRUSHING, id, group, DefaultedList.copyOf(null, input));
         this.outputs = outputs;
     }
 

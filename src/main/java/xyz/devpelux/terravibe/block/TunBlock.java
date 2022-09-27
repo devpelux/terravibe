@@ -24,17 +24,17 @@ import java.util.HashMap;
 
 /** Container for "non-lava" fluids. */
 public class TunBlock extends ContainerBlock implements BlockColorProvider {
-    /** Identifier of the block. */
-    public static final Identifier ID =  new Identifier(ModInfo.MOD_ID, "tun");
-
     /** Settings of the block. */
-    public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
+    public static final Settings SETTINGS;
 
     /** Level of the content when full. */
     public static final int MAX_LEVEL = 27;
 
     /** Level of the content. */
     public static final IntProperty LEVEL;
+
+    /** Identifier of the block. */
+    private static final Identifier ID;
 
     /** Voxel shape of the block. */
     private static final VoxelShape VOXEL_SHAPE;
@@ -47,6 +47,11 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 
     /** List of all the possible behaviors of the container. */
     private static final HashMap<Pair<String, Item>, ContainerBehavior> BEHAVIORS = new HashMap<>();
+
+    /** Initializes a new {@link TunBlock} with default settings. */
+    public static TunBlock of() {
+        return new TunBlock(SETTINGS);
+    }
 
     /** Initializes a new {@link TunBlock}. */
     public TunBlock(Settings settings) {
@@ -120,7 +125,9 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
     }
 
     static {
+        SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
         LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
+        ID = new Identifier(ModInfo.MOD_ID, "tun");
         VOXEL_SHAPE = Util.combineVoxelShapes(
                 Block.createCuboidShape(2, 0, 2, 14, 1, 14),
                 Block.createCuboidShape(0, 0, 2, 2, 16, 16),
