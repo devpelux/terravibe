@@ -1,5 +1,5 @@
 {
-	"parent": "terravibe:block/jar_generic_height2",
+	"parent": "terravibe:block/jar_content_height2",
 	"textures": {
 		"content": "terravibe:block/jar_burned_dark_mold_dust"
 	}
