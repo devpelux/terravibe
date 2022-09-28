@@ -14,16 +14,19 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ShredderBlockEntity;
-import xyz.devpelux.terravibe.core.Util;
+
+import java.util.stream.Stream;
 
 /** Shreds a bunch of items to obtain something. */
 public class ShredderBlock extends BlockWithEntity {
@@ -116,10 +119,10 @@ public class ShredderBlock extends BlockWithEntity {
 				.strength(3.0F, 6.0F)
 				.sounds(BlockSoundGroup.COPPER);
 		FACING = Properties.HORIZONTAL_FACING;
-		VOXEL_SHAPE = Util.combineVoxelShapes(
+		VOXEL_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 14, 2, 14, 16, 14),
 				Block.createCuboidShape(3, 12, 3, 13, 14, 13),
 				Block.createCuboidShape(4, 0, 4, 12, 12, 12)
-		);
+		).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 	}
 }

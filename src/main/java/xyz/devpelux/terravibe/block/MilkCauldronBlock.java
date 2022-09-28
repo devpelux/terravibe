@@ -19,16 +19,17 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
@@ -262,8 +263,8 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 
     static {
         CONTENT = EnumProperty.of("content", Content.class);
-        SOLID_FILLED_CAULDRON_VOXEL_SHAPE = Util.combineVoxelShapes(OUTLINE_SHAPE,
-                Block.createCuboidShape(2, 4, 2, 14, 9, 14));
+        SOLID_FILLED_CAULDRON_VOXEL_SHAPE = VoxelShapes.combineAndSimplify(OUTLINE_SHAPE,
+                Block.createCuboidShape(2, 4, 2, 14, 9, 14), BooleanBiFunction.OR);
         FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> {
             return CauldronBehavior.fillCauldron(world, pos, player, hand, stack,
                     TerravibeBlocks.MILK_CAULDRON.getDefaultState(), SoundEvents.ITEM_BUCKET_EMPTY);

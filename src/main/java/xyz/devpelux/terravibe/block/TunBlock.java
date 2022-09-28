@@ -10,17 +10,19 @@ import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.item.Item;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.ModInfo;
-import xyz.devpelux.terravibe.core.Util;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 /** Container for "non-lava" fluids. */
 public class TunBlock extends ContainerBlock implements BlockColorProvider {
@@ -127,13 +129,13 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
     static {
         SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
         LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
-        ID = new Identifier(ModInfo.MOD_ID, "tun");
-        VOXEL_SHAPE = Util.combineVoxelShapes(
+        ID = new Identifier(Terravibe.ID, "tun");
+        VOXEL_SHAPE = Stream.of(
                 Block.createCuboidShape(2, 0, 2, 14, 1, 14),
                 Block.createCuboidShape(0, 0, 2, 2, 16, 16),
                 Block.createCuboidShape(14, 0, 0, 16, 16, 14),
                 Block.createCuboidShape(2, 0, 14, 16, 16, 16),
                 Block.createCuboidShape(0, 0, 0, 14, 16, 2)
-        );
+        ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
     }
 }

@@ -7,7 +7,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the screen handler types. */
 public final class TerravibeScreenHandlerTypes {
@@ -27,7 +27,7 @@ public final class TerravibeScreenHandlerTypes {
 
     /** Registers the specified screen handler type with the specified id. */
     private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
-        return Registry.register(Registry.SCREEN_HANDLER, new Identifier(ModInfo.MOD_ID, id), new ScreenHandlerType<>(factory));
+        return Registry.register(Registry.SCREEN_HANDLER, new Identifier(Terravibe.ID, id), new ScreenHandlerType<>(factory));
     }
 
     static {

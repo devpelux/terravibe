@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the particle types. */
 public final class TerravibeParticleTypes {
@@ -39,7 +39,7 @@ public final class TerravibeParticleTypes {
 
     /** Registers a new particle type. */
     private static DefaultParticleType register(String path, boolean alwaysShow) {
-        return Registry.register(Registry.PARTICLE_TYPE, new Identifier(ModInfo.MOD_ID, path), FabricParticleTypes.simple(alwaysShow));
+        return Registry.register(Registry.PARTICLE_TYPE, new Identifier(Terravibe.ID, path), FabricParticleTypes.simple(alwaysShow));
     }
 
     static {

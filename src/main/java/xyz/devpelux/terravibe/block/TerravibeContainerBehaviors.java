@@ -1,9 +1,11 @@
 package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
@@ -14,9 +16,10 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.World;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Objects;
@@ -67,7 +70,7 @@ public final class TerravibeContainerBehaviors {
     /** Loads the {@link JarBlock} behaviors. */
     public static void loadJarBehaviors() {
         //Color providers
-        JarBlock.registerColorProvider(CONTENT_WATER, (c, s, v, p, i) -> Util.getWaterColor(v, p, PotionUtil.getPotion(c.getValue("PotionData"))));
+        JarBlock.registerColorProvider(CONTENT_WATER, (c, s, v, p, i) -> getWaterColor(v, p, c));
         JarBlock.registerColorProvider(CONTENT_HONEY, (c, s, v, p, i) -> 0x976018);
         JarBlock.registerColorProvider(CONTENT_MILK, (c, s, v, p, i) -> 0xffffff);
         JarBlock.registerColorProvider(CONTENT_TOMATO_SAUCE, (c, s, v, p, i) -> 0xf61815);
@@ -121,7 +124,7 @@ public final class TerravibeContainerBehaviors {
     /** Loads the {@link TunBlock} behaviors. */
     public static void loadTunBehaviors() {
         //Color providers
-        TunBlock.registerColorProvider(CONTENT_WATER, (c, s, v, p, i) -> Util.getWaterColor(v, p, PotionUtil.getPotion(c.getValue("PotionData"))));
+        TunBlock.registerColorProvider(CONTENT_WATER, (c, s, v, p, i) -> getWaterColor(v, p, c));
         TunBlock.registerColorProvider(CONTENT_HONEY, (c, s, v, p, i) -> 0x976018);
         TunBlock.registerColorProvider(CONTENT_MILK, (c, s, v, p, i) -> 0xffffff);
         TunBlock.registerColorProvider(CONTENT_TOMATO_SAUCE, (c, s, v, p, i) -> 0xf61815);
@@ -146,6 +149,12 @@ public final class TerravibeContainerBehaviors {
 
         TunBlock.registerBehavior(CONTENT_TOMATO_SAUCE, TerravibeItems.TOMATO_SAUCE_BOTTLE, PUT_TOMATO_SAUCE);
         TunBlock.registerBehavior(CONTENT_TOMATO_SAUCE, Items.GLASS_BOTTLE, GET_TOMATO_SAUCE);
+    }
+
+    /** Gets the water color basing on a biomes-based color and the potion contained. */
+    private static int getWaterColor(BlockRenderView view, BlockPos pos, ContainerBlockEntity container) {
+        Potion potion = PotionUtil.getPotion(container.getValue("PotionData"));
+        return potion == Potions.WATER ? BiomeColors.getWaterColor(view, pos) : PotionUtil.getColor(potion);
     }
 
     private static ActionResult getFromContainer(BlockState state, World world, BlockPos pos, PlayerEntity player,
@@ -268,7 +277,9 @@ public final class TerravibeContainerBehaviors {
 
                 //Sets the potion data on server side if empty.
                 if (currentLevel == 0 && result == ActionResult.CONSUME) {
-                    container.setValue("PotionData", Util.potionToNbt(inputPotion));
+                    NbtCompound nbt = new NbtCompound();
+                    nbt.putString("Potion", Registry.POTION.getId(inputPotion).toString());
+                    container.setValue("PotionData", nbt);
                 }
             }
 
@@ -282,7 +293,7 @@ public final class TerravibeContainerBehaviors {
 
         PUT_HONEY = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
             return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
-                    1, CONTENT_HONEY, Util.getRemainder(stack), SoundEvents.ITEM_BOTTLE_EMPTY);
+                    1, CONTENT_HONEY, new ItemStack(stack.getItem().getRecipeRemainder()), SoundEvents.ITEM_BOTTLE_EMPTY);
         };
 
         GET_MILK = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
@@ -292,7 +303,7 @@ public final class TerravibeContainerBehaviors {
 
         PUT_MILK = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
             return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
-                    3, CONTENT_MILK, Util.getRemainder(stack), SoundEvents.ITEM_BUCKET_EMPTY);
+                    3, CONTENT_MILK, new ItemStack(stack.getItem().getRecipeRemainder()), SoundEvents.ITEM_BUCKET_EMPTY);
         };
 
         GET_TOMATO_SAUCE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
@@ -302,7 +313,7 @@ public final class TerravibeContainerBehaviors {
 
         PUT_TOMATO_SAUCE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
             return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
-                    1, CONTENT_TOMATO_SAUCE, Util.getRemainder(stack), SoundEvents.ITEM_BOTTLE_EMPTY);
+                    1, CONTENT_TOMATO_SAUCE, new ItemStack(stack.getItem().getRecipeRemainder()), SoundEvents.ITEM_BOTTLE_EMPTY);
         };
 
         GET_BIRCH_MOLD_DUST_JAR = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {

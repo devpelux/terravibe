@@ -9,7 +9,7 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the item groups. */
 public final class TerravibeItemGroups {
@@ -27,12 +27,12 @@ public final class TerravibeItemGroups {
     /** Registers the specified item group with the specified id. */
     @Contract("_, _ -> new")
     private static @NotNull ItemGroup register(String id, ItemStack iconItem) {
-        return FabricItemGroupBuilder.build(new Identifier(ModInfo.MOD_ID, id), () -> iconItem);
+        return FabricItemGroupBuilder.build(new Identifier(Terravibe.ID, id), () -> iconItem);
     }
 
     /** Registers the specified icon item with the specified id. */
     private static Item registerIcon(String id) {
-        return Registry.register(Registry.ITEM, new Identifier(ModInfo.MOD_ID, id), new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+        return Registry.register(Registry.ITEM, new Identifier(Terravibe.ID, id), new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
     }
 
     static {

@@ -3,7 +3,7 @@ package xyz.devpelux.terravibe.recipe;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the recipe types. */
 public final class TerravibeRecipeTypes {
@@ -20,7 +20,7 @@ public final class TerravibeRecipeTypes {
 
     /** Registers the specified recipe type with the specified id. */
     private static <T extends Recipe<?>> RecipeType<T> register(String id) {
-        return RecipeType.register(new Identifier(ModInfo.MOD_ID, id).toString());
+        return RecipeType.register(new Identifier(Terravibe.ID, id).toString());
     }
 
     static {

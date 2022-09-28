@@ -11,7 +11,7 @@ import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the blocks. */
 public final class TerravibeBlocks {
@@ -171,7 +171,7 @@ public final class TerravibeBlocks {
 
     /** Registers the specified block with the specified id. */
     private static <T extends Block> T register(String id, T block) {
-        return Registry.register(Registry.BLOCK, new Identifier(ModInfo.MOD_ID, id), block);
+        return Registry.register(Registry.BLOCK, new Identifier(Terravibe.ID, id), block);
     }
 
     static {

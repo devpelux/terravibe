@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.Util;
 
 /** Container. */
 public abstract class ContainerBlock extends BlockWithEntity {
@@ -168,7 +167,7 @@ public abstract class ContainerBlock extends BlockWithEntity {
     /** Gets the comparator output value. */
     @Override
     public int getComparatorOutput(@NotNull BlockState state, World world, BlockPos pos) {
-        return (int) Util.lerpFromMaxToMax(getLevel(state), getMaxLevel(), 15f);
+        return (int) ((float) getLevel(state) / (float) getMaxLevel() * 15f);
     }
 
 

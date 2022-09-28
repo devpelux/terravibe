@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
@@ -12,14 +13,15 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /** Crushes an item to obtain other items. */
 public class CrushingRecipe extends InventoryRecipe {
@@ -115,11 +117,12 @@ public class CrushingRecipe extends InventoryRecipe {
             //Output list.
             List<Triple<ItemStack, Integer, Integer>> outputs = new ArrayList<>();
             for (CrushingRecipeFormat.ResultFormat result : recipe.results) {
-                //Output with min and max count.
-                ItemStack output = Util.getStackFromName(result.item);
+                //Output stack with min and max count.
+                Optional<Item> outputItem = Registry.ITEM.getOrEmpty(new Identifier(result.item));
+                ItemStack outputStack = new ItemStack(outputItem.orElseThrow(() -> new JsonSyntaxException("Invalid item '" + result.item + "'")));
                 int maxCount = result.max_count;
                 int minCount = Math.min(result.min_count, maxCount);
-                outputs.add(Triple.of(output, minCount, maxCount));
+                outputs.add(Triple.of(outputStack, minCount, maxCount));
             }
 
             return new CrushingRecipe(id, group, input, outputs);

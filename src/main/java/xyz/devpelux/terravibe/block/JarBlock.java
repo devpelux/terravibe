@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 import xyz.devpelux.terravibe.item.ColoredItem;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
@@ -289,7 +289,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
         SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
         LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
         CLOSED = BooleanProperty.of("closed");
-        ID = new Identifier(ModInfo.MOD_ID, "jar");
+        ID = new Identifier(Terravibe.ID, "jar");
         VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
     }
 }

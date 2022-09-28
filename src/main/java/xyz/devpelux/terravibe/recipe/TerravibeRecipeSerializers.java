@@ -4,7 +4,7 @@ import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the recipe serializers. */
 public final class TerravibeRecipeSerializers {
@@ -21,7 +21,7 @@ public final class TerravibeRecipeSerializers {
 
     /** Registers the specified recipe serializer with the specified id. */
     private static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String id, S serializer) {
-        return Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(ModInfo.MOD_ID, id), serializer);
+        return Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(Terravibe.ID, id), serializer);
     }
 
     static {

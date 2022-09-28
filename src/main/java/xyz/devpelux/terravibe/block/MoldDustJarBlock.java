@@ -22,7 +22,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
@@ -266,7 +266,7 @@ public final class MoldDustJarBlock extends JarBlock {
         SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT)
                 .luminance(MoldDustJarBlock::getLuminance);
         DUST = EnumProperty.of("dust", Dust.class);
-        ID = new Identifier(ModInfo.MOD_ID, "mold_dust_jar");
+        ID = new Identifier(Terravibe.ID, "mold_dust_jar");
     }
 
 

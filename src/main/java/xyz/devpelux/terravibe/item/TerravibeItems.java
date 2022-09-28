@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** List of all the items. */
 public final class TerravibeItems {
@@ -345,7 +345,7 @@ public final class TerravibeItems {
 
     /** Registers the specified item with the specified id. */
     private static <T extends Item> T register(String id, T item) {
-        return Registry.register(Registry.ITEM, new Identifier(ModInfo.MOD_ID, id), item);
+        return Registry.register(Registry.ITEM, new Identifier(Terravibe.ID, id), item);
     }
 
     static {

@@ -11,6 +11,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -22,7 +23,6 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.Util;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.ArrayList;
@@ -144,9 +144,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
         if (northWest) shapeList.add(Block.createCuboidShape(1, 0, 1, 8, 1, 8));
 
         if (shapeList.size() == 0) return VoxelShapes.empty();
-
-        VoxelShape[] shapes = new VoxelShape[shapeList.size()];
-        return Util.combineVoxelShapes(shapeList.toArray(shapes));
+        return shapeList.stream().reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
     }
 
     static {

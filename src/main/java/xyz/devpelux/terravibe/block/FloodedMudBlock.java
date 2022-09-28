@@ -13,16 +13,19 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.Util;
+
+import java.util.stream.Stream;
 
 /** A mud block excavated and flooded with water. */
 public class FloodedMudBlock extends Block implements Waterloggable {
@@ -187,6 +190,11 @@ public class FloodedMudBlock extends Block implements Waterloggable {
         return VOXEL_SHAPES[shapeIdx];
     }
 
+    /** Combines the specified voxel shapes with or function. */
+    private static VoxelShape combineVoxelShapes(VoxelShape... shapes) {
+        return Stream.of(shapes).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).orElse(VoxelShapes.empty());
+    }
+
     static {
         SETTINGS = FabricBlockSettings.copyOf(Blocks.DIRT)
                 .sounds(BlockSoundGroup.MUD)
@@ -208,22 +216,22 @@ public class FloodedMudBlock extends Block implements Waterloggable {
          */
 
         VOXEL_SHAPES = new VoxelShape[]{
-                Util.combineVoxelShapes(bottom),
-                Util.combineVoxelShapes(bottom, north),
-                Util.combineVoxelShapes(bottom, east),
-                Util.combineVoxelShapes(bottom, east, north),
-                Util.combineVoxelShapes(bottom, south),
-                Util.combineVoxelShapes(bottom, south, north),
-                Util.combineVoxelShapes(bottom, south, east),
-                Util.combineVoxelShapes(bottom, south, east, north),
-                Util.combineVoxelShapes(bottom, west),
-                Util.combineVoxelShapes(bottom, west, north),
-                Util.combineVoxelShapes(bottom, west, east),
-                Util.combineVoxelShapes(bottom, west, east, north),
-                Util.combineVoxelShapes(bottom, west, south),
-                Util.combineVoxelShapes(bottom, west, south, north),
-                Util.combineVoxelShapes(bottom, west, south, east),
-                Util.combineVoxelShapes(bottom, west, south, east, north)
+                combineVoxelShapes(bottom),
+                combineVoxelShapes(bottom, north),
+                combineVoxelShapes(bottom, east),
+                combineVoxelShapes(bottom, east, north),
+                combineVoxelShapes(bottom, south),
+                combineVoxelShapes(bottom, south, north),
+                combineVoxelShapes(bottom, south, east),
+                combineVoxelShapes(bottom, south, east, north),
+                combineVoxelShapes(bottom, west),
+                combineVoxelShapes(bottom, west, north),
+                combineVoxelShapes(bottom, west, east),
+                combineVoxelShapes(bottom, west, east, north),
+                combineVoxelShapes(bottom, west, south),
+                combineVoxelShapes(bottom, west, south, north),
+                combineVoxelShapes(bottom, west, south, east),
+                combineVoxelShapes(bottom, west, south, east, north)
         };
     }
 }

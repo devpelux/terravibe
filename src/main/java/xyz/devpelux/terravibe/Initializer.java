@@ -3,7 +3,7 @@ package xyz.devpelux.terravibe;
 import net.fabricmc.api.ModInitializer;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.blockentity.TerravibeBlockEntityTypes;
-import xyz.devpelux.terravibe.core.Util;
+import xyz.devpelux.terravibe.core.Terravibe;
 import xyz.devpelux.terravibe.item.TerravibeItemGroups;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
@@ -32,6 +32,6 @@ public class Initializer implements ModInitializer {
 		TerravibeScreenHandlerTypes.load();
 		TerravibeBlocks.loadContainerBehaviors();
 
-		Util.LOGGER.info("Loaded Terravibe components.");
+		Terravibe.LOGGER.info("Loaded Terravibe components.");
 	}
 }

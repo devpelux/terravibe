@@ -2,6 +2,7 @@ package xyz.devpelux.terravibe.recipe;
 
 import com.google.gson.*;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
@@ -9,11 +10,12 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import xyz.devpelux.terravibe.core.Util;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 /** Shreds a bunch of items to obtain something into a container. */
 public class ShreddingRecipe extends InventoryRecipe {
@@ -98,10 +100,11 @@ public class ShreddingRecipe extends InventoryRecipe {
             //Container
             Ingredient container = Ingredient.fromJson(recipe.container);
 
-            //Result
-            ItemStack output = Util.getStackFromName(recipe.result);
+            //Output stack
+            Optional<Item> outputItem = Registry.ITEM.getOrEmpty(new Identifier(recipe.result));
+            ItemStack outputStack = new ItemStack(outputItem.orElseThrow(() -> new JsonSyntaxException("Invalid item '" + recipe.result + "'")));
 
-            return new ShreddingRecipe(id, ingredients, container, output);
+            return new ShreddingRecipe(id, ingredients, container, outputStack);
         }
 
         /** Reads the recipe from a web packet. */

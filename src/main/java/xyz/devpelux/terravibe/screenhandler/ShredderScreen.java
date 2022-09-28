@@ -8,12 +8,12 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import xyz.devpelux.terravibe.core.ModInfo;
+import xyz.devpelux.terravibe.core.Terravibe;
 
 /** Screen for the {@link ShredderScreenHandler}: handles the rendering of the UI background texture. */
 public class ShredderScreen extends HandledScreen<ScreenHandler> {
     /** Identifier of the gui texture. */
-    private static final Identifier TEXTURE = new Identifier(ModInfo.MOD_ID, "textures/gui/shredder.png");
+    private static final Identifier TEXTURE = new Identifier(Terravibe.ID, "textures/gui/shredder.png");
 
     /** Initializes a new {@link ShredderScreen}. */
     public ShredderScreen(ScreenHandler handler, PlayerInventory inventory, Text title) {
