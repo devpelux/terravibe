@@ -26,7 +26,7 @@ import java.util.Optional;
  * Crushes an item to obtain other items.
  */
 public class CrushingRecipe extends InventoryRecipe {
-	protected List<Triple<ItemStack, Integer, Integer>> outputs;
+	protected final List<Triple<ItemStack, Integer, Integer>> outputs;
 
 	/**
 	 * Initializes a new {@link CrushingRecipe}.
@@ -193,6 +193,7 @@ public class CrushingRecipe extends InventoryRecipe {
 		/**
 		 * {@link CrushingRecipe} json format.
 		 */
+		@SuppressWarnings("unused")
 		private static class CrushingRecipeFormat {
 			public String group;
 			public JsonElement ingredient;

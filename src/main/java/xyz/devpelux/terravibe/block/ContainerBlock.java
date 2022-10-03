@@ -190,14 +190,6 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	}
 
 	/**
-	 * Returns a value indicating if to enable color blending for this block.
-	 */
-	@Override
-	public boolean enableSodiumColorBlending() {
-		return false;
-	}
-
-	/**
 	 * Gets a value indicating if the block gives an output to comparators.
 	 */
 	@Override

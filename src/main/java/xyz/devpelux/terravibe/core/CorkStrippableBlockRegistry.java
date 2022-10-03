@@ -20,9 +20,6 @@ public final class CorkStrippableBlockRegistry {
 	 */
 	private final Map<Block, Item> CORK_STRIPPABLE = new IdentityHashMap<>();
 
-	/**
-	 * Initializes a new {@link CorkStrippableBlockRegistry}.
-	 */
 	private CorkStrippableBlockRegistry() {
 	}
 

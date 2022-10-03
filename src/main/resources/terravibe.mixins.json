@@ -9,8 +9,6 @@
 	"terravibe.LandPathNodeMakerMixin"
   ],
   "client": [
-	"sodium.client.BlockMixin",
-	"sodium.client.FluidMixin",
 	"sodium.client.LinearColorBlenderMixin"
   ],
   "injectors": {

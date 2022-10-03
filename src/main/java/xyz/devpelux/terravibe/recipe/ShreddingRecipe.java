@@ -156,6 +156,7 @@ public class ShreddingRecipe extends InventoryRecipe {
 		/**
 		 * {@link ShreddingRecipe} json format.
 		 */
+		@SuppressWarnings("unused")
 		private static class ShreddingRecipeFormat {
 			public JsonArray ingredients;
 			public JsonElement container;
