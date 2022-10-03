@@ -1,26 +1,26 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " B ",
-    "MTM",
-    "WWW"
+	" B ",
+	"MTM",
+	"WWW"
   ],
   "key": {
-    "W" : {
-      "item": "minecraft:wheat"
-    },
-    "T" : {
-      "item": "terravibe:tomato_sauce_bottle"
-    },
-    "M" : {
-      "item": "terravibe:mozzarella_flakes"
-    },
-    "B" : {
-      "item": "terravibe:basil"
-    }
+	"W": {
+	  "item": "minecraft:wheat"
+	},
+	"T": {
+	  "item": "terravibe:tomato_sauce_bottle"
+	},
+	"M": {
+	  "item": "terravibe:mozzarella_flakes"
+	},
+	"B": {
+	  "item": "terravibe:basil"
+	}
   },
   "result": {
-    "item": "terravibe:pizza_margherita",
-    "count": 1
+	"item": "terravibe:pizza_margherita",
+	"count": 1
   }
 }

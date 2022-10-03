@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:corn"
-    }
+	{
+	  "item": "terravibe:corn"
+	}
   ],
   "result": {
-    "item": "terravibe:corn_grains",
-    "count": 4
+	"item": "terravibe:corn_grains",
+	"count": 4
   }
 }

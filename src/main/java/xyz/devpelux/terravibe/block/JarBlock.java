@@ -9,6 +9,7 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -25,7 +26,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 import xyz.devpelux.terravibe.core.Terravibe;
@@ -34,262 +34,327 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
 import java.util.HashMap;
+import java.util.Map;
 
-/** Container for things. */
+/**
+ * Container for things.
+ */
 public class JarBlock extends ContainerBlock implements BlockColorProvider {
-    /** Settings of the block. */
-    public static final Settings SETTINGS;
+	/**
+	 * Settings of the block.
+	 */
+	public static final Settings SETTINGS;
 
-    /** Level of the content when full. */
-    public static final int MAX_LEVEL = 3;
+	/**
+	 * Level of the content when full.
+	 */
+	public static final int MAX_LEVEL = 3;
 
-    /** Level of the content. */
-    public static final IntProperty LEVEL;
+	/**
+	 * Level of the content.
+	 */
+	public static final IntProperty LEVEL;
 
-    /** Specifies if the jar is closed. */
-    public static final BooleanProperty CLOSED;
+	/**
+	 * Specifies if the jar is closed.
+	 */
+	public static final BooleanProperty CLOSED;
 
-    /** Identifier of the block. */
-    private static final Identifier ID;
+	/**
+	 * Identifier of the block.
+	 */
+	private static final Identifier ID;
 
-    /** Voxel shape of the block. */
-    private static final VoxelShape VOXEL_SHAPE;
+	/**
+	 * Voxel shape of the block.
+	 */
+	private static final VoxelShape VOXEL_SHAPE;
 
-    /** Default content color. */
-    private static final int DEFAULT_CONTENT_COLOR = 0x241a09;
+	/**
+	 * Default content color.
+	 */
+	private static final int DEFAULT_CONTENT_COLOR = 0x241a09;
 
-    /** Default plug color. */
-    private static final int DEFAULT_PLUG_COLOR = 0xb8945f;
+	/**
+	 * Default plug color.
+	 */
+	private static final int DEFAULT_PLUG_COLOR = 0xb8945f;
 
-    /** List of all the color providers to color the content. */
-    private static final HashMap<String, ContainerBlockEntity.ContainerBlockColorProvider> COLOR_PROVIDERS = new HashMap<>();
+	/**
+	 * List of all the color providers to color the content.
+	 */
+	private static final Map<String, ContainerBlockEntity.ContainerBlockColorProvider> COLOR_PROVIDERS = new HashMap<>();
 
-    /** List of all the possible behaviors of the container. */
-    private static final HashMap<Pair<String, Item>, ContainerBehavior> BEHAVIORS = new HashMap<>();
+	/**
+	 * List of all the possible behaviors of the container.
+	 */
+	private static final Map<Pair<String, Item>, ContainerBehavior> BEHAVIORS = new HashMap<>();
 
-    /** Initializes a new {@link JarBlock} with default settings. */
-    public static JarBlock of() {
-        return new JarBlock(SETTINGS);
-    }
+	/**
+	 * Initializes a new {@link JarBlock}.
+	 */
+	public JarBlock(Settings settings) {
+		super(settings);
+		setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false));
+	}
 
-    /** Initializes a new {@link JarBlock}. */
-    public JarBlock(Settings settings) {
-        super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false));
-    }
+	/**
+	 * Initializes a new {@link JarBlock} with default settings.
+	 */
+	public static JarBlock of() {
+		return new JarBlock(SETTINGS);
+	}
 
-    /** Registers a color provider for the content specified. */
-    public static void registerColorProvider(@NotNull String content, @NotNull ContainerBlockEntity.ContainerBlockColorProvider colorProvider) {
-        COLOR_PROVIDERS.putIfAbsent(content, colorProvider);
-    }
+	/**
+	 * Registers a behavior for the content and input specified.
+	 */
+	public static void registerBehavior(String content, Item used, ContainerBehavior interaction) {
+		BEHAVIORS.putIfAbsent(Pair.of(content, used), interaction);
+	}
 
-    /** Gets the color provider for the content specified. */
-    public static @Nullable ContainerBlockEntity.ContainerBlockColorProvider getColorProvider(@NotNull String content) {
-        return COLOR_PROVIDERS.get(content);
-    }
+	/**
+	 * Registers a color provider for the content specified.
+	 */
+	public static void registerColorProvider(String content, ContainerBlockEntity.ContainerBlockColorProvider colorProvider) {
+		COLOR_PROVIDERS.putIfAbsent(content, colorProvider);
+	}
 
-    /** Registers a behavior for the content and input specified. */
-    public static void registerBehavior(@NotNull String content, @NotNull Item used, @NotNull ContainerBehavior interaction) {
-        BEHAVIORS.putIfAbsent(Pair.of(content, used), interaction);
-    }
+	/**
+	 * Gets the plug.
+	 */
+	@Nullable
+	public static Item getPlug(ContainerBlockEntity container) {
+		NbtCompound value = container.getValue("Plug");
+		String plug = value.getString("Id");
 
-    /** Registers the properties of the block. */
-    @Override
-    protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(CLOSED);
-    }
+		//If the plug exists then returns the item, else returns null.
+		if (!plug.equals("")) {
+			Item item = Registry.ITEM.get(new Identifier(plug));
+			if (item != Items.AIR) {
+				return item;
+			}
+		}
 
-    /** Gets the identifier of the block. */
-    @Override
-    public Identifier getId() {
-        return ID;
-    }
+		return null;
+	}
 
-    /** Gets the level property. */
-    @Override
-    public IntProperty getLevelProperty() {
-        return LEVEL;
-    }
+	/**
+	 * Sets the plug. (null to remove)
+	 */
+	public static void setPlug(ContainerBlockEntity container, @Nullable Item plug) {
+		if (plug != null) {
+			//Sets the plug.
+			NbtCompound value = new NbtCompound();
+			value.putString("Id", Registry.ITEM.getId(plug).toString());
+			container.setValue("Plug", value);
+		} else {
+			//Removes the plug.
+			container.setValue("Plug", null);
+		}
+	}
 
-    /** Gets the max level. */
-    @Override
-    public int getMaxLevel() {
-        return MAX_LEVEL;
-    }
+	/**
+	 * Registers the properties of the block.
+	 */
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		super.appendProperties(builder);
+		builder.add(CLOSED);
+	}
 
-    /** Gets the behavior for the content and input specified. */
-    @Override
-    public @Nullable ContainerBehavior getBehavior(@NotNull String content, @NotNull Item input) {
-        return BEHAVIORS.get(Pair.of(content, input));
-    }
+	/**
+	 * Gets the default state adjusted from nbt container data.
+	 */
+	@Override
+	public BlockState withContainerData(NbtCompound nbt) {
+		boolean closed = nbt.getBoolean("Closed");
+		return super.withContainerData(nbt).with(CLOSED, closed);
+	}
 
-    /** Gets the block state from nbt container data. */
-    @Override
-    public BlockState getStateFromContainerData(@NotNull NbtCompound nbt) {
-        boolean closed = nbt.getBoolean("Closed");
-        return super.getStateFromContainerData(nbt).with(CLOSED, closed);
-    }
+	/**
+	 * Gets the level property.
+	 */
+	@Override
+	public IntProperty getLevelProperty() {
+		return LEVEL;
+	}
 
-    /** Save extra container data to nbt. */
-    @Override
-    protected void saveToNbt(@NotNull BlockState state, @NotNull BlockView world, @NotNull BlockPos pos, @NotNull NbtCompound nbt) {
-        super.saveToNbt(state, world, pos, nbt);
-        nbt.putBoolean("Closed", state.get(CLOSED));
-    }
+	/**
+	 * Gets the max level.
+	 */
+	@Override
+	public int getMaxLevel() {
+		return MAX_LEVEL;
+	}
 
-    /** Gets the item of the filled closed jar. */
-    public Item getClosedJarFilled() {
-        return TerravibeItems.CLOSED_JAR_FILLED;
-    }
+	/**
+	 * Gets the item of the filled closed jar.
+	 */
+	public ItemConvertible getClosedJarFilledItem() {
+		return TerravibeItems.CLOSED_JAR_FILLED;
+	}
 
-    /** Gets the plug. */
-    public static @Nullable Item getPlug(@NotNull ContainerBlockEntity container) {
-        NbtCompound value = container.getValue("Plug");
-        String plug = value.getString("Id");
+	/**
+	 * Gets the identifier of the block.
+	 */
+	@Override
+	protected Identifier getId() {
+		return ID;
+	}
 
-        //If the plug exists then returns the item, else returns null.
-        if (!plug.equals("")) {
-            Item item = Registry.ITEM.get(new Identifier(plug));
-            if (item != Items.AIR) {
-                return item;
-            }
-        }
+	/**
+	 * Gets a value indicating if the specified block state is a closed jar.
+	 */
+	protected boolean isClosed(BlockState state) {
+		return state.get(CLOSED);
+	}
 
-        return null;
-    }
+	/**
+	 * Gets the behavior for the content and input specified.
+	 */
+	@Nullable
+	@Override
+	protected ContainerBehavior getBehavior(String content, Item input) {
+		return BEHAVIORS.get(Pair.of(content, input));
+	}
 
-    /** Sets the plug. (null to remove) */
-    public static void setPlug(@NotNull ContainerBlockEntity container, @Nullable Item plug) {
-        if (plug != null) {
-            //Sets the plug.
-            NbtCompound value = new NbtCompound();
-            value.putString("Id", Registry.ITEM.getId(plug).toString());
-            container.setValue("Plug", value);
-        }
-        else {
-            //Removes the plug.
-            container.setValue("Plug", null);
-        }
-    }
+	/**
+	 * Gets the color provider for the content specified.
+	 */
+	@Nullable
+	protected ContainerBlockEntity.ContainerBlockColorProvider getColorProvider(String content) {
+		return COLOR_PROVIDERS.get(content);
+	}
 
-    /**
-     * Executed when the block entity is used.
-     * Inserts or extracts the content, closes or opens the jar.
-     */
-    @Override
-    public ActionResult onUseBlockEntity(BlockState state, World world, BlockPos pos, PlayerEntity player, ContainerBlockEntity container) {
-        ItemStack inHand = player.getStackInHand(Hand.MAIN_HAND);
-        boolean isClosed = state.get(CLOSED);
-        if (isClosed) {
-            if (inHand.isEmpty()) {
-                if (!world.isClient()) {
-                    //Opens the jar.
-                    world.setBlockState(pos, state.with(CLOSED, false));
-                    Item plug = getPlug(container);
-                    setPlug(container, null);
+	/**
+	 * Save extra container data to nbt.
+	 */
+	@Override
+	protected void saveToNbt(BlockState state, BlockView world, BlockPos pos, NbtCompound nbt) {
+		super.saveToNbt(state, world, pos, nbt);
+		nbt.putBoolean("Closed", isClosed(state));
+	}
 
-                    //Drops the button (only if the player is not in creative).
-                    if (!player.getAbilities().creativeMode && plug != null) {
-                        player.getInventory().offerOrDrop(new ItemStack(plug));
-                    }
-                }
+	/**
+	 * Executed when the block entity is used.
+	 * Inserts or extracts the content, closes or opens the jar.
+	 */
+	@Override
+	public ActionResult onUseBlockEntity(BlockState state, World world, BlockPos pos, PlayerEntity player, ContainerBlockEntity container) {
+		ItemStack inHand = player.getStackInHand(Hand.MAIN_HAND);
+		if (isClosed(state)) {
+			if (inHand.isEmpty()) {
+				if (!world.isClient()) {
+					//Opens the jar.
+					world.setBlockState(pos, state.with(CLOSED, false));
+					Item plug = getPlug(container);
+					setPlug(container, null);
 
-                //Client: SUCCESS / Server: CONSUME
-                return ActionResult.success(world.isClient());
-            }
+					//Drops the button (only if the player is not in creative).
+					if (!player.getAbilities().creativeMode && plug != null) {
+						player.getInventory().offerOrDrop(new ItemStack(plug));
+					}
+				}
 
-            return ActionResult.PASS;
-        }
-        else {
-            if (inHand.isIn(TerravibeItemTags.JAR_PLUGS)) {
-                if (!world.isClient()) {
-                    //Closes the jar.
-                    world.setBlockState(pos, state.with(CLOSED, true));
-                    setPlug(container, inHand.getItem());
+				//Client: SUCCESS / Server: CONSUME
+				return ActionResult.success(world.isClient());
+			}
 
-                    //Consumes the hand stack (only if the player is not in creative).
-                    if (!player.getAbilities().creativeMode) {
-                        inHand.decrement(1);
-                    }
-                }
+			return ActionResult.PASS;
+		} else {
+			if (inHand.isIn(TerravibeItemTags.JAR_PLUGS)) {
+				if (!world.isClient()) {
+					//Closes the jar.
+					world.setBlockState(pos, state.with(CLOSED, true));
+					setPlug(container, inHand.getItem());
 
-                return ActionResult.success(world.isClient());
-            }
+					//Consumes the hand stack (only if the player is not in creative).
+					if (!player.getAbilities().creativeMode) {
+						inHand.decrement(1);
+					}
+				}
 
-            return super.onUseBlockEntity(state, world, pos, player, container);
-        }
-    }
+				return ActionResult.success(world.isClient());
+			}
 
-    /**
-     * Executed at the block breaking.
-     * Drops a jar with the content if it is closed.
-     */
-    @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        super.onBreak(world, pos, state, player);
-        if (!state.get(CLOSED)) {
-            onBreakOpened(world, pos, state, player);
-        }
-        else {
-            //Drops a jar with the content data in server world, if the player is not in creative mode.
-            if (!world.isClient() && !player.getAbilities().creativeMode) {
-                NbtCompound nbt = getContainerData(state, world, pos);
-                //Check if the content data is present, just in case.
-                if (nbt.contains("ContentData", NbtElement.COMPOUND_TYPE)) {
-                    Item jar = getLevel(state) > 0 ? getClosedJarFilled() : TerravibeItems.CLOSED_JAR_EMPTY;
-                    ItemStack stack = new ItemStack(jar, 1);
-                    stack.setNbt(nbt);
-                    dropStack(world, pos, stack);
-                }
-            }
-        }
-    }
+			return super.onUseBlockEntity(state, world, pos, player, container);
+		}
+	}
 
-    /** Executed at the block breaking when opened. */
-    public void onBreakOpened(World world, BlockPos pos, BlockState state, PlayerEntity player) { }
+	/**
+	 * Executed at the block breaking.
+	 * Drops a jar with the content if it is closed.
+	 */
+	@Override
+	public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+		super.onBreak(world, pos, state, player);
+		if (!isClosed(state)) {
+			onBreakOpened(world, pos, state, player);
+		} else {
+			//Drops a jar with the content data in server world, if the player is not in creative mode.
+			if (!world.isClient() && !player.getAbilities().creativeMode) {
+				NbtCompound nbt = getContainerData(state, world, pos);
+				//Check if the content data is present, just in case.
+				if (nbt.contains("ContentData", NbtElement.COMPOUND_TYPE)) {
+					ItemConvertible jar = getLevel(state) > 0 ? getClosedJarFilledItem() : TerravibeItems.CLOSED_JAR_EMPTY;
+					ItemStack stack = new ItemStack(jar, 1);
+					stack.setNbt(nbt);
+					dropStack(world, pos, stack);
+				}
+			}
+		}
+	}
 
-    /** Gets the outline shape of the block. */
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VOXEL_SHAPE;
-    }
+	/**
+	 * Executed at the block breaking when opened.
+	 */
+	public void onBreakOpened(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+	}
 
-    /** Gets the colors of the block. */
-    @Override
-    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-        if (tintIndex == 1) {
-            //Gets the container.
-            ContainerBlockEntity container = getContainerEntity(world, pos);
-            if (container != null) {
-                //Gets the color provider for the container content.
-                ContainerBlockEntity.ContainerBlockColorProvider colorProvider = getColorProvider(getContent(container));
+	/**
+	 * Gets the outline shape of the block.
+	 */
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return VOXEL_SHAPE;
+	}
 
-                if (colorProvider != null) {
-                    //Gets the color.
-                    return colorProvider.getColor(container, state, world, pos, tintIndex);
-                }
-            }
+	/**
+	 * Gets the colors of the block.
+	 */
+	@Override
+	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
+		if (tintIndex == 1) {
+			//Gets the container.
+			ContainerBlockEntity container = getContainerEntity(world, pos);
+			if (container != null) {
+				//Gets the color provider for the container content.
+				ContainerBlockEntity.ContainerBlockColorProvider colorProvider = getColorProvider(getContent(container));
 
-            return DEFAULT_CONTENT_COLOR;
-        }
-        else if (tintIndex == 2) {
-            //Gets the plug.
-            ContainerBlockEntity container = getContainerEntity(world, pos);
-            Item plug = container != null ? getPlug(container) : null;
+				if (colorProvider != null) {
+					//Gets the color.
+					return colorProvider.getColor(container, state, world, pos, tintIndex);
+				}
+			}
 
-            //Gets the plug color.
-            return plug instanceof ColoredItem coloredPlug ? coloredPlug.getColor(null, 1) : DEFAULT_PLUG_COLOR;
-        }
+			return DEFAULT_CONTENT_COLOR;
+		} else if (tintIndex == 2) {
+			//Gets the plug.
+			ContainerBlockEntity container = getContainerEntity(world, pos);
+			Item plug = container != null ? getPlug(container) : null;
 
-        return -1;
-    }
+			//Gets the plug color.
+			return plug instanceof ColoredItem coloredPlug ? coloredPlug.getColor(null, 1) : DEFAULT_PLUG_COLOR;
+		}
 
-    static {
-        SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
-        LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
-        CLOSED = BooleanProperty.of("closed");
-        ID = new Identifier(Terravibe.ID, "jar");
-        VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
-    }
+		return -1;
+	}
+
+	static {
+		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
+		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
+		CLOSED = BooleanProperty.of("closed");
+		ID = new Identifier(Terravibe.ID, "jar");
+		VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
+	}
 }

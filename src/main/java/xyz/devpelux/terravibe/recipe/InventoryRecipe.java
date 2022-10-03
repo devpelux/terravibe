@@ -9,65 +9,81 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
-/** Basic shapeless recipe based to an inventory. */
+/**
+ * Basic shapeless recipe based to an inventory.
+ */
 public abstract class InventoryRecipe implements Recipe<Inventory> {
-    private final RecipeType<?> type;
-    private final RecipeSerializer<?> serializer;
-    protected final Identifier id;
-    protected final String group;
-    protected final DefaultedList<Ingredient> ingredients;
+	protected final Identifier id;
+	protected final String group;
+	protected final DefaultedList<Ingredient> ingredients;
+	private final RecipeType<?> type;
+	private final RecipeSerializer<?> serializer;
 
-    /** Initializes a new {@link InventoryRecipe}. */
-    public InventoryRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, Identifier id, String group, DefaultedList<Ingredient> ingredients) {
-        this.id = id;
-        this.type = type;
-        this.serializer = serializer;
-        this.group = group;
-        this.ingredients = ingredients;
-    }
+	/**
+	 * Initializes a new {@link InventoryRecipe}.
+	 */
+	public InventoryRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, Identifier id, String group, DefaultedList<Ingredient> ingredients) {
+		this.id = id;
+		this.type = type;
+		this.serializer = serializer;
+		this.group = group;
+		this.ingredients = ingredients;
+	}
 
-    /** Crafts the result. */
-    @Override
-    public ItemStack craft(Inventory inventory) {
-        return getOutput().copy();
-    }
+	/**
+	 * Crafts the result.
+	 */
+	@Override
+	public ItemStack craft(Inventory inventory) {
+		return getOutput().copy();
+	}
 
-    /**
-     * Gets a value indicating if the shape of the recipe fits the recipe.
-     * This is a shapeless recipe, so it will return always true.
-     */
-    @Override
-    public boolean fits(int width, int height) {
-        return true;
-    }
+	/**
+	 * Gets a value indicating if the shape of the recipe fits the recipe.
+	 * This is a shapeless recipe, so it will return always true.
+	 */
+	@Override
+	public boolean fits(int width, int height) {
+		return true;
+	}
 
-    /** Gets the id. */
-    @Override
-    public Identifier getId() {
-        return id;
-    }
+	/**
+	 * Gets the id.
+	 */
+	@Override
+	public Identifier getId() {
+		return id;
+	}
 
-    /** Gets the ingredients. */
-    @Override
-    public DefaultedList<Ingredient> getIngredients() {
-        return ingredients;
-    }
+	/**
+	 * Gets the ingredients.
+	 */
+	@Override
+	public DefaultedList<Ingredient> getIngredients() {
+		return ingredients;
+	}
 
-    /** Gets the group. */
-    @Override
-    public String getGroup() {
-        return this.group;
-    }
+	/**
+	 * Gets the group.
+	 */
+	@Override
+	public String getGroup() {
+		return this.group;
+	}
 
-    /** Gets the recipe serializer. */
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return serializer;
-    }
+	/**
+	 * Gets the recipe serializer.
+	 */
+	@Override
+	public RecipeSerializer<?> getSerializer() {
+		return serializer;
+	}
 
-    /** Gets the recipe type. */
-    @Override
-    public RecipeType<?> getType() {
-        return type;
-    }
+	/**
+	 * Gets the recipe type.
+	 */
+	@Override
+	public RecipeType<?> getType() {
+		return type;
+	}
 }

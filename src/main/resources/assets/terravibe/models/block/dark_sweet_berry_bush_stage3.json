@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "terravibe:block/dark_sweet_berry_bush_stage3"
+	"cross": "terravibe:block/dark_sweet_berry_bush_stage3"
   }
 }

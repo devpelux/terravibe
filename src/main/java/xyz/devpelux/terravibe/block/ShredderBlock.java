@@ -22,37 +22,50 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ShredderBlockEntity;
 
 import java.util.stream.Stream;
 
-/** Shreds a bunch of items to obtain something. */
+/**
+ * Shreds a bunch of items to obtain something.
+ */
 public class ShredderBlock extends BlockWithEntity {
-	/** Settings of the block. */
+	/**
+	 * Settings of the block.
+	 */
 	public static final Settings SETTINGS;
 
-	/** Orientation of the block. */
+	/**
+	 * Orientation of the block.
+	 */
 	public static final DirectionProperty FACING;
 
-	/** Voxel shape of the block. */
+	/**
+	 * Voxel shape of the block.
+	 */
 	private static final VoxelShape VOXEL_SHAPE;
 
-	/** Initializes a new {@link ShredderBlock} with default settings. */
-	public static ShredderBlock of() {
-		return new ShredderBlock(SETTINGS);
-	}
-
-	/** Initializes a new {@link ShredderBlock}. */
+	/**
+	 * Initializes a new {@link ShredderBlock}.
+	 */
 	public ShredderBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
 	}
 
-	/** Registers the properties of the block. */
+	/**
+	 * Initializes a new {@link ShredderBlock} with default settings.
+	 */
+	public static ShredderBlock of() {
+		return new ShredderBlock(SETTINGS);
+	}
+
+	/**
+	 * Registers the properties of the block.
+	 */
 	@Override
-	protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
 		builder.add(FACING);
 	}
@@ -62,7 +75,7 @@ public class ShredderBlock extends BlockWithEntity {
 	 * Displays the UI of the block.
 	 */
 	@Override
-	public ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 		if (!world.isClient) {
 			//Creates the screen handler for the UI.
 			NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
@@ -75,39 +88,51 @@ public class ShredderBlock extends BlockWithEntity {
 		return ActionResult.SUCCESS;
 	}
 
-	/** Creates the block entity for the block. */
+	/**
+	 * Creates the block entity for the block.
+	 */
 	@Nullable
 	@Override
 	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
 		return new ShredderBlockEntity(pos, state);
 	}
 
-	/** Gets the render type of the block. */
+	/**
+	 * Gets the render type of the block.
+	 */
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
 		return BlockRenderType.MODEL;
 	}
 
-	/** Gets the placement state of the block. */
+	/**
+	 * Gets the placement state of the block.
+	 */
 	@Override
-	public BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
+	public BlockState getPlacementState(ItemPlacementContext ctx) {
 		//When the player places the block, gets the opposite direction.
 		return getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
 	}
 
-	/** Rotates the block in the specified direction. */
+	/**
+	 * Rotates the block in the specified direction.
+	 */
 	@Override
-	public BlockState rotate(@NotNull BlockState state, @NotNull BlockRotation rotation) {
+	public BlockState rotate(BlockState state, BlockRotation rotation) {
 		return state.with(FACING, rotation.rotate(state.get(FACING)));
 	}
 
-	/** Mirrors the block in the specified direction. */
+	/**
+	 * Mirrors the block in the specified direction.
+	 */
 	@Override
-	public BlockState mirror(@NotNull BlockState state, @NotNull BlockMirror mirror) {
+	public BlockState mirror(BlockState state, BlockMirror mirror) {
 		return state.rotate(mirror.getRotation(state.get(FACING)));
 	}
 
-	/** Gets the outline shape of the block. */
+	/**
+	 * Gets the outline shape of the block.
+	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		return VOXEL_SHAPE;

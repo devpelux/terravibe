@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:dark_oak_cork"
-    }
+	{
+	  "item": "terravibe:dark_oak_cork"
+	}
   ],
   "result": {
-    "item": "terravibe:dark_oak_cork_plug",
-    "count": 1
+	"item": "terravibe:dark_oak_cork_plug",
+	"count": 1
   }
 }

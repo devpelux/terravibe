@@ -15,9 +15,13 @@ import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
 //1346728994490959230
 
-/** Main mod initializer. */
+/**
+ * Main mod initializer.
+ */
 public class Initializer implements ModInitializer {
-	/** Runs the mod initializer. */
+	/**
+	 * Runs the mod initializer.
+	 */
 	@Override
 	public void onInitialize() {
 		TerravibeBlocks.load();

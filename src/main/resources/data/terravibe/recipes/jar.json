@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "G G",
-    "G G",
-    " G "
+	"G G",
+	"G G",
+	" G "
   ],
   "key": {
-    "G" : {
-      "item": "minecraft:glass"
-    }
+	"G": {
+	  "item": "minecraft:glass"
+	}
   },
   "result": {
-    "item": "terravibe:jar",
-    "count": 1
+	"item": "terravibe:jar",
+	"count": 1
   }
 }

@@ -1,13 +1,13 @@
 {
   "type": "terravibe:crushing",
   "ingredient": {
-    "item": "terravibe:dark_mold"
+	"item": "terravibe:dark_mold"
   },
   "results": [
-    {
-      "item": "terravibe:dark_mold_dust",
-      "min_count": "1",
-      "max_count": "3"
-    }
+	{
+	  "item": "terravibe:dark_mold_dust",
+	  "min_count": "1",
+	  "max_count": "3"
+	}
   ]
 }

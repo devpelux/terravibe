@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "terravibe:birch_mold_dust",
-    "terravibe:dark_mold_dust",
-    "terravibe:glowing_dark_mold_dust"
+	"terravibe:birch_mold_dust",
+	"terravibe:dark_mold_dust",
+	"terravibe:glowing_dark_mold_dust"
   ]
 }

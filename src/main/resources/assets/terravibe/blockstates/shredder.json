@@ -1,8 +1,8 @@
 {
   "variants": {
-    "facing=north": { "model": "terravibe:block/shredder", "y": 0, "uvlock": false },
-    "facing=east": { "model": "terravibe:block/shredder", "y": 90, "uvlock": false },
-    "facing=south": { "model": "terravibe:block/shredder", "y": 180, "uvlock": false },
-    "facing=west": { "model": "terravibe:block/shredder", "y": 270, "uvlock": false }
+	"facing=north": { "model": "terravibe:block/shredder", "y": 0, "uvlock": false },
+	"facing=east": { "model": "terravibe:block/shredder", "y": 90, "uvlock": false },
+	"facing=south": { "model": "terravibe:block/shredder", "y": 180, "uvlock": false },
+	"facing=west": { "model": "terravibe:block/shredder", "y": 270, "uvlock": false }
   }
 }

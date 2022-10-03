@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "terravibe:item/glowing_dark_mold_dust"
+	"layer0": "terravibe:item/glowing_dark_mold_dust"
   }
 }

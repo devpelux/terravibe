@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "terravibe:block/dark_mold_stage0"
+	"crop": "terravibe:block/dark_mold_stage0"
   }
 }

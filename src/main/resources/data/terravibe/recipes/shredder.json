@@ -1,23 +1,23 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "CHC",
-    "CIC",
-    " C "
+	"CHC",
+	"CIC",
+	" C "
   ],
   "key": {
-    "C" : {
-      "item": "minecraft:copper_ingot"
-    },
-    "I" : {
-      "item": "minecraft:iron_ingot"
-    },
-    "H" : {
-      "item": "minecraft:honeycomb"
-    }
+	"C": {
+	  "item": "minecraft:copper_ingot"
+	},
+	"I": {
+	  "item": "minecraft:iron_ingot"
+	},
+	"H": {
+	  "item": "minecraft:honeycomb"
+	}
   },
   "result": {
-    "item": "terravibe:shredder",
-    "count": 1
+	"item": "terravibe:shredder",
+	"count": 1
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "terravibe:block/sweet_potato_crop_stage3"
+	"crop": "terravibe:block/sweet_potato_crop_stage3"
   }
 }

@@ -28,290 +28,347 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
 import java.util.Map;
 
-/** A cauldron that contains milk. */
+/**
+ * A cauldron that contains milk.
+ */
 public final class MilkCauldronBlock extends AbstractCauldronBlock implements BlockColorProvider {
-    /** Settings of the block. */
-    public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CAULDRON);
+	/**
+	 * Settings of the block.
+	 */
+	public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CAULDRON);
 
-    /** Fermenting time to the next stage. */
-    public static final int FERMENTING_TIME = 60;
+	/**
+	 * Fermenting time to the next stage.
+	 */
+	public static final int FERMENTING_TIME = 60;
 
-    /** Content of the cauldron. */
-    public static final EnumProperty<Content> CONTENT;
+	/**
+	 * Content of the cauldron.
+	 */
+	public static final EnumProperty<Content> CONTENT;
 
-    /** Fill the cauldron with milk. */
-    public static final CauldronBehavior FILL_WITH_MILK;
+	/**
+	 * Fill the cauldron with milk.
+	 */
+	public static final CauldronBehavior FILL_WITH_MILK;
 
-    /** Voxel shape when the cauldron is filled with solid or partially solid content. */
-    private static final VoxelShape SOLID_FILLED_CAULDRON_VOXEL_SHAPE;
+	/**
+	 * Voxel shape when the cauldron is filled with solid or partially solid content.
+	 */
+	private static final VoxelShape SOLID_FILLED_CAULDRON_VOXEL_SHAPE;
 
-    /** Behavior map for milk cauldron. */
-    private static final Map<Item, CauldronBehavior> MILK_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
+	/**
+	 * Behavior map for milk cauldron.
+	 */
+	private static final Map<Item, CauldronBehavior> MILK_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
 
-    /** Initializes a new {@link MilkCauldronBlock} with default settings. */
-    public static MilkCauldronBlock of() {
-        return new MilkCauldronBlock(SETTINGS);
-    }
+	/**
+	 * Initializes a new {@link MilkCauldronBlock}.
+	 */
+	public MilkCauldronBlock(Settings settings) {
+		super(settings, MILK_CAULDRON_BEHAVIOR);
+		setDefaultState(getStateManager().getDefaultState().with(CONTENT, Content.Milk));
+	}
 
-    /** Initializes a new {@link MilkCauldronBlock}. */
-    public MilkCauldronBlock(Settings settings) {
-        super(settings, MILK_CAULDRON_BEHAVIOR);
-        setDefaultState(getStateManager().getDefaultState().with(CONTENT, Content.Milk));
-    }
+	/**
+	 * Initializes a new {@link MilkCauldronBlock} with default settings.
+	 */
+	public static MilkCauldronBlock of() {
+		return new MilkCauldronBlock(SETTINGS);
+	}
 
-    /** Registers the properties of the block. */
-    @Override
-    protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(CONTENT);
-    }
+	/**
+	 * Loads all the cauldron behaviors.
+	 */
+	public static void loadBehaviors() {
+		//Fill with milk.
+		CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
+		CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
+		CauldronBehavior.LAVA_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
+		CauldronBehavior.POWDER_SNOW_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
 
-    /**
-     * Executed when the block is used.
-     * Insert ingredients, or interacts with the cauldron.
-     */
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        //Gets the stack and the content.
-        ItemStack stack = player.getStackInHand(hand);
-        Content content = state.get(CONTENT);
+		//Milk cauldron refill.
+		MILK_CAULDRON_BEHAVIOR.put(Items.WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
+			return refillConditionally(state, world, pos, player, hand, stack, CauldronBehavior.FILL_WITH_WATER);
+		});
+		MILK_CAULDRON_BEHAVIOR.put(Items.LAVA_BUCKET, (state, world, pos, player, hand, stack) -> {
+			return refillConditionally(state, world, pos, player, hand, stack, CauldronBehavior.FILL_WITH_LAVA);
+		});
+		MILK_CAULDRON_BEHAVIOR.put(Items.POWDER_SNOW_BUCKET, (state, world, pos, player, hand, stack) -> {
+			return refillConditionally(state, world, pos, player, hand, stack, CauldronBehavior.FILL_WITH_POWDER_SNOW);
+		});
 
-        //Interacts with the content.
-        if (stack.isEmpty()) {
-            //If the content is mozzarella or a type of cheese, gets the content.
-            if (content == Content.Mozzarella) {
-                ItemStack drop = new ItemStack(TerravibeItems.MOZZARELLA, 6);
-                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_HONEY_BLOCK_BREAK);
-            }
-            if (content == Content.Cheese) {
-                ItemStack drop = new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
-                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
-            }
-            if (content == Content.Gorgonzola) {
-                ItemStack drop = new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
-                return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
-            }
-        }
-        else if (stack.isIn(TerravibeItemTags.MILK_COAGULANTS) && content == Content.Milk) {
-            //If the stack is a milk coagulant, and the content is milk, converts the content to acid milk.
-            putIngredient(state, world, pos, player, stack, Content.AcidMilk, SoundEvents.ITEM_BOTTLE_EMPTY);
+		//Milk cauldron emptying.
+		MILK_CAULDRON_BEHAVIOR.put(Items.BUCKET, (state, world, pos, player, hand, stack) -> {
+			return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack,
+					new ItemStack(Items.MILK_BUCKET), MilkCauldronBlock::canEmpty, SoundEvents.ITEM_BUCKET_FILL);
+		});
+	}
 
-            //Client: SUCCESS / Server: CONSUME
-            return ActionResult.success(world.isClient());
-        }
-        else if (stack.isIn(TerravibeItemTags.EDIBLE_MOLDS) && content == Content.AcidMilk) {
-            //If the stack is an edible mold, and the content is acid milk, converts the content to acid moldy milk.
-            putIngredient(state, world, pos, player, stack, Content.AcidMoldyMilk, SoundEvents.BLOCK_MOSS_PLACE);
+	/**
+	 * Registers the properties of the block.
+	 */
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		super.appendProperties(builder);
+		builder.add(CONTENT);
+	}
 
-            //Client: SUCCESS / Server: CONSUME
-            return ActionResult.success(world.isClient());
-        }
+	/**
+	 * Executed when the block is used.
+	 * Insert ingredients, or interacts with the cauldron.
+	 */
+	@Override
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+		//Gets the stack and the content.
+		ItemStack stack = player.getStackInHand(hand);
+		Content content = state.get(CONTENT);
 
-        return super.onUse(state, world, pos, player, hand, hit);
-    }
+		//Interacts with the content.
+		if (stack.isEmpty()) {
+			//If the content is mozzarella or a type of cheese, gets the content.
+			if (content == Content.Mozzarella) {
+				ItemStack drop = new ItemStack(TerravibeItems.MOZZARELLA, 6);
+				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_HONEY_BLOCK_BREAK);
+			}
+			if (content == Content.Cheese) {
+				ItemStack drop = new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
+				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
+			}
+			if (content == Content.Gorgonzola) {
+				ItemStack drop = new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
+				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
+			}
+		} else if (stack.isIn(TerravibeItemTags.MILK_COAGULANTS) && content == Content.Milk) {
+			//If the stack is a milk coagulant, and the content is milk, converts the content to acid milk.
+			putIngredient(state, world, pos, player, stack, Content.AcidMilk, SoundEvents.ITEM_BOTTLE_EMPTY);
 
-    /** Puts an ingredient into the cauldron, and converts the content into a result content. */
-    private void putIngredient(BlockState state, World world, BlockPos pos, PlayerEntity player,
-                              ItemStack ingredient, Content result, SoundEvent sound) {
-        if (!world.isClient()) {
-            //Converts the content to the result
-            world.setBlockState(pos, state.with(CONTENT, result));
+			//Client: SUCCESS / Server: CONSUME
+			return ActionResult.success(world.isClient());
+		} else if (stack.isIn(TerravibeItemTags.EDIBLE_MOLDS) && content == Content.AcidMilk) {
+			//If the stack is an edible mold, and the content is acid milk, converts the content to acid moldy milk.
+			putIngredient(state, world, pos, player, stack, Content.AcidMoldyMilk, SoundEvents.BLOCK_MOSS_PLACE);
 
-            //Updates the player statistics.
-            player.incrementStat(Stats.USE_CAULDRON);
-            player.incrementStat(Stats.USED.getOrCreateStat(ingredient.getItem()));
+			//Client: SUCCESS / Server: CONSUME
+			return ActionResult.success(world.isClient());
+		}
 
-            //Consumes the item used, if the player is not in creative mode.
-            if (!player.getAbilities().creativeMode) {
-                ingredient.decrement(1);
-            }
+		return super.onUse(state, world, pos, player, hand, hit);
+	}
 
-            //Plays the mold placing sound.
-            world.playSound(null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        }
-    }
+	/**
+	 * Puts an ingredient into the cauldron, and converts the content into a result content.
+	 */
+	private void putIngredient(BlockState state, World world, BlockPos pos, PlayerEntity player,
+	                           ItemStack ingredient, Content result, SoundEvent sound) {
+		if (!world.isClient()) {
+			//Converts the content to the result
+			world.setBlockState(pos, state.with(CONTENT, result));
 
-    /** Gets a value indicating if the block reacts with the ticking system. */
-    @Override
-    public boolean hasRandomTicks(@NotNull BlockState state) {
-        Content content = state.get(CONTENT);
-        return content == Content.AcidMilk || content == Content.AcidMoldyMilk || content == Content.Mozzarella;
-    }
+			//Updates the player statistics.
+			player.incrementStat(Stats.USE_CAULDRON);
+			player.incrementStat(Stats.USED.getOrCreateStat(ingredient.getItem()));
 
-    /**
-     * Executed every tick randomly.
-     * Handles the milk fermentation.
-     */
-    @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextInt(FERMENTING_TIME) == 0) {
-            //Pass to the next stage basing on the current stage.
-            switch (state.get(CONTENT)) {
-                case AcidMilk -> world.setBlockState(pos, state.with(CONTENT, Content.Mozzarella));
-                case AcidMoldyMilk -> {
-                    if (random.nextBoolean()) world.setBlockState(pos, state.with(CONTENT, Content.Gorgonzola));
-                }
-                case Mozzarella -> world.setBlockState(pos, state.with(CONTENT, Content.Cheese));
-            }
-        }
-    }
+			//Consumes the item used, if the player is not in creative mode.
+			if (!player.getAbilities().creativeMode) {
+				ingredient.decrement(1);
+			}
 
-    /**
-     * Executed when an entity enter the cauldron.
-     * Extinguishes fire.
-     */
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!world.isClient() && entity.isOnFire() && this.isEntityTouchingFluid(state, pos, entity)) {
-            entity.extinguish();
-        }
-    }
+			//Plays the mold placing sound.
+			world.playSound(null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		}
+	}
 
-    /** Gets a value indicating if the cauldron is full. */
-    @Override
-    public boolean isFull(BlockState state) {
-        return true;
-    }
+	/**
+	 * Gets a value indicating if the block reacts with the ticking system.
+	 */
+	@Override
+	public boolean hasRandomTicks(BlockState state) {
+		Content content = state.get(CONTENT);
+		return content == Content.AcidMilk || content == Content.AcidMoldyMilk || content == Content.Mozzarella;
+	}
 
-    /** Gets the fluid height. */
-    @Override
-    protected double getFluidHeight(BlockState state) {
-        return switch (state.get(CONTENT)) {
-            case Milk, AcidMilk, AcidMoldyMilk -> 0.9375;
-            case Mozzarella -> 0.75;
-            case Cheese, Gorgonzola -> 0.5625;
-        };
-    }
+	/**
+	 * Executed every tick randomly.
+	 * Handles the milk fermentation.
+	 */
+	@Override
+	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		if (random.nextInt(FERMENTING_TIME) == 0) {
+			//Pass to the next stage basing on the current stage.
+			switch (state.get(CONTENT)) {
+				case AcidMilk -> world.setBlockState(pos, state.with(CONTENT, Content.Mozzarella));
+				case AcidMoldyMilk -> {
+					if (random.nextBoolean()) world.setBlockState(pos, state.with(CONTENT, Content.Gorgonzola));
+				}
+				case Mozzarella -> world.setBlockState(pos, state.with(CONTENT, Content.Cheese));
+			}
+		}
+	}
 
-    /** Gets the comparator output basing on the block state. */
-    @Override
-    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-        return switch (state.get(CONTENT)) {
-            case Milk, AcidMilk, AcidMoldyMilk -> 3;
-            case Mozzarella -> 2;
-            case Cheese, Gorgonzola -> 1;
-        };
-    }
+	/**
+	 * Executed when an entity enter the cauldron.
+	 * Extinguishes fire.
+	 */
+	@Override
+	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+		if (!world.isClient() && entity.isOnFire() && this.isEntityTouchingFluid(state, pos, entity)) {
+			entity.extinguish();
+		}
+	}
 
-    /** Gets the outline shape of the block. */
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Content content = state.get(CONTENT);
-        if (content == Content.Cheese || content == Content.Gorgonzola || content == Content.Mozzarella) {
-            return SOLID_FILLED_CAULDRON_VOXEL_SHAPE;
-        }
-        return super.getOutlineShape(state, world, pos, context);
-    }
+	/**
+	 * Gets a value indicating if the cauldron is full.
+	 */
+	@Override
+	public boolean isFull(BlockState state) {
+		return true;
+	}
 
-    /** Gets the colors of the block. */
-    @Override
-    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-        if (tintIndex == 0) {
-            return switch (state.get(CONTENT)) {
-                case Milk -> 0xffffff;
-                case AcidMilk-> 0xf0f0dd;
-                case AcidMoldyMilk -> 0xddeedd;
-                default -> -1;
-            };
-        }
-        return -1;
-    }
+	/**
+	 * Gets the fluid height.
+	 */
+	@Override
+	protected double getFluidHeight(BlockState state) {
+		return switch (state.get(CONTENT)) {
+			case Milk, AcidMilk, AcidMoldyMilk -> 0.9375;
+			case Mozzarella -> 0.75;
+			case Cheese, Gorgonzola -> 0.5625;
+		};
+	}
 
-    /** Gets a value indicating if the cauldron can be emptied. */
-    private static boolean canEmpty(BlockState state) {
-        return state.get(CONTENT) == Content.Milk;
-    }
+	/**
+	 * Gets the comparator output basing on the block state.
+	 */
+	@Override
+	public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+		return switch (state.get(CONTENT)) {
+			case Milk, AcidMilk, AcidMoldyMilk -> 3;
+			case Mozzarella -> 2;
+			case Cheese, Gorgonzola -> 1;
+		};
+	}
 
-    /** Refills the cauldron with another fluid only if it can be emptied. */
-    private static ActionResult refillConditionally(BlockState state, World world, BlockPos pos, PlayerEntity player,
-                                                    Hand hand, ItemStack stack, CauldronBehavior behavior) {
-        return canEmpty(state) ? behavior.interact(state, world, pos, player, hand, stack) : ActionResult.PASS;
-    }
+	/**
+	 * Gets the outline shape of the block.
+	 */
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		Content content = state.get(CONTENT);
+		if (content == Content.Cheese || content == Content.Gorgonzola || content == Content.Mozzarella) {
+			return SOLID_FILLED_CAULDRON_VOXEL_SHAPE;
+		}
+		return super.getOutlineShape(state, world, pos, context);
+	}
 
-    /** Loads all the cauldron behaviors. */
-    public static void loadBehaviors() {
-        //Fill with milk.
-        CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
-        CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
-        CauldronBehavior.LAVA_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
-        CauldronBehavior.POWDER_SNOW_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
+	/**
+	 * Gets the colors of the block.
+	 */
+	@Override
+	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
+		if (tintIndex == 0) {
+			return switch (state.get(CONTENT)) {
+				case Milk -> 0xffffff;
+				case AcidMilk -> 0xf0f0dd;
+				case AcidMoldyMilk -> 0xddeedd;
+				default -> -1;
+			};
+		}
+		return -1;
+	}
 
-        //Milk cauldron refill.
-        MILK_CAULDRON_BEHAVIOR.put(Items.WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
-            return refillConditionally(state, world, pos, player, hand, stack, CauldronBehavior.FILL_WITH_WATER);
-        });
-        MILK_CAULDRON_BEHAVIOR.put(Items.LAVA_BUCKET, (state, world, pos, player, hand, stack) -> {
-            return refillConditionally(state, world, pos, player, hand, stack, CauldronBehavior.FILL_WITH_LAVA);
-        });
-        MILK_CAULDRON_BEHAVIOR.put(Items.POWDER_SNOW_BUCKET, (state, world, pos, player, hand, stack) -> {
-            return refillConditionally(state, world, pos, player, hand, stack, CauldronBehavior.FILL_WITH_POWDER_SNOW);
-        });
+	/**
+	 * Gets a value indicating if the cauldron can be emptied.
+	 */
+	private static boolean canEmpty(BlockState state) {
+		return state.get(CONTENT) == Content.Milk;
+	}
 
-        //Milk cauldron emptying.
-        MILK_CAULDRON_BEHAVIOR.put(Items.BUCKET, (state, world, pos, player, hand, stack) -> {
-            return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack,
-                    new ItemStack(Items.MILK_BUCKET), MilkCauldronBlock::canEmpty, SoundEvents.ITEM_BUCKET_FILL);
-        });
-    }
+	/**
+	 * Refills the cauldron with another fluid only if it can be emptied.
+	 */
+	private static ActionResult refillConditionally(BlockState state, World world, BlockPos pos, PlayerEntity player,
+	                                                Hand hand, ItemStack stack, CauldronBehavior behavior) {
+		return canEmpty(state) ? behavior.interact(state, world, pos, player, hand, stack) : ActionResult.PASS;
+	}
 
-    static {
-        CONTENT = EnumProperty.of("content", Content.class);
-        SOLID_FILLED_CAULDRON_VOXEL_SHAPE = VoxelShapes.combineAndSimplify(OUTLINE_SHAPE,
-                Block.createCuboidShape(2, 4, 2, 14, 9, 14), BooleanBiFunction.OR);
-        FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> {
-            return CauldronBehavior.fillCauldron(world, pos, player, hand, stack,
-                    TerravibeBlocks.MILK_CAULDRON.getDefaultState(), SoundEvents.ITEM_BUCKET_EMPTY);
-        };
-    }
+	static {
+		CONTENT = EnumProperty.of("content", Content.class);
+		SOLID_FILLED_CAULDRON_VOXEL_SHAPE = VoxelShapes.combineAndSimplify(OUTLINE_SHAPE,
+				Block.createCuboidShape(2, 4, 2, 14, 9, 14), BooleanBiFunction.OR);
+		FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> {
+			return CauldronBehavior.fillCauldron(world, pos, player, hand, stack,
+					TerravibeBlocks.MILK_CAULDRON.getDefaultState(), SoundEvents.ITEM_BUCKET_EMPTY);
+		};
+	}
 
 
-    /**
-     * Represents the milk type contained in a {@link MilkCauldronBlock}.
-     */
-    public enum Content implements StringIdentifiable {
-        /** The cauldron contains milk. */
-        Milk("milk"),
+	/**
+	 * Represents the milk type contained in a {@link MilkCauldronBlock}.
+	 */
+	public enum Content implements StringIdentifiable {
+		/**
+		 * The cauldron contains milk.
+		 */
+		Milk("milk"),
 
-        /** The cauldron contains acid milk. */
-        AcidMilk("acid_milk"),
+		/**
+		 * The cauldron contains acid milk.
+		 */
+		AcidMilk("acid_milk"),
 
-        /** The cauldron contains acid moldy milk. */
-        AcidMoldyMilk("acid_moldy_milk"),
+		/**
+		 * The cauldron contains acid moldy milk.
+		 */
+		AcidMoldyMilk("acid_moldy_milk"),
 
-        /** The cauldron contains mozzarella. */
-        Mozzarella("mozzarella"),
+		/**
+		 * The cauldron contains mozzarella.
+		 */
+		Mozzarella("mozzarella"),
 
-        /** The cauldron contains cheese. */
-        Cheese("cheese"),
+		/**
+		 * The cauldron contains cheese.
+		 */
+		Cheese("cheese"),
 
-        /** The cauldron contains gorgonzola. */
-        Gorgonzola("gorgonzola");
+		/**
+		 * The cauldron contains gorgonzola.
+		 */
+		Gorgonzola("gorgonzola");
 
-        /** Name representing the value. */
-        private final String name;
+		/**
+		 * Name representing the value.
+		 */
+		private final String name;
 
-        /** Initializes a new value with the name specified. */
-        Content(String name) {
-            this.name = name;
-        }
+		/**
+		 * Initializes a new value with the name specified.
+		 */
+		Content(String name) {
+			this.name = name;
+		}
 
-        /** Returns the string representation of this instance. */
-        @Override
-        public @NotNull String asString() {
-            return this.name;
-        }
+		/**
+		 * Returns the string representation of this instance.
+		 */
+		@Override
+		public String asString() {
+			return this.name;
+		}
 
-        /** Returns the string representation of this instance. */
-        @Override
-        public @NotNull String toString() {
-            return asString();
-        }
-    }
+		/**
+		 * Returns the string representation of this instance.
+		 */
+		@Override
+		public String toString() {
+			return asString();
+		}
+	}
 }

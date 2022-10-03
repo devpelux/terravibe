@@ -1,6 +1,6 @@
 {
   "parent": "terravibe:block/cross_crop",
   "textures": {
-    "cross": "terravibe:block/corn_crop_lower_stage3"
+	"cross": "terravibe:block/corn_crop_lower_stage3"
   }
 }

@@ -1,15 +1,15 @@
 {
-	"credit": "devpelux",
-	"textures": {
-		"salt": "terravibe:block/salt"
-	},
-	"elements": [
-		{
-			"from": [1, 2, 1],
-			"to": [15, 2, 15],
-			"faces": {
-				"up": {"texture": "#salt", "tintindex": 2}
-			}
-		}
-	]
+  "credit": "devpelux",
+  "textures": {
+	"salt": "terravibe:block/salt"
+  },
+  "elements": [
+	{
+	  "from": [ 1, 2, 1 ],
+	  "to": [ 15, 2, 15 ],
+	  "faces": {
+		"up": { "texture": "#salt", "tintindex": 2 }
+	  }
+	}
+  ]
 }

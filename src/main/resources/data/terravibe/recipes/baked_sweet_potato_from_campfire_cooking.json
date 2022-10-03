@@ -3,7 +3,7 @@
   "cookingtime": 600,
   "experience": 0.35,
   "ingredient": {
-    "item": "terravibe:sweet_potato"
+	"item": "terravibe:sweet_potato"
   },
   "result": "terravibe:baked_sweet_potato"
 }

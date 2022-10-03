@@ -7,55 +7,68 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.NotNull;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
-/** Crop of the onion. */
+/**
+ * Crop of the onion.
+ */
 public class OnionCropBlock extends CropBlock {
-    /** Settings of the block. */
-    public static final Settings SETTINGS;
+	/**
+	 * Settings of the block.
+	 */
+	public static final Settings SETTINGS;
 
-    /** Voxel shapes of the block. */
-    private static final VoxelShape[] AGE_TO_SHAPE;
+	/**
+	 * Voxel shapes of the block.
+	 */
+	private static final VoxelShape[] AGE_TO_SHAPE;
 
-    /** Initializes a new {@link OnionCropBlock} with default settings. */
-    public static OnionCropBlock of() {
-        return new OnionCropBlock(SETTINGS);
-    }
+	/**
+	 * Initializes a new {@link OnionCropBlock}.
+	 */
+	public OnionCropBlock(Settings settings) {
+		super(settings);
+	}
 
-    /** Initializes a new {@link OnionCropBlock}. */
-    public OnionCropBlock(Settings settings) {
-        super(settings);
-    }
+	/**
+	 * Initializes a new {@link OnionCropBlock} with default settings.
+	 */
+	public static OnionCropBlock of() {
+		return new OnionCropBlock(SETTINGS);
+	}
 
-    /** Gets the seeds item of the block. */
-    @Override
-    public ItemConvertible getSeedsItem() {
-        return TerravibeItems.ONION_SEEDS;
-    }
+	/**
+	 * Gets the seeds item of the block.
+	 */
+	@Override
+	public ItemConvertible getSeedsItem() {
+		return TerravibeItems.ONION_SEEDS;
+	}
 
-    /** Gets the outline shape of the block. */
-    @Override
-    public VoxelShape getOutlineShape(@NotNull BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return AGE_TO_SHAPE[getAge(state)];
-    }
+	/**
+	 * Gets the outline shape of the block.
+	 */
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return AGE_TO_SHAPE[getAge(state)];
+	}
 
-    static {
-        SETTINGS = FabricBlockSettings.of(Material.PLANT)
-                .nonOpaque()
-                .noCollision()
-                .ticksRandomly()
-                .breakInstantly()
-                .sounds(BlockSoundGroup.CROP);
-        AGE_TO_SHAPE = new VoxelShape[]{
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 2.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 2.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D),
-                Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 15.0D, 16.0D)
-        };
-    }
+	static {
+		SETTINGS = FabricBlockSettings.of(Material.PLANT)
+				.nonOpaque()
+				.noCollision()
+				.ticksRandomly()
+				.breakInstantly()
+				.sounds(BlockSoundGroup.CROP);
+		AGE_TO_SHAPE = new VoxelShape[]{
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D),
+				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 15.0D, 16.0D)
+		};
+	}
 }

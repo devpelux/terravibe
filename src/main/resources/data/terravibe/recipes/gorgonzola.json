@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:gorgonzola_wheel"
-    }
+	{
+	  "item": "terravibe:gorgonzola_wheel"
+	}
   ],
   "result": {
-    "item": "terravibe:gorgonzola",
-    "count": 4
+	"item": "terravibe:gorgonzola",
+	"count": 4
   }
 }

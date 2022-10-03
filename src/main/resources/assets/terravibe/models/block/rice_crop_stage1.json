@@ -1,6 +1,6 @@
 {
   "parent": "terravibe:block/flooded_cross_crop",
   "textures": {
-    "cross": "terravibe:block/rice_crop_stage1"
+	"cross": "terravibe:block/rice_crop_stage1"
   }
 }

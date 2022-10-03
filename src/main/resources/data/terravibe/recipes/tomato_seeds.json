@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:tomato"
-    }
+	{
+	  "item": "terravibe:tomato"
+	}
   ],
   "result": {
-    "item": "terravibe:tomato_seeds"
+	"item": "terravibe:tomato_seeds"
   }
 }

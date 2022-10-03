@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:gorgonzola"
-    }
+	{
+	  "item": "terravibe:gorgonzola"
+	}
   ],
   "result": {
-    "item": "terravibe:gorgonzola_flakes",
-    "count": 4
+	"item": "terravibe:gorgonzola_flakes",
+	"count": 4
   }
 }

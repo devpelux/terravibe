@@ -1,48 +1,48 @@
 {
   "type": "minecraft:block",
   "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
+	{
+	  "function": "minecraft:explosion_decay"
+	}
   ],
   "pools": [
-    {
-      "rolls": 1,
-      "bonus_rolls": 0,
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "terravibe:basil_herb",
-          "properties": {
-            "age": "1"
-          }
-        },
-        {
-          "condition": "minecraft:match_tool",
-          "predicate": {
-            "items": [
-              "minecraft:shears"
-            ]
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "terravibe:basil",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        }
-      ]
-    }
+	{
+	  "rolls": 1,
+	  "bonus_rolls": 0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:block_state_property",
+		  "block": "terravibe:basil_herb",
+		  "properties": {
+			"age": "1"
+		  }
+		},
+		{
+		  "condition": "minecraft:match_tool",
+		  "predicate": {
+			"items": [
+			  "minecraft:shears"
+			]
+		  }
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "name": "terravibe:basil",
+		  "functions": [
+			{
+			  "function": "minecraft:set_count",
+			  "add": false,
+			  "count": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			  }
+			}
+		  ]
+		}
+	  ]
+	}
   ]
 }

@@ -1,13 +1,13 @@
 {
   "type": "terravibe:crushing",
   "ingredient": {
-    "item": "terravibe:salt_crystals"
+	"item": "terravibe:salt_crystals"
   },
   "results": [
-    {
-      "item": "terravibe:salt",
-      "min_count": "1",
-      "max_count": "2"
-    }
+	{
+	  "item": "terravibe:salt",
+	  "min_count": "1",
+	  "max_count": "2"
+	}
   ]
 }

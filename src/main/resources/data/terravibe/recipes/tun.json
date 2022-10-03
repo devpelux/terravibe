@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "P P",
-    "P P",
-    "PSP"
+	"P P",
+	"P P",
+	"PSP"
   ],
   "key": {
-    "P" : {
-      "tag": "minecraft:planks"
-    },
-    "S" : {
-      "tag": "minecraft:wooden_slabs"
-    }
+	"P": {
+	  "tag": "minecraft:planks"
+	},
+	"S": {
+	  "tag": "minecraft:wooden_slabs"
+	}
   },
   "result": {
-    "item": "terravibe:tun",
-    "count": 1
+	"item": "terravibe:tun",
+	"count": 1
   }
 }

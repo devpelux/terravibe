@@ -20,22 +20,25 @@ import xyz.devpelux.terravibe.core.compatibility.sodium.SodiumColorBlendable;
  */
 @Mixin(LinearColorBlender.class)
 public abstract class LinearColorBlenderMixin {
-    /** Retrieves the color value for the current block. */
-    @Shadow protected abstract <T> int getBlockColor(BlockRenderView world, T state, ColorSampler<T> sampler, int x, int y, int z, int colorIdx);
+	/**
+	 * Retrieves the color value for the current block.
+	 */
+	@Shadow
+	protected abstract <T> int getBlockColor(BlockRenderView world, T state, ColorSampler<T> sampler, int x, int y, int z, int colorIdx);
 
-    /**
-     * Retrieves the color value for the current block.<p>
-     * This mixin avoids the color blending for certain blocks.
-     */
-    @Inject(method = "getVertexColor", at = @At("HEAD"), cancellable = true)
-    private <T> void injectGetVertexColor(BlockRenderView world, BlockPos origin, ModelQuadView quad, ColorSampler<T> sampler,
-                                      T state, int vertexIdx, CallbackInfoReturnable<Integer> cir) {
-        if (state instanceof State s && s.owner instanceof SodiumColorBlendable blendable) {
-            if (!blendable.enableSodiumColorBlending()) {
-                //If the block or fluid is set to disable the color blending, it gets the color from the actual position.
-                int color = getBlockColor(world, state, sampler, origin.getX(), origin.getY(), origin.getZ(), quad.getColorIndex());
-                cir.setReturnValue(ColorARGB.toABGR(color));
-            }
-        }
-    }
+	/**
+	 * Retrieves the color value for the current block.<p>
+	 * This mixin avoids the color blending for certain blocks.
+	 */
+	@Inject(method = "getVertexColor", at = @At("HEAD"), cancellable = true)
+	private <T> void injectGetVertexColor(BlockRenderView world, BlockPos origin, ModelQuadView quad, ColorSampler<T> sampler,
+	                                      T state, int vertexIdx, CallbackInfoReturnable<Integer> cir) {
+		if (state instanceof State s && s.owner instanceof SodiumColorBlendable blendable) {
+			if (!blendable.enableSodiumColorBlending()) {
+				//If the block or fluid is set to disable the color blending, it gets the color from the actual position.
+				int color = getBlockColor(world, state, sampler, origin.getX(), origin.getY(), origin.getZ(), quad.getColorIndex());
+				cir.setReturnValue(ColorARGB.toABGR(color));
+			}
+		}
+	}
 }

@@ -1,13 +1,13 @@
 {
   "type": "terravibe:crushing",
   "ingredient": {
-    "item": "terravibe:birch_mold"
+	"item": "terravibe:birch_mold"
   },
   "results": [
-    {
-      "item": "terravibe:birch_mold_dust",
-      "min_count": "1",
-      "max_count": "3"
-    }
+	{
+	  "item": "terravibe:birch_mold_dust",
+	  "min_count": "1",
+	  "max_count": "3"
+	}
   ]
 }

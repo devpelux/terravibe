@@ -1,6 +1,6 @@
 {
-	"parent": "terravibe:block/jar_content_height3",
-	"textures": {
-		"content": "terravibe:block/jar_burned_glowing_dark_mold_dust"
-	}
+  "parent": "terravibe:block/jar_content_height3",
+  "textures": {
+	"content": "terravibe:block/jar_burned_glowing_dark_mold_dust"
+  }
 }

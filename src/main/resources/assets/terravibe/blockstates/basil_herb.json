@@ -1,10 +1,10 @@
 {
   "variants": {
-    "age=0": {
-      "model": "terravibe:block/basil_herb_stage0"
-    },
-    "age=1": {
-      "model": "terravibe:block/basil_herb_stage1"
-    }
+	"age=0": {
+	  "model": "terravibe:block/basil_herb_stage0"
+	},
+	"age=1": {
+	  "model": "terravibe:block/basil_herb_stage1"
+	}
   }
 }

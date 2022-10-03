@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "terravibe:item/kale_seeds"
+	"layer0": "terravibe:item/kale_seeds"
   }
 }

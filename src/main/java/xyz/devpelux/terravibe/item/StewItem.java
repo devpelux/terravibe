@@ -8,9 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.world.World;
 
-/** Food contained in a bowl. */
+/**
+ * Food contained in a bowl.
+ */
 public class StewItem extends Item {
-	/** Initializes a new {@link StewItem}. */
+	/**
+	 * Initializes a new {@link StewItem}.
+	 */
 	public StewItem(Item.Settings settings) {
 		super(settings);
 	}
@@ -29,20 +33,17 @@ public class StewItem extends Item {
 				if (usedStack.isEmpty()) {
 					//If the consumed stack becomes empty, is replaced directly with the bowl.
 					usedStack = new ItemStack(Items.BOWL);
-				}
-				else {
+				} else {
 					//Else the bowl is dropped.
 					player.getInventory().offerOrDrop(new ItemStack(Items.BOWL));
 				}
 			}
-		}
-		else {
+		} else {
 			//For other entities.
 			if (usedStack.isEmpty()) {
 				//If the consumed stack becomes empty, is replaced directly with a bowl.
 				usedStack = new ItemStack(Items.BOWL);
-			}
-			else {
+			} else {
 				//Else drops the bowl.
 				Block.dropStack(world, entity.getBlockPos(), new ItemStack(Items.BOWL));
 			}

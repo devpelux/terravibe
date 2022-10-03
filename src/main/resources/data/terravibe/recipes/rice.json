@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:rice_grains"
-    },
-    {
-      "item": "terravibe:rice_grains"
-    },
-    {
-      "item": "terravibe:rice_grains"
-    },
-    {
-      "item": "terravibe:rice_grains"
-    }
+	{
+	  "item": "terravibe:rice_grains"
+	},
+	{
+	  "item": "terravibe:rice_grains"
+	},
+	{
+	  "item": "terravibe:rice_grains"
+	},
+	{
+	  "item": "terravibe:rice_grains"
+	}
   ],
   "result": {
-    "item": "terravibe:rice",
-    "count": 1
+	"item": "terravibe:rice",
+	"count": 1
   }
 }

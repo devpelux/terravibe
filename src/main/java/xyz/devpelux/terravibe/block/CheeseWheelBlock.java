@@ -9,55 +9,72 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.NotNull;
 
-/** Food made from milk coagulation and eventually other ingredients. */
+/**
+ * Food made from milk coagulation and eventually other ingredients.
+ */
 public class CheeseWheelBlock extends HorizontalFacingBlock {
-    /** Settings of the block. */
-    public static final Settings SETTINGS;
+	/**
+	 * Settings of the block.
+	 */
+	public static final Settings SETTINGS;
 
-    /** Voxel shape of the block. */
-    private static final VoxelShape VOXEL_SHAPE;
+	/**
+	 * Voxel shape of the block.
+	 */
+	private static final VoxelShape VOXEL_SHAPE;
 
-    /** Initializes a new {@link CheeseWheelBlock} with default settings. */
-    public static CheeseWheelBlock of() {
-        return new CheeseWheelBlock(SETTINGS);
-    }
+	/**
+	 * Initializes a new {@link CheeseWheelBlock}.
+	 */
+	public CheeseWheelBlock(Settings settings) {
+		super(settings);
+		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
+	}
 
-    /** Initializes a new {@link CheeseWheelBlock}. */
-    public CheeseWheelBlock(Settings settings) {
-        super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
-    }
+	/**
+	 * Initializes a new {@link CheeseWheelBlock} with default settings.
+	 */
+	public static CheeseWheelBlock of() {
+		return new CheeseWheelBlock(SETTINGS);
+	}
 
-    /** Registers the properties of the block. */
-    @Override
-    protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(FACING);
-    }
+	/**
+	 * Registers the properties of the block.
+	 */
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		super.appendProperties(builder);
+		builder.add(FACING);
+	}
 
-    /** Gets the placement state of the block. */
-    @Override
-    public BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
-        //When the player places the block, gets the opposite direction.
-        return getDefaultState().with(FACING, ctx.getPlayerFacing());
-    }
+	/**
+	 * Gets the placement state of the block.
+	 */
+	@Override
+	public BlockState getPlacementState(ItemPlacementContext ctx) {
+		//When the player places the block, gets the opposite direction.
+		return getDefaultState().with(FACING, ctx.getPlayerFacing());
+	}
 
-    /** Gets a value indicating if is possible to pass through the block. */
-    @Override
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return false;
-    }
+	/**
+	 * Gets a value indicating if is possible to pass through the block.
+	 */
+	@Override
+	public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+		return false;
+	}
 
-    /** Gets the outline shape of the block. */
-    @Override
-    public VoxelShape getOutlineShape(@NotNull BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VOXEL_SHAPE;
-    }
+	/**
+	 * Gets the outline shape of the block.
+	 */
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return VOXEL_SHAPE;
+	}
 
-    static {
-        SETTINGS = FabricBlockSettings.copyOf(Blocks.CAKE);
-        VOXEL_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 4, 14);
-    }
+	static {
+		SETTINGS = FabricBlockSettings.copyOf(Blocks.CAKE);
+		VOXEL_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 4, 14);
+	}
 }

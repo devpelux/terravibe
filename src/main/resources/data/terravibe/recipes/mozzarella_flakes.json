@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "terravibe:mozzarella"
-    }
+	{
+	  "item": "terravibe:mozzarella"
+	}
   ],
   "result": {
-    "item": "terravibe:mozzarella_flakes",
-    "count": 4
+	"item": "terravibe:mozzarella_flakes",
+	"count": 4
   }
 }

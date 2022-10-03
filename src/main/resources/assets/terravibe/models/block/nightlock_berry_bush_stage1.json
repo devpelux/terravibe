@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "terravibe:block/nightlock_berry_bush_stage1"
+	"cross": "terravibe:block/nightlock_berry_bush_stage1"
   }
 }

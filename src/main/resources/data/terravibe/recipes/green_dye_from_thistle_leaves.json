@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "group": "green_dye",
   "ingredients": [
-    {
-      "item": "terravibe:thistle_leaves"
-    }
+	{
+	  "item": "terravibe:thistle_leaves"
+	}
   ],
   "result": {
-    "item": "minecraft:green_dye"
+	"item": "minecraft:green_dye"
   }
 }

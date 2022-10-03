@@ -8,30 +8,42 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-/** A floating spore particle. */
+/**
+ * A floating spore particle.
+ */
 public class FloatingSporeParticle extends GlowingDustParticle {
-    /** Contains some common settings. */
-    private ParticleGroup group = null;
+	/**
+	 * Contains some common settings.
+	 */
+	private ParticleGroup group = null;
 
-    /** Initializes a new {@link FloatingSporeParticle}. */
-    FloatingSporeParticle(ClientWorld world, SpriteProvider sprite, double x, double y, double z, double vX, double vY, double vZ) {
-        super(world, sprite, x, y - 0.125d, z, vX, vY, vZ);
-    }
+	/**
+	 * Initializes a new {@link FloatingSporeParticle}.
+	 */
+	FloatingSporeParticle(ClientWorld world, SpriteProvider sprite, double x, double y, double z, double vX, double vY, double vZ) {
+		super(world, sprite, x, y - 0.125d, z, vX, vY, vZ);
+	}
 
-    /** Gets the particle type. */
-    @Override
-    public ParticleTextureSheet getType() {
-        return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
-    }
+	/**
+	 * Gets the particle type.
+	 */
+	@Override
+	public ParticleTextureSheet getType() {
+		return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
+	}
 
-    /** Gets the particle group. */
-    @Override
-    public Optional<ParticleGroup> getGroup() {
-        return Optional.ofNullable(group);
-    }
+	/**
+	 * Gets the particle group.
+	 */
+	@Override
+	public Optional<ParticleGroup> getGroup() {
+		return Optional.ofNullable(group);
+	}
 
-    /** Sets the particle group. */
-    public void setGroup(@Nullable ParticleGroup group) {
-        this.group = group;
-    }
+	/**
+	 * Sets the particle group.
+	 */
+	public void setGroup(@Nullable ParticleGroup group) {
+		this.group = group;
+	}
 }

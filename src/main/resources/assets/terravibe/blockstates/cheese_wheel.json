@@ -1,19 +1,19 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "terravibe:block/cheese_wheel"
-    },
-    "facing=east":  {
-      "model": "terravibe:block/cheese_wheel",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "terravibe:block/cheese_wheel",
-      "y": 180
-    },
-    "facing=west":  {
-      "model": "terravibe:block/cheese_wheel",
-      "y": 270
-    }
+	"facing=north": {
+	  "model": "terravibe:block/cheese_wheel"
+	},
+	"facing=east": {
+	  "model": "terravibe:block/cheese_wheel",
+	  "y": 90
+	},
+	"facing=south": {
+	  "model": "terravibe:block/cheese_wheel",
+	  "y": 180
+	},
+	"facing=west": {
+	  "model": "terravibe:block/cheese_wheel",
+	  "y": 270
+	}
   }
 }

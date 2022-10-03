@@ -1,7 +1,7 @@
 {
   "parent": "terravibe:block/pizza",
   "textures": {
-    "pizza": "terravibe:block/pizza_four_cheese",
-    "pizza_bottom": "terravibe:block/pizza_bottom"
+	"pizza": "terravibe:block/pizza_four_cheese",
+	"pizza_bottom": "terravibe:block/pizza_bottom"
   }
 }

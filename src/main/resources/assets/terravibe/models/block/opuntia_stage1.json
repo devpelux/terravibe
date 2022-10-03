@@ -1,38 +1,38 @@
 {
-	"credit": "devpelux",
-	"parent": "block/block",
-	"ambientocclusion": false,
-	"textures": {
-		"bottom": "terravibe:block/opuntia_large_bottom",
-		"top": "terravibe:block/opuntia_large_top",
-		"particle": "terravibe:block/opuntia_large_yside",
-		"yside": "terravibe:block/opuntia_large_yside",
-		"xside": "terravibe:block/opuntia_large_xside"
+  "credit": "devpelux",
+  "parent": "block/block",
+  "ambientocclusion": false,
+  "textures": {
+	"bottom": "terravibe:block/opuntia_large_bottom",
+	"top": "terravibe:block/opuntia_large_top",
+	"particle": "terravibe:block/opuntia_large_yside",
+	"yside": "terravibe:block/opuntia_large_yside",
+	"xside": "terravibe:block/opuntia_large_xside"
+  },
+  "elements": [
+	{
+	  "from": [ 0, -1, 0 ],
+	  "to": [ 16, 15, 16 ],
+	  "faces": {
+		"up": { "uv": [ 0, 0, 16, 16 ], "texture": "#top", "cullface": "up" },
+		"down": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" }
+	  }
 	},
-	"elements": [
-		{
-			"from": [0, -1, 0],
-			"to": [16, 15, 16],
-			"faces": {
-				"up": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "down"}
-			}
-		},
-		{
-			"from": [0, -1, 1],
-			"to": [16, 16, 15],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#yside"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#yside"}
-			}
-		},
-		{
-			"from": [1, -1, 0],
-			"to": [15, 16, 16],
-			"faces": {
-				"east": {"uv": [0, 0, 16, 16], "texture": "#xside"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#xside"}
-			}
-		}
-	]
+	{
+	  "from": [ 0, -1, 1 ],
+	  "to": [ 16, 16, 15 ],
+	  "faces": {
+		"north": { "uv": [ 0, 0, 16, 16 ], "texture": "#yside" },
+		"south": { "uv": [ 0, 0, 16, 16 ], "texture": "#yside" }
+	  }
+	},
+	{
+	  "from": [ 1, -1, 0 ],
+	  "to": [ 15, 16, 16 ],
+	  "faces": {
+		"east": { "uv": [ 0, 0, 16, 16 ], "texture": "#xside" },
+		"west": { "uv": [ 0, 0, 16, 16 ], "texture": "#xside" }
+	  }
+	}
+  ]
 }

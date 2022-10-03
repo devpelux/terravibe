@@ -1,68 +1,68 @@
 {
   "type": "minecraft:block",
   "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
+	{
+	  "function": "minecraft:explosion_decay"
+	}
   ],
   "pools": [
-    {
-      "rolls": 1,
-      "bonus_rolls": 0,
-      "entries": [
-        {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "name": "terravibe:kale",
-              "conditions": [
-                {
-                  "condition": "minecraft:block_state_property",
-                  "block": "terravibe:kale_crop",
-                  "properties": {
-                    "age": "7"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "minecraft:item",
-              "name": "terravibe:kale_seeds"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "bonus_rolls": 0,
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "terravibe:kale_crop",
-          "properties": {
-            "age": "7"
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "terravibe:kale_seeds",
-          "functions": [
-            {
-              "function": "minecraft:apply_bonus",
-              "formula": "minecraft:binomial_with_bonus_count",
-              "enchantment": "minecraft:fortune",
-              "parameters": {
-                "extra": 2,
-                "probability": 0.5714286
-              }
-            }
-          ]
-        }
-      ]
-    }
+	{
+	  "rolls": 1,
+	  "bonus_rolls": 0,
+	  "entries": [
+		{
+		  "type": "minecraft:alternatives",
+		  "children": [
+			{
+			  "type": "minecraft:item",
+			  "name": "terravibe:kale",
+			  "conditions": [
+				{
+				  "condition": "minecraft:block_state_property",
+				  "block": "terravibe:kale_crop",
+				  "properties": {
+					"age": "7"
+				  }
+				}
+			  ]
+			},
+			{
+			  "type": "minecraft:item",
+			  "name": "terravibe:kale_seeds"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "rolls": 1,
+	  "bonus_rolls": 0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:block_state_property",
+		  "block": "terravibe:kale_crop",
+		  "properties": {
+			"age": "7"
+		  }
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "name": "terravibe:kale_seeds",
+		  "functions": [
+			{
+			  "function": "minecraft:apply_bonus",
+			  "formula": "minecraft:binomial_with_bonus_count",
+			  "enchantment": "minecraft:fortune",
+			  "parameters": {
+				"extra": 2,
+				"probability": 0.5714286
+			  }
+			}
+		  ]
+		}
+	  ]
+	}
   ]
 }

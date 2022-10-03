@@ -4,16 +4,16 @@
   "package": "xyz.devpelux.terravibe.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "terravibe.AbstractBlockMixin",
-    "terravibe.AxeItemMixin",
-    "terravibe.LandPathNodeMakerMixin"
+	"terravibe.AbstractBlockMixin",
+	"terravibe.AxeItemMixin",
+	"terravibe.LandPathNodeMakerMixin"
   ],
   "client": [
-    "sodium.client.BlockMixin",
-    "sodium.client.FluidMixin",
-    "sodium.client.LinearColorBlenderMixin"
+	"sodium.client.BlockMixin",
+	"sodium.client.FluidMixin",
+	"sodium.client.LinearColorBlenderMixin"
   ],
   "injectors": {
-    "defaultRequire": 1
+	"defaultRequire": 1
   }
 }

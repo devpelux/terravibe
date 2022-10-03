@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "terravibe:block/mortar" }
+	"": { "model": "terravibe:block/mortar" }
   }
 }

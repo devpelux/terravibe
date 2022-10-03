@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "ingredient": {
-    "item": "terravibe:burned_glowing_dark_mold_dust"
+	"item": "terravibe:burned_glowing_dark_mold_dust"
   },
   "result": "minecraft:black_dye"
 }

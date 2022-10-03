@@ -1,12 +1,12 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "terravibe:block/thistle_plant"
-      },
-      {
-        "model": "terravibe:block/thistle_plant_tall"
-      }
-    ]
+	"": [
+	  {
+		"model": "terravibe:block/thistle_plant"
+	  },
+	  {
+		"model": "terravibe:block/thistle_plant_tall"
+	  }
+	]
   }
 }

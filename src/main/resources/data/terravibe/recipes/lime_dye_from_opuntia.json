@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "ingredient": {
-    "item": "terravibe:opuntia"
+	"item": "terravibe:opuntia"
   },
   "result": "minecraft:lime_dye"
 }

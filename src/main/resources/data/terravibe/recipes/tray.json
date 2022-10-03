@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "   ",
-    "S S",
-    "SSS"
+	"   ",
+	"S S",
+	"SSS"
   ],
   "key": {
-    "S" : {
-      "tag": "minecraft:stone_crafting_materials"
-    }
+	"S": {
+	  "tag": "minecraft:stone_crafting_materials"
+	}
   },
   "result": {
-    "item": "terravibe:tray",
-    "count": 1
+	"item": "terravibe:tray",
+	"count": 1
   }
 }

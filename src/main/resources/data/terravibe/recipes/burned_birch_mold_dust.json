@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "ingredient": {
-    "item": "terravibe:birch_mold_dust"
+	"item": "terravibe:birch_mold_dust"
   },
   "result": "terravibe:burned_birch_mold_dust"
 }

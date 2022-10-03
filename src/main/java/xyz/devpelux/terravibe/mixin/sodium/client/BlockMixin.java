@@ -4,6 +4,9 @@ import net.minecraft.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
 import xyz.devpelux.terravibe.core.compatibility.sodium.SodiumColorBlendable;
 
-/** Injects the {@link SodiumColorBlendable} interface. */
+/**
+ * Injects the {@link SodiumColorBlendable} interface.
+ */
 @Mixin(Block.class)
-public class BlockMixin implements SodiumColorBlendable {}
+public class BlockMixin implements SodiumColorBlendable {
+}

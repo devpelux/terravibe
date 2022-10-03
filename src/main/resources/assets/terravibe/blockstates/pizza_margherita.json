@@ -1,248 +1,248 @@
 {
   "multipart": [
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 0
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "1"
-          },
-          {
-            "facing": "east"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "1"
-          },
-          {
-            "facing": "south"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "1"
-          },
-          {
-            "facing": "west"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "1"
-          },
-          {
-            "facing": "north"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 0
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "2"
-          },
-          {
-            "facing": "east|north"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "2"
-          },
-          {
-            "facing": "south|east"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "2"
-          },
-          {
-            "facing": "west|south"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "2"
-          },
-          {
-            "facing": "north|west"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 0
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "3"
-          },
-          {
-            "facing": "east|north|west"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "3"
-          },
-          {
-            "facing": "south|east|north"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "3"
-          },
-          {
-            "facing": "west|south|east"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "AND" : [
-          {
-            "slices": "3"
-          },
-          {
-            "facing": "north|west|south"
-          }
-        ]
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 0
-      },
-      "when": {
-        "slices": "4"
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "slices": "4"
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "slices": "4"
-      }
-    },
-    {
-      "apply": {
-        "model": "terravibe:block/pizza_slice_margherita",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "slices": "4"
-      }
-    }
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 0
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "1"
+		  },
+		  {
+			"facing": "east"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 90
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "1"
+		  },
+		  {
+			"facing": "south"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 180
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "1"
+		  },
+		  {
+			"facing": "west"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 270
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "1"
+		  },
+		  {
+			"facing": "north"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 0
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "2"
+		  },
+		  {
+			"facing": "east|north"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 90
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "2"
+		  },
+		  {
+			"facing": "south|east"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 180
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "2"
+		  },
+		  {
+			"facing": "west|south"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 270
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "2"
+		  },
+		  {
+			"facing": "north|west"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 0
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "3"
+		  },
+		  {
+			"facing": "east|north|west"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 90
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "3"
+		  },
+		  {
+			"facing": "south|east|north"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 180
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "3"
+		  },
+		  {
+			"facing": "west|south|east"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 270
+	  },
+	  "when": {
+		"AND": [
+		  {
+			"slices": "3"
+		  },
+		  {
+			"facing": "north|west|south"
+		  }
+		]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 0
+	  },
+	  "when": {
+		"slices": "4"
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 90
+	  },
+	  "when": {
+		"slices": "4"
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 180
+	  },
+	  "when": {
+		"slices": "4"
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/pizza_slice_margherita",
+		"uvlock": true,
+		"y": 270
+	  },
+	  "when": {
+		"slices": "4"
+	  }
+	}
   ]
 }

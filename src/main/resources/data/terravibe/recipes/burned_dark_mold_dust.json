@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "ingredient": {
-    "item": "terravibe:dark_mold_dust"
+	"item": "terravibe:dark_mold_dust"
   },
   "result": "terravibe:burned_dark_mold_dust"
 }
