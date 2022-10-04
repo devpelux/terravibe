@@ -55,9 +55,9 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 	public static final float POLLEN_SPREAD_CHANCE = 0.5F;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Initializes a new {@link ThistlePlantBlock}.
@@ -191,7 +191,7 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		Vec3d vec3d = state.getModelOffset(world, pos);
-		return VOXEL_SHAPE.offset(vec3d.x, vec3d.y, vec3d.z);
+		return OUTLINE_SHAPE.offset(vec3d.x, vec3d.y, vec3d.z);
 	}
 
 	static {
@@ -200,6 +200,6 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 				.breakInstantly()
 				.sounds(BlockSoundGroup.GRASS)
 				.offsetType(OffsetType.XYZ);
-		VOXEL_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+		OUTLINE_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 	}
 }

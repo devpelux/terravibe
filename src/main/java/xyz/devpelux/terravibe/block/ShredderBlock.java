@@ -42,9 +42,9 @@ public class ShredderBlock extends BlockWithEntity {
 	public static final DirectionProperty FACING;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Initializes a new {@link ShredderBlock}.
@@ -135,7 +135,7 @@ public class ShredderBlock extends BlockWithEntity {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPE;
+		return OUTLINE_SHAPE;
 	}
 
 	static {
@@ -144,7 +144,7 @@ public class ShredderBlock extends BlockWithEntity {
 				.strength(3.0F, 6.0F)
 				.sounds(BlockSoundGroup.COPPER);
 		FACING = Properties.HORIZONTAL_FACING;
-		VOXEL_SHAPE = Stream.of(
+		OUTLINE_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 14, 2, 14, 16, 14),
 				Block.createCuboidShape(3, 12, 3, 13, 14, 13),
 				Block.createCuboidShape(4, 0, 4, 12, 12, 12)

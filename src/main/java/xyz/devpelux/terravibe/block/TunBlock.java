@@ -49,9 +49,9 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	private static final Identifier ID;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Default content color.
@@ -143,7 +143,7 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPE;
+		return OUTLINE_SHAPE;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
 		ID = new Identifier(Terravibe.ID, "tun");
-		VOXEL_SHAPE = Stream.of(
+		OUTLINE_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 0, 2, 14, 1, 14),
 				Block.createCuboidShape(0, 0, 2, 2, 16, 16),
 				Block.createCuboidShape(14, 0, 0, 16, 16, 14),

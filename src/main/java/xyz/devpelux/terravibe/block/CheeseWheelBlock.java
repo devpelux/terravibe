@@ -20,9 +20,9 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	public static final Settings SETTINGS;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Initializes a new {@link CheeseWheelBlock}.
@@ -70,11 +70,11 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPE;
+		return OUTLINE_SHAPE;
 	}
 
 	static {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.CAKE);
-		VOXEL_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 4, 14);
+		OUTLINE_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 4, 14);
 	}
 }

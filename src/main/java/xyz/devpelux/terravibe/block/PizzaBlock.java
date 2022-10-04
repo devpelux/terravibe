@@ -46,9 +46,9 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	public static final IntProperty SLICES;
 
 	/**
-	 * Voxel shapes of the block.
+	 * Outline shapes of the block.
 	 */
-	private static final VoxelShape[][] VOXEL_SHAPES;
+	private static final VoxelShape[][] OUTLINE_SHAPES;
 
 	/**
 	 * Initializes a new {@link PizzaBlock}.
@@ -188,7 +188,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPES[state.get(FACING).getHorizontal()][state.get(SLICES)];
+		return OUTLINE_SHAPES[state.get(FACING).getHorizontal()][state.get(SLICES)];
 	}
 
 	/**
@@ -212,7 +212,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 
 		//facing | slices
 		//facing: south, west, north, east
-		VOXEL_SHAPES = new VoxelShape[][]{
+		OUTLINE_SHAPES = new VoxelShape[][]{
 				{
 						generateVoxelShape(false, false, false, false),
 						generateVoxelShape(true, false, false, false),

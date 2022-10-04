@@ -31,9 +31,9 @@ public class MortarBlock extends Block {
 	public static final Settings SETTINGS;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Initializes a new {@link MortarBlock}.
@@ -98,12 +98,12 @@ public class MortarBlock extends Block {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPE;
+		return OUTLINE_SHAPE;
 	}
 
 	static {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT)
 				.mapColor(MapColor.OAK_TAN);
-		VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
+		OUTLINE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
 	}
 }

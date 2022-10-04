@@ -59,9 +59,9 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	public static final CauldronBehavior FILL_WITH_MILK;
 
 	/**
-	 * Voxel shape when the cauldron is filled with solid or partially solid content.
+	 * Outline shape when the cauldron is filled with solid or partially solid content.
 	 */
-	private static final VoxelShape SOLID_FILLED_CAULDRON_VOXEL_SHAPE;
+	private static final VoxelShape SOLID_FILLED_CAULDRON_OUTLINE_SHAPE;
 
 	/**
 	 * Behavior map for milk cauldron.
@@ -262,7 +262,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		Content content = state.get(CONTENT);
 		if (content == Content.Cheese || content == Content.Gorgonzola || content == Content.Mozzarella) {
-			return SOLID_FILLED_CAULDRON_VOXEL_SHAPE;
+			return SOLID_FILLED_CAULDRON_OUTLINE_SHAPE;
 		}
 		return super.getOutlineShape(state, world, pos, context);
 	}
@@ -300,7 +300,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 
 	static {
 		CONTENT = EnumProperty.of("content", Content.class);
-		SOLID_FILLED_CAULDRON_VOXEL_SHAPE = VoxelShapes.combineAndSimplify(OUTLINE_SHAPE,
+		SOLID_FILLED_CAULDRON_OUTLINE_SHAPE = VoxelShapes.combineAndSimplify(OUTLINE_SHAPE,
 				Block.createCuboidShape(2, 4, 2, 14, 9, 14), BooleanBiFunction.OR);
 		FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> {
 			return CauldronBehavior.fillCauldron(world, pos, player, hand, stack,

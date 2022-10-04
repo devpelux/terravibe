@@ -66,9 +66,9 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	private static final Identifier ID;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Default content color.
@@ -316,7 +316,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPE;
+		return OUTLINE_SHAPE;
 	}
 
 	/**
@@ -355,6 +355,6 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
 		CLOSED = BooleanProperty.of("closed");
 		ID = new Identifier(Terravibe.ID, "jar");
-		VOXEL_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
+		OUTLINE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
 	}
 }

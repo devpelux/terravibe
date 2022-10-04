@@ -63,9 +63,9 @@ public class TrayBlock extends Block implements BlockColorProvider {
 	public static final float RAIN_FILLING_CHANCE = 0.1f;
 
 	/**
-	 * Voxel shape of the block.
+	 * Outline shape of the block.
 	 */
-	private static final VoxelShape VOXEL_SHAPE;
+	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
 	 * Initializes a new {@link TrayBlock}.
@@ -235,7 +235,7 @@ public class TrayBlock extends Block implements BlockColorProvider {
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return VOXEL_SHAPE;
+		return OUTLINE_SHAPE;
 	}
 
 	/**
@@ -252,7 +252,7 @@ public class TrayBlock extends Block implements BlockColorProvider {
 				.breakInstantly()
 				.sounds(BlockSoundGroup.STONE);
 		CONTENT = EnumProperty.of("content", Content.class);
-		VOXEL_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 4, 16);
+		OUTLINE_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 4, 16);
 	}
 
 
