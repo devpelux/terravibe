@@ -106,7 +106,7 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
-	public static FabricItemSettings flooded_mud() {
+	public static FabricItemSettings excavated_mud() {
 		return stackOf(64, true);
 	}
 

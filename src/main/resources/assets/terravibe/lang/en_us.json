@@ -85,7 +85,8 @@
   "item.terravibe.thistle_stamens": "Stamens of Thistle",
   "item.terravibe.thistle_stamens_and_salt": "Stamens of Thistle and Salt",
   "item.terravibe.tomato_sauce_bottle": "Tomato Sauce Bottle",
-  "item.terravibe.flooded_mud": "Flooded Mud",
+  "item.terravibe.excavated_mud": "Excavated Mud",
+
   "block.terravibe.jar": "Jar",
   "block.terravibe.dust_jar": "Dust Jar",
   "block.terravibe.mold_dust_jar": "Mold Dust Jar",
@@ -113,13 +114,15 @@
   "block.terravibe.tomato_crop": "Tomato Crop",
   "block.terravibe.opuntia": "Opuntia",
   "block.terravibe.flowering_opuntia": "Flowering Opuntia",
-  "block.terravibe.flooded_mud": "Flooded Mud",
+  "block.terravibe.excavated_mud": "Excavated Mud",
   "block.terravibe.cheese_wheel": "Cheese Wheel",
   "block.terravibe.gorgonzola_wheel": "Gorgonzola Wheel",
   "block.terravibe.pizza_four_cheese": "Pizza Four Cheese",
   "block.terravibe.pizza_margherita": "Pizza Margherita",
+
   "itemGroup.terravibe.terravibe": "Terravibe",
   "item.terravibe.terravibe": "Terravibe",
+
   "death.attack.nightlock": "%1$s ate something that shouldn't have eaten.",
   "death.attack.nightlock_creative": "%1$s discovered that nightlock berries kills even in creative mode!"
 }

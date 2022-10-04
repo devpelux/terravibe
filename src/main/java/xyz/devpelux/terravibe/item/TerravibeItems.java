@@ -411,9 +411,9 @@ public final class TerravibeItems {
 	//Terrain blocks
 
 	/**
-	 * Item of the flooded mud block.
+	 * Item of the excavated mud block.
 	 */
-	public static final Item FLOODED_MUD;
+	public static final Item EXCAVATED_MUD;
 
 	private TerravibeItems() {
 	}
@@ -602,6 +602,6 @@ public final class TerravibeItems {
 		TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(TerravibeItemSettings.tomato_sauce_bottle(), ColoredItem.color(1, 0xf61815)));
 
 		//Terrain blocks
-		FLOODED_MUD = register("flooded_mud", new AliasedBlockItem(TerravibeBlocks.FLOODED_MUD, TerravibeItemSettings.flooded_mud()));
+		EXCAVATED_MUD = register("excavated_mud", new AliasedBlockItem(TerravibeBlocks.EXCAVATED_MUD, TerravibeItemSettings.excavated_mud()));
 	}
 }

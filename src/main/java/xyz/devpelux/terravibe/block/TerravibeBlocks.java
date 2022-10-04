@@ -156,9 +156,9 @@ public final class TerravibeBlocks {
 	//Terrain blocks
 
 	/**
-	 * A mud block excavated and flooded with water.
+	 * A mud block partially excavated.
 	 */
-	public static final Block FLOODED_MUD;
+	public static final Block EXCAVATED_MUD;
 
 	//Foods
 
@@ -189,8 +189,8 @@ public final class TerravibeBlocks {
 	 * Loads all the blocks.
 	 */
 	public static void load() {
-		FlattenableBlockRegistry.register(Blocks.MUD, FLOODED_MUD.getDefaultState());
-		FlattenableBlockRegistry.register(FLOODED_MUD, Blocks.MUD.getDefaultState());
+		FlattenableBlockRegistry.register(Blocks.MUD, EXCAVATED_MUD.getDefaultState());
+		FlattenableBlockRegistry.register(EXCAVATED_MUD, Blocks.MUD.getDefaultState());
 	}
 
 	/**
@@ -257,7 +257,7 @@ public final class TerravibeBlocks {
 		CORN_CROP = register("corn_crop", CornCropBlock.of());
 		DARK_MOLD = register("dark_mold", DarkMoldBlock.of());
 		DUST_JAR = register("dust_jar", DustJarBlock.of());
-		FLOODED_MUD = register("flooded_mud", FloodedMudBlock.of());
+		EXCAVATED_MUD = register("excavated_mud", ExcavatedMudBlock.of());
 		FLOWERING_OPUNTIA = register("flowering_opuntia", FloweringOpuntiaBlock.of());
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", GlowingDarkMoldBlock.of());
 		GORGONZOLA_WHEEL = register("gorgonzola_wheel", CheeseWheelBlock.of());

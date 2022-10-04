@@ -3,6 +3,7 @@ package xyz.devpelux.terravibe.block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
@@ -34,7 +35,7 @@ public abstract class FloodedCropBlock extends CropBlock {
 	 */
 	@Override
 	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-		return floor.isIn(TerravibeBlockTags.FLOODED_FARMLAND);
+		return floor.isIn(TerravibeBlockTags.FLOODED_FARMLAND) && floor.getFluidState().isIn(FluidTags.WATER);
 	}
 
 	/**
