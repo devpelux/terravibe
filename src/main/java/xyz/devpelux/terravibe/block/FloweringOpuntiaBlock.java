@@ -52,7 +52,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	public static final int BREAKING_DELAY = 1;
 
 	/**
-	 * Flowering opuntia chance.
+	 * Flowering opuntia generation chance.
 	 */
 	public static final float CHANCE = 0.5f;
 
@@ -202,7 +202,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 
 	/**
 	 * Executed when the plant is used.
-	 * Gets the drops, then reset the plant age to the flowering age.
+	 * Gets the drops, then reset the plant age to the pre-flowering age.
 	 */
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
@@ -215,7 +215,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 			getPickSound().ifPresent(sound -> world.playSound(null, pos, sound, SoundCategory.BLOCKS,
 					1.0F, 0.8F + world.random.nextFloat() * 0.4F));
 
-			//Reset the plant age to the flowering age.
+			//Reset the plant age to the pre-flowering age.
 			BlockState blockState = state.with(AGE, getPreFloweringAge());
 			world.setBlockState(pos, blockState, 2);
 			world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));

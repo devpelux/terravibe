@@ -10,6 +10,10 @@ public final class TerravibeItemSettings {
 	private TerravibeItemSettings() {
 	}
 
+	public static FabricItemSettings ancient_nightshade_fern_seeds() {
+		return stackOf(64, false).recipeRemainder(TerravibeItems.NIGHTSHADE_FERN_SEEDS);
+	}
+
 	public static FabricItemSettings baked_sweet_potato() {
 		return stackOf(64, true).food(TerravibeFoodComponents.BAKED_SWEET_POTATO);
 	}
@@ -168,6 +172,10 @@ public final class TerravibeItemSettings {
 
 	public static FabricItemSettings nightlock_berries() {
 		return stackOf(64, true).food(TerravibeFoodComponents.NIGHTLOCK_BERRIES);
+	}
+
+	public static FabricItemSettings nightshade_fern_seeds() {
+		return stackOf(64, true);
 	}
 
 	public static FabricItemSettings oak_cork() {

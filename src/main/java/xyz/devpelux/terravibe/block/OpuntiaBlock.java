@@ -41,22 +41,22 @@ public class OpuntiaBlock extends FacingBlock {
 	public static final int BREAKING_DELAY = 1;
 
 	/**
-	 * Growing time.
+	 * Growing time (Time to pass from age 0 to age 1).
 	 */
 	public static final int GROWING_TIME = 15;
 
 	/**
 	 * Aging time (Time to pass from age 1 to age 2).
 	 */
-	public static final int AGING_TIME = 300;
+	public static final int AGING_TIME = 900;
 
 	/**
-	 * Plant growing time.
+	 * Plant growing time (Time to generate new blocks).
 	 */
 	public static final int PLANT_GROWING_TIME = 15;
 
 	/**
-	 * Max distance.
+	 * Max distance of the block from the root.
 	 */
 	public static final int MAX_DISTANCE = 4;
 
