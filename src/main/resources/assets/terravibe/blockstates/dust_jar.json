@@ -18,14 +18,7 @@
 		"model": "terravibe:block/jar_burned_birch_mold_dust_height1"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "1"
-		  },
-		  {
-			"dust": "burned_birch_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "1" }, { "dust": "burned_birch_mold_dust" } ]
 	  }
 	},
 	{
@@ -33,14 +26,7 @@
 		"model": "terravibe:block/jar_burned_birch_mold_dust_height2"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "2"
-		  },
-		  {
-			"dust": "burned_birch_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "2" }, { "dust": "burned_birch_mold_dust" } ]
 	  }
 	},
 	{
@@ -48,14 +34,7 @@
 		"model": "terravibe:block/jar_burned_birch_mold_dust_height3"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "3"
-		  },
-		  {
-			"dust": "burned_birch_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "3" }, { "dust": "burned_birch_mold_dust" } ]
 	  }
 	},
 	{
@@ -63,14 +42,7 @@
 		"model": "terravibe:block/jar_burned_dark_mold_dust_height1"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "1"
-		  },
-		  {
-			"dust": "burned_dark_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "1" }, { "dust": "burned_dark_mold_dust" } ]
 	  }
 	},
 	{
@@ -78,14 +50,7 @@
 		"model": "terravibe:block/jar_burned_dark_mold_dust_height2"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "2"
-		  },
-		  {
-			"dust": "burned_dark_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "2" }, { "dust": "burned_dark_mold_dust" } ]
 	  }
 	},
 	{
@@ -93,14 +58,7 @@
 		"model": "terravibe:block/jar_burned_dark_mold_dust_height3"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "3"
-		  },
-		  {
-			"dust": "burned_dark_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "3" }, { "dust": "burned_dark_mold_dust" } ]
 	  }
 	},
 	{
@@ -108,14 +66,7 @@
 		"model": "terravibe:block/jar_burned_glowing_dark_mold_dust_height1"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "1"
-		  },
-		  {
-			"dust": "burned_glowing_dark_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "1" }, { "dust": "burned_glowing_dark_mold_dust" } ]
 	  }
 	},
 	{
@@ -123,14 +74,7 @@
 		"model": "terravibe:block/jar_burned_glowing_dark_mold_dust_height2"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "2"
-		  },
-		  {
-			"dust": "burned_glowing_dark_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "2" }, { "dust": "burned_glowing_dark_mold_dust" } ]
 	  }
 	},
 	{
@@ -138,14 +82,7 @@
 		"model": "terravibe:block/jar_burned_glowing_dark_mold_dust_height3"
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"level": "3"
-		  },
-		  {
-			"dust": "burned_glowing_dark_mold_dust"
-		  }
-		]
+		"AND": [ { "level": "3" }, { "dust": "burned_glowing_dark_mold_dust" } ]
 	  }
 	}
   ]

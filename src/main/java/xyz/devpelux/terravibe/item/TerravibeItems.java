@@ -186,6 +186,11 @@ public final class TerravibeItems {
 	//Ancient plants with their seeds and drops
 
 	/**
+	 * An extinct blueberry that gives you night vision, but with some side effects.
+	 */
+	public static final Item NIGHTSHADE_FERN_BLUEBERRIES;
+
+	/**
 	 * Seeds of the nightshade fern.
 	 */
 	public static final Item NIGHTSHADE_FERN_SEEDS;
@@ -562,7 +567,8 @@ public final class TerravibeItems {
 		TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, TerravibeItemSettings.tomato_seeds()));
 
 		//Ancient plants with their seeds and drops
-		NIGHTSHADE_FERN_SEEDS = register("nightshade_fern_seeds", new Item(TerravibeItemSettings.nightshade_fern_seeds()));
+		NIGHTSHADE_FERN_BLUEBERRIES = register("nightshade_fern_blueberries", new Item(TerravibeItemSettings.nightshade_fern_blueberries()));
+		NIGHTSHADE_FERN_SEEDS = register("nightshade_fern_seeds", new AliasedBlockItem(TerravibeBlocks.NIGHTSHADE_FERN, TerravibeItemSettings.nightshade_fern_seeds()));
 		ANCIENT_NIGHTSHADE_FERN_SEEDS = register("ancient_nightshade_fern_seeds", new AncientSeedItem(TerravibeItemSettings.ancient_nightshade_fern_seeds(),
 				AncientSeedItem.TerravibeColorProviders::ancient_nightshade_fern_seeds));
 

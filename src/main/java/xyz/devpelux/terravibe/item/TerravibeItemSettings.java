@@ -174,6 +174,10 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true).food(TerravibeFoodComponents.NIGHTLOCK_BERRIES);
 	}
 
+	public static FabricItemSettings nightshade_fern_blueberries() {
+		return stackOf(64, true).food(TerravibeFoodComponents.NIGHTSHADE_FERN_BLUEBERRIES);
+	}
+
 	public static FabricItemSettings nightshade_fern_seeds() {
 		return stackOf(64, true);
 	}

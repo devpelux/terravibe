@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "terravibe:nightshade_fern_blueberries"
+	}
+  ],
+  "result": {
+	"item": "terravibe:nightshade_fern_seeds"
+  }
+}

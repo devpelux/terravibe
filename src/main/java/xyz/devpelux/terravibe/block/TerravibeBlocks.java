@@ -117,6 +117,11 @@ public final class TerravibeBlocks {
 	public static final Block NIGHTLOCK_BERRY_BUSH;
 
 	/**
+	 * An extinct fern that produces nightshade fern blueberries.
+	 */
+	public static final Block NIGHTSHADE_FERN;
+
+	/**
 	 * Crop of the onion.
 	 */
 	public static final Block ONION_CROP;
@@ -209,6 +214,7 @@ public final class TerravibeBlocks {
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) DUST_JAR, DUST_JAR);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) MILK_CAULDRON, MILK_CAULDRON);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) MOLD_DUST_JAR, MOLD_DUST_JAR);
+		ColorProviderRegistry.BLOCK.register((BlockColorProvider) NIGHTSHADE_FERN, NIGHTSHADE_FERN);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) JAR, JAR);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) TRAY, TRAY);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) TUN, TUN);
@@ -234,6 +240,7 @@ public final class TerravibeBlocks {
 		BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(NIGHTLOCK_BERRY_BUSH, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(NIGHTSHADE_FERN, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ONION_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(OPUNTIA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(RICE_CROP, RenderLayer.getCutout());
@@ -270,6 +277,7 @@ public final class TerravibeBlocks {
 		MOLD_DUST_JAR = register("mold_dust_jar", MoldDustJarBlock.of());
 		MORTAR = register("mortar", MortarBlock.of());
 		NIGHTLOCK_BERRY_BUSH = register("nightlock_berry_bush", NightlockBerryBushBlock.of());
+		NIGHTSHADE_FERN = register("nightshade_fern", NightshadeFernBlock.of());
 		ONION_CROP = register("onion_crop", OnionCropBlock.of());
 		OPUNTIA = register("opuntia", OpuntiaBlock.of());
 		PIZZA_FOUR_CHEESE = register("pizza_four_cheese", PizzaBlock.fourCheese());

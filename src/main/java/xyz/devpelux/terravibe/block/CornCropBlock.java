@@ -53,19 +53,19 @@ public class CornCropBlock extends TallCropBlock {
 	}
 
 	/**
-	 * Gets a value indicating if the crop can be planted on top of the specified block.
-	 */
-	@Override
-	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-		return floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
-	}
-
-	/**
 	 * Gets the age when the block must have an upper and lower block.
 	 */
 	@Override
 	public int getAgeForUpper() {
 		return 4;
+	}
+
+	/**
+	 * Gets a value indicating if the crop can be planted on top of the specified block.
+	 */
+	@Override
+	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+		return floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
 	}
 
 	/**

@@ -54,7 +54,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	/**
 	 * Flowering opuntia generation chance.
 	 */
-	public static final float CHANCE = 0.5f;
+	public static final float CHANCE = 0.4f;
 
 	/**
 	 * Sterility chance.

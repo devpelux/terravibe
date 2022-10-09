@@ -1,0 +1,116 @@
+{
+  "multipart": [
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage0"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "0" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage1"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "1" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage2"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "2" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage3"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "3" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage4"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "4" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage5"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "5" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_lower_stage6"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "6|7" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_blueberries_lower"
+	  },
+	  "when": {
+		"AND": [ { "half": "lower" }, { "age": "6|7" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_upper_stage0"
+	  },
+	  "when": {
+		"AND": [ { "half": "upper" }, { "age": "0|1|2" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_upper_stage1"
+	  },
+	  "when": {
+		"AND": [ { "half": "upper" }, { "age": "3" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_upper_stage2"
+	  },
+	  "when": {
+		"AND": [ { "half": "upper" }, { "age": "4" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_upper_stage3"
+	  },
+	  "when": {
+		"AND": [ { "half": "upper" }, { "age": "5" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_upper_stage4"
+	  },
+	  "when": {
+		"AND": [ { "half": "upper" }, { "age": "6|7" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/nightshade_fern_blueberries_upper"
+	  },
+	  "when": {
+		"AND": [ { "half": "upper" }, { "age": "6|7" } ]
+	  }
+	}
+  ]
+}

@@ -7,14 +7,7 @@
 		"y": 0
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "1"
-		  },
-		  {
-			"facing": "east"
-		  }
-		]
+		"AND": [ { "slices": "1" }, { "facing": "east" } ]
 	  }
 	},
 	{
@@ -24,14 +17,7 @@
 		"y": 90
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "1"
-		  },
-		  {
-			"facing": "south"
-		  }
-		]
+		"AND": [ { "slices": "1" }, { "facing": "south" } ]
 	  }
 	},
 	{
@@ -41,14 +27,7 @@
 		"y": 180
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "1"
-		  },
-		  {
-			"facing": "west"
-		  }
-		]
+		"AND": [ { "slices": "1" }, { "facing": "west" } ]
 	  }
 	},
 	{
@@ -58,14 +37,7 @@
 		"y": 270
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "1"
-		  },
-		  {
-			"facing": "north"
-		  }
-		]
+		"AND": [ { "slices": "1" }, { "facing": "north" } ]
 	  }
 	},
 	{
@@ -75,14 +47,7 @@
 		"y": 0
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "2"
-		  },
-		  {
-			"facing": "east|north"
-		  }
-		]
+		"AND": [ { "slices": "2" }, { "facing": "east|north" } ]
 	  }
 	},
 	{
@@ -92,14 +57,7 @@
 		"y": 90
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "2"
-		  },
-		  {
-			"facing": "south|east"
-		  }
-		]
+		"AND": [ { "slices": "2" }, { "facing": "south|east" } ]
 	  }
 	},
 	{
@@ -109,14 +67,7 @@
 		"y": 180
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "2"
-		  },
-		  {
-			"facing": "west|south"
-		  }
-		]
+		"AND": [ { "slices": "2" }, { "facing": "west|south" } ]
 	  }
 	},
 	{
@@ -126,14 +77,7 @@
 		"y": 270
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "2"
-		  },
-		  {
-			"facing": "north|west"
-		  }
-		]
+		"AND": [ { "slices": "2" }, { "facing": "north|west" } ]
 	  }
 	},
 	{
@@ -143,14 +87,7 @@
 		"y": 0
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "3"
-		  },
-		  {
-			"facing": "east|north|west"
-		  }
-		]
+		"AND": [ { "slices": "3" }, { "facing": "east|north|west" } ]
 	  }
 	},
 	{
@@ -160,14 +97,7 @@
 		"y": 90
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "3"
-		  },
-		  {
-			"facing": "south|east|north"
-		  }
-		]
+		"AND": [ { "slices": "3" }, { "facing": "south|east|north" } ]
 	  }
 	},
 	{
@@ -177,14 +107,7 @@
 		"y": 180
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "3"
-		  },
-		  {
-			"facing": "west|south|east"
-		  }
-		]
+		"AND": [ { "slices": "3" }, { "facing": "west|south|east" } ]
 	  }
 	},
 	{
@@ -194,14 +117,7 @@
 		"y": 270
 	  },
 	  "when": {
-		"AND": [
-		  {
-			"slices": "3"
-		  },
-		  {
-			"facing": "north|west|south"
-		  }
-		]
+		"AND": [ { "slices": "3" }, { "facing": "north|west|south" } ]
 	  }
 	},
 	{

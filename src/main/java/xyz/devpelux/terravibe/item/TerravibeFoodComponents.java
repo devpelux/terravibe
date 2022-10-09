@@ -21,6 +21,7 @@ public final class TerravibeFoodComponents {
 	public static final FoodComponent MOZZARELLA;
 	public static final FoodComponent MOZZARELLA_FLAKES;
 	public static final FoodComponent NIGHTLOCK_BERRIES;
+	public static final FoodComponent NIGHTSHADE_FERN_BLUEBERRIES;
 	public static final FoodComponent ONION;
 	public static final FoodComponent PIZZA_SLICE_FOUR_CHEESE;
 	public static final FoodComponent PIZZA_SLICE_MARGHERITA;
@@ -54,6 +55,11 @@ public final class TerravibeFoodComponents {
 		MOZZARELLA = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
 		MOZZARELLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.15f).build();
 		NIGHTLOCK_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();
+		NIGHTSHADE_FERN_BLUEBERRIES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0), 1.0f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 150, 0), 0.2f)
+				.alwaysEdible()
+				.build();
 		ONION = new FoodComponent.Builder().hunger(1).saturationModifier(0.4f).build();
 		PIZZA_SLICE_FOUR_CHEESE = new FoodComponent.Builder().hunger(4).saturationModifier(0.4f).build();
 		PIZZA_SLICE_MARGHERITA = new FoodComponent.Builder().hunger(2).saturationModifier(0.2f).build();

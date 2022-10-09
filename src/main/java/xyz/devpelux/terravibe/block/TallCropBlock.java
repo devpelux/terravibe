@@ -20,6 +20,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -46,6 +47,20 @@ public abstract class TallCropBlock extends CropBlock {
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
 		builder.add(HALF);
+	}
+
+	/**
+	 * Gets the default state with the specified half.
+	 */
+	protected BlockState withHalf(DoubleBlockHalf half) {
+		return getDefaultState().with(HALF, half);
+	}
+
+	/**
+	 * Gets the default state with the specified half and age.
+	 */
+	protected BlockState withHalfAndAge(DoubleBlockHalf half, int age) {
+		return withHalf(half).with(getAgeProperty(), age);
 	}
 
 	/**
@@ -110,18 +125,89 @@ public abstract class TallCropBlock extends CropBlock {
 	public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState,
 	                                            WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 		DoubleBlockHalf half = getHalf(state);
-		if ((direction.getAxis() == Direction.Axis.Y && half == DoubleBlockHalf.LOWER == (direction == Direction.UP))
-				&& (!neighborState.isOf(this) || getHalf(neighborState) == half)) {
-			//If one of the two half is replaced with a wrong block, the other half is removed.
-			//This also removes the lower block if a block is placed above it, removing the needed space to grow.
-			return Blocks.AIR.getDefaultState();
-		} else if (half == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos)) {
-			//If the block below the lower block is replaced with an unsupported block, removes the lower block.
-			return Blocks.AIR.getDefaultState();
+		if (direction.getAxis() == Direction.Axis.Y) {
+			if (half == DoubleBlockHalf.LOWER && direction == Direction.UP) {
+				//Case 1: Block lower and neighbor upper.
+				if (neighborState.isOf(this)) {
+					/*
+					 * Case 1.1: The upper is the same block.
+					 * Checks the block properties.
+					 * For "half", if the upper is not the upper, removes the lower block.
+					 * For "age", copies the neighbor age in case has been updated.
+					 */
+					return getHalf(neighborState) != DoubleBlockHalf.UPPER
+							? Blocks.AIR.getDefaultState() : state.with(getAgeProperty(), getAge(neighborState));
+				} else {
+					/*
+					 * Case 1.2: The upper is a different block.
+					 * If the block (that is the lower), has an age enough to have the upper block,
+					 * but does not have an upper block, removes the lower block.
+					 * If the block has not an age enough to have the upper block,
+					 * checks if the upper is air, else removes the lower block,
+					 * ensuring that there is enough space to grow.
+					 */
+					if (getAge(state) >= getAgeForUpper() || !neighborState.isOf(Blocks.AIR)) {
+						return Blocks.AIR.getDefaultState();
+					}
+				}
+			} else if (half == DoubleBlockHalf.UPPER && direction == Direction.DOWN) {
+				//Case 2: Block upper and neighbor lower.
+				if (neighborState.isOf(this)) {
+					/*
+					 * Case 2.1: The lower is the same block.
+					 * Checks the block properties.
+					 * For "half", if the lower is not the lower, removes the upper block.
+					 * For "age", copies the neighbor age in case has been updated.
+					 */
+					return getHalf(neighborState) != DoubleBlockHalf.LOWER
+							? Blocks.AIR.getDefaultState() : state.with(getAgeProperty(), getAge(neighborState));
+				} else {
+					//Case 2.2: The lower is a different block. Simply removes the upper block.
+					return Blocks.AIR.getDefaultState();
+				}
+			}
 		}
 
-		//For other generic cases, applies the same rules of a generic crop.
+		//Case generic: checks the canPlaceAt.
 		return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+	}
+
+	/**
+	 * Updates the plant age.
+	 */
+	protected void updateAge(BlockState state, World world, BlockPos pos, int newAge) {
+		updateAge(state, world, pos, newAge, null);
+	}
+
+	/**
+	 * Updates the plant age, specifying the player that causes the update.
+	 * If the player is not null, a block change event is emitted by the player.
+	 */
+	protected void updateAge(BlockState state, World world, BlockPos pos, int newAge, @Nullable PlayerEntity player) {
+		//Gets the upper and lower block positions.
+		boolean isLower = isLower(state);
+		BlockPos upperPos = isLower ? pos.up() : pos;
+		BlockPos lowerPos = isLower ? pos : pos.down();
+
+		if (newAge >= getAgeForUpper()) {
+			//The age is enough to have both the upper and lower block.
+			//Adds or updates the upper block, then, the lower is auto updated.
+			updateBlock(withHalfAndAge(DoubleBlockHalf.UPPER, newAge), world, upperPos, player);
+		} else {
+			//The age is not enough to have both the upper and lower block.
+			//Updates the lower block, then, removes the upper.
+			updateBlock(withHalfAndAge(DoubleBlockHalf.LOWER, newAge), world, lowerPos, player);
+			updateBlock(Blocks.AIR.getDefaultState(), world, upperPos, player);
+		}
+	}
+
+	/**
+	 * Updates the specified block, specifying the player that causes the update.
+	 * If the player is not null, a block change event is emitted by the player.
+	 */
+	private void updateBlock(BlockState newState, World world, BlockPos pos, @Nullable PlayerEntity player) {
+		world.setBlockState(pos, newState, 2);
+		if (player != null) world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, newState));
 	}
 
 	/**
@@ -147,11 +233,9 @@ public abstract class TallCropBlock extends CropBlock {
 				float moisture = getAvailableMoisture(this, world, pos);
 				if (random.nextInt((int) (25.0F / moisture) + 1) == 0) {
 					int nextAge = age + 1;
-					//Sets the new age to the lower block, then, if the age is enough to have the upper block, places the upper block with the same age.
-					world.setBlockState(pos, withAge(nextAge), 2);
-					if (nextAge >= getAgeForUpper()) {
-						world.setBlockState(pos.up(), withAge(nextAge).with(HALF, DoubleBlockHalf.UPPER), 2);
-					}
+
+					//Sets the new age to the plant.
+					updateAge(state, world, pos, nextAge);
 				}
 			}
 		}
@@ -164,19 +248,17 @@ public abstract class TallCropBlock extends CropBlock {
 	@Override
 	public void applyGrowth(World world, BlockPos pos, BlockState state) {
 		int nextAge = Math.min(getAge(state) + getGrowthAmount(world), getMaxAge());
-		if (isLower(state)) {
-			//The block is the lower block.
-			//Sets the new age to the lower block, then, if the age is enough to have the upper block, places the upper block with the same age.
-			world.setBlockState(pos, withAge(nextAge), 2); //Lower
-			if (nextAge >= getAgeForUpper()) {
-				world.setBlockState(pos.up(), withAge(nextAge).with(HALF, DoubleBlockHalf.UPPER), 2); //Upper
-			}
-		} else {
-			//The block is the upper block.
-			//Sets the new age to both the upper and lower blocks.
-			world.setBlockState(pos.down(), withAge(nextAge), 2); //Lower
-			world.setBlockState(pos, withAge(nextAge).with(HALF, DoubleBlockHalf.UPPER), 2); //Upper
-		}
+
+		//Sets the new age to the plant.
+		updateAge(state, world, pos, nextAge);
+	}
+
+	/**
+	 * Gets the growth amount to apply when the plant is bonemealed.
+	 */
+	@Override
+	protected int getGrowthAmount(World world) {
+		return MathHelper.nextInt(world.random, 1, 3);
 	}
 
 	/**
@@ -187,11 +269,15 @@ public abstract class TallCropBlock extends CropBlock {
 	public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
 		if (!world.isClient) {
 			if (player.isCreative()) {
-				if (!isLower(state) && hasLower(world, pos)) {
-					//Replaces the lower block with air without drop anything.
-					BlockPos downPos = pos.down();
-					world.setBlockState(downPos, Blocks.AIR.getDefaultState(), 35);
-					world.syncWorldEvent(player, 2001, downPos, Block.getRawIdFromState(world.getBlockState(downPos)));
+				/* If the upper block was broken, prevents the lower to be broken by neighbor updates
+				   removing it directly, if exists. (replacing it with an empty block or fluid) */
+				if (!isLower(state)) {
+					BlockPos lowerPos = pos.down();
+					BlockState lowerState = world.getBlockState(lowerPos);
+					if (lowerState.isOf(this) && isLower(lowerState)) {
+						world.setBlockState(lowerPos, lowerState.getFluidState().getBlockState(), 35);
+						world.syncWorldEvent(player, 2001, lowerPos, Block.getRawIdFromState(lowerState));
+					}
 				}
 			} else {
 				//Drops the specified stacks in the loot table.
@@ -207,6 +293,7 @@ public abstract class TallCropBlock extends CropBlock {
 	 */
 	@Override
 	public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
+		//Prevents duplicated drops (the drops are handled in the onBreak).
 		super.afterBreak(world, player, pos, Blocks.AIR.getDefaultState(), blockEntity, stack);
 	}
 
@@ -237,6 +324,7 @@ public abstract class TallCropBlock extends CropBlock {
 	 */
 	@Override
 	public long getRenderingSeed(BlockState state, BlockPos pos) {
-		return MathHelper.hashCode(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
+		//The upper has the same rendering seed of the lower.
+		return MathHelper.hashCode(pos.getX(), pos.down(getHalf(state) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
 	}
 }
