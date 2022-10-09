@@ -1,5 +1,5 @@
 {
-  "parent": "terravibe:block/bushy_cross_crop",
+  "parent": "terravibe:block/tinted_bushy_cross_crop",
   "textures": {
 	"cross1": "terravibe:block/nightshade_fern_upper_stage2_c1",
 	"cross2": "terravibe:block/nightshade_fern_upper_stage2_c2"

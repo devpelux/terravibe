@@ -1,116 +1,52 @@
 {
-  "multipart": [
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage0"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "0" } ]
-	  }
+  "variants": {
+	"half=lower,age=0": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage0"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage1"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "1" } ]
-	  }
+	"half=lower,age=1": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage1"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage2"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "2" } ]
-	  }
+	"half=lower,age=2": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage2"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage3"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "3" } ]
-	  }
+	"half=lower,age=3": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage3"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage4"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "4" } ]
-	  }
+	"half=lower,age=4": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage4"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage5"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "5" } ]
-	  }
+	"half=lower,age=5": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage5"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_lower_stage6"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "6|7" } ]
-	  }
+	"half=lower,age=6": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage6"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_blueberries_lower"
-	  },
-	  "when": {
-		"AND": [ { "half": "lower" }, { "age": "6|7" } ]
-	  }
+	"half=lower,age=7": {
+	  "model": "terravibe:block/nightshade_fern_lower_stage6"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_upper_stage0"
-	  },
-	  "when": {
-		"AND": [ { "half": "upper" }, { "age": "0|1|2" } ]
-	  }
+	"half=upper,age=0": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage0"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_upper_stage1"
-	  },
-	  "when": {
-		"AND": [ { "half": "upper" }, { "age": "3" } ]
-	  }
+	"half=upper,age=1": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage0"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_upper_stage2"
-	  },
-	  "when": {
-		"AND": [ { "half": "upper" }, { "age": "4" } ]
-	  }
+	"half=upper,age=2": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage0"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_upper_stage3"
-	  },
-	  "when": {
-		"AND": [ { "half": "upper" }, { "age": "5" } ]
-	  }
+	"half=upper,age=3": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage1"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_upper_stage4"
-	  },
-	  "when": {
-		"AND": [ { "half": "upper" }, { "age": "6|7" } ]
-	  }
+	"half=upper,age=4": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage2"
 	},
-	{
-	  "apply": {
-		"model": "terravibe:block/nightshade_fern_blueberries_upper"
-	  },
-	  "when": {
-		"AND": [ { "half": "upper" }, { "age": "6|7" } ]
-	  }
+	"half=upper,age=5": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage3"
+	},
+	"half=upper,age=6": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage4"
+	},
+	"half=upper,age=7": {
+	  "model": "terravibe:block/nightshade_fern_upper_stage4"
 	}
-  ]
+  }
 }

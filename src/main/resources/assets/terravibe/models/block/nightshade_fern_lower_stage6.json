@@ -1,7 +1,9 @@
 {
-  "parent": "terravibe:block/bushy_cross_crop",
+  "parent": "terravibe:block/tinted_bitexture_bushy_cross_crop",
   "textures": {
-	"cross1": "terravibe:block/nightshade_fern_lower_stage6_c1",
-	"cross2": "terravibe:block/nightshade_fern_lower_stage6_c2"
+	"cross1a": "terravibe:block/nightshade_fern_lower_stage6_c1",
+	"cross2a": "terravibe:block/nightshade_fern_lower_stage6_c2",
+	"cross1b": "terravibe:block/nightshade_fern_blueberries_lower",
+	"cross2b": "terravibe:block/transparent"
   }
 }

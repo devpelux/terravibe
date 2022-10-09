@@ -133,8 +133,8 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 	@Override
 	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
 		return switch (tintIndex) {
-			case 1 -> 0xaaffaa;
-			case 2 -> getAge(state) == 7 ? 0x4d4067 : 0x569211;
+			case 0 -> 0xaaffaa;
+			case 1 -> getAge(state) == 7 ? 0x4d4067 : 0x569211;
 			default -> -1;
 		};
 	}
@@ -145,8 +145,8 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 				.noCollision()
 				.ticksRandomly()
 				.breakInstantly()
-				.sounds(BlockSoundGroup.CROP)
-				.offsetType(OffsetType.XZ);
+				.sounds(BlockSoundGroup.GRASS)
+				.offsetType(OffsetType.XYZ);
 		LOWER_AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(2.0, -1.0, 2.0, 14.0, 3.0, 14.0),
 				Block.createCuboidShape(2.0, -1.0, 2.0, 14.0, 9.0, 14.0),
