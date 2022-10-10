@@ -7,7 +7,6 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -106,7 +105,7 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 	 */
 	@Override
 	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-		return floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
+		return floor.isOf(Blocks.PODZOL) || floor.isOf(Blocks.FARMLAND);
 	}
 
 	/**
@@ -133,7 +132,7 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 	@Override
 	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
 		return switch (tintIndex) {
-			case 0 -> 0xaaffaa;
+			case 0 -> 0x87cb87;
 			case 1 -> getAge(state) == 7 ? 0x4d4067 : 0x569211;
 			default -> -1;
 		};
