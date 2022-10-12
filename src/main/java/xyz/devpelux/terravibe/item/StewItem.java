@@ -15,7 +15,7 @@ public class StewItem extends Item {
 	/**
 	 * Initializes a new {@link StewItem}.
 	 */
-	public StewItem(Item.Settings settings) {
+	public StewItem(Settings settings) {
 		super(settings);
 	}
 

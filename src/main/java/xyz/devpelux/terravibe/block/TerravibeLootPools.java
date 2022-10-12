@@ -11,10 +11,6 @@ import net.minecraft.loot.condition.LocationCheckLootCondition;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
-import net.minecraft.loot.function.SetNbtLootFunction;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtInt;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.NumberRange.FloatRange;
 import net.minecraft.predicate.entity.LocationPredicate;
@@ -35,25 +31,14 @@ public class TerravibeLootPools {
 	public static LootPool ancientSeedsFromDirtBlockPool() {
 		LootPool.Builder pool = LootPool.builder();
 
-		//Ancient nightshade fern seed with dirty value of 1.
-		LeafEntry.Builder<?> nightshadeFernSeedsD1 = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
-		nightshadeFernSeedsD1.apply(SetNbtLootFunction.builder(singleValueNbt("Dirty", NbtInt.of(1))));
-		nightshadeFernSeedsD1.conditionally(RandomChanceLootCondition.builder(0.0003f));
-		nightshadeFernSeedsD1.conditionally(AlternativeLootCondition.builder(
+		//Ancient nightshade fern seeds.
+		LeafEntry.Builder<?> nightshadeFernSeeds = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
+		nightshadeFernSeeds.conditionally(RandomChanceLootCondition.builder(0.003f));
+		nightshadeFernSeeds.conditionally(AlternativeLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeFilter(BiomeKeys.OLD_GROWTH_PINE_TAIGA, FloatRange.between(55, 125))),
 				LocationCheckLootCondition.builder(biomeFilter(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, FloatRange.between(55, 125)))
 		));
-		pool.with(nightshadeFernSeedsD1);
-
-		//Ancient nightshade fern seed with dirty value of 2.
-		LeafEntry.Builder<?> nightshadeFernSeedsD2 = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
-		nightshadeFernSeedsD2.apply(SetNbtLootFunction.builder(singleValueNbt("Dirty", NbtInt.of(2))));
-		nightshadeFernSeedsD2.conditionally(RandomChanceLootCondition.builder(0.003f));
-		nightshadeFernSeedsD2.conditionally(AlternativeLootCondition.builder(
-				LocationCheckLootCondition.builder(biomeFilter(BiomeKeys.OLD_GROWTH_PINE_TAIGA, FloatRange.between(55, 125))),
-				LocationCheckLootCondition.builder(biomeFilter(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, FloatRange.between(55, 125)))
-		));
-		pool.with(nightshadeFernSeedsD2);
+		pool.with(nightshadeFernSeeds);
 
 		return pool.build();
 	}
@@ -61,12 +46,11 @@ public class TerravibeLootPools {
 	public static LootPool ancientSeedsFromPodzolBlockPool() {
 		LootPool.Builder pool = LootPool.builder();
 
-		//Ancient nightshade fern seed with dirty value of 1.
-		LeafEntry.Builder<?> nightshadeFernSeedsD1 = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
-		nightshadeFernSeedsD1.apply(SetNbtLootFunction.builder(singleValueNbt("Dirty", NbtInt.of(1))));
-		nightshadeFernSeedsD1.conditionally(RandomChanceLootCondition.builder(0.0003f));
-		nightshadeFernSeedsD1.conditionally(LocationCheckLootCondition.builder(biomeFilter(BiomeKeys.OLD_GROWTH_PINE_TAIGA, FloatRange.between(55, 125))));
-		pool.with(nightshadeFernSeedsD1);
+		//Ancient nightshade fern seeds.
+		LeafEntry.Builder<?> nightshadeFernSeeds = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
+		nightshadeFernSeeds.conditionally(RandomChanceLootCondition.builder(0.0003f));
+		nightshadeFernSeeds.conditionally(LocationCheckLootCondition.builder(biomeFilter(BiomeKeys.OLD_GROWTH_PINE_TAIGA, FloatRange.between(55, 125))));
+		pool.with(nightshadeFernSeeds);
 
 		return pool.build();
 	}
@@ -88,15 +72,6 @@ public class TerravibeLootPools {
 		} else if (id.equals(Blocks.PODZOL.getLootTableId())) {
 			tableBuilder.pool(ancientSeedsFromPodzolBlockPool());
 		}
-	}
-
-	/**
-	 * Generates a nbt with a single element.
-	 */
-	private static NbtCompound singleValueNbt(String key, NbtElement value) {
-		NbtCompound nbt = new NbtCompound();
-		nbt.put(key, value);
-		return nbt;
 	}
 
 	/**

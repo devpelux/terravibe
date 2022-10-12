@@ -57,7 +57,7 @@ public final class TerravibeFoodComponents {
 		NIGHTLOCK_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();
 		NIGHTSHADE_FERN_BLUEBERRIES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
 				.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0), 1.0f)
-				.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 150, 0), 0.2f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 0), 0.2f)
 				.alwaysEdible()
 				.build();
 		ONION = new FoodComponent.Builder().hunger(1).saturationModifier(0.4f).build();

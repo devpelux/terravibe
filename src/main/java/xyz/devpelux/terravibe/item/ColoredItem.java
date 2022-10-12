@@ -1,5 +1,6 @@
 package xyz.devpelux.terravibe.item;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,9 +17,9 @@ public class ColoredItem extends Item implements ItemColorProvider {
 	/**
 	 * Initializes a new {@link ColoredItem}.
 	 */
-	public ColoredItem(Settings settings, ItemColorProvider provider) {
+	public ColoredItem(ColoredItemSettings settings) {
 		super(settings);
-		this.provider = provider;
+		this.provider = settings.colorProvider;
 	}
 
 	/**
@@ -34,5 +35,21 @@ public class ColoredItem extends Item implements ItemColorProvider {
 	@Override
 	public int getColor(ItemStack stack, int tintIndex) {
 		return provider.getColor(stack, tintIndex);
+	}
+
+
+	/**
+	 * Settings for items of type {@link ColoredItem}.
+	 */
+	public static class ColoredItemSettings extends FabricItemSettings {
+		protected ItemColorProvider colorProvider;
+
+		/**
+		 * Sets the color provider.
+		 */
+		public ColoredItemSettings colorProvider(ItemColorProvider colorProvider) {
+			this.colorProvider = colorProvider;
+			return this;
+		}
 	}
 }

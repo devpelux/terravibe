@@ -2,6 +2,10 @@ package xyz.devpelux.terravibe.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Items;
+import xyz.devpelux.terravibe.item.AncientSeedItem.AncientSeedItemSettings;
+import xyz.devpelux.terravibe.item.ColoredItem.ColoredItemSettings;
+
+import java.util.function.Supplier;
 
 /**
  * List of all the item settings generators.
@@ -10,12 +14,17 @@ public final class TerravibeItemSettings {
 	private TerravibeItemSettings() {
 	}
 
-	public static FabricItemSettings ancient_nightshade_fern_seeds() {
-		return stackOf(64, false).recipeRemainder(TerravibeItems.NIGHTSHADE_FERN_SEEDS);
+	public static AncientSeedItemSettings ancient_nightshade_fern_seeds() {
+		AncientSeedItemSettings settings = stackOf(1, false, AncientSeedItemSettings::new);
+		settings.dirtyLevel(3);
+		settings.colorProvider(ColoredItem.color(0, 0x814731));
+		settings.recipeRemainder(TerravibeItems.NIGHTSHADE_FERN_SEEDS);
+		return settings;
 	}
 
 	public static FabricItemSettings baked_sweet_potato() {
-		return stackOf(64, true).food(TerravibeFoodComponents.BAKED_SWEET_POTATO);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.BAKED_SWEET_POTATO);
 	}
 
 	public static FabricItemSettings basil() {
@@ -23,7 +32,8 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings beans() {
-		return stackOf(64, true).food(TerravibeFoodComponents.BEANS);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.BEANS);
 	}
 
 	public static FabricItemSettings birch_mold() {
@@ -47,11 +57,13 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings cheese() {
-		return stackOf(64, true).food(TerravibeFoodComponents.CHEESE);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.CHEESE);
 	}
 
 	public static FabricItemSettings cheese_flakes() {
-		return stackOf(64, true).food(TerravibeFoodComponents.CHEESE_FLAKES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.CHEESE_FLAKES);
 	}
 
 	public static FabricItemSettings cheese_wheel() {
@@ -78,8 +90,9 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
-	public static FabricItemSettings crimson_cork_plug() {
-		return stackOf(64, true);
+	public static ColoredItemSettings crimson_cork_plug() {
+		return stackOf(64, true, ColoredItemSettings::new)
+				.colorProvider(ColoredItem.color(1, 0x7e3a56));
 	}
 
 	public static FabricItemSettings dark_mold() {
@@ -94,16 +107,19 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
-	public static FabricItemSettings dark_oak_cork_plug() {
-		return stackOf(64, true);
+	public static ColoredItemSettings dark_oak_cork_plug() {
+		return stackOf(64, true, ColoredItemSettings::new)
+				.colorProvider(ColoredItem.color(1, 0x4f3218));
 	}
 
 	public static FabricItemSettings dark_sweet_berries() {
-		return stackOf(64, true).food(TerravibeFoodComponents.DARK_SWEET_BERRIES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.DARK_SWEET_BERRIES);
 	}
 
 	public static FabricItemSettings eggplant() {
-		return stackOf(64, true).food(TerravibeFoodComponents.EGGPLANT);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.EGGPLANT);
 	}
 
 	public static FabricItemSettings eggplant_seeds() {
@@ -127,11 +143,13 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings gorgonzola() {
-		return stackOf(64, true).food(TerravibeFoodComponents.GORGONZOLA);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.GORGONZOLA);
 	}
 
 	public static FabricItemSettings gorgonzola_flakes() {
-		return stackOf(64, true).food(TerravibeFoodComponents.GORGONZOLA_FLAKES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.GORGONZOLA_FLAKES);
 	}
 
 	public static FabricItemSettings gorgonzola_wheel() {
@@ -143,7 +161,8 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings kale() {
-		return stackOf(64, true).food(TerravibeFoodComponents.KALE);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.KALE);
 	}
 
 	public static FabricItemSettings kale_seeds() {
@@ -151,7 +170,8 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings lettuce_leaves() {
-		return stackOf(64, true).food(TerravibeFoodComponents.LETTUCE_LEAVES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.LETTUCE_LEAVES);
 	}
 
 	public static FabricItemSettings lettuce_seeds() {
@@ -163,19 +183,23 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings mozzarella() {
-		return stackOf(64, true).food(TerravibeFoodComponents.MOZZARELLA);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.MOZZARELLA);
 	}
 
 	public static FabricItemSettings mozzarella_flakes() {
-		return stackOf(64, true).food(TerravibeFoodComponents.MOZZARELLA_FLAKES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.MOZZARELLA_FLAKES);
 	}
 
 	public static FabricItemSettings nightlock_berries() {
-		return stackOf(64, true).food(TerravibeFoodComponents.NIGHTLOCK_BERRIES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.NIGHTLOCK_BERRIES);
 	}
 
 	public static FabricItemSettings nightshade_fern_blueberries() {
-		return stackOf(64, true).food(TerravibeFoodComponents.NIGHTSHADE_FERN_BLUEBERRIES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.NIGHTSHADE_FERN_BLUEBERRIES);
 	}
 
 	public static FabricItemSettings nightshade_fern_seeds() {
@@ -186,8 +210,9 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
-	public static FabricItemSettings oak_cork_plug() {
-		return stackOf(64, true);
+	public static ColoredItemSettings oak_cork_plug() {
+		return stackOf(64, true, ColoredItemSettings::new)
+				.colorProvider(ColoredItem.color(1, 0xb8945f));
 	}
 
 	public static FabricItemSettings olives() {
@@ -195,7 +220,8 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings onion() {
-		return stackOf(64, true).food(TerravibeFoodComponents.ONION);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.ONION);
 	}
 
 	public static FabricItemSettings onion_seeds() {
@@ -215,23 +241,28 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings pizza_slice_four_cheese() {
-		return stackOf(4, true).food(TerravibeFoodComponents.PIZZA_SLICE_FOUR_CHEESE);
+		return stackOf(4, true)
+				.food(TerravibeFoodComponents.PIZZA_SLICE_FOUR_CHEESE);
 	}
 
 	public static FabricItemSettings pizza_slice_margherita() {
-		return stackOf(4, true).food(TerravibeFoodComponents.PIZZA_SLICE_MARGHERITA);
+		return stackOf(4, true)
+				.food(TerravibeFoodComponents.PIZZA_SLICE_MARGHERITA);
 	}
 
 	public static FabricItemSettings pottage() {
-		return stackOf(16, true).food(TerravibeFoodComponents.POTTAGE);
+		return stackOf(16, true)
+				.food(TerravibeFoodComponents.POTTAGE);
 	}
 
 	public static FabricItemSettings prickly_pear() {
-		return stackOf(64, true).food(TerravibeFoodComponents.PRICKLY_PEAR);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.PRICKLY_PEAR);
 	}
 
 	public static FabricItemSettings red_sweet_potato() {
-		return stackOf(64, true).food(TerravibeFoodComponents.RED_SWEET_POTATO);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.RED_SWEET_POTATO);
 	}
 
 	public static FabricItemSettings rice() {
@@ -243,23 +274,28 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings salad() {
-		return stackOf(16, true).food(TerravibeFoodComponents.SALAD);
+		return stackOf(16, true)
+				.food(TerravibeFoodComponents.SALAD);
 	}
 
 	public static FabricItemSettings salad_full() {
-		return stackOf(16, true).food(TerravibeFoodComponents.SALAD_FULL);
+		return stackOf(16, true)
+				.food(TerravibeFoodComponents.SALAD_FULL);
 	}
 
 	public static FabricItemSettings salad_mixed() {
-		return stackOf(16, true).food(TerravibeFoodComponents.SALAD_MIXED);
+		return stackOf(16, true)
+				.food(TerravibeFoodComponents.SALAD_MIXED);
 	}
 
 	public static FabricItemSettings salad_rich() {
-		return stackOf(16, true).food(TerravibeFoodComponents.SALAD_RICH);
+		return stackOf(16, true)
+				.food(TerravibeFoodComponents.SALAD_RICH);
 	}
 
 	public static FabricItemSettings salad_simple() {
-		return stackOf(16, true).food(TerravibeFoodComponents.SALAD_SIMPLE);
+		return stackOf(16, true)
+				.food(TerravibeFoodComponents.SALAD_SIMPLE);
 	}
 
 	public static FabricItemSettings salt() {
@@ -275,11 +311,13 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings sweet_potato() {
-		return stackOf(64, true).food(TerravibeFoodComponents.SWEET_POTATO);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.SWEET_POTATO);
 	}
 
 	public static FabricItemSettings sweet_potato_buds() {
-		return stackOf(64, false).food(TerravibeFoodComponents.SWEET_POTATO_BUDS);
+		return stackOf(64, false)
+				.food(TerravibeFoodComponents.SWEET_POTATO_BUDS);
 	}
 
 	public static FabricItemSettings thistle() {
@@ -287,7 +325,8 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings thistle_leaves() {
-		return stackOf(64, true).food(TerravibeFoodComponents.THISTLE_LEAVES);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.THISTLE_LEAVES);
 	}
 
 	public static FabricItemSettings thistle_stamens() {
@@ -299,11 +338,15 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings tomato() {
-		return stackOf(64, true).food(TerravibeFoodComponents.TOMATO);
+		return stackOf(64, true)
+				.food(TerravibeFoodComponents.TOMATO);
 	}
 
-	public static FabricItemSettings tomato_sauce_bottle() {
-		return stackOf(16, true).recipeRemainder(Items.GLASS_BOTTLE);
+	public static ColoredItemSettings tomato_sauce_bottle() {
+		ColoredItemSettings settings = stackOf(16, true, ColoredItemSettings::new);
+		settings.colorProvider(ColoredItem.color(1, 0xf61815));
+		settings.recipeRemainder(Items.GLASS_BOTTLE);
+		return settings;
 	}
 
 	public static FabricItemSettings tomato_seeds() {
@@ -322,15 +365,26 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
-	public static FabricItemSettings warped_cork_plug() {
-		return stackOf(64, true);
+	public static ColoredItemSettings warped_cork_plug() {
+		return stackOf(64, true, ColoredItemSettings::new)
+				.colorProvider(ColoredItem.color(1, 0x398382));
 	}
 
 	/**
 	 * Generates basic item settings, specifying the stack count, and if the item is visible in the creative tab.
 	 */
 	private static FabricItemSettings stackOf(int count, boolean visible) {
-		FabricItemSettings settings = new FabricItemSettings().maxCount(count);
-		return visible ? settings.group(TerravibeItemGroups.TERRAVIBE) : settings;
+		return stackOf(count, visible, FabricItemSettings::new);
+	}
+
+	/**
+	 * Generates basic item settings, specifying the stack count, and if the item is visible in the creative tab.
+	 * Specify also the settings type to create.
+	 */
+	private static <T extends FabricItemSettings> T stackOf(int count, boolean visible, Supplier<T> factory) {
+		T settings = factory.get();
+		settings.maxCount(count);
+		settings.group(visible ? TerravibeItemGroups.TERRAVIBE : null);
+		return settings;
 	}
 }
