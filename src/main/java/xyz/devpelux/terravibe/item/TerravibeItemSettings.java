@@ -1,9 +1,12 @@
 package xyz.devpelux.terravibe.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Items;
 import xyz.devpelux.terravibe.item.AncientSeedItem.AncientSeedItemSettings;
 import xyz.devpelux.terravibe.item.ColoredItem.ColoredItemSettings;
+import xyz.devpelux.terravibe.item.SideEffectFoodItem.SideEffectFoodItemSettings;
 
 import java.util.function.Supplier;
 
@@ -197,9 +200,12 @@ public final class TerravibeItemSettings {
 				.food(TerravibeFoodComponents.NIGHTLOCK_BERRIES);
 	}
 
-	public static FabricItemSettings nightshade_fern_blueberries() {
-		return stackOf(64, true)
-				.food(TerravibeFoodComponents.NIGHTSHADE_FERN_BLUEBERRIES);
+	public static SideEffectFoodItemSettings nightshade_fern_blueberries() {
+		SideEffectFoodItemSettings settings = stackOf(64, true, SideEffectFoodItemSettings::new);
+		settings.food(TerravibeFoodComponents.NIGHTSHADE_FERN_BLUEBERRIES);
+		settings.sideEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 0), 0.2f);
+		settings.cooldown(600);
+		return settings;
 	}
 
 	public static FabricItemSettings nightshade_fern_seeds() {
