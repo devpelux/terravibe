@@ -1,0 +1,28 @@
+{
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.root.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.root.description"
+	},
+	"icon": {
+	  "item": "terravibe:terravibe"
+	},
+	"frame": "task",
+	"background": "minecraft:textures/gui/advancements/backgrounds/husbandry.png",
+	"hidden": false,
+	"show_toast": false,
+	"announce_to_chat": false
+  },
+  "criteria": {
+	"consumed_item": {
+	  "trigger": "minecraft:consume_item"
+	}
+  },
+  "requirements": [
+	[
+	  "consumed_item"
+	]
+  ]
+}

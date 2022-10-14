@@ -129,5 +129,10 @@
   "item.terravibe.terravibe": "Terravibe",
 
   "death.attack.nightlock": "%1$s ate something that shouldn't have eaten.",
-  "death.attack.nightlock_creative": "%1$s discovered that nightlock berries kills even in creative mode!"
+  "death.attack.nightlock_creative": "%1$s discovered that nightlock berries kills even in creative mode!",
+
+  "advancements.terravibe.game.root.title": "Terravibe",
+  "advancements.terravibe.game.root.description": "Vibes from the overworld...",
+  "advancements.terravibe.game.unbalanced_diet.title": "Unbalanced diet",
+  "advancements.terravibe.game.unbalanced_diet.description": "Get side effects by eating strange foods too often"
 }

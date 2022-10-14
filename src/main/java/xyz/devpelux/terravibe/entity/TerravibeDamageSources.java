@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.entity.damage;
+package xyz.devpelux.terravibe.entity;
 
 import net.minecraft.entity.damage.DamageSource;
 

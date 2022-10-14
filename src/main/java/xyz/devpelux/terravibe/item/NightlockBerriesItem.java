@@ -9,7 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import xyz.devpelux.terravibe.entity.damage.TerravibeDamageSources;
+import xyz.devpelux.terravibe.entity.TerravibeDamageSources;
 
 /**
  * Little poisonous berry with a black color.

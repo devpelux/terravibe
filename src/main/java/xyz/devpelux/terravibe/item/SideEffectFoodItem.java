@@ -8,7 +8,9 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
+import xyz.devpelux.terravibe.advancement.TerravibeAdvancements;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,14 +87,19 @@ public class SideEffectFoodItem extends Item {
 	 */
 	@Override
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
-		if (isFood() && entity instanceof PlayerEntity player && !world.isClient()) {
+		if (isFood() && entity instanceof ServerPlayerEntity player) {
 			if (isCoolingDown(player)) {
+				boolean sideEffectsApplied = false;
 				//Applies the side effects with their chance if the item is in cooldown for the player.
 				for (Pair<StatusEffectInstance, Float> sideEffect : sideEffects) {
-					if (world.getRandom().nextFloat() <= sideEffect.getSecond()) {
-						player.addStatusEffect(sideEffect.getFirst());
+					if (sideEffect.getFirst() != null && world.getRandom().nextFloat() < sideEffect.getSecond()) {
+						player.addStatusEffect(new StatusEffectInstance(sideEffect.getFirst()));
+						sideEffectsApplied = true;
 					}
 				}
+
+				//Triggers "Side effects from food" advancement criterion.
+				if (sideEffectsApplied) TerravibeAdvancements.SIDE_EFFECT_FROM_FOOD.trigger(player);
 			}
 
 			//Sets a cooldown for the player that used the item.

@@ -1,0 +1,31 @@
+{
+  "parent": "terravibe:game/root",
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.unbalanced_diet.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.unbalanced_diet.description"
+	},
+	"icon": {
+	  "item": "terravibe:nightshade_fern_blueberries"
+	},
+	"frame": "challenge",
+	"hidden": false,
+	"show_toast": true,
+	"announce_to_chat": true
+  },
+  "rewards": {
+	"experience": 100
+  },
+  "criteria": {
+	"nightshade_fern_blueberries": {
+	  "trigger": "terravibe:side_effect_from_food"
+	}
+  },
+  "requirements": [
+	[
+	  "nightshade_fern_blueberries"
+	]
+  ]
+}
