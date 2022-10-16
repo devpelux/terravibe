@@ -9,7 +9,7 @@ import xyz.devpelux.terravibe.core.Terravibe;
  */
 public final class TerravibeAdvancements {
 	/**
-	 * "Side effects from food" advancement criterion.
+	 * "Side effect from food" advancement criterion.
 	 */
 	public static final TickCriterion SIDE_EFFECT_FROM_FOOD;
 

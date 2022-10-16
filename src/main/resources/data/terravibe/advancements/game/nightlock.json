@@ -1,0 +1,37 @@
+{
+  "parent": "terravibe:game/root",
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.nightlock.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.nightlock.description"
+	},
+	"icon": {
+	  "item": "terravibe:nightlock_berries"
+	},
+	"frame": "task",
+	"hidden": false,
+	"show_toast": true,
+	"announce_to_chat": true
+  },
+  "criteria": {
+	"get_nightlock_berries": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:nightlock_berries"
+			]
+		  }
+		]
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "get_nightlock_berries"
+	]
+  ]
+}

@@ -10,13 +10,10 @@
 	"icon": {
 	  "item": "terravibe:nightshade_fern_blueberries"
 	},
-	"frame": "challenge",
+	"frame": "task",
 	"hidden": false,
 	"show_toast": true,
 	"announce_to_chat": true
-  },
-  "rewards": {
-	"experience": 100
   },
   "criteria": {
 	"nightshade_fern_blueberries": {

@@ -1,0 +1,79 @@
+{
+  "parent": "terravibe:game/root",
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.pizza.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.pizza.description"
+	},
+	"icon": {
+	  "item": "terravibe:pizza_margherita"
+	},
+	"frame": "goal",
+	"hidden": true,
+	"show_toast": true,
+	"announce_to_chat": true
+  },
+  "rewards": {
+	"experience": 20
+  },
+  "criteria": {
+	"get_pizza_four_cheese": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:pizza_four_cheese"
+			]
+		  }
+		]
+	  }
+	},
+	"get_pizza_margherita": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:pizza_margherita"
+			]
+		  }
+		]
+	  }
+	},
+	"get_pizza_slice_four_cheese": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:pizza_slice_four_cheese"
+			]
+		  }
+		]
+	  }
+	},
+	"get_pizza_slice_margherita": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:pizza_slice_margherita"
+			]
+		  }
+		]
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "get_pizza_four_cheese",
+	  "get_pizza_margherita",
+	  "get_pizza_slice_four_cheese",
+	  "get_pizza_slice_margherita"
+	]
+  ]
+}

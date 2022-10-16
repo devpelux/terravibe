@@ -133,6 +133,16 @@
 
   "advancements.terravibe.game.root.title": "Terravibe",
   "advancements.terravibe.game.root.description": "Vibes from the overworld...",
-  "advancements.terravibe.game.unbalanced_diet.title": "Unbalanced diet",
+  "advancements.terravibe.game.dairy_products.title": "Dairy Products",
+  "advancements.terravibe.game.dairy_products.description": "Create some dairy products from milk.",
+  "advancements.terravibe.game.jurassic.title": "Jurassic",
+  "advancements.terravibe.game.jurassic.description": "Bring back all the ancient plants from extinction",
+  "advancements.terravibe.game.nightlock.title": "Not these... !",
+  "advancements.terravibe.game.nightlock.description": "Take some Nightlock berries.\nBeware from eating them, or you will die instantly!",
+  "advancements.terravibe.game.not_extinct.title": "Wasn't this extinct?",
+  "advancements.terravibe.game.not_extinct.description": "Bring back an ancient plant from extinction",
+  "advancements.terravibe.game.pizza.title": "Pizza Time!",
+  "advancements.terravibe.game.pizza.description": "Make pizza",
+  "advancements.terravibe.game.unbalanced_diet.title": "An Unbalanced Diet",
   "advancements.terravibe.game.unbalanced_diet.description": "Get side effects by eating strange foods too often"
 }

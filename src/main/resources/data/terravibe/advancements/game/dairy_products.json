@@ -1,0 +1,63 @@
+{
+  "parent": "terravibe:game/root",
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.dairy_products.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.dairy_products.description"
+	},
+	"icon": {
+	  "item": "terravibe:gorgonzola"
+	},
+	"frame": "task",
+	"hidden": false,
+	"show_toast": true,
+	"announce_to_chat": true
+  },
+  "criteria": {
+	"get_cheese": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:cheese"
+			]
+		  }
+		]
+	  }
+	},
+	"get_gorgonzola": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:gorgonzola"
+			]
+		  }
+		]
+	  }
+	},
+	"get_mozzarella": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:mozzarella"
+			]
+		  }
+		]
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "get_cheese",
+	  "get_gorgonzola",
+	  "get_mozzarella"
+	]
+  ]
+}

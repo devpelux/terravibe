@@ -1,0 +1,42 @@
+{
+  "parent": "terravibe:game/not_extinct",
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.jurassic.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.jurassic.description"
+	},
+	"icon": {
+	  "item": "minecraft:dead_tube_coral"
+	},
+	"frame": "challenge",
+	"hidden": false,
+	"show_toast": true,
+	"announce_to_chat": true
+  },
+  "rewards": {
+	"experience": 100
+  },
+  "criteria": {
+	"nightshade_fern": {
+	  "trigger": "minecraft:placed_block",
+	  "conditions": {
+		"block": "terravibe:nightshade_fern",
+		"state": {
+		  "age": "0"
+		},
+		"item": {
+		  "items": [
+			"terravibe:nightshade_fern_seeds"
+		  ]
+		}
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "nightshade_fern"
+	]
+  ]
+}

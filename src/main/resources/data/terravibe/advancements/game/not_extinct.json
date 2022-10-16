@@ -1,0 +1,39 @@
+{
+  "parent": "terravibe:game/root",
+  "display": {
+	"title": {
+	  "translate": "advancements.terravibe.game.not_extinct.title"
+	},
+	"description": {
+	  "translate": "advancements.terravibe.game.not_extinct.description"
+	},
+	"icon": {
+	  "item": "minecraft:dead_bush"
+	},
+	"frame": "task",
+	"hidden": false,
+	"show_toast": true,
+	"announce_to_chat": true
+  },
+  "criteria": {
+	"nightshade_fern": {
+	  "trigger": "minecraft:placed_block",
+	  "conditions": {
+		"block": "terravibe:nightshade_fern",
+		"state": {
+		  "age": "0"
+		},
+		"item": {
+		  "items": [
+			"terravibe:nightshade_fern_seeds"
+		  ]
+		}
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "nightshade_fern"
+	]
+  ]
+}
