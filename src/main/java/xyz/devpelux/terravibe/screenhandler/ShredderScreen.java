@@ -17,7 +17,7 @@ public class ShredderScreen extends HandledScreen<ScreenHandler> {
 	/**
 	 * Identifier of the gui texture.
 	 */
-	private static final Identifier TEXTURE = new Identifier(Terravibe.ID, "textures/gui/shredder.png");
+	private static final Identifier TEXTURE = Terravibe.identified("textures/gui/shredder.png");
 
 	/**
 	 * Initializes a new {@link ShredderScreen}.

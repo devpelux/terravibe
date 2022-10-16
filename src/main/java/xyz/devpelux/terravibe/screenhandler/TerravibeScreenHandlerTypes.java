@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.core.Terravibe;
 
@@ -39,7 +38,7 @@ public final class TerravibeScreenHandlerTypes {
 	 * Registers the specified screen handler type with the specified id.
 	 */
 	private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
-		return Registry.register(Registry.SCREEN_HANDLER, new Identifier(Terravibe.ID, id), new ScreenHandlerType<>(factory));
+		return Registry.register(Registry.SCREEN_HANDLER, Terravibe.identified(id), new ScreenHandlerType<>(factory));
 	}
 
 	static {

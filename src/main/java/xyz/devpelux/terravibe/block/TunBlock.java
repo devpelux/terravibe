@@ -171,7 +171,7 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	static {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
-		ID = new Identifier(Terravibe.ID, "tun");
+		ID = Terravibe.identified("tun");
 		OUTLINE_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 0, 2, 14, 1, 14),
 				Block.createCuboidShape(0, 0, 2, 2, 16, 16),

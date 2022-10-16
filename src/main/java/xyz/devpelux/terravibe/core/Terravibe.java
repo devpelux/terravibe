@@ -1,5 +1,6 @@
 package xyz.devpelux.terravibe.core;
 
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,5 +19,12 @@ public final class Terravibe {
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 
 	private Terravibe() {
+	}
+
+	/**
+	 * Creates an identifier with "terravibe" namespace.
+	 */
+	public static Identifier identified(String path) {
+		return new Identifier(ID, path);
 	}
 }

@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.core.Terravibe;
@@ -33,17 +32,17 @@ public final class TerravibeItemGroups {
 	}
 
 	/**
-	 * Registers the specified item group with the specified id.
+	 * Registers a new item group with the specified id.
 	 */
 	private static ItemGroup register(String id, ItemStack iconItem) {
-		return FabricItemGroupBuilder.build(new Identifier(Terravibe.ID, id), () -> iconItem);
+		return FabricItemGroupBuilder.build(Terravibe.identified(id), () -> iconItem);
 	}
 
 	/**
 	 * Registers the specified icon item with the specified id.
 	 */
 	private static Item registerIcon(String id) {
-		return Registry.register(Registry.ITEM, new Identifier(Terravibe.ID, id), new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+		return Registry.register(Registry.ITEM, Terravibe.identified(id), new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
 	}
 
 	static {

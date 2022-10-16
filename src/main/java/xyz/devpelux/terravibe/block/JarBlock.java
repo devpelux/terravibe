@@ -354,7 +354,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
 		CLOSED = BooleanProperty.of("closed");
-		ID = new Identifier(Terravibe.ID, "jar");
+		ID = Terravibe.identified("jar");
 		OUTLINE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
 	}
 }

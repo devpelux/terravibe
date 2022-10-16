@@ -9,7 +9,6 @@ import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
@@ -524,7 +523,7 @@ public final class TerravibeItems {
 	 * Registers the specified item with the specified id.
 	 */
 	private static <T extends Item> T register(String id, T item) {
-		return Registry.register(Registry.ITEM, new Identifier(Terravibe.ID, id), item);
+		return Registry.register(Registry.ITEM, Terravibe.identified(id), item);
 	}
 
 	static {

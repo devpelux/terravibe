@@ -22,7 +22,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.core.Terravibe;
 import xyz.devpelux.terravibe.tags.TerravibeFluidTags;
 
 import java.util.List;
@@ -69,7 +68,7 @@ public class AncientSeedItem extends ColoredItem {
 		int dirty = getDirtyValue(stack);
 
 		//Shows the dirty value as a tooltip.
-		tooltip.add(Text.translatable("item." + Terravibe.ID + ".ancient_seed.dirty").append(" " + dirty + "%")
+		tooltip.add(Text.translatable("item.terravibe.ancient_seed.dirty").append(" " + dirty + "%")
 				.formatted(Formatting.DARK_GRAY));
 	}
 

@@ -314,7 +314,7 @@ public final class MoldDustJarBlock extends JarBlock {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT)
 				.luminance(MoldDustJarBlock::getLuminance);
 		DUST = EnumProperty.of("dust", Dust.class);
-		ID = new Identifier(Terravibe.ID, "mold_dust_jar");
+		ID = Terravibe.identified("mold_dust_jar");
 	}
 
 
