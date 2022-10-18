@@ -26,11 +26,6 @@
   "mixins": [
 	"terravibe.mixins.json"
   ],
-  "custom": {
-	"loom:injected_interfaces": {
-	  "net/minecraft/class_4970": [ "xyz/devpelux/terravibe/core/PathNodeTypeProvider" ]
-	}
-  },
   "depends": {
 	"fabricloader": ">=0.14.9",
 	"fabric": "*",

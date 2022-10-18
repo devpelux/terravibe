@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
@@ -17,8 +16,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
-
-import java.util.Optional;
 
 /**
  * Plant of the thistle.
@@ -175,14 +172,6 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 			double z = pos.getZ() + 0.35d + (random.nextDouble() * 0.3d);
 			world.addParticle(TerravibeParticleTypes.THISTLE_POLLEN, x, y, z, 0d, 0.4d, 0d);
 		}
-	}
-
-	/**
-	 * Gets the path node type.
-	 */
-	@Override
-	public Optional<PathNodeType> getPathNodeType() {
-		return Optional.of(PathNodeType.DAMAGE_CACTUS);
 	}
 
 	/**

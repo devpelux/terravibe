@@ -6,6 +6,7 @@ import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.block.TerravibeLootPools;
 import xyz.devpelux.terravibe.blockentity.TerravibeBlockEntityTypes;
 import xyz.devpelux.terravibe.core.Terravibe;
+import xyz.devpelux.terravibe.entity.TerravibePathNodeTypeVariants;
 import xyz.devpelux.terravibe.item.TerravibeItemGroups;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
@@ -41,6 +42,7 @@ public class Initializer implements ModInitializer {
 		TerravibeBlocks.loadContainerBehaviors();
 		TerravibeLootPools.load();
 		TerravibeAdvancements.load();
+		TerravibePathNodeTypeVariants.load();
 
 		Terravibe.LOGGER.info("Loaded Terravibe components.");
 	}

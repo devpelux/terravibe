@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.NavigationType;
-import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
@@ -301,14 +300,6 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	@Override
 	public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
 		return false;
-	}
-
-	/**
-	 * Gets the path node type.
-	 */
-	@Override
-	public Optional<PathNodeType> getPathNodeType() {
-		return Optional.of(PathNodeType.DAMAGE_CACTUS);
 	}
 
 	/**

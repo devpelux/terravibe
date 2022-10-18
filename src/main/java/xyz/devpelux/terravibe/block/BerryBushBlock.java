@@ -2,7 +2,6 @@ package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
@@ -224,14 +223,6 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 		int age = Math.min(getMaxAge(), getAge(state) + 1);
 		BlockState nextGrowState = state.with(getAgeProperty(), age);
 		world.setBlockState(pos, nextGrowState, 2);
-	}
-
-	/**
-	 * Gets the path node type.
-	 */
-	@Override
-	public Optional<PathNodeType> getPathNodeType() {
-		return Optional.of(PathNodeType.DAMAGE_OTHER);
 	}
 
 	/**

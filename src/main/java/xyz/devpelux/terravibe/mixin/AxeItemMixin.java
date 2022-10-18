@@ -1,4 +1,4 @@
-package xyz.devpelux.terravibe.mixin.terravibe;
+package xyz.devpelux.terravibe.mixin;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
