@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:gorgonzola"
+	]
+  },
+  "criteria": {
+	"has_gorgonzola_wheel": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:gorgonzola_wheel"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:gorgonzola"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_gorgonzola_wheel",
+	  "has_the_recipe"
+	]
+  ]
+}

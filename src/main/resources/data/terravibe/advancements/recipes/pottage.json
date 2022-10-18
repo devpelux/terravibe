@@ -1,0 +1,112 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:pottage"
+	]
+  },
+  "criteria": {
+	"has_bowl": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "minecraft:bowl"
+			]
+		  }
+		]
+	  }
+	},
+	"has_tomato": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:tomato"
+			]
+		  }
+		]
+	  }
+	},
+	"has_kale": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:kale"
+			]
+		  }
+		]
+	  }
+	},
+	"has_mozzarella_flakes": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:mozzarella_flakes"
+			]
+		  }
+		]
+	  }
+	},
+	"has_onion": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:onion"
+			]
+		  }
+		]
+	  }
+	},
+	"has_eggplant": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:eggplant"
+			]
+		  }
+		]
+	  }
+	},
+	"has_olives": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:olives"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:pottage"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_bowl",
+	  "has_tomato",
+	  "has_kale",
+	  "has_mozzarella_flakes",
+	  "has_onion",
+	  "has_eggplant",
+	  "has_olives",
+	  "has_the_recipe"
+	]
+  ]
+}

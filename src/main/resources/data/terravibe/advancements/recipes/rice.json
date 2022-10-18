@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:rice"
+	]
+  },
+  "criteria": {
+	"has_rice_grains": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:rice_grains"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:rice"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_rice_grains",
+	  "has_the_recipe"
+	]
+  ]
+}

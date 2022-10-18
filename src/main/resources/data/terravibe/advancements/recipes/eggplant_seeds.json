@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:eggplant_seeds"
+	]
+  },
+  "criteria": {
+	"has_eggplant": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:eggplant"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:eggplant_seeds"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_eggplant",
+	  "has_the_recipe"
+	]
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:salad_simple"
+	]
+  },
+  "criteria": {
+	"has_bowl": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "minecraft:bowl"
+			]
+		  }
+		]
+	  }
+	},
+	"has_tomato": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:tomato"
+			]
+		  }
+		]
+	  }
+	},
+	"has_lettuce_leaves": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:lettuce_leaves"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:salad_simple"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_bowl",
+	  "has_tomato",
+	  "has_lettuce_leaves",
+	  "has_the_recipe"
+	]
+  ]
+}

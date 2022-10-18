@@ -1,0 +1,99 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:pizza_four_cheese"
+	]
+  },
+  "criteria": {
+	"has_wheat": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "minecraft:wheat"
+			]
+		  }
+		]
+	  }
+	},
+	"has_tomato_sauce_bottle": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:tomato_sauce_bottle"
+			]
+		  }
+		]
+	  }
+	},
+	"has_mozzarella_flakes": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:mozzarella_flakes"
+			]
+		  }
+		]
+	  }
+	},
+	"has_basil": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:basil"
+			]
+		  }
+		]
+	  }
+	},
+	"has_cheese_flakes": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:cheese_flakes"
+			]
+		  }
+		]
+	  }
+	},
+	"has_gorgonzola_flakes": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:gorgonzola_flakes"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:pizza_four_cheese"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_wheat",
+	  "has_tomato_sauce_bottle",
+	  "has_mozzarella_flakes",
+	  "has_basil",
+	  "has_cheese_flakes",
+	  "has_gorgonzola_flakes",
+	  "has_the_recipe"
+	]
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:thistle_stamens_and_salt"
+	]
+  },
+  "criteria": {
+	"has_thistle_stamens": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:thistle_stamens"
+			]
+		  }
+		]
+	  }
+	},
+	"has_salt": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:salt"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:thistle_stamens_and_salt"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_thistle_stamens",
+	  "has_salt",
+	  "has_the_recipe"
+	]
+  ]
+}

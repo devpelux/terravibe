@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:nightshade_fern_seeds"
+	]
+  },
+  "criteria": {
+	"has_nightshade_fern_blueberries": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:nightshade_fern_blueberries"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:nightshade_fern_seeds"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_nightshade_fern_blueberries",
+	  "has_the_recipe"
+	]
+  ]
+}

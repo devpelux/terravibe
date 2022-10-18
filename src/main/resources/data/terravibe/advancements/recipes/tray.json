@@ -1,0 +1,32 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:tray"
+	]
+  },
+  "criteria": {
+	"has_stone_crafting_materials": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"tag": "terravibe:stone_crafting_materials"
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:tray"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_stone_crafting_materials",
+	  "has_the_recipe"
+	]
+  ]
+}

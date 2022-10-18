@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:oak_cork_plug"
+	]
+  },
+  "criteria": {
+	"has_oak_cork": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:oak_cork"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:oak_cork_plug"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_oak_cork",
+	  "has_the_recipe"
+	]
+  ]
+}

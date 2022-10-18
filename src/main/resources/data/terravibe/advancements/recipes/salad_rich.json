@@ -1,0 +1,99 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:salad_rich"
+	]
+  },
+  "criteria": {
+	"has_bowl": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "minecraft:bowl"
+			]
+		  }
+		]
+	  }
+	},
+	"has_tomato": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:tomato"
+			]
+		  }
+		]
+	  }
+	},
+	"has_lettuce_leaves": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:lettuce_leaves"
+			]
+		  }
+		]
+	  }
+	},
+	"has_mozzarella_flakes": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:mozzarella_flakes"
+			]
+		  }
+		]
+	  }
+	},
+	"has_onion": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:onion"
+			]
+		  }
+		]
+	  }
+	},
+	"has_corn_grains": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:corn_grains"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:salad_rich"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_bowl",
+	  "has_tomato",
+	  "has_lettuce_leaves",
+	  "has_mozzarella_flakes",
+	  "has_onion",
+	  "has_corn_grains",
+	  "has_the_recipe"
+	]
+  ]
+}

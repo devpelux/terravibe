@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:dark_oak_cork_plug"
+	]
+  },
+  "criteria": {
+	"has_dark_oak_cork": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:dark_oak_cork"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:dark_oak_cork_plug"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_dark_oak_cork",
+	  "has_the_recipe"
+	]
+  ]
+}
