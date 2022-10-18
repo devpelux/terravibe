@@ -16,48 +16,13 @@
 	"announce_to_chat": true
   },
   "criteria": {
-	"get_cheese": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"items": [
-			  "terravibe:cheese"
-			]
-		  }
-		]
-	  }
-	},
-	"get_gorgonzola": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"items": [
-			  "terravibe:gorgonzola"
-			]
-		  }
-		]
-	  }
-	},
-	"get_mozzarella": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"items": [
-			  "terravibe:mozzarella"
-			]
-		  }
-		]
-	  }
+	"make_dairy_products": {
+	  "trigger": "terravibe:make_dairy_products"
 	}
   },
   "requirements": [
 	[
-	  "get_cheese",
-	  "get_gorgonzola",
-	  "get_mozzarella"
+	  "make_dairy_products"
 	]
   ]
 }

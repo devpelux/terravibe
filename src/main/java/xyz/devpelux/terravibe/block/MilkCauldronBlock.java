@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -29,6 +30,7 @@ import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import xyz.devpelux.terravibe.advancement.TerravibeAdvancements;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
@@ -132,18 +134,31 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 
 		//Interacts with the content.
 		if (stack.isEmpty()) {
-			//If the content is mozzarella or a type of cheese, gets the content.
-			if (content == Content.Mozzarella) {
-				ItemStack drop = new ItemStack(TerravibeItems.MOZZARELLA, 6);
-				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_HONEY_BLOCK_BREAK);
+			ItemStack drop = null;
+			SoundEvent sound = null;
+
+			//If the content is mozzarella or a type of cheese, gets the content drop and sound.
+			switch (content) {
+				case Mozzarella -> {
+					drop = new ItemStack(TerravibeItems.MOZZARELLA, 6);
+					sound = SoundEvents.BLOCK_HONEY_BLOCK_BREAK;
+				}
+				case Cheese -> {
+					drop = new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
+					sound = SoundEvents.BLOCK_WOOL_BREAK;
+				}
+				case Gorgonzola -> {
+					drop = new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
+					sound = SoundEvents.BLOCK_WOOL_BREAK;
+				}
 			}
-			if (content == Content.Cheese) {
-				ItemStack drop = new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
-				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
-			}
-			if (content == Content.Gorgonzola) {
-				ItemStack drop = new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
-				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, SoundEvents.BLOCK_WOOL_BREAK);
+
+			//If the drop is valid, empties the cauldron and triggers "Make dairy products" advancement criterion.
+			if (drop != null) {
+				if (player instanceof ServerPlayerEntity serverPlayer) {
+					TerravibeAdvancements.MAKE_DAIRY_PRODUCTS.trigger(serverPlayer);
+				}
+				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, sound);
 			}
 		} else if (stack.isIn(TerravibeItemTags.MILK_COAGULANTS) && content == Content.Milk) {
 			//If the stack is a milk coagulant, and the content is milk, converts the content to acid milk.

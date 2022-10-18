@@ -13,6 +13,11 @@ public final class TerravibeAdvancements {
 	 */
 	public static final TickCriterion SIDE_EFFECT_FROM_FOOD;
 
+	/**
+	 * "Make dairy products" advancement criterion.
+	 */
+	public static final TickCriterion MAKE_DAIRY_PRODUCTS;
+
 	private TerravibeAdvancements() {
 	}
 
@@ -30,6 +35,7 @@ public final class TerravibeAdvancements {
 	}
 
 	static {
+		MAKE_DAIRY_PRODUCTS = registerTickCriterion("make_dairy_products");
 		SIDE_EFFECT_FROM_FOOD = registerTickCriterion("side_effect_from_food");
 	}
 }
