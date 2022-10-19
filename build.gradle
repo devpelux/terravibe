@@ -7,12 +7,8 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-group = project.maven_group
 version = project.mod_version
-
-loom {
-	accessWidenerPath = file("src/main/resources/terravibe.accesswidener")
-}
+group = project.maven_group
 
 repositories {
 	// Repositories to retrieve artifacts.
@@ -37,7 +33,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Sodium
-	modCompileOnly "maven.modrinth:sodium:${project.sodium_version}"
+	modCompileOnly "maven.modrinth:sodium:mc1.19.2-0.4.4"
 }
 
 processResources {
