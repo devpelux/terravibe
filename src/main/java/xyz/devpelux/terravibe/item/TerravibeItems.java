@@ -509,14 +509,14 @@ public final class TerravibeItems {
 		CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(WARPED_CORK, 0.2f);
 
-		CorkStrippableBlockRegistry.register(Blocks.CRIMSON_STEM, CRIMSON_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.CRIMSON_HYPHAE, CRIMSON_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_LOG, DARK_OAK_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_WOOD, DARK_OAK_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.OAK_LOG, OAK_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, OAK_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.WARPED_STEM, WARPED_CORK);
-		CorkStrippableBlockRegistry.register(Blocks.WARPED_HYPHAE, WARPED_CORK);
+		CorkStrippableBlockRegistry.register(Blocks.CRIMSON_STEM, CRIMSON_CORK, 0.1f);
+		CorkStrippableBlockRegistry.register(Blocks.CRIMSON_HYPHAE, CRIMSON_CORK, 0.1f);
+		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_LOG, DARK_OAK_CORK, 0.1f);
+		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_WOOD, DARK_OAK_CORK, 0.1f);
+		CorkStrippableBlockRegistry.register(Blocks.OAK_LOG, OAK_CORK, 0.2f);
+		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, OAK_CORK, 0.2f);
+		CorkStrippableBlockRegistry.register(Blocks.WARPED_STEM, WARPED_CORK, 0.2f);
+		CorkStrippableBlockRegistry.register(Blocks.WARPED_HYPHAE, WARPED_CORK, 0.2f);
 	}
 
 	/**

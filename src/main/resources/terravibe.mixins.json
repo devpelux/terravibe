@@ -3,9 +3,7 @@
   "minVersion": "0.8",
   "package": "xyz.devpelux.terravibe.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-	"AxeItemMixin"
-  ],
+  "mixins": [],
   "client": [
 	"sodium.client.LinearColorBlenderMixin"
   ],

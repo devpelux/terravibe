@@ -3,6 +3,7 @@ package xyz.devpelux.terravibe.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * A mud block partially excavated.
  */
-public class ExcavatedMudBlock extends Block {
+public class ExcavatedMudBlock extends Block implements FluidFillable {
 	/**
 	 * Settings of the block.
 	 */
@@ -187,6 +188,22 @@ public class ExcavatedMudBlock extends Block {
 	@Override
 	public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
 		return 0.2F;
+	}
+
+	/**
+	 * Gets a value indicating if is possible to fill the block with the specified fluid.
+	 */
+	@Override
+	public boolean canFillWithFluid(BlockView world, BlockPos pos, BlockState state, Fluid fluid) {
+		return false;
+	}
+
+	/**
+	 * Tries to fill the block with the specified fluid.
+	 */
+	@Override
+	public boolean tryFillWithFluid(WorldAccess world, BlockPos pos, BlockState state, FluidState fluidState) {
+		return false;
 	}
 
 	/**
