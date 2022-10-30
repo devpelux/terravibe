@@ -52,7 +52,7 @@ public abstract class TallFruitCropBlock extends TallCropBlock {
 	 */
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		if (state.get(AGE) == getMaxAge()) {
+		if (getAge(state) == getMaxAge()) {
 			//Drops the specified fruit amount if the age is the max age.
 			int nDrops = getFruitItemAmount(world.random, state);
 			dropStack(world, pos, new ItemStack(getFruitItem(), nDrops));

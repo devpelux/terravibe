@@ -101,6 +101,11 @@ public final class TerravibeBlocks {
 	public static final Block EGGPLANT_CROP;
 
 	/**
+	 * Alga Gillyweed.
+	 */
+	public static final Block GILLYWEED_ALGA;
+
+	/**
 	 * Crop of the kale.
 	 */
 	public static final Block KALE_CROP;
@@ -265,6 +270,7 @@ public final class TerravibeBlocks {
 		DUST_JAR = register("dust_jar", DustJarBlock.of());
 		EXCAVATED_MUD = register("excavated_mud", ExcavatedMudBlock.of());
 		FLOWERING_OPUNTIA = register("flowering_opuntia", FloweringOpuntiaBlock.of());
+		GILLYWEED_ALGA = register("gillyweed_alga", GillyweedAlgaBlock.of());
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", GlowingDarkMoldBlock.of());
 		GORGONZOLA_WHEEL = register("gorgonzola_wheel", CheeseWheelBlock.of());
 		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", DarkSweetBerryBushBlock.of());

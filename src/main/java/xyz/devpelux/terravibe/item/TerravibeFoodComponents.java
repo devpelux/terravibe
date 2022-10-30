@@ -14,6 +14,7 @@ public final class TerravibeFoodComponents {
 	public static final FoodComponent CHEESE_FLAKES;
 	public static final FoodComponent DARK_SWEET_BERRIES;
 	public static final FoodComponent EGGPLANT;
+	public static final FoodComponent GILLYWEED;
 	public static final FoodComponent GORGONZOLA;
 	public static final FoodComponent GORGONZOLA_FLAKES;
 	public static final FoodComponent KALE;
@@ -48,6 +49,10 @@ public final class TerravibeFoodComponents {
 		CHEESE_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build();
 		DARK_SWEET_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();
 		EGGPLANT = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
+		GILLYWEED = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 600, 0), 1f) //30s
+				.alwaysEdible()
+				.build();
 		GORGONZOLA = new FoodComponent.Builder().hunger(4).saturationModifier(0.7f).build();
 		GORGONZOLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build();
 		KALE = new FoodComponent.Builder().hunger(2).saturationModifier(0.4f).build();
@@ -56,7 +61,7 @@ public final class TerravibeFoodComponents {
 		MOZZARELLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.15f).build();
 		NIGHTLOCK_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();
 		NIGHTSHADE_FERN_BLUEBERRIES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
-				.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0), 1.0f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0), 1f) //15s
 				.alwaysEdible()
 				.build();
 		ONION = new FoodComponent.Builder().hunger(1).saturationModifier(0.4f).build();
@@ -65,8 +70,9 @@ public final class TerravibeFoodComponents {
 		POTTAGE = new FoodComponent.Builder().hunger(9).saturationModifier(0.9f).build();
 		PRICKLY_PEAR = new FoodComponent.Builder().hunger(4).saturationModifier(0.6f).build();
 		RED_SWEET_POTATO = new FoodComponent.Builder().hunger(3).saturationModifier(0.7f)
-				.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 180, 0), 1.0f)
-				.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 140, 0), 1.0f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 180, 0), 1f) //9s
+				.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 140, 0), 1f) //7s
+				.alwaysEdible()
 				.build();
 		SALAD = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f).build();
 		SALAD_FULL = new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build();
@@ -75,7 +81,7 @@ public final class TerravibeFoodComponents {
 		SALAD_SIMPLE = new FoodComponent.Builder().hunger(5).saturationModifier(0.6f).build();
 		SWEET_POTATO = new FoodComponent.Builder().hunger(1).saturationModifier(0.4f).build();
 		SWEET_POTATO_BUDS = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
-				.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 400, 1), 1f)
+				.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 400, 1), 1f) //20s
 				.build();
 		THISTLE_LEAVES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
 		TOMATO = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();

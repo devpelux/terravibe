@@ -1,0 +1,19 @@
+{
+  "variants": {
+	"age=0": {
+	  "model": "terravibe:block/gillyweed_alga_stage0"
+	},
+	"age=1": {
+	  "model": "terravibe:block/gillyweed_alga_stage1"
+	},
+	"age=2": {
+	  "model": "terravibe:block/gillyweed_alga_stage2"
+	},
+	"age=3": {
+	  "model": "terravibe:block/gillyweed_alga_stage3"
+	},
+	"age=4": {
+	  "model": "terravibe:block/gillyweed_alga_stage4"
+	}
+  }
+}

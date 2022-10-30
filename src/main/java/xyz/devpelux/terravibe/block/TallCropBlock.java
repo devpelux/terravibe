@@ -258,7 +258,7 @@ public abstract class TallCropBlock extends CropBlock {
 	 */
 	@Override
 	protected int getGrowthAmount(World world) {
-		return MathHelper.nextInt(world.random, 1, 3);
+		return MathHelper.nextInt(world.getRandom(), 1, 3);
 	}
 
 	/**

@@ -54,7 +54,7 @@ public abstract class FruitCropBlock extends CropBlock {
 	 */
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		if (state.get(AGE) == getMaxAge()) {
+		if (getAge(state) == getMaxAge()) {
 			//Drops the specified fruit amount if the age is the max age.
 			int nDrops = getFruitItemAmount(world.random, state);
 			dropStack(world, pos, new ItemStack(getFruitItem(), nDrops));
@@ -64,7 +64,7 @@ public abstract class FruitCropBlock extends CropBlock {
 					1.0F, 0.8F + world.random.nextFloat() * 0.4F));
 
 			//Reset the plant age to the pre-flowering age.
-			BlockState blockState = state.with(AGE, getPreFloweringAge());
+			BlockState blockState = state.with(getAgeProperty(), getPreFloweringAge());
 			world.setBlockState(pos, blockState, 2);
 			world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
 			return ActionResult.success(world.isClient);

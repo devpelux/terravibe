@@ -16,6 +16,20 @@
 	"announce_to_chat": true
   },
   "criteria": {
+	"gillyweed_alga": {
+	  "trigger": "minecraft:placed_block",
+	  "conditions": {
+		"block": "terravibe:gillyweed_alga",
+		"state": {
+		  "age": "0"
+		},
+		"item": {
+		  "items": [
+			"terravibe:gillyweed_seeds"
+		  ]
+		}
+	  }
+	},
 	"nightshade_fern": {
 	  "trigger": "minecraft:placed_block",
 	  "conditions": {
@@ -33,6 +47,7 @@
   },
   "requirements": [
 	[
+	  "gillyweed_alga",
 	  "nightshade_fern"
 	]
   ]

@@ -17,6 +17,20 @@ public final class TerravibeItemSettings {
 	private TerravibeItemSettings() {
 	}
 
+	public static AncientSeedItemSettings ancient_gillyweed_seeds() {
+		AncientSeedItemSettings settings = stackOf(1, false, AncientSeedItemSettings::new);
+		settings.dirtyLevel(5);
+		settings.colorProvider(AncientSeedItem.dirtyColor((d, i) -> {
+			return switch (i) {
+				case 0 -> 0x619976;
+				case 1 -> d < 50 ? 0x619976 : 0xffc71c;
+				default -> -1;
+			};
+		}));
+		settings.recipeRemainder(TerravibeItems.GILLYWEED_SEEDS);
+		return settings;
+	}
+
 	public static AncientSeedItemSettings ancient_nightshade_fern_seeds() {
 		AncientSeedItemSettings settings = stackOf(1, false, AncientSeedItemSettings::new);
 		settings.dirtyLevel(3);
@@ -137,6 +151,18 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
+	public static SideEffectFoodItemSettings gillyweed() {
+		SideEffectFoodItemSettings settings = stackOf(64, true, SideEffectFoodItemSettings::new);
+		settings.food(TerravibeFoodComponents.GILLYWEED);
+		settings.sideEffect(new StatusEffectInstance(StatusEffects.POISON, 200, 0), 0.3f); //10s
+		settings.cooldown(1000); //50s
+		return settings;
+	}
+
+	public static FabricItemSettings gillyweed_seeds() {
+		return stackOf(64, true);
+	}
+
 	public static FabricItemSettings glowing_dark_mold() {
 		return stackOf(64, true);
 	}
@@ -203,8 +229,8 @@ public final class TerravibeItemSettings {
 	public static SideEffectFoodItemSettings nightshade_fern_blueberries() {
 		SideEffectFoodItemSettings settings = stackOf(64, true, SideEffectFoodItemSettings::new);
 		settings.food(TerravibeFoodComponents.NIGHTSHADE_FERN_BLUEBERRIES);
-		settings.sideEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 0), 0.2f);
-		settings.cooldown(600);
+		settings.sideEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 0), 0.2f); //5s
+		settings.cooldown(600); //30s
 		return settings;
 	}
 

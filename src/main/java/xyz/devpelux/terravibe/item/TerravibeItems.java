@@ -185,6 +185,21 @@ public final class TerravibeItems {
 	//Ancient plants with their seeds and drops
 
 	/**
+	 * An extinct poisonous alga that gives you water breathing.
+	 */
+	public static final Item GILLYWEED;
+
+	/**
+	 * Seeds of Gillyweed algae.
+	 */
+	public static final Item GILLYWEED_SEEDS;
+
+	/**
+	 * Ancient dirty seeds of Gillyweed algae.
+	 */
+	public static final Item ANCIENT_GILLYWEED_SEEDS;
+
+	/**
 	 * An extinct blueberry that gives you night vision, but with some side effects.
 	 */
 	public static final Item NIGHTSHADE_FERN_BLUEBERRIES;
@@ -510,6 +525,7 @@ public final class TerravibeItems {
 	@Environment(EnvType.CLIENT)
 	public static void loadColorProviders() {
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) ANCIENT_NIGHTSHADE_FERN_SEEDS, ANCIENT_NIGHTSHADE_FERN_SEEDS);
+		ColorProviderRegistry.ITEM.register((ItemColorProvider) ANCIENT_GILLYWEED_SEEDS, ANCIENT_GILLYWEED_SEEDS);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) DARK_OAK_CORK_PLUG, DARK_OAK_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
@@ -566,6 +582,9 @@ public final class TerravibeItems {
 		TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, TerravibeItemSettings.tomato_seeds()));
 
 		//Ancient plants with their seeds and drops
+		GILLYWEED = register("gillyweed", new SideEffectFoodItem(TerravibeItemSettings.gillyweed()));
+		GILLYWEED_SEEDS = register("gillyweed_seeds", new AliasedBlockItem(TerravibeBlocks.GILLYWEED_ALGA, TerravibeItemSettings.gillyweed_seeds()));
+		ANCIENT_GILLYWEED_SEEDS = register("ancient_gillyweed_seeds", new AncientSeedItem(TerravibeItemSettings.ancient_gillyweed_seeds()));
 		NIGHTSHADE_FERN_BLUEBERRIES = register("nightshade_fern_blueberries", new SideEffectFoodItem(TerravibeItemSettings.nightshade_fern_blueberries()));
 		NIGHTSHADE_FERN_SEEDS = register("nightshade_fern_seeds", new AliasedBlockItem(TerravibeBlocks.NIGHTSHADE_FERN, TerravibeItemSettings.nightshade_fern_seeds()));
 		ANCIENT_NIGHTSHADE_FERN_SEEDS = register("ancient_nightshade_fern_seeds", new AncientSeedItem(TerravibeItemSettings.ancient_nightshade_fern_seeds()));
