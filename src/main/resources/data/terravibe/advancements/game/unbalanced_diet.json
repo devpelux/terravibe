@@ -16,12 +16,30 @@
 	"announce_to_chat": true
   },
   "criteria": {
+	"gillyweed": {
+	  "trigger": "terravibe:side_effects_from_food",
+	  "conditions": {
+		"item": {
+		  "items": [
+			"terravibe:gillyweed"
+		  ]
+		}
+	  }
+	},
 	"nightshade_fern_blueberries": {
-	  "trigger": "terravibe:side_effect_from_food"
+	  "trigger": "terravibe:side_effects_from_food",
+	  "conditions": {
+		"item": {
+		  "items": [
+			"terravibe:nightshade_fern_blueberries"
+		  ]
+		}
+	  }
 	}
   },
   "requirements": [
 	[
+	  "gillyweed",
 	  "nightshade_fern_blueberries"
 	]
   ]

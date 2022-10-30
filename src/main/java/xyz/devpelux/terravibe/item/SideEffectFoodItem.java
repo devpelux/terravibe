@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
-import xyz.devpelux.terravibe.advancement.TerravibeAdvancements;
+import xyz.devpelux.terravibe.advancement.TerravibeCriteria;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -99,7 +99,7 @@ public class SideEffectFoodItem extends Item {
 				}
 
 				//Triggers "Side effects from food" advancement criterion.
-				if (sideEffectsApplied) TerravibeAdvancements.SIDE_EFFECT_FROM_FOOD.trigger(player);
+				if (sideEffectsApplied) TerravibeCriteria.SIDE_EFFECTS_FROM_FOOD.trigger(player, stack);
 			}
 
 			//Sets a cooldown for the player that used the item.

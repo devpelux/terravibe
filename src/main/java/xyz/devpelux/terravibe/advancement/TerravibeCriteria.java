@@ -5,24 +5,24 @@ import net.minecraft.advancement.criterion.TickCriterion;
 import xyz.devpelux.terravibe.core.Terravibe;
 
 /**
- * List of all the advancements.
+ * List of all the advancement criteria.
  */
-public final class TerravibeAdvancements {
+public final class TerravibeCriteria {
 	/**
-	 * "Side effect from food" advancement criterion.
+	 * "side_effects_from_food" criterion.
 	 */
-	public static final TickCriterion SIDE_EFFECT_FROM_FOOD;
+	public static final SideEffectsFromFoodCriterion SIDE_EFFECTS_FROM_FOOD;
 
 	/**
-	 * "Make dairy products" advancement criterion.
+	 * "make_dairy_products" criterion.
 	 */
 	public static final TickCriterion MAKE_DAIRY_PRODUCTS;
 
-	private TerravibeAdvancements() {
+	private TerravibeCriteria() {
 	}
 
 	/**
-	 * Loads all the advancements.
+	 * Loads all the criteria.
 	 */
 	public static void load() {
 	}
@@ -36,6 +36,6 @@ public final class TerravibeAdvancements {
 
 	static {
 		MAKE_DAIRY_PRODUCTS = registerTickCriterion("make_dairy_products");
-		SIDE_EFFECT_FROM_FOOD = registerTickCriterion("side_effect_from_food");
+		SIDE_EFFECTS_FROM_FOOD = Criteria.register(new SideEffectsFromFoodCriterion());
 	}
 }

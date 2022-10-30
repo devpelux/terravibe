@@ -30,7 +30,7 @@ import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.advancement.TerravibeAdvancements;
+import xyz.devpelux.terravibe.advancement.TerravibeCriteria;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
@@ -156,7 +156,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 			//If the drop is valid, empties the cauldron and triggers "Make dairy products" advancement criterion.
 			if (drop != null) {
 				if (player instanceof ServerPlayerEntity serverPlayer) {
-					TerravibeAdvancements.MAKE_DAIRY_PRODUCTS.trigger(serverPlayer);
+					TerravibeCriteria.MAKE_DAIRY_PRODUCTS.trigger(serverPlayer);
 				}
 				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, sound);
 			}
