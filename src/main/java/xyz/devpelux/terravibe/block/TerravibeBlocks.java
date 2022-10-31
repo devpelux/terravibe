@@ -239,6 +239,7 @@ public final class TerravibeBlocks {
 		BlockRenderLayerMap.INSTANCE.putBlock(MOLD_DUST_JAR, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(EGGPLANT_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(FLOWERING_OPUNTIA, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(GILLYWEED_ALGA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(JAR, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
