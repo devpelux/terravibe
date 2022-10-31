@@ -29,7 +29,7 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	 */
 	public CheeseWheelBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
+		setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
 	}
 
 	/**

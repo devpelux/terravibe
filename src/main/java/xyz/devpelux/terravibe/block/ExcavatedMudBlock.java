@@ -49,7 +49,7 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 	 */
 	public ExcavatedMudBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(WATERLOGGED, false));
+		setDefaultState(getDefaultState().with(WATERLOGGED, false));
 	}
 
 	/**

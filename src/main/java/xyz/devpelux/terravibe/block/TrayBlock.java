@@ -72,7 +72,7 @@ public class TrayBlock extends Block implements BlockColorProvider {
 	 */
 	public TrayBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(CONTENT, Content.Nothing));
+		setDefaultState(getDefaultState().with(CONTENT, Content.Nothing));
 	}
 
 	/**

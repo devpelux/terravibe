@@ -75,7 +75,7 @@ public final class DustJarBlock extends JarBlock {
 	 */
 	public DustJarBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false).with(DUST, Dust.Unspecified));
+		setDefaultState(getDefaultState().with(DUST, Dust.Unspecified));
 	}
 
 	/**

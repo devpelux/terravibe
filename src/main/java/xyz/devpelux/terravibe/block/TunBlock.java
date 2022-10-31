@@ -73,7 +73,6 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	public TunBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0));
 	}
 
 	/**

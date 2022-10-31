@@ -51,7 +51,7 @@ public class ShredderBlock extends BlockWithEntity {
 	 */
 	public ShredderBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
+		setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
 	}
 
 	/**

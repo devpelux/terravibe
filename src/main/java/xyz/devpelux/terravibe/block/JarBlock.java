@@ -95,7 +95,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	public JarBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false));
+		setDefaultState(getDefaultState().with(CLOSED, false));
 	}
 
 	/**

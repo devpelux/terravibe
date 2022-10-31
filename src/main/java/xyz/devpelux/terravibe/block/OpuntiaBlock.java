@@ -87,7 +87,7 @@ public class OpuntiaBlock extends FacingBlock {
 	 */
 	public OpuntiaBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.DOWN).with(DISTANCE, 0).with(AGE, 0));
+		setDefaultState(getDefaultState().with(FACING, Direction.DOWN).with(DISTANCE, 0).with(AGE, 0));
 	}
 
 	/**

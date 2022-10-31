@@ -37,7 +37,7 @@ public abstract class TallCropBlock extends CropBlock {
 	 */
 	public TallCropBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(getAgeProperty(), 0));
+		setDefaultState(getDefaultState().with(HALF, DoubleBlockHalf.LOWER));
 	}
 
 	/**

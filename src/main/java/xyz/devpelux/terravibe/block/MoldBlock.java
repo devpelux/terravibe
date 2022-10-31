@@ -53,8 +53,7 @@ public abstract class MoldBlock extends PlantBlock {
 	 */
 	public MoldBlock(Settings settings) {
 		super(settings);
-		BlockState defaultState = getStateManager().getDefaultState();
-		setDefaultState(getAgeProperty() != null ? defaultState.with(getAgeProperty(), 0) : defaultState);
+		setDefaultState(getAgeProperty() != null ? getDefaultState().with(getAgeProperty(), 0) : getDefaultState());
 	}
 
 	/**

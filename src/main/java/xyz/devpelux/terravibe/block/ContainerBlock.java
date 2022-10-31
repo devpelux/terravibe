@@ -24,7 +24,7 @@ import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 import java.util.Objects;
 
 /**
- * Container.
+ * Generic container for fluids and dusts.
  */
 public abstract class ContainerBlock extends BlockWithEntity {
 	/**
@@ -37,6 +37,7 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	 */
 	public ContainerBlock(Settings settings) {
 		super(settings);
+		setDefaultState(getDefaultState().with(getLevelProperty(), 0));
 	}
 
 	/**

@@ -92,7 +92,7 @@ public final class MoldDustJarBlock extends JarBlock {
 	 */
 	public MoldDustJarBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(LEVEL, 0).with(CLOSED, false).with(DUST, Dust.Unspecified));
+		setDefaultState(getDefaultState().with(DUST, Dust.Unspecified));
 	}
 
 	/**

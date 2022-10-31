@@ -90,7 +90,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	 */
 	public FloweringOpuntiaBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.DOWN).with(AGE, 0).with(STERILE, false));
+		setDefaultState(getDefaultState().with(FACING, Direction.DOWN).with(AGE, 0).with(STERILE, false));
 	}
 
 	/**

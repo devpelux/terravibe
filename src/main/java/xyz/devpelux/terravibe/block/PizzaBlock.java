@@ -55,7 +55,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	 */
 	public PizzaBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(SLICES, 4));
+		setDefaultState(getDefaultState().with(FACING, Direction.NORTH).with(SLICES, 4));
 	}
 
 	/**

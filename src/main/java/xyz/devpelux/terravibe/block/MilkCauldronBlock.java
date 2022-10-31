@@ -75,7 +75,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	 */
 	public MilkCauldronBlock(Settings settings) {
 		super(settings, MILK_CAULDRON_BEHAVIOR);
-		setDefaultState(getStateManager().getDefaultState().with(CONTENT, Content.Milk));
+		setDefaultState(getDefaultState().with(CONTENT, Content.Milk));
 	}
 
 	/**

@@ -31,7 +31,7 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
 	 */
 	public HerbBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(AGE, 0));
+		setDefaultState(getDefaultState().with(AGE, 0));
 	}
 
 	/**

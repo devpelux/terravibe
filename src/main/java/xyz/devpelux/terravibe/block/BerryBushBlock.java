@@ -40,7 +40,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 	 */
 	public BerryBushBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getStateManager().getDefaultState().with(getAgeProperty(), 0));
+		setDefaultState(getDefaultState().with(getAgeProperty(), 0));
 	}
 
 	/**
