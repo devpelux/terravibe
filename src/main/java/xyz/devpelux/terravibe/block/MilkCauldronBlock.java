@@ -123,81 +123,54 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	}
 
 	/**
+	 * Gets a value indicating if the cauldron is full.
+	 */
+	@Override
+	public boolean isFull(BlockState state) {
+		return true;
+	}
+
+	/**
 	 * Executed when the block is used.
 	 * Insert ingredients, or interacts with the cauldron.
 	 */
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 		//Gets the stack and the content.
-		ItemStack stack = player.getStackInHand(hand);
+		ItemStack ingredient = player.getStackInHand(hand);
 		Content content = state.get(CONTENT);
+		Content recipeResult = getRecipeResult(content, ingredient);
 
-		//Interacts with the content.
-		if (stack.isEmpty()) {
-			ItemStack drop = null;
-			SoundEvent sound = null;
+		if (recipeResult != content) {
+			//If, after adding the ingredient, the content should be different, changes the content.
+			if (!world.isClient()) {
+				//Converts the content to the result
+				world.setBlockState(pos, state.with(CONTENT, recipeResult));
 
-			//If the content is mozzarella or a type of cheese, gets the content drop and sound.
-			switch (content) {
-				case Mozzarella -> {
-					drop = new ItemStack(TerravibeItems.MOZZARELLA, 6);
-					sound = SoundEvents.BLOCK_HONEY_BLOCK_BREAK;
+				//Updates the player statistics.
+				player.incrementStat(Stats.USE_CAULDRON);
+				player.incrementStat(Stats.USED.getOrCreateStat(ingredient.getItem()));
+
+				//Consumes the item used, if the player is not in creative mode.
+				if (!player.getAbilities().creativeMode) {
+					ingredient.decrement(1);
 				}
-				case Cheese -> {
-					drop = new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
-					sound = SoundEvents.BLOCK_WOOL_BREAK;
-				}
-				case Gorgonzola -> {
-					drop = new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
-					sound = SoundEvents.BLOCK_WOOL_BREAK;
-				}
+
+				//Plays the put sound.
+				world.playSound(null, pos, getPutSound(recipeResult), SoundCategory.BLOCKS, 1.0F, 1.0F);
 			}
-
-			//If the drop is valid, empties the cauldron and triggers "Make dairy products" advancement criterion.
-			if (drop != null) {
+		} else if (ingredient.isEmpty()) {
+			//If the interaction is with an empty inventory slot, takes the result.
+			ItemStack result = getResult(content);
+			if (!result.isEmpty()) {
 				if (player instanceof ServerPlayerEntity serverPlayer) {
 					TerravibeCriteria.MAKE_DAIRY_PRODUCTS.trigger(serverPlayer);
 				}
-				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, drop, s -> true, sound);
+				return CauldronBehavior.emptyCauldron(state, world, pos, player, hand, ingredient, result, s -> true, getPickSound(content));
 			}
-		} else if (stack.isIn(TerravibeItemTags.MILK_COAGULANTS) && content == Content.Milk) {
-			//If the stack is a milk coagulant, and the content is milk, converts the content to acid milk.
-			putIngredient(state, world, pos, player, stack, Content.AcidMilk, SoundEvents.ITEM_BOTTLE_EMPTY);
-
-			//Client: SUCCESS / Server: CONSUME
-			return ActionResult.success(world.isClient());
-		} else if (stack.isIn(TerravibeItemTags.EDIBLE_MOLDS) && content == Content.AcidMilk) {
-			//If the stack is an edible mold, and the content is acid milk, converts the content to acid moldy milk.
-			putIngredient(state, world, pos, player, stack, Content.AcidMoldyMilk, SoundEvents.BLOCK_MOSS_PLACE);
-
-			//Client: SUCCESS / Server: CONSUME
-			return ActionResult.success(world.isClient());
 		}
 
 		return super.onUse(state, world, pos, player, hand, hit);
-	}
-
-	/**
-	 * Puts an ingredient into the cauldron, and converts the content into a result content.
-	 */
-	private void putIngredient(BlockState state, World world, BlockPos pos, PlayerEntity player,
-	                           ItemStack ingredient, Content result, SoundEvent sound) {
-		if (!world.isClient()) {
-			//Converts the content to the result
-			world.setBlockState(pos, state.with(CONTENT, result));
-
-			//Updates the player statistics.
-			player.incrementStat(Stats.USE_CAULDRON);
-			player.incrementStat(Stats.USED.getOrCreateStat(ingredient.getItem()));
-
-			//Consumes the item used, if the player is not in creative mode.
-			if (!player.getAbilities().creativeMode) {
-				ingredient.decrement(1);
-			}
-
-			//Plays the mold placing sound.
-			world.playSound(null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
-		}
 	}
 
 	/**
@@ -206,7 +179,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	@Override
 	public boolean hasRandomTicks(BlockState state) {
 		Content content = state.get(CONTENT);
-		return content == Content.AcidMilk || content == Content.AcidMoldyMilk || content == Content.Mozzarella;
+		return content != getNextStage(content);
 	}
 
 	/**
@@ -217,13 +190,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		if (random.nextInt(FERMENTING_TIME) == 0) {
 			//Pass to the next stage basing on the current stage.
-			switch (state.get(CONTENT)) {
-				case AcidMilk -> world.setBlockState(pos, state.with(CONTENT, Content.Mozzarella));
-				case AcidMoldyMilk -> {
-					if (random.nextBoolean()) world.setBlockState(pos, state.with(CONTENT, Content.Gorgonzola));
-				}
-				case Mozzarella -> world.setBlockState(pos, state.with(CONTENT, Content.Cheese));
-			}
+			world.setBlockState(pos, state.with(CONTENT, getNextStage(state.get(CONTENT))));
 		}
 	}
 
@@ -239,21 +206,13 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	}
 
 	/**
-	 * Gets a value indicating if the cauldron is full.
-	 */
-	@Override
-	public boolean isFull(BlockState state) {
-		return true;
-	}
-
-	/**
 	 * Gets the fluid height.
 	 */
 	@Override
 	protected double getFluidHeight(BlockState state) {
 		return switch (state.get(CONTENT)) {
-			case Milk, AcidMilk, AcidMoldyMilk -> 0.9375;
-			case Mozzarella -> 0.75;
+			case Milk, SaltedMilk, AcidMilk, AcidMilkWithMold -> 0.9375;
+			case Mozzarella, MozzarellaWithMold -> 0.75;
 			case Cheese, Gorgonzola -> 0.5625;
 		};
 	}
@@ -264,8 +223,9 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	@Override
 	public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
 		return switch (state.get(CONTENT)) {
-			case Milk, AcidMilk, AcidMoldyMilk -> 3;
-			case Mozzarella -> 2;
+			case SaltedMilk -> 4;
+			case Milk, AcidMilk, AcidMilkWithMold -> 3;
+			case Mozzarella, MozzarellaWithMold -> 2;
 			case Cheese, Gorgonzola -> 1;
 		};
 	}
@@ -275,11 +235,10 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	 */
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		Content content = state.get(CONTENT);
-		if (content == Content.Cheese || content == Content.Gorgonzola || content == Content.Mozzarella) {
-			return SOLID_FILLED_CAULDRON_OUTLINE_SHAPE;
-		}
-		return super.getOutlineShape(state, world, pos, context);
+		return switch (state.get(CONTENT)) {
+			case Mozzarella, MozzarellaWithMold, Cheese, Gorgonzola -> SOLID_FILLED_CAULDRON_OUTLINE_SHAPE;
+			default -> super.getOutlineShape(state, world, pos, context);
+		};
 	}
 
 	/**
@@ -289,13 +248,71 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
 		if (tintIndex == 0) {
 			return switch (state.get(CONTENT)) {
-				case Milk -> 0xffffff;
-				case AcidMilk -> 0xf0f0dd;
-				case AcidMoldyMilk -> 0xddeedd;
+				case Milk, SaltedMilk -> 0xffffff;
+				case AcidMilk, AcidMilkWithMold -> 0xf0f0dd;
 				default -> -1;
 			};
 		}
 		return -1;
+	}
+
+	/**
+	 * Gets the next milk stage basing on the current content.
+	 */
+	private Content getNextStage(Content content) {
+		return switch (content) {
+			case AcidMilk -> Content.Mozzarella;
+			case AcidMilkWithMold -> Content.MozzarellaWithMold;
+			case Mozzarella -> Content.Cheese;
+			case MozzarellaWithMold -> Content.Gorgonzola;
+			default -> content;
+		};
+	}
+
+	/**
+	 * Gets the recipe result basing on the current content and the ingredient added.
+	 */
+	private Content getRecipeResult(Content content, ItemStack ingredient) {
+		return switch (content) {
+			case Milk -> ingredient.isOf(TerravibeItems.SALT) ? Content.SaltedMilk : content;
+			case SaltedMilk -> ingredient.isIn(TerravibeItemTags.MILK_COAGULANTS) ? Content.AcidMilk : content;
+			case AcidMilk -> ingredient.isIn(TerravibeItemTags.EDIBLE_MOLDS) ? Content.AcidMilkWithMold : content;
+			default -> content;
+		};
+	}
+
+	/**
+	 * Gets the result basing on the current content.
+	 */
+	private ItemStack getResult(Content content) {
+		return switch (content) {
+			case Mozzarella, MozzarellaWithMold -> new ItemStack(TerravibeItems.MOZZARELLA, 6);
+			case Cheese -> new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
+			case Gorgonzola -> new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
+			default -> ItemStack.EMPTY;
+		};
+	}
+
+	/**
+	 * Gets the pick sound basing on the current content.
+	 */
+	private SoundEvent getPickSound(Content content) {
+		return switch (content) {
+			case Mozzarella, MozzarellaWithMold -> SoundEvents.BLOCK_HONEY_BLOCK_BREAK;
+			case Cheese, Gorgonzola -> SoundEvents.BLOCK_WOOL_BREAK;
+			default -> SoundEvents.ITEM_BUCKET_FILL;
+		};
+	}
+
+	/**
+	 * Gets the put sound basing on the recipe result.
+	 */
+	private SoundEvent getPutSound(Content recipeResult) {
+		return switch (recipeResult) {
+			case SaltedMilk -> SoundEvents.BLOCK_SAND_BREAK;
+			case AcidMilkWithMold -> SoundEvents.BLOCK_MOSS_PLACE;
+			default -> SoundEvents.ITEM_BOTTLE_EMPTY;
+		};
 	}
 
 	/**
@@ -334,19 +351,29 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 		Milk("milk"),
 
 		/**
+		 * The cauldron contains salted milk.
+		 */
+		SaltedMilk("salted_milk"),
+
+		/**
 		 * The cauldron contains acid milk.
 		 */
 		AcidMilk("acid_milk"),
 
 		/**
-		 * The cauldron contains acid moldy milk.
+		 * The cauldron contains acid milk with mold.
 		 */
-		AcidMoldyMilk("acid_moldy_milk"),
+		AcidMilkWithMold("acid_milk_with_mold"),
 
 		/**
 		 * The cauldron contains mozzarella.
 		 */
 		Mozzarella("mozzarella"),
+
+		/**
+		 * The cauldron contains mozzarella with mold.
+		 */
+		MozzarellaWithMold("mozzarella_with_mold"),
 
 		/**
 		 * The cauldron contains cheese.

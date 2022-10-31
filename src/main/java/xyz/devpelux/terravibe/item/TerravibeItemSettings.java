@@ -365,10 +365,6 @@ public final class TerravibeItemSettings {
 		return stackOf(64, true);
 	}
 
-	public static FabricItemSettings thistle_stamens_and_salt() {
-		return stackOf(64, true);
-	}
-
 	public static FabricItemSettings tomato() {
 		return stackOf(64, true)
 				.food(TerravibeFoodComponents.TOMATO);

@@ -423,14 +423,9 @@ public final class TerravibeItems {
 	public static final Item SALT_CRYSTALS;
 
 	/**
-	 * Stamens of thistle.
+	 * Stamens of thistle, used to coagulate milk.
 	 */
 	public static final Item THISTLE_STAMENS;
-
-	/**
-	 * Stamens of thistle and salt, used to coagulate milk.
-	 */
-	public static final Item THISTLE_STAMENS_AND_SALT;
 
 	//Bottles
 
@@ -453,6 +448,8 @@ public final class TerravibeItems {
 	 * Loads all the items.
 	 */
 	public static void load() {
+		CompostingChanceRegistry.INSTANCE.add(ANCIENT_GILLYWEED_SEEDS, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(ANCIENT_NIGHTSHADE_FERN_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, 0.85f);
 		CompostingChanceRegistry.INSTANCE.add(BASIL, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(BEANS, 0.7f);
@@ -465,14 +462,16 @@ public final class TerravibeItems {
 		CompostingChanceRegistry.INSTANCE.add(CHEESE_FLAKES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(CHEESE_WHEEL, 1f);
 		CompostingChanceRegistry.INSTANCE.add(CORN, 0.6f);
-		CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.05f);
+		CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.1f);
 		CompostingChanceRegistry.INSTANCE.add(CRIMSON_CORK, 0.2f);
-		CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3F);
+		CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(DARK_MOLD, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(DARK_MOLD_DUST, 0.04f);
 		CompostingChanceRegistry.INSTANCE.add(DARK_OAK_CORK, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(EGGPLANT, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(GILLYWEED, 0.5f);
+		CompostingChanceRegistry.INSTANCE.add(GILLYWEED_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD_DUST, 0.04f);
 		CompostingChanceRegistry.INSTANCE.add(GORGONZOLA, 0.65f);
@@ -484,7 +483,9 @@ public final class TerravibeItems {
 		CompostingChanceRegistry.INSTANCE.add(LETTUCE_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(MOZZARELLA, 0.5f);
 		CompostingChanceRegistry.INSTANCE.add(MOZZARELLA_FLAKES, 0.2f);
-		CompostingChanceRegistry.INSTANCE.add(NIGHTLOCK_BERRIES, 0.3F);
+		CompostingChanceRegistry.INSTANCE.add(NIGHTLOCK_BERRIES, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_BLUEBERRIES, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(OAK_CORK, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(OLIVES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(ONION, 0.65f);
@@ -637,7 +638,6 @@ public final class TerravibeItems {
 		SALT = register("salt", new Item(TerravibeItemSettings.salt()));
 		SALT_CRYSTALS = register("salt_crystals", new Item(TerravibeItemSettings.salt_crystals()));
 		THISTLE_STAMENS = register("thistle_stamens", new Item(TerravibeItemSettings.thistle_stamens()));
-		THISTLE_STAMENS_AND_SALT = register("thistle_stamens_and_salt", new Item(TerravibeItemSettings.thistle_stamens_and_salt()));
 
 		//Bottles
 		TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(TerravibeItemSettings.tomato_sauce_bottle()));
