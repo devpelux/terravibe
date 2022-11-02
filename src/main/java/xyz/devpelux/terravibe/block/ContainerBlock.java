@@ -10,12 +10,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +26,7 @@ import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
 import java.util.Objects;
 
 /**
- * Generic container for fluids and dusts.
+ * Generic container for fluids.
  */
 public abstract class ContainerBlock extends BlockWithEntity {
 	/**
@@ -33,11 +35,19 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	public static final String CONTENT_EMPTY = "minecraft:empty";
 
 	/**
+	 * Represents the texture used for the content.
+	 */
+	public static final EnumProperty<ContentTexture> CONTENT_TEXTURE;
+
+	/**
 	 * Initializes a new {@link ContainerBlock}.
 	 */
 	public ContainerBlock(Settings settings) {
 		super(settings);
-		setDefaultState(getDefaultState().with(getLevelProperty(), 0));
+		//Gets the default state with the level.
+		BlockState defaultState = getDefaultState().with(getLevelProperty(), 0);
+		//Sets the default state, after set the content texture property, if is specified to use it.
+		setDefaultState(useDefaultContentTexture() ? defaultState.with(CONTENT_TEXTURE, ContentTexture.Fluid) : defaultState);
 	}
 
 	/**
@@ -67,20 +77,52 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	}
 
 	/**
+	 * Sets the specified container at the specified position maintaining his block entity.
+	 * The block must be a {@link ContainerBlock}, otherwise this method will do nothing.
+	 */
+	public static BlockState setContainer(BlockState state, World world, BlockPos pos) {
+		if (state.getBlock() instanceof ContainerBlock) {
+			ContainerBlockEntity container = getContainerEntity(world, pos);
+			world.setBlockState(pos, state);
+			if (container != null) world.addBlockEntity(container);
+			return state;
+		}
+		return world.getBlockState(pos);
+	}
+
+	/**
 	 * Registers the properties of the block.
 	 */
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
+		//Adds the level property.
 		builder.add(getLevelProperty());
+		//Adds the content texture property if is specified to use it.
+		if (useDefaultContentTexture()) builder.add(CONTENT_TEXTURE);
 	}
 
 	/**
 	 * Gets the default state adjusted from nbt container data.
 	 */
 	public BlockState withContainerData(NbtCompound nbt) {
-		int level = nbt.getInt("Level");
-		return getDefaultState().with(getLevelProperty(), level);
+		//Gets the default state with the level.
+		BlockState state = getDefaultState().with(getLevelProperty(), nbt.getInt("Level"));
+
+		//Sets the content texture, if is specified to use the default property.
+		if (useDefaultContentTexture()) {
+			ContentTexture contentTexture = Objects.requireNonNullElse(ContentTexture.byName(nbt.getString("ContentTexture")), ContentTexture.Fluid);
+			state = state.with(CONTENT_TEXTURE, contentTexture);
+		}
+
+		return state;
+	}
+
+	/**
+	 * Gets a value indicating if to use the default content textures.
+	 */
+	public boolean useDefaultContentTexture() {
+		return true;
 	}
 
 	/**
@@ -92,11 +134,6 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	 * Gets the max level.
 	 */
 	public abstract int getMaxLevel();
-
-	/**
-	 * Gets the identifier of the block.
-	 */
-	protected abstract Identifier getId();
 
 	/**
 	 * Gets the level of the container from its block state.
@@ -131,8 +168,14 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	 * Save container data to nbt.
 	 */
 	protected void saveToNbt(BlockState state, BlockView world, BlockPos pos, NbtCompound nbt) {
-		nbt.putString("Block", getId().toString());
+		//Saves the block id and the level.
+		nbt.putString("Block", Registry.BLOCK.getId(this).toString());
 		nbt.putInt("Level", getLevel(state));
+
+		//Saves the content texture if is specified to use the default property.
+		if (useDefaultContentTexture()) {
+			nbt.putString("ContentTexture", state.get(CONTENT_TEXTURE).asString());
+		}
 	}
 
 	/**
@@ -204,6 +247,67 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	@Override
 	public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
 		return (int) ((float) getLevel(state) / (float) getMaxLevel() * 15f);
+	}
+
+	static {
+		CONTENT_TEXTURE = EnumProperty.of("content_texture", ContentTexture.class);
+	}
+
+
+	/**
+	 * Represents the texture used for the content.
+	 */
+	public enum ContentTexture implements StringIdentifiable {
+		/**
+		 * Water-like texture.
+		 */
+		Fluid("fluid"),
+
+		/**
+		 * Water-like texture without animation.
+		 */
+		DenseFluid("dense_fluid");
+
+		/**
+		 * Codec for converting from string.
+		 */
+		private static final Codec<ContentTexture> CODEC = StringIdentifiable.createCodec(ContentTexture::values);
+
+		/**
+		 * Name representing the value.
+		 */
+		private final String name;
+
+		/**
+		 * Initializes a new value with the name specified.
+		 */
+		ContentTexture(String name) {
+			this.name = name;
+		}
+
+		/**
+		 * Returns the value representing the string specified.
+		 */
+		@Nullable
+		public static ContentTexture byName(@Nullable String name) {
+			return CODEC.byId(name);
+		}
+
+		/**
+		 * Returns the string representation of this instance.
+		 */
+		@Override
+		public String asString() {
+			return this.name;
+		}
+
+		/**
+		 * Returns the string representation of this instance.
+		 */
+		@Override
+		public String toString() {
+			return asString();
+		}
 	}
 
 

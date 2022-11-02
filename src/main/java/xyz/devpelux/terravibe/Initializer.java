@@ -32,17 +32,16 @@ public class Initializer implements ModInitializer {
 		TerravibeItemGroups.load();
 		TerravibeItems.load();
 		TerravibeBlockEntityTypes.load();
+		TerravibeScreenHandlerTypes.load();
+		TerravibeRecipeTypes.load();
+		TerravibeRecipeSerializers.load();
+		TerravibeParticleTypes.load();
+		TerravibePathNodeTypeVariants.load();
 		TerravibeBlockTags.load();
 		TerravibeFluidTags.load();
 		TerravibeItemTags.load();
-		TerravibeParticleTypes.load();
-		TerravibeRecipeTypes.load();
-		TerravibeRecipeSerializers.load();
-		TerravibeScreenHandlerTypes.load();
-		TerravibeBlocks.loadContainerBehaviors();
 		TerravibeLootPools.load();
 		TerravibeCriteria.load();
-		TerravibePathNodeTypeVariants.load();
 
 		Terravibe.LOGGER.info("Loaded Terravibe components.");
 	}

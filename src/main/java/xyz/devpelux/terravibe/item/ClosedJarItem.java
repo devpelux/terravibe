@@ -36,6 +36,7 @@ import java.util.function.Function;
  * Jar with plug and content.
  */
 public class ClosedJarItem extends Item implements ItemColorProvider {
+	public static final String CONTENT_EMPTY = "minecraft:empty";
 	public static final String CONTENT_WATER = "minecraft:water";
 	public static final String CONTENT_HONEY = "minecraft:honey";
 	public static final String CONTENT_MILK = "minecraft:milk";
@@ -188,18 +189,17 @@ public class ClosedJarItem extends Item implements ItemColorProvider {
 	@Override
 	public int getColor(ItemStack stack, int tintIndex) {
 		if (tintIndex == 1) {
-			String content = getContent(stack);
-			ItemColorProvider colorProvider = getColorProvider(content);
-			return colorProvider != null ? colorProvider.getColor(stack, tintIndex) : DEFAULT_CONTENT_COLOR;
-		} else if (tintIndex == 2) {
-			//Gets the plug.
-			Item plug = getPlug(stack);
-
-			//Gets the plug color.
-			return plug instanceof ColoredItem coloredPlug ? coloredPlug.getColor(null, 1) : DEFAULT_PLUG_COLOR;
+			//Plug reserved index 1.
+			//Gets the plug, then gets the color from the plug item, if exists and is a colored item.
+			return getPlug(stack) instanceof ColoredItem coloredPlug ? coloredPlug.getColor(null, 1) : DEFAULT_PLUG_COLOR;
 		}
 
-		return -1;
+		//Other indexes.
+		//Gets the color provider for the content, then gets the color from the provider if exists.
+		String content = getContent(stack);
+		if (content.equals(CONTENT_EMPTY)) return -1;
+		ItemColorProvider colorProvider = getColorProvider(content);
+		return colorProvider != null ? colorProvider.getColor(stack, tintIndex) : DEFAULT_CONTENT_COLOR;
 	}
 
 	/**

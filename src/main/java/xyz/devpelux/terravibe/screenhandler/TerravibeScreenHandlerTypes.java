@@ -27,10 +27,10 @@ public final class TerravibeScreenHandlerTypes {
 	}
 
 	/**
-	 * Loads all the screens for the screen handler types.
+	 * Loads all the client side things related to the screen handler types.
 	 */
 	@Environment(EnvType.CLIENT)
-	public static void loadScreens() {
+	public static void loadClient() {
 		HandledScreens.register(SHREDDER, ShredderScreen::new);
 	}
 

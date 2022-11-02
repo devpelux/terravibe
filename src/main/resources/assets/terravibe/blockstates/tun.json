@@ -10,7 +10,7 @@
 		"model": "terravibe:block/tun_fluid_height1"
 	  },
 	  "when": {
-		"level": "1|2"
+		"AND": [ { "level": "1|2" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -18,7 +18,7 @@
 		"model": "terravibe:block/tun_fluid_height2"
 	  },
 	  "when": {
-		"level": "3|4"
+		"AND": [ { "level": "3|4" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -26,7 +26,7 @@
 		"model": "terravibe:block/tun_fluid_height3"
 	  },
 	  "when": {
-		"level": "5|6"
+		"AND": [ { "level": "5|6" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -34,7 +34,7 @@
 		"model": "terravibe:block/tun_fluid_height4"
 	  },
 	  "when": {
-		"level": "7|8"
+		"AND": [ { "level": "7|8" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -42,7 +42,7 @@
 		"model": "terravibe:block/tun_fluid_height5"
 	  },
 	  "when": {
-		"level": "9|10"
+		"AND": [ { "level": "9|10" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -50,7 +50,7 @@
 		"model": "terravibe:block/tun_fluid_height6"
 	  },
 	  "when": {
-		"level": "11|12"
+		"AND": [ { "level": "11|12" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -58,7 +58,7 @@
 		"model": "terravibe:block/tun_fluid_height7"
 	  },
 	  "when": {
-		"level": "13|14"
+		"AND": [ { "level": "13|14" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -66,7 +66,7 @@
 		"model": "terravibe:block/tun_fluid_height8"
 	  },
 	  "when": {
-		"level": "15|16"
+		"AND": [ { "level": "15|16" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -74,7 +74,7 @@
 		"model": "terravibe:block/tun_fluid_height9"
 	  },
 	  "when": {
-		"level": "17|18"
+		"AND": [ { "level": "17|18" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -82,7 +82,7 @@
 		"model": "terravibe:block/tun_fluid_height10"
 	  },
 	  "when": {
-		"level": "19|20"
+		"AND": [ { "level": "19|20" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -90,7 +90,7 @@
 		"model": "terravibe:block/tun_fluid_height11"
 	  },
 	  "when": {
-		"level": "21|22"
+		"AND": [ { "level": "21|22" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -98,7 +98,7 @@
 		"model": "terravibe:block/tun_fluid_height12"
 	  },
 	  "when": {
-		"level": "23|24"
+		"AND": [ { "level": "23|24" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -106,7 +106,7 @@
 		"model": "terravibe:block/tun_fluid_height13"
 	  },
 	  "when": {
-		"level": "25|26"
+		"AND": [ { "level": "25|26" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -114,7 +114,119 @@
 		"model": "terravibe:block/tun_fluid_height14"
 	  },
 	  "when": {
-		"level": "27"
+		"AND": [ { "level": "27" }, { "content_texture": "fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height1"
+	  },
+	  "when": {
+		"AND": [ { "level": "1|2" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height2"
+	  },
+	  "when": {
+		"AND": [ { "level": "3|4" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height3"
+	  },
+	  "when": {
+		"AND": [ { "level": "5|6" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height4"
+	  },
+	  "when": {
+		"AND": [ { "level": "7|8" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height5"
+	  },
+	  "when": {
+		"AND": [ { "level": "9|10" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height6"
+	  },
+	  "when": {
+		"AND": [ { "level": "11|12" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height7"
+	  },
+	  "when": {
+		"AND": [ { "level": "13|14" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height8"
+	  },
+	  "when": {
+		"AND": [ { "level": "15|16" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height9"
+	  },
+	  "when": {
+		"AND": [ { "level": "17|18" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height10"
+	  },
+	  "when": {
+		"AND": [ { "level": "19|20" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height11"
+	  },
+	  "when": {
+		"AND": [ { "level": "21|22" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height12"
+	  },
+	  "when": {
+		"AND": [ { "level": "23|24" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height13"
+	  },
+	  "when": {
+		"AND": [ { "level": "25|26" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/tun_dense_fluid_height14"
+	  },
+	  "when": {
+		"AND": [ { "level": "27" }, { "content_texture": "dense_fluid" } ]
 	  }
 	}
   ]

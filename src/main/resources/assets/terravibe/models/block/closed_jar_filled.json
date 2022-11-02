@@ -5,7 +5,7 @@
 	"side": "terravibe:block/jar_side",
 	"updown": "terravibe:block/jar_updown",
 	"cork": "terravibe:block/cork_plug",
-	"content": "terravibe:block/white"
+	"content": "terravibe:block/jar_content"
   },
   "elements": [
 	{
@@ -100,12 +100,12 @@
 	  "from": [ 6, 8, 6 ],
 	  "to": [ 10, 10, 10 ],
 	  "faces": {
-		"north": { "uv": [ 0, 1, 4, 3 ], "rotation": 180, "texture": "#cork", "tintindex": 2 },
-		"east": { "uv": [ 1, 0, 3, 4 ], "rotation": 90, "texture": "#cork", "tintindex": 2 },
-		"south": { "uv": [ 0, 1, 4, 3 ], "texture": "#cork", "tintindex": 2 },
-		"west": { "uv": [ 1, 0, 3, 4 ], "rotation": 270, "texture": "#cork", "tintindex": 2 },
-		"up": { "uv": [ 0, 0, 4, 4 ], "texture": "#cork", "tintindex": 2 },
-		"down": { "uv": [ 0, 0, 4, 4 ], "texture": "#cork", "tintindex": 2 }
+		"north": { "uv": [ 0, 1, 4, 3 ], "rotation": 180, "texture": "#cork", "tintindex": 1 },
+		"east": { "uv": [ 1, 0, 3, 4 ], "rotation": 90, "texture": "#cork", "tintindex": 1 },
+		"south": { "uv": [ 0, 1, 4, 3 ], "texture": "#cork", "tintindex": 1 },
+		"west": { "uv": [ 1, 0, 3, 4 ], "rotation": 270, "texture": "#cork", "tintindex": 1 },
+		"up": { "uv": [ 0, 0, 4, 4 ], "texture": "#cork", "tintindex": 1 },
+		"down": { "uv": [ 0, 0, 4, 4 ], "texture": "#cork", "tintindex": 1 }
 	  }
 	},
 	{
@@ -113,12 +113,12 @@
 	  "to": [ 10, 5, 10 ],
 	  "color": 2,
 	  "faces": {
-		"north": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 1 },
-		"east": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 1 },
-		"south": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 1 },
-		"west": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 1 },
-		"up": { "uv": [ 0, 0, 4, 4 ], "texture": "#content", "tintindex": 1 },
-		"down": { "uv": [ 0, 0, 4, 4 ], "texture": "#content", "tintindex": 1 }
+		"north": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 0 },
+		"east": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 0 },
+		"south": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 0 },
+		"west": { "uv": [ 4, 4, 0, 0 ], "texture": "#content", "tintindex": 0 },
+		"up": { "uv": [ 0, 0, 4, 4 ], "texture": "#content", "tintindex": 0 },
+		"down": { "uv": [ 0, 0, 4, 4 ], "texture": "#content", "tintindex": 0 }
 	  }
 	}
   ],

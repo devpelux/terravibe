@@ -9,7 +9,6 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.item.Item;
 import net.minecraft.state.property.IntProperty;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -18,7 +17,7 @@ import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.Terravibe;
+import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity.ContainerBlockColorProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,11 +41,6 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	 * Level of the content.
 	 */
 	public static final IntProperty LEVEL;
-
-	/**
-	 * Identifier of the block.
-	 */
-	private static final Identifier ID;
 
 	/**
 	 * Outline shape of the block.
@@ -113,14 +107,6 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	}
 
 	/**
-	 * Gets the identifier of the block.
-	 */
-	@Override
-	protected Identifier getId() {
-		return ID;
-	}
-
-	/**
 	 * Gets the behavior for the content and input specified.
 	 */
 	@Nullable
@@ -150,16 +136,13 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	@Override
 	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-		if (tintIndex != 1) return -1;
-
-		//Gets the container.
 		ContainerBlockEntity container = getContainerEntity(world, pos);
 		if (container != null) {
-			//Gets the color provider for the container content.
-			ContainerBlockEntity.ContainerBlockColorProvider colorProvider = getColorProvider(getContent(container));
-
+			//Gets the color provider for the content, then gets the color from the provider if exists.
+			String content = getContent(container);
+			if (content.equals(CONTENT_EMPTY)) return -1;
+			ContainerBlockColorProvider colorProvider = getColorProvider(content);
 			if (colorProvider != null) {
-				//Gets the color.
 				return colorProvider.getColor(container, state, world, pos, tintIndex);
 			}
 		}
@@ -170,7 +153,6 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	static {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
-		ID = Terravibe.identified("tun");
 		OUTLINE_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 0, 2, 14, 1, 14),
 				Block.createCuboidShape(0, 0, 2, 2, 16, 16),

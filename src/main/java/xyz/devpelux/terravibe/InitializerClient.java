@@ -3,7 +3,6 @@ package xyz.devpelux.terravibe;
 import net.fabricmc.api.ClientModInitializer;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.core.Terravibe;
-import xyz.devpelux.terravibe.core.compatibility.sodium.TerravibeSodiumNonBlendable;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 import xyz.devpelux.terravibe.screenhandler.TerravibeScreenHandlerTypes;
@@ -17,12 +16,10 @@ public class InitializerClient implements ClientModInitializer {
 	 */
 	@Override
 	public void onInitializeClient() {
-		TerravibeItems.loadColorProviders();
-		TerravibeBlocks.loadColorProviders();
-		TerravibeBlocks.loadRenderLayerMaps();
-		TerravibeParticleTypes.loadFactories();
-		TerravibeScreenHandlerTypes.loadScreens();
-		TerravibeSodiumNonBlendable.load();
+		TerravibeBlocks.loadClient();
+		TerravibeItems.loadClient();
+		TerravibeScreenHandlerTypes.loadClient();
+		TerravibeParticleTypes.loadClient();
 
 		Terravibe.LOGGER.info("Loaded Terravibe client components.");
 	}

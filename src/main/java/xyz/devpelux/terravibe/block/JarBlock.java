@@ -28,7 +28,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
-import xyz.devpelux.terravibe.core.Terravibe;
+import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity.ContainerBlockColorProvider;
 import xyz.devpelux.terravibe.item.ColoredItem;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
@@ -59,11 +59,6 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	 * Specifies if the jar is closed.
 	 */
 	public static final BooleanProperty CLOSED;
-
-	/**
-	 * Identifier of the block.
-	 */
-	private static final Identifier ID;
 
 	/**
 	 * Outline shape of the block.
@@ -102,7 +97,14 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	 * Initializes a new {@link JarBlock} with default settings.
 	 */
 	public static JarBlock of() {
-		return new JarBlock(SETTINGS);
+		return of(0);
+	}
+
+	/**
+	 * Initializes a new {@link JarBlock} with default settings and luminance per level.
+	 */
+	public static JarBlock of(int luminancePerLevel) {
+		return new JarBlock(settings(luminancePerLevel, LEVEL));
 	}
 
 	/**
@@ -192,14 +194,6 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	public ItemConvertible getClosedJarFilledItem() {
 		return TerravibeItems.CLOSED_JAR_FILLED;
-	}
-
-	/**
-	 * Gets the identifier of the block.
-	 */
-	@Override
-	protected Identifier getId() {
-		return ID;
 	}
 
 	/**
@@ -325,36 +319,39 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	@Override
 	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
 		if (tintIndex == 1) {
-			//Gets the container.
-			ContainerBlockEntity container = getContainerEntity(world, pos);
-			if (container != null) {
-				//Gets the color provider for the container content.
-				ContainerBlockEntity.ContainerBlockColorProvider colorProvider = getColorProvider(getContent(container));
-
-				if (colorProvider != null) {
-					//Gets the color.
-					return colorProvider.getColor(container, state, world, pos, tintIndex);
-				}
-			}
-
-			return DEFAULT_CONTENT_COLOR;
-		} else if (tintIndex == 2) {
-			//Gets the plug.
+			//Plug reserved index 1.
+			//Gets the plug, then gets the color from the plug item, if exists and is a colored item.
 			ContainerBlockEntity container = getContainerEntity(world, pos);
 			Item plug = container != null ? getPlug(container) : null;
-
-			//Gets the plug color.
 			return plug instanceof ColoredItem coloredPlug ? coloredPlug.getColor(null, 1) : DEFAULT_PLUG_COLOR;
 		}
 
-		return -1;
+		//Other indexes.
+		ContainerBlockEntity container = getContainerEntity(world, pos);
+		if (container != null) {
+			//Gets the color provider for the content, then gets the color from the provider if exists.
+			String content = getContent(container);
+			if (content.equals(CONTENT_EMPTY)) return -1;
+			ContainerBlockColorProvider colorProvider = getColorProvider(content);
+			if (colorProvider != null) {
+				return colorProvider.getColor(container, state, world, pos, tintIndex);
+			}
+		}
+
+		return DEFAULT_CONTENT_COLOR;
+	}
+
+	/**
+	 * Gets the default settings with the specified luminance per level multiplier.
+	 */
+	protected static Settings settings(int luminancePerLevel, IntProperty level) {
+		return FabricBlockSettings.copyOf(SETTINGS).luminance((s) -> luminancePerLevel * s.get(level));
 	}
 
 	static {
 		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
 		CLOSED = BooleanProperty.of("closed");
-		ID = Terravibe.identified("jar");
 		OUTLINE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);
 	}
 }

@@ -1,0 +1,15 @@
+{
+  "credit": "devpelux",
+  "textures": {
+	"content": "terravibe:block/dense_fluid"
+  },
+  "elements": [
+	{
+	  "from": [ 2, 4, 2 ],
+	  "to": [ 14, 4, 14 ],
+	  "faces": {
+		"up": { "texture": "#content", "tintindex": 0 }
+	  }
+	}
+  ]
+}

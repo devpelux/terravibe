@@ -34,6 +34,16 @@ public final class TerravibeBlocks {
 	public static final Block MOLD_DUST_JAR;
 
 	/**
+	 * A jar for burned glowing dark mold dust.
+	 */
+	public static final Block BURNED_GLOWING_DARK_MOLD_DUST_JAR;
+
+	/**
+	 * A jar for glowing dark mold dust.
+	 */
+	public static final Block GLOWING_DARK_MOLD_DUST_JAR;
+
+	/**
 	 * A cauldron that contains milk.
 	 */
 	public static final Block MILK_CAULDRON;
@@ -203,35 +213,24 @@ public final class TerravibeBlocks {
 	}
 
 	/**
-	 * Loads all the containers behaviors.
-	 */
-	public static void loadContainerBehaviors() {
-		TerravibeContainerBehaviors.loadBehaviors();
-		MilkCauldronBlock.loadBehaviors();
-	}
-
-	/**
-	 * Loads all the color providers for the items.
+	 * Loads all the client side things related to the blocks.
 	 */
 	@Environment(EnvType.CLIENT)
-	public static void loadColorProviders() {
+	public static void loadClient() {
+		ColorProviderRegistry.BLOCK.register((BlockColorProvider) BURNED_GLOWING_DARK_MOLD_DUST_JAR, BURNED_GLOWING_DARK_MOLD_DUST_JAR);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) DUST_JAR, DUST_JAR);
+		ColorProviderRegistry.BLOCK.register((BlockColorProvider) GLOWING_DARK_MOLD_DUST_JAR, GLOWING_DARK_MOLD_DUST_JAR);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) MILK_CAULDRON, MILK_CAULDRON);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) MOLD_DUST_JAR, MOLD_DUST_JAR);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) NIGHTSHADE_FERN, NIGHTSHADE_FERN);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) JAR, JAR);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) TRAY, TRAY);
 		ColorProviderRegistry.BLOCK.register((BlockColorProvider) TUN, TUN);
-	}
 
-	/**
-	 * Loads all the render layer maps for the blocks.
-	 */
-	@Environment(EnvType.CLIENT)
-	public static void loadRenderLayerMaps() {
 		BlockRenderLayerMap.INSTANCE.putBlock(BASIL_HERB, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(BEANS_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_MOLD, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(BURNED_GLOWING_DARK_MOLD_DUST_JAR, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(CORN_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(DARK_SWEET_BERRY_BUSH, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(DARK_MOLD, RenderLayer.getCutout());
@@ -241,6 +240,7 @@ public final class TerravibeBlocks {
 		BlockRenderLayerMap.INSTANCE.putBlock(FLOWERING_OPUNTIA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(GILLYWEED_ALGA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(GLOWING_DARK_MOLD_DUST_JAR, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(JAR, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(KALE_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(LETTUCE_CROP, RenderLayer.getCutout());
@@ -265,6 +265,7 @@ public final class TerravibeBlocks {
 		BASIL_HERB = register("basil_herb", BasilHerbBlock.of());
 		BEANS_CROP = register("beans_crop", BeansCropBlock.of());
 		BIRCH_MOLD = register("birch_mold", BirchMoldBlock.of());
+		BURNED_GLOWING_DARK_MOLD_DUST_JAR = register("burned_glowing_dark_mold_dust_jar", DustJarBlock.of(4));
 		CHEESE_WHEEL = register("cheese_wheel", CheeseWheelBlock.of());
 		CORN_CROP = register("corn_crop", CornCropBlock.of());
 		DARK_MOLD = register("dark_mold", DarkMoldBlock.of());
@@ -273,6 +274,7 @@ public final class TerravibeBlocks {
 		FLOWERING_OPUNTIA = register("flowering_opuntia", FloweringOpuntiaBlock.of());
 		GILLYWEED_ALGA = register("gillyweed_alga", GillyweedAlgaBlock.of());
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", GlowingDarkMoldBlock.of());
+		GLOWING_DARK_MOLD_DUST_JAR = register("glowing_dark_mold_dust_jar", MoldDustJarBlock.of(2));
 		GORGONZOLA_WHEEL = register("gorgonzola_wheel", CheeseWheelBlock.of());
 		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", DarkSweetBerryBushBlock.of());
 		EGGPLANT_CROP = register("eggplant_crop", EggplantCropBlock.of());

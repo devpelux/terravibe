@@ -18,7 +18,7 @@
 		"model": "terravibe:block/jar_fluid_height1"
 	  },
 	  "when": {
-		"level": "1"
+		"AND": [ { "level": "1" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -26,7 +26,7 @@
 		"model": "terravibe:block/jar_fluid_height2"
 	  },
 	  "when": {
-		"level": "2"
+		"AND": [ { "level": "2" }, { "content_texture": "fluid" } ]
 	  }
 	},
 	{
@@ -34,7 +34,31 @@
 		"model": "terravibe:block/jar_fluid_height3"
 	  },
 	  "when": {
-		"level": "3"
+		"AND": [ { "level": "3" }, { "content_texture": "fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/jar_dense_fluid_height1"
+	  },
+	  "when": {
+		"AND": [ { "level": "1" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/jar_dense_fluid_height2"
+	  },
+	  "when": {
+		"AND": [ { "level": "2" }, { "content_texture": "dense_fluid" } ]
+	  }
+	},
+	{
+	  "apply": {
+		"model": "terravibe:block/jar_dense_fluid_height3"
+	  },
+	  "when": {
+		"AND": [ { "level": "3" }, { "content_texture": "dense_fluid" } ]
 	  }
 	}
   ]

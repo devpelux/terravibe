@@ -88,7 +88,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	/**
 	 * Loads all the cauldron behaviors.
 	 */
-	public static void loadBehaviors() {
+	public static void registerBehaviors() {
 		//Fill with milk.
 		CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);
 		CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(Items.MILK_BUCKET, FILL_WITH_MILK);

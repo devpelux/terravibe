@@ -10,6 +10,8 @@ import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.registry.Registry;
+import xyz.devpelux.terravibe.block.ContainerBlockData;
+import xyz.devpelux.terravibe.block.MilkCauldronBlock;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
 import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
 import xyz.devpelux.terravibe.core.Terravibe;
@@ -518,13 +520,16 @@ public final class TerravibeItems {
 		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, OAK_CORK, 0.2f);
 		CorkStrippableBlockRegistry.register(Blocks.WARPED_STEM, WARPED_CORK, 0.2f);
 		CorkStrippableBlockRegistry.register(Blocks.WARPED_HYPHAE, WARPED_CORK, 0.2f);
+
+		MilkCauldronBlock.registerBehaviors();
+		ContainerBlockData.load();
 	}
 
 	/**
-	 * Loads all the color providers for the items.
+	 * Loads all the client side things related to the items.
 	 */
 	@Environment(EnvType.CLIENT)
-	public static void loadColorProviders() {
+	public static void loadClient() {
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) ANCIENT_NIGHTSHADE_FERN_SEEDS, ANCIENT_NIGHTSHADE_FERN_SEEDS);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) ANCIENT_GILLYWEED_SEEDS, ANCIENT_GILLYWEED_SEEDS);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);

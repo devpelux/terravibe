@@ -36,16 +36,16 @@ public final class TerravibeParticleTypes {
 	}
 
 	/**
-	 * Loads all the tags.
+	 * Loads all the particle types.
 	 */
 	public static void load() {
 	}
 
 	/**
-	 * Loads all the particle factories.
+	 * Loads all the client side things related to the particle types.
 	 */
 	@Environment(EnvType.CLIENT)
-	public static void loadFactories() {
+	public static void loadClient() {
 		ParticleFactoryRegistry.getInstance().register(BIRCH_MOLD_SPORE, FloatingSporeParticleFactories.BirchMoldSporeFactory::new);
 		ParticleFactoryRegistry.getInstance().register(DARK_MOLD_SPORE, FloatingSporeParticleFactories.DarkMoldSporeFactory::new);
 		ParticleFactoryRegistry.getInstance().register(GLOWING_DARK_MOLD_SPORE, FloatingSporeParticleFactories.GlowingDarkMoldSporeFactory::new);

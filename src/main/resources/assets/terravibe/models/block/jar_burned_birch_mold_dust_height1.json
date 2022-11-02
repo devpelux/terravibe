@@ -1,6 +1,0 @@
-{
-  "parent": "terravibe:block/jar_content_height1",
-  "textures": {
-	"content": "terravibe:block/jar_burned_birch_mold_dust"
-  }
-}

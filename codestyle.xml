@@ -281,6 +281,7 @@
     </arrangement>
   </codeStyleSettings>
   <codeStyleSettings language="JSON">
+    <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
     <option name="SPACE_WITHIN_BRACKETS" value="true" />
     <option name="SPACE_WITHIN_BRACES" value="true" />
     <indentOptions>
