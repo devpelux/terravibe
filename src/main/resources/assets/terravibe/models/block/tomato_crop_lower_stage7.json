@@ -1,6 +1,6 @@
 {
   "parent": "terravibe:block/cross_crop",
   "textures": {
-	"cross": "terravibe:block/tomato_crop_stage6"
+	"cross": "terravibe:block/tomato_crop_lower_stage7"
   }
 }
