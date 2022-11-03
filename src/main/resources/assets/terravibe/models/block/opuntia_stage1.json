@@ -7,7 +7,9 @@
 	"top": "terravibe:block/opuntia_large_top",
 	"particle": "terravibe:block/opuntia_large_yside",
 	"yside": "terravibe:block/opuntia_large_yside",
-	"xside": "terravibe:block/opuntia_large_xside"
+	"yside_top_thorns": "terravibe:block/opuntia_large_yside_top_thorns",
+	"xside": "terravibe:block/opuntia_large_xside",
+	"xside_top_thorns": "terravibe:block/opuntia_large_xside_top_thorns"
   },
   "elements": [
 	{
@@ -20,18 +22,34 @@
 	},
 	{
 	  "from": [ 0, -1, 1 ],
-	  "to": [ 16, 16, 15 ],
+	  "to": [ 16, 15, 15 ],
 	  "faces": {
 		"north": { "uv": [ 0, 0, 16, 16 ], "texture": "#yside" },
 		"south": { "uv": [ 0, 0, 16, 16 ], "texture": "#yside" }
 	  }
 	},
 	{
+	  "from": [ 0, 15, 1 ],
+	  "to": [ 16, 16, 15 ],
+	  "faces": {
+		"north": { "uv": [ 0, 0, 16, 1 ], "texture": "#yside_top_thorns" },
+		"south": { "uv": [ 0, 0, 16, 1 ], "texture": "#yside_top_thorns" }
+	  }
+	},
+	{
 	  "from": [ 1, -1, 0 ],
-	  "to": [ 15, 16, 16 ],
+	  "to": [ 15, 15, 16 ],
 	  "faces": {
 		"east": { "uv": [ 0, 0, 16, 16 ], "texture": "#xside" },
 		"west": { "uv": [ 0, 0, 16, 16 ], "texture": "#xside" }
+	  }
+	},
+	{
+	  "from": [ 1, 15, 0 ],
+	  "to": [ 15, 16, 16 ],
+	  "faces": {
+		"east": { "uv": [ 0, 0, 16, 1 ], "texture": "#xside_top_thorns" },
+		"west": { "uv": [ 0, 0, 16, 1 ], "texture": "#xside_top_thorns" }
 	  }
 	}
   ]
