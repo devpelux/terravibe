@@ -1,12 +1,9 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -22,11 +19,6 @@ import java.util.Optional;
  */
 public class EggplantCropBlock extends FruitCropBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Voxel shapes of the block.
 	 */
 	private static final VoxelShape[] AGE_TO_SHAPE;
@@ -36,13 +28,6 @@ public class EggplantCropBlock extends FruitCropBlock {
 	 */
 	public EggplantCropBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link EggplantCropBlock} with default settings.
-	 */
-	public static EggplantCropBlock of() {
-		return new EggplantCropBlock(SETTINGS);
 	}
 
 	/**
@@ -94,12 +79,6 @@ public class EggplantCropBlock extends FruitCropBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.nonOpaque()
-				.noCollision()
-				.ticksRandomly()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.CROP);
 		AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 1.0D, 16.0D),
 				Block.createCuboidShape(0.0D, -1.0D, 0.0D, 16.0D, 3.0D, 16.0D),

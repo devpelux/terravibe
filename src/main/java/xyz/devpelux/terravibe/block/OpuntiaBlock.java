@@ -1,10 +1,8 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.NavigationType;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -27,11 +25,6 @@ import org.jetbrains.annotations.Nullable;
  * Main block of the opuntia.
  */
 public class OpuntiaBlock extends FacingBlock {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CACTUS);
-
 	/**
 	 * Cascade breaking delay.
 	 */
@@ -88,13 +81,6 @@ public class OpuntiaBlock extends FacingBlock {
 	public OpuntiaBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getDefaultState().with(FACING, Direction.DOWN).with(DISTANCE, 0).with(AGE, 0));
-	}
-
-	/**
-	 * Initializes a new {@link OpuntiaBlock} with default settings.
-	 */
-	public static OpuntiaBlock of() {
-		return new OpuntiaBlock(SETTINGS);
 	}
 
 	/**
@@ -169,7 +155,7 @@ public class OpuntiaBlock extends FacingBlock {
 	 */
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		entity.damage(DamageSource.CACTUS, 1.0F);
+		entity.damage(world.getDamageSources().cactus(), 1.0F);
 	}
 
 	/**
@@ -191,7 +177,7 @@ public class OpuntiaBlock extends FacingBlock {
 			//If the block is too distant, schedules a new block tick.
 			//So if at the block scheduled tick, the distance remains too much, the block is broken.
 			if (!world.isClient()) {
-				world.createAndScheduleBlockTick(pos, this, BREAKING_DELAY);
+				world.scheduleBlockTick(pos, this, BREAKING_DELAY);
 			}
 			return state;
 		}

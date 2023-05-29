@@ -1,7 +1,8 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +11,6 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -37,11 +37,6 @@ import java.util.Optional;
  * Tray used to make salt.
  */
 public class TrayBlock extends Block implements BlockColorProvider {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
 	/**
 	 * Content of the tray.
 	 */
@@ -73,13 +68,6 @@ public class TrayBlock extends Block implements BlockColorProvider {
 	public TrayBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getDefaultState().with(CONTENT, Content.Nothing));
-	}
-
-	/**
-	 * Initializes a new {@link TrayBlock} with default settings.
-	 */
-	public static TrayBlock of() {
-		return new TrayBlock(SETTINGS);
 	}
 
 	/**
@@ -248,9 +236,6 @@ public class TrayBlock extends Block implements BlockColorProvider {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.STONE, MapColor.BLACK)
-				.breakInstantly()
-				.sounds(BlockSoundGroup.STONE);
 		CONTENT = EnumProperty.of("content", Content.class);
 		OUTLINE_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 4, 16);
 	}

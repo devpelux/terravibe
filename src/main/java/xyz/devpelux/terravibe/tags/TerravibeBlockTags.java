@@ -2,7 +2,7 @@ package xyz.devpelux.terravibe.tags;
 
 import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.block.Block;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.tag.TagKey;
 
 /**
  * List of all the block tags.

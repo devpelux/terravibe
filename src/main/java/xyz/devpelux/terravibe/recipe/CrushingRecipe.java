@@ -10,10 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Triple;
 
@@ -48,7 +49,7 @@ public class CrushingRecipe extends InventoryRecipe {
 	 * Returns the first output element. (Main output)
 	 */
 	@Override
-	public ItemStack getOutput() {
+	public ItemStack getOutput(DynamicRegistryManager registryManager) {
 		//This is useful for search purposes and other things that requires a single main output.
 		return getOutput(0);
 	}
@@ -140,7 +141,7 @@ public class CrushingRecipe extends InventoryRecipe {
 			List<Triple<ItemStack, Integer, Integer>> outputs = new ArrayList<>();
 			for (CrushingRecipeFormat.ResultFormat result : recipe.results) {
 				//Output stack with min and max count.
-				Optional<Item> outputItem = Registry.ITEM.getOrEmpty(new Identifier(result.item));
+				Optional<Item> outputItem = Registries.ITEM.getOrEmpty(new Identifier(result.item));
 				ItemStack outputStack = new ItemStack(outputItem.orElseThrow(() -> new JsonSyntaxException("Invalid item '" + result.item + "'")));
 				int maxCount = result.max_count;
 				int minCount = Math.min(result.min_count, maxCount);

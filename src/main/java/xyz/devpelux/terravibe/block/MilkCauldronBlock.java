@@ -1,7 +1,9 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractCauldronBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.entity.Entity;
@@ -41,11 +43,6 @@ import java.util.Map;
  */
 public final class MilkCauldronBlock extends AbstractCauldronBlock implements BlockColorProvider {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CAULDRON);
-
-	/**
 	 * Fermenting time to the next stage.
 	 */
 	public static final int FERMENTING_TIME = 60;
@@ -76,13 +73,6 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	public MilkCauldronBlock(Settings settings) {
 		super(settings, MILK_CAULDRON_BEHAVIOR);
 		setDefaultState(getDefaultState().with(CONTENT, Content.Milk));
-	}
-
-	/**
-	 * Initializes a new {@link MilkCauldronBlock} with default settings.
-	 */
-	public static MilkCauldronBlock of() {
-		return new MilkCauldronBlock(SETTINGS);
 	}
 
 	/**

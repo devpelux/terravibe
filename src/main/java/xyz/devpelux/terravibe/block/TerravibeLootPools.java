@@ -6,7 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.loot.LootManager;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.AlternativeLootCondition;
+import net.minecraft.loot.condition.AnyOfLootCondition;
 import net.minecraft.loot.condition.LocationCheckLootCondition;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.AlternativeEntry;
@@ -17,7 +17,7 @@ import net.minecraft.predicate.NumberRange.FloatRange;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import xyz.devpelux.terravibe.item.TerravibeItems;
@@ -41,7 +41,7 @@ public class TerravibeLootPools {
 		//Ancient nightshade fern seeds at height 55 <-> 125.
 		LeafEntry.Builder<?> nightshadeFernSeeds = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
 		nightshadeFernSeeds.conditionally(RandomChanceLootCondition.builder(0.005f));
-		nightshadeFernSeeds.conditionally(AlternativeLootCondition.builder(
+		nightshadeFernSeeds.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OLD_GROWTH_PINE_TAIGA, FloatRange.between(55, 125))),
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, FloatRange.between(55, 125)))
 		));
@@ -59,7 +59,7 @@ public class TerravibeLootPools {
 		//Ancient gillyweed seeds at height 22 <-> 54.
 		LeafEntry.Builder<?> gillyweedSeedsH1 = ItemEntry.builder(TerravibeItems.ANCIENT_GILLYWEED_SEEDS);
 		gillyweedSeedsH1.conditionally(RandomChanceLootCondition.builder(0.002f));
-		gillyweedSeedsH1.conditionally(AlternativeLootCondition.builder(
+		gillyweedSeedsH1.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OCEAN, FloatRange.between(22, 54))),
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.DEEP_OCEAN, FloatRange.between(22, 54))),
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.COLD_OCEAN, FloatRange.between(22, 54))),
@@ -69,7 +69,7 @@ public class TerravibeLootPools {
 		//Ancient gillyweed seeds at height 24 <-> 42.
 		LeafEntry.Builder<?> gillyweedSeedsH2 = ItemEntry.builder(TerravibeItems.ANCIENT_GILLYWEED_SEEDS);
 		gillyweedSeedsH2.conditionally(RandomChanceLootCondition.builder(0.008f)); //Total: 0,009984
-		gillyweedSeedsH2.conditionally(AlternativeLootCondition.builder(
+		gillyweedSeedsH2.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OCEAN, FloatRange.between(24, 42))),
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.DEEP_OCEAN, FloatRange.between(24, 42))),
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.COLD_OCEAN, FloatRange.between(24, 42))),

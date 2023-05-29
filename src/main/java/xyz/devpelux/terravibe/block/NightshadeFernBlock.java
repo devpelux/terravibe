@@ -1,10 +1,11 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -24,11 +25,6 @@ import java.util.Optional;
  */
 public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColorProvider {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Voxel shapes of the lower block the crop.
 	 */
 	private static final VoxelShape[] LOWER_AGE_TO_SHAPE;
@@ -43,13 +39,6 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 	 */
 	public NightshadeFernBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link NightshadeFernBlock} with default settings.
-	 */
-	public static NightshadeFernBlock of() {
-		return new NightshadeFernBlock(SETTINGS);
 	}
 
 	/**
@@ -139,13 +128,6 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.nonOpaque()
-				.noCollision()
-				.ticksRandomly()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.GRASS)
-				.offsetType(OffsetType.XYZ);
 		LOWER_AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(2.0, -1.0, 2.0, 14.0, 3.0, 14.0),
 				Block.createCuboidShape(2.0, -1.0, 2.0, 14.0, 9.0, 14.0),

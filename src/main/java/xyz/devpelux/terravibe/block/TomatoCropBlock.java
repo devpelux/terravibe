@@ -1,12 +1,9 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -23,11 +20,6 @@ import java.util.Optional;
  */
 public class TomatoCropBlock extends TallFruitCropBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Voxel shapes of the lower block the crop.
 	 */
 	private static final VoxelShape[] LOWER_AGE_TO_SHAPE;
@@ -42,13 +34,6 @@ public class TomatoCropBlock extends TallFruitCropBlock {
 	 */
 	public TomatoCropBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link TomatoCropBlock} with default settings.
-	 */
-	public static TomatoCropBlock of() {
-		return new TomatoCropBlock(SETTINGS);
 	}
 
 	/**
@@ -116,12 +101,6 @@ public class TomatoCropBlock extends TallFruitCropBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.nonOpaque()
-				.noCollision()
-				.ticksRandomly()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.CROP);
 		LOWER_AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(0.0, -1.0, 0.0, 16.0, 1.0, 16.0),
 				Block.createCuboidShape(0.0, -1.0, 0.0, 16.0, 4.0, 16.0),

@@ -91,7 +91,7 @@ public class ResultSlot extends Slot {
 	 */
 	@Override
 	protected void onCrafted(ItemStack stack) {
-		if (this.amount > 0) stack.onCraft(this.player.world, this.player, this.amount);
+		if (this.amount > 0) stack.onCraft(this.player.getWorld(), this.player, this.amount);
 		this.amount = 0;
 	}
 }

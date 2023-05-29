@@ -1,10 +1,8 @@
 package xyz.devpelux.terravibe.block;
 
 import it.unimi.dsi.fastutil.Pair;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.item.Item;
@@ -27,11 +25,6 @@ import java.util.stream.Stream;
  * Container for "non-lava" fluids.
  */
 public class TunBlock extends ContainerBlock implements BlockColorProvider {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
 	/**
 	 * Level of the content when full.
 	 */
@@ -67,13 +60,6 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	 */
 	public TunBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link TunBlock} with default settings.
-	 */
-	public static TunBlock of() {
-		return new TunBlock(SETTINGS);
 	}
 
 	/**
@@ -151,7 +137,6 @@ public class TunBlock extends ContainerBlock implements BlockColorProvider {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.BARREL);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
 		OUTLINE_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 0, 2, 14, 1, 14),

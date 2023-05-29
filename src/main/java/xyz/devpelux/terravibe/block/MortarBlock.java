@@ -1,7 +1,8 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -26,11 +27,6 @@ import java.util.Optional;
  */
 public class MortarBlock extends Block {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Outline shape of the block.
 	 */
 	private static final VoxelShape OUTLINE_SHAPE;
@@ -40,13 +36,6 @@ public class MortarBlock extends Block {
 	 */
 	public MortarBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link MortarBlock} with default settings.
-	 */
-	public static MortarBlock of() {
-		return new MortarBlock(SETTINGS);
 	}
 
 	/**
@@ -102,8 +91,6 @@ public class MortarBlock extends Block {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT)
-				.mapColor(MapColor.OAK_TAN);
 		OUTLINE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
 	}
 }

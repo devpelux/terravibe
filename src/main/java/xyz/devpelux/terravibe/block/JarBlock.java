@@ -1,10 +1,8 @@
 package xyz.devpelux.terravibe.block;
 
 import it.unimi.dsi.fastutil.Pair;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.registry.Registries;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
@@ -21,7 +20,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
@@ -40,11 +38,6 @@ import java.util.Map;
  * Container for things.
  */
 public class JarBlock extends ContainerBlock implements BlockColorProvider {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
 	/**
 	 * Level of the content when full.
 	 */
@@ -94,20 +87,6 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 	}
 
 	/**
-	 * Initializes a new {@link JarBlock} with default settings.
-	 */
-	public static JarBlock of() {
-		return of(0);
-	}
-
-	/**
-	 * Initializes a new {@link JarBlock} with default settings and luminance per level.
-	 */
-	public static JarBlock of(int luminancePerLevel) {
-		return new JarBlock(settings(luminancePerLevel, LEVEL));
-	}
-
-	/**
 	 * Registers a behavior for the content and input specified.
 	 */
 	public static void registerBehavior(String content, Item used, ContainerBehavior interaction) {
@@ -131,7 +110,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 
 		//If the plug exists then returns the item, else returns null.
 		if (!plug.equals("")) {
-			Item item = Registry.ITEM.get(new Identifier(plug));
+			Item item = Registries.ITEM.get(new Identifier(plug));
 			if (item != Items.AIR) {
 				return item;
 			}
@@ -147,7 +126,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 		if (plug != null) {
 			//Sets the plug.
 			NbtCompound value = new NbtCompound();
-			value.putString("Id", Registry.ITEM.getId(plug).toString());
+			value.putString("Id", Registries.ITEM.getId(plug).toString());
 			container.setValue("Plug", value);
 		} else {
 			//Removes the plug.
@@ -341,15 +320,7 @@ public class JarBlock extends ContainerBlock implements BlockColorProvider {
 		return DEFAULT_CONTENT_COLOR;
 	}
 
-	/**
-	 * Gets the default settings with the specified luminance per level multiplier.
-	 */
-	protected static Settings settings(int luminancePerLevel, IntProperty level) {
-		return FabricBlockSettings.copyOf(SETTINGS).luminance((s) -> luminancePerLevel * s.get(level));
-	}
-
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.FLOWER_POT);
 		LEVEL = IntProperty.of("level", 0, MAX_LEVEL);
 		CLOSED = BooleanProperty.of("closed");
 		OUTLINE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 9, 11);

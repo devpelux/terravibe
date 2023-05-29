@@ -1,13 +1,10 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.IntProperty;
@@ -25,11 +22,6 @@ import java.util.Optional;
  */
 public class NightlockBerryBushBlock extends BerryBushBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Movement slow amount.
 	 */
 	public static final Vec3d MOVEMENT_SLOWING_AMOUNT = new Vec3d(0.8, 0.75, 0.8);
@@ -39,13 +31,6 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
 	 */
 	public NightlockBerryBushBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link NightlockBerryBushBlock} with default settings.
-	 */
-	public static NightlockBerryBushBlock of() {
-		return new NightlockBerryBushBlock(SETTINGS);
 	}
 
 	/**
@@ -132,14 +117,5 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
 			return MOVEMENT_SLOWING_AMOUNT;
 		}
 		return Vec3d.ZERO;
-	}
-
-	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.nonOpaque()
-				.noCollision()
-				.ticksRandomly()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.SWEET_BERRY_BUSH);
 	}
 }

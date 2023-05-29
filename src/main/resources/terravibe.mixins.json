@@ -4,9 +4,7 @@
   "package": "xyz.devpelux.terravibe.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
-  "client": [
-	"sodium.client.LinearColorBlenderMixin"
-  ],
+  "client": [],
   "injectors": {
 	"defaultRequire": 1
   }

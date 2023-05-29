@@ -9,7 +9,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import xyz.devpelux.terravibe.entity.TerravibeDamageSources;
 
 /**
  * Little poisonous berry with a black color.
@@ -33,8 +32,8 @@ public class NightlockBerriesItem extends AliasedBlockItem {
 			//The nightlock kills the entity after being eaten.
 			if (entity instanceof PlayerEntity player && player.getAbilities().creativeMode) {
 				//Even in creative mode!
-				entity.damage(TerravibeDamageSources.NIGHTLOCK_CREATIVE, Float.MAX_VALUE);
-			} else entity.damage(TerravibeDamageSources.NIGHTLOCK, Float.MAX_VALUE);
+				entity.damage(world.getDamageSources().genericKill(), Float.MAX_VALUE);
+			} else entity.damage(world.getDamageSources().genericKill(), Float.MAX_VALUE);
 		} else {
 			//Foxes are only poisoned, not killed.
 			entity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 80, 0));

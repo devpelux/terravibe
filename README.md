@@ -67,7 +67,7 @@ You can also use it to get sweet potato buds from poisonous potatoes.
 <!-- license -->
 
 # License
-Copyright (C) 2022 devpelux (Salvatore Peluso)  
+Copyright (C) 2022-2023 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
 [![mit](https://raw.githubusercontent.com/devpelux/terravibe/a346a3fc1008ff869aa6b53f46fd19e2b56d2b78/assets/mit.png)](https://github.com/devpelux/terravibe/blob/537f8f05039eaf6f977ca00cdeee37dbc6a45389/LICENSE)

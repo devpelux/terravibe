@@ -1,6 +1,5 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,11 +30,6 @@ import java.util.ArrayList;
  */
 public abstract class PizzaBlock extends HorizontalFacingBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Max number of slices.
 	 */
 	public static final int MAX_SLICES = 4;
@@ -61,8 +55,8 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	/**
 	 * Generates a new block of pizza four cheese.
 	 */
-	public static PizzaBlock fourCheese() {
-		return new PizzaBlock(SETTINGS) {
+	public static PizzaBlock fourCheese(Settings settings) {
+		return new PizzaBlock(settings) {
 			/**
 			 * Gets the item of the slice.
 			 */
@@ -76,8 +70,8 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	/**
 	 * Generates a new block of pizza margherita.
 	 */
-	public static PizzaBlock margherita() {
-		return new PizzaBlock(SETTINGS) {
+	public static PizzaBlock margherita(Settings settings) {
+		return new PizzaBlock(settings) {
 			/**
 			 * Gets the item of the slice.
 			 */
@@ -108,7 +102,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext ctx) {
 		//When the player places the block, gets the opposite direction.
-		return getDefaultState().with(FACING, ctx.getPlayerFacing());
+		return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
 	}
 
 	/**
@@ -145,7 +139,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	 */
 	@Override
 	public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-		return world.getBlockState(pos.down()).getMaterial().isSolid();
+		return world.getBlockState(pos.down()).isSolid();
 	}
 
 	/**
@@ -207,7 +201,6 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.CAKE);
 		SLICES = IntProperty.of("slices", 1, MAX_SLICES);
 
 		//facing | slices

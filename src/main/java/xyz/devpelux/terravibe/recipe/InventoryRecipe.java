@@ -6,6 +6,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
@@ -34,8 +35,8 @@ public abstract class InventoryRecipe implements Recipe<Inventory> {
 	 * Crafts the result.
 	 */
 	@Override
-	public ItemStack craft(Inventory inventory) {
-		return getOutput().copy();
+	public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
+		return getOutput(registryManager).copy();
 	}
 
 	/**

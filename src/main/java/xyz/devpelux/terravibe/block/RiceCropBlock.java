@@ -1,12 +1,9 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
@@ -17,11 +14,6 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
  */
 public class RiceCropBlock extends FloodedCropBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Voxel shapes of the crop.
 	 */
 	private static final VoxelShape[] AGE_TO_SHAPE;
@@ -31,13 +23,6 @@ public class RiceCropBlock extends FloodedCropBlock {
 	 */
 	public RiceCropBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link RiceCropBlock} with default settings.
-	 */
-	public static RiceCropBlock of() {
-		return new RiceCropBlock(SETTINGS);
 	}
 
 	/**
@@ -73,12 +58,6 @@ public class RiceCropBlock extends FloodedCropBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.nonOpaque()
-				.noCollision()
-				.ticksRandomly()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.CROP);
 		AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(0.0, -5.0, 0.0, 16.0, -3.0, 16.0),
 				Block.createCuboidShape(0.0, -5.0, 0.0, 16.0, 0.0, 16.0),

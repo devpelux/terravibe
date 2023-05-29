@@ -2,7 +2,6 @@ package xyz.devpelux.terravibe.block;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
@@ -22,6 +21,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
 import java.util.Optional;
@@ -193,7 +193,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 			Vec3d movement = new Vec3d(movementX, movementY, movementZ);
 			float damage = getThornsDamage(state, world, pos, entity, movement);
 			if (damage > 0F) {
-				entity.damage(DamageSource.SWEET_BERRY_BUSH, damage);
+				entity.damage(world.getDamageSources().sweetBerryBush(), damage);
 			}
 		}
 	}
@@ -202,7 +202,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 	 * Gets a value indicating if the plant can be fertilized with bonemeal.
 	 */
 	@Override
-	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
 		return !isFullyGrown(state);
 	}
 

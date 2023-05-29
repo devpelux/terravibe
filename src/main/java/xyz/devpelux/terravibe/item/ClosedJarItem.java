@@ -11,6 +11,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
@@ -20,7 +21,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -110,7 +110,7 @@ public class ClosedJarItem extends Item implements ItemColorProvider {
 
 		//If the plug exists then returns the item, else returns null.
 		if (!plugId.equals("")) {
-			Item plug = Registry.ITEM.get(new Identifier(plugId));
+			Item plug = Registries.ITEM.get(new Identifier(plugId));
 			if (plug != Items.AIR) {
 				return plug;
 			}
@@ -134,7 +134,7 @@ public class ClosedJarItem extends Item implements ItemColorProvider {
 
 			if (!blockId.equals("")) {
 				//If the block id is valid, gets the block.
-				Block block = Registry.BLOCK.get(new Identifier(blockId));
+				Block block = Registries.BLOCK.get(new Identifier(blockId));
 
 				if (block instanceof ContainerBlock container) {
 					//If the block exists and is a container, then gets the correct block state and tries to place it.

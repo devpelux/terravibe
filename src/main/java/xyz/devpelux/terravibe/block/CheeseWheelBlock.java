@@ -1,7 +1,9 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -15,11 +17,6 @@ import net.minecraft.world.BlockView;
  */
 public class CheeseWheelBlock extends HorizontalFacingBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Outline shape of the block.
 	 */
 	private static final VoxelShape OUTLINE_SHAPE;
@@ -30,13 +27,6 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	public CheeseWheelBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
-	}
-
-	/**
-	 * Initializes a new {@link CheeseWheelBlock} with default settings.
-	 */
-	public static CheeseWheelBlock of() {
-		return new CheeseWheelBlock(SETTINGS);
 	}
 
 	/**
@@ -54,7 +44,7 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext ctx) {
 		//When the player places the block, gets the opposite direction.
-		return getDefaultState().with(FACING, ctx.getPlayerFacing());
+		return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
 	}
 
 	/**
@@ -74,7 +64,6 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.CAKE);
 		OUTLINE_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 4, 14);
 	}
 }

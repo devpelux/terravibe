@@ -1,13 +1,10 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -15,17 +12,13 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 
 /**
  * Plant of the thistle.
  */
 public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
 	/**
 	 * Spreading radius in blocks from the current position.
 	 */
@@ -64,13 +57,6 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 	}
 
 	/**
-	 * Initializes a new {@link ThistlePlantBlock} with default settings.
-	 */
-	public static ThistlePlantBlock of() {
-		return new ThistlePlantBlock(SETTINGS);
-	}
-
-	/**
 	 * Gets the thorns damage caused by the plant. (0 = no thorns)
 	 */
 	protected float getThornsDamage(BlockState state, World world, BlockPos pos, Entity entity, Vec3d entityMovement) {
@@ -94,7 +80,7 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 	 * Gets a value indicating if the plant can be fertilized with bonemeal.
 	 */
 	@Override
-	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
 		return true;
 	}
 
@@ -155,7 +141,7 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 			Vec3d movement = new Vec3d(movementX, movementY, movementZ);
 			float damage = getThornsDamage(state, world, pos, entity, movement);
 			if (damage > 0F) {
-				entity.damage(DamageSource.CACTUS, damage);
+				entity.damage(world.getDamageSources().cactus(), damage);
 			}
 		}
 	}
@@ -184,11 +170,6 @@ public class ThistlePlantBlock extends PlantBlock implements Fertilizable {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.noCollision()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.GRASS)
-				.offsetType(OffsetType.XYZ);
 		OUTLINE_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 	}
 }

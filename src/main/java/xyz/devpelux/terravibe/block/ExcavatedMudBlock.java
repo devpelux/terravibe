@@ -1,13 +1,11 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -24,11 +22,6 @@ import org.jetbrains.annotations.Nullable;
  * A mud block partially excavated.
  */
 public class ExcavatedMudBlock extends Block implements FluidFillable {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
 	/**
 	 * Waterlogged state.
 	 */
@@ -50,13 +43,6 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 	public ExcavatedMudBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getDefaultState().with(WATERLOGGED, false));
-	}
-
-	/**
-	 * Initializes a new {@link ExcavatedMudBlock} with default settings.
-	 */
-	public static ExcavatedMudBlock of() {
-		return new ExcavatedMudBlock(SETTINGS);
 	}
 
 	/**
@@ -99,7 +85,7 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 			world.setBlockState(pos, state.with(WATERLOGGED, true));
 
 			//Starts the fluid ticking.
-			world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+			world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 		}
 	}
 
@@ -109,7 +95,7 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 	@Override
 	public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
 		BlockState blockState = world.getBlockState(pos.up());
-		return !blockState.getMaterial().isSolid() || blockState.getBlock() instanceof FenceGateBlock
+		return !blockState.isSolid() || blockState.getBlock() instanceof FenceGateBlock
 				|| blockState.getBlock() instanceof PistonExtensionBlock;
 	}
 
@@ -130,7 +116,7 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 			if (state.canPlaceAt(world, pos)) {
 				//The block is waterlogged and can still be placed in the position.
 				//Starts the fluid ticking.
-				world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+				world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 				return state;
 			}
 		} else if (state.canPlaceAt(world, pos)) {
@@ -237,9 +223,6 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.DIRT)
-				.sounds(BlockSoundGroup.MUD)
-				.mapColor(MapColor.TERRACOTTA_CYAN);
 		OUTLINE_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 11, 16);
 		COLLISION_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 10, 16);
 	}

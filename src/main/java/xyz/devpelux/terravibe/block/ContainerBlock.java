@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.Registries;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
@@ -17,7 +18,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -169,7 +169,7 @@ public abstract class ContainerBlock extends BlockWithEntity {
 	 */
 	protected void saveToNbt(BlockState state, BlockView world, BlockPos pos, NbtCompound nbt) {
 		//Saves the block id and the level.
-		nbt.putString("Block", Registry.BLOCK.getId(this).toString());
+		nbt.putString("Block", Registries.BLOCK.getId(this).toString());
 		nbt.putInt("Level", getLevel(state));
 
 		//Saves the content texture if is specified to use the default property.

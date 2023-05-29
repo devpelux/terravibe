@@ -19,29 +19,23 @@
 	"gillyweed_alga": {
 	  "trigger": "minecraft:placed_block",
 	  "conditions": {
-		"block": "terravibe:gillyweed_alga",
-		"state": {
-		  "age": "0"
-		},
-		"item": {
-		  "items": [
-			"terravibe:gillyweed_seeds"
-		  ]
-		}
+		"location": [
+		  {
+			"block": "terravibe:gillyweed_alga",
+			"condition": "minecraft:block_state_property"
+		  }
+		]
 	  }
 	},
 	"nightshade_fern": {
 	  "trigger": "minecraft:placed_block",
 	  "conditions": {
-		"block": "terravibe:nightshade_fern",
-		"state": {
-		  "age": "0"
-		},
-		"item": {
-		  "items": [
-			"terravibe:nightshade_fern_seeds"
-		  ]
-		}
+		"location": [
+		  {
+			"block": "terravibe:nightshade_fern",
+			"condition": "minecraft:block_state_property"
+		  }
+		]
 	  }
 	}
   },

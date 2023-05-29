@@ -1,10 +1,11 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.tag.BlockTags;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -15,11 +16,6 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
  * Crop of the corn.
  */
 public class CornCropBlock extends TallCropBlock {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
 	/**
 	 * Voxel shapes of the lower block the crop.
 	 */
@@ -35,13 +31,6 @@ public class CornCropBlock extends TallCropBlock {
 	 */
 	public CornCropBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link CornCropBlock} with default settings.
-	 */
-	public static CornCropBlock of() {
-		return new CornCropBlock(SETTINGS);
 	}
 
 	/**
@@ -85,13 +74,6 @@ public class CornCropBlock extends TallCropBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.PLANT)
-				.nonOpaque()
-				.noCollision()
-				.ticksRandomly()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.CROP)
-				.offsetType(OffsetType.XZ);
 		LOWER_AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(0.0, -1.0, 0.0, 16.0, 6.0, 16.0),
 				Block.createCuboidShape(0.0, -1.0, 0.0, 16.0, 8.0, 16.0),

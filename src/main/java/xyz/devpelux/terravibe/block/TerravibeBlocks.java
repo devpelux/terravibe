@@ -9,7 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import xyz.devpelux.terravibe.core.Terravibe;
 
 /**
@@ -258,44 +259,44 @@ public final class TerravibeBlocks {
 	 * Registers the specified block with the specified id.
 	 */
 	private static <T extends Block> T register(String id, T block) {
-		return Registry.register(Registry.BLOCK, Terravibe.identified(id), block);
+		return Registry.register(Registries.BLOCK, Terravibe.identified(id), block);
 	}
 
 	static {
-		BASIL_HERB = register("basil_herb", BasilHerbBlock.of());
-		BEANS_CROP = register("beans_crop", BeansCropBlock.of());
-		BIRCH_MOLD = register("birch_mold", BirchMoldBlock.of());
-		BURNED_GLOWING_DARK_MOLD_DUST_JAR = register("burned_glowing_dark_mold_dust_jar", DustJarBlock.of(4));
-		CHEESE_WHEEL = register("cheese_wheel", CheeseWheelBlock.of());
-		CORN_CROP = register("corn_crop", CornCropBlock.of());
-		DARK_MOLD = register("dark_mold", DarkMoldBlock.of());
-		DUST_JAR = register("dust_jar", DustJarBlock.of());
-		EXCAVATED_MUD = register("excavated_mud", ExcavatedMudBlock.of());
-		FLOWERING_OPUNTIA = register("flowering_opuntia", FloweringOpuntiaBlock.of());
-		GILLYWEED_ALGA = register("gillyweed_alga", GillyweedAlgaBlock.of());
-		GLOWING_DARK_MOLD = register("glowing_dark_mold", GlowingDarkMoldBlock.of());
-		GLOWING_DARK_MOLD_DUST_JAR = register("glowing_dark_mold_dust_jar", MoldDustJarBlock.of(2));
-		GORGONZOLA_WHEEL = register("gorgonzola_wheel", CheeseWheelBlock.of());
-		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", DarkSweetBerryBushBlock.of());
-		EGGPLANT_CROP = register("eggplant_crop", EggplantCropBlock.of());
-		JAR = register("jar", JarBlock.of());
-		KALE_CROP = register("kale_crop", KaleCropBlock.of());
-		LETTUCE_CROP = register("lettuce_crop", LettuceCropBlock.of());
-		MILK_CAULDRON = register("milk_cauldron", MilkCauldronBlock.of());
-		MOLD_DUST_JAR = register("mold_dust_jar", MoldDustJarBlock.of());
-		MORTAR = register("mortar", MortarBlock.of());
-		NIGHTLOCK_BERRY_BUSH = register("nightlock_berry_bush", NightlockBerryBushBlock.of());
-		NIGHTSHADE_FERN = register("nightshade_fern", NightshadeFernBlock.of());
-		ONION_CROP = register("onion_crop", OnionCropBlock.of());
-		OPUNTIA = register("opuntia", OpuntiaBlock.of());
-		PIZZA_FOUR_CHEESE = register("pizza_four_cheese", PizzaBlock.fourCheese());
-		PIZZA_MARGHERITA = register("pizza_margherita", PizzaBlock.margherita());
-		RICE_CROP = register("rice_crop", RiceCropBlock.of());
-		SHREDDER = register("shredder", ShredderBlock.of());
-		SWEET_POTATO_CROP = register("sweet_potato_crop", SweetPotatoCropBlock.of());
-		THISTLE_PLANT = register("thistle_plant", ThistlePlantBlock.of());
-		TOMATO_CROP = register("tomato_crop", TomatoCropBlock.of());
-		TRAY = register("tray", TrayBlock.of());
-		TUN = register("tun", TunBlock.of());
+		BASIL_HERB = register("basil_herb", new BasilHerbBlock(TerravibeBlockSettings.basil_herb()));
+		BEANS_CROP = register("beans_crop", new BeansCropBlock(TerravibeBlockSettings.beans_crop()));
+		BIRCH_MOLD = register("birch_mold", new BirchMoldBlock(TerravibeBlockSettings.birch_mold()));
+		BURNED_GLOWING_DARK_MOLD_DUST_JAR = register("burned_glowing_dark_mold_dust_jar", new DustJarBlock(TerravibeBlockSettings.burned_glowing_dark_mold_dust_jar()));
+		CHEESE_WHEEL = register("cheese_wheel", new CheeseWheelBlock(TerravibeBlockSettings.cheese_wheel()));
+		CORN_CROP = register("corn_crop", new CornCropBlock(TerravibeBlockSettings.corn_crop()));
+		DARK_MOLD = register("dark_mold", new DarkMoldBlock(TerravibeBlockSettings.dark_mold()));
+		DUST_JAR = register("dust_jar", new DustJarBlock(TerravibeBlockSettings.dust_jar()));
+		EXCAVATED_MUD = register("excavated_mud", new ExcavatedMudBlock(TerravibeBlockSettings.excavated_mud()));
+		FLOWERING_OPUNTIA = register("flowering_opuntia", new FloweringOpuntiaBlock(TerravibeBlockSettings.flowering_opuntia()));
+		GILLYWEED_ALGA = register("gillyweed_alga", new GillyweedAlgaBlock(TerravibeBlockSettings.gillyweed_alga()));
+		GLOWING_DARK_MOLD = register("glowing_dark_mold", new GlowingDarkMoldBlock(TerravibeBlockSettings.glowing_dark_mold()));
+		GLOWING_DARK_MOLD_DUST_JAR = register("glowing_dark_mold_dust_jar", new MoldDustJarBlock(TerravibeBlockSettings.glowing_dark_mold_dust_jar()));
+		GORGONZOLA_WHEEL = register("gorgonzola_wheel", new CheeseWheelBlock(TerravibeBlockSettings.gorgonzola_wheel()));
+		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", new DarkSweetBerryBushBlock(TerravibeBlockSettings.dark_sweet_berry_bush()));
+		EGGPLANT_CROP = register("eggplant_crop", new EggplantCropBlock(TerravibeBlockSettings.eggplant_crop()));
+		JAR = register("jar", new JarBlock(TerravibeBlockSettings.jar()));
+		KALE_CROP = register("kale_crop", new KaleCropBlock(TerravibeBlockSettings.kale()));
+		LETTUCE_CROP = register("lettuce_crop", new LettuceCropBlock(TerravibeBlockSettings.lettuce()));
+		MILK_CAULDRON = register("milk_cauldron", new MilkCauldronBlock(TerravibeBlockSettings.milk_cauldron()));
+		MOLD_DUST_JAR = register("mold_dust_jar", new MoldDustJarBlock(TerravibeBlockSettings.mold_dust_jar()));
+		MORTAR = register("mortar", new MortarBlock(TerravibeBlockSettings.mortar()));
+		NIGHTLOCK_BERRY_BUSH = register("nightlock_berry_bush", new NightlockBerryBushBlock(TerravibeBlockSettings.nightlock_berry_bush()));
+		NIGHTSHADE_FERN = register("nightshade_fern", new NightshadeFernBlock(TerravibeBlockSettings.nightshade_fern()));
+		ONION_CROP = register("onion_crop", new OnionCropBlock(TerravibeBlockSettings.onion_crop()));
+		OPUNTIA = register("opuntia", new OpuntiaBlock(TerravibeBlockSettings.opuntia()));
+		PIZZA_FOUR_CHEESE = register("pizza_four_cheese", PizzaBlock.fourCheese(TerravibeBlockSettings.pizza_four_cheese()));
+		PIZZA_MARGHERITA = register("pizza_margherita", PizzaBlock.margherita(TerravibeBlockSettings.pizza_margherita()));
+		RICE_CROP = register("rice_crop", new RiceCropBlock(TerravibeBlockSettings.rice_crop()));
+		SHREDDER = register("shredder", new ShredderBlock(TerravibeBlockSettings.shredder()));
+		SWEET_POTATO_CROP = register("sweet_potato_crop", new SweetPotatoCropBlock(TerravibeBlockSettings.sweet_potato_crop()));
+		THISTLE_PLANT = register("thistle_plant", new ThistlePlantBlock(TerravibeBlockSettings.thistle_plant()));
+		TOMATO_CROP = register("tomato_crop", new TomatoCropBlock(TerravibeBlockSettings.tomato_crop()));
+		TRAY = register("tray", new TrayBlock(TerravibeBlockSettings.tray()));
+		TUN = register("tun", new TunBlock(TerravibeBlockSettings.tun()));
 	}
 }

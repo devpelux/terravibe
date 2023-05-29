@@ -1,12 +1,10 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
@@ -32,11 +30,6 @@ import java.util.stream.Stream;
  */
 public class ShredderBlock extends BlockWithEntity {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Orientation of the block.
 	 */
 	public static final DirectionProperty FACING;
@@ -52,13 +45,6 @@ public class ShredderBlock extends BlockWithEntity {
 	public ShredderBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
-	}
-
-	/**
-	 * Initializes a new {@link ShredderBlock} with default settings.
-	 */
-	public static ShredderBlock of() {
-		return new ShredderBlock(SETTINGS);
 	}
 
 	/**
@@ -111,7 +97,7 @@ public class ShredderBlock extends BlockWithEntity {
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext ctx) {
 		//When the player places the block, gets the opposite direction.
-		return getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+		return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
 	}
 
 	/**
@@ -139,10 +125,6 @@ public class ShredderBlock extends BlockWithEntity {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.of(Material.METAL, MapColor.ORANGE)
-				.requiresTool()
-				.strength(3.0F, 6.0F)
-				.sounds(BlockSoundGroup.COPPER);
 		FACING = Properties.HORIZONTAL_FACING;
 		OUTLINE_SHAPE = Stream.of(
 				Block.createCuboidShape(2, 14, 2, 14, 16, 14),

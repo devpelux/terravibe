@@ -1,9 +1,7 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.server.world.ServerWorld;
@@ -23,11 +21,6 @@ import xyz.devpelux.terravibe.tags.TerravibeBiomeTags;
  */
 public class GillyweedAlgaBlock extends AlgaCropBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Maximum y in which the plant can grow.
 	 */
 	public static final int MAX_Y_TO_FULLY_GROW = 54;
@@ -42,13 +35,6 @@ public class GillyweedAlgaBlock extends AlgaCropBlock {
 	 */
 	public GillyweedAlgaBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link GillyweedAlgaBlock} with default settings.
-	 */
-	public static GillyweedAlgaBlock of() {
-		return new GillyweedAlgaBlock(SETTINGS);
 	}
 
 	/**
@@ -119,7 +105,6 @@ public class GillyweedAlgaBlock extends AlgaCropBlock {
 	}
 
 	static {
-		SETTINGS = FabricBlockSettings.copyOf(Blocks.SEAGRASS);
 		AGE_TO_SHAPE = new VoxelShape[]{
 				Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
 				Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D),

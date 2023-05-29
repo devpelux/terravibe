@@ -7,10 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class ShreddingRecipe extends InventoryRecipe {
 	 * Gets the output.
 	 */
 	@Override
-	public ItemStack getOutput() {
+	public ItemStack getOutput(DynamicRegistryManager registryManager) {
 		return output;
 	}
 
@@ -118,7 +119,7 @@ public class ShreddingRecipe extends InventoryRecipe {
 			Ingredient container = Ingredient.fromJson(recipe.container);
 
 			//Output stack
-			Optional<Item> outputItem = Registry.ITEM.getOrEmpty(new Identifier(recipe.result));
+			Optional<Item> outputItem = Registries.ITEM.getOrEmpty(new Identifier(recipe.result));
 			ItemStack outputStack = new ItemStack(outputItem.orElseThrow(() -> new JsonSyntaxException("Invalid item '" + recipe.result + "'")));
 
 			return new ShreddingRecipe(id, ingredients, container, outputStack);
@@ -144,12 +145,12 @@ public class ShreddingRecipe extends InventoryRecipe {
 		 */
 		@Override
 		public void write(PacketByteBuf buf, ShreddingRecipe recipe) {
-			buf.writeInt(recipe.getIngredients().size());
-			for (Ingredient ing : recipe.getIngredients()) {
+			buf.writeInt(recipe.ingredients.size());
+			for (Ingredient ing : recipe.ingredients) {
 				ing.write(buf);
 			}
-			recipe.getContainer().write(buf);
-			buf.writeItemStack(recipe.getOutput());
+			recipe.container.write(buf);
+			buf.writeItemStack(recipe.output);
 		}
 
 

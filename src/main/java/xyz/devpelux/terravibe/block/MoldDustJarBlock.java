@@ -38,20 +38,6 @@ public class MoldDustJarBlock extends DustJarBlock {
 	}
 
 	/**
-	 * Initializes a new {@link MoldDustJarBlock} with default settings.
-	 */
-	public static MoldDustJarBlock of() {
-		return of(0);
-	}
-
-	/**
-	 * Initializes a new {@link MoldDustJarBlock} with default settings and luminance per level.
-	 */
-	public static MoldDustJarBlock of(int luminancePerLevel) {
-		return new MoldDustJarBlock(settings(luminancePerLevel, LEVEL));
-	}
-
-	/**
 	 * Executed every tick randomly.
 	 * Spreads the mold of the corresponding mold dust into the world.
 	 */

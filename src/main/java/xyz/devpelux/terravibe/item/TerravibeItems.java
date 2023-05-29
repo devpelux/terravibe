@@ -9,7 +9,8 @@ import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import xyz.devpelux.terravibe.block.ContainerBlockData;
 import xyz.devpelux.terravibe.block.MilkCauldronBlock;
 import xyz.devpelux.terravibe.block.TerravibeBlocks;
@@ -20,6 +21,11 @@ import xyz.devpelux.terravibe.core.Terravibe;
  * List of all the items.
  */
 public final class TerravibeItems {
+	/**
+	 * Item used as icon for the "Terravibe" mod.
+	 */
+	public static final Item TERRAVIBE;
+
 	//Objects
 
 	/**
@@ -545,11 +551,11 @@ public final class TerravibeItems {
 	 * Registers the specified item with the specified id.
 	 */
 	private static <T extends Item> T register(String id, T item) {
-		return Registry.register(Registry.ITEM, Terravibe.identified(id), item);
+		return Registry.register(Registries.ITEM, Terravibe.identified(id), item);
 	}
 
 	static {
-		//The loading order corresponds of the order in the creative tab "Terravibe".
+		TERRAVIBE = register("terravibe", new Item(TerravibeItemSettings.terravibe()));
 
 		//Objects
 		JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, TerravibeItemSettings.jar()));

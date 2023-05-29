@@ -1,10 +1,11 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FacingBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.NavigationType;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemPlacementContext;
@@ -40,11 +41,6 @@ import java.util.Optional;
  * Flowering block of the opuntia.
  */
 public class FloweringOpuntiaBlock extends FacingBlock {
-	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS = FabricBlockSettings.copyOf(Blocks.CACTUS);
-
 	/**
 	 * Cascade breaking delay.
 	 */
@@ -91,13 +87,6 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	public FloweringOpuntiaBlock(Settings settings) {
 		super(settings);
 		setDefaultState(getDefaultState().with(FACING, Direction.DOWN).with(AGE, 0).with(STERILE, false));
-	}
-
-	/**
-	 * Initializes a new {@link FloweringOpuntiaBlock} with default settings.
-	 */
-	public static FloweringOpuntiaBlock of() {
-		return new FloweringOpuntiaBlock(SETTINGS);
 	}
 
 	/**
@@ -229,7 +218,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	 */
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		entity.damage(DamageSource.CACTUS, 1.0F);
+		entity.damage(world.getDamageSources().cactus(), 1.0F);
 	}
 
 	/**
@@ -240,7 +229,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	public BlockState getStateForNeighborUpdate(BlockState state, Direction facing, BlockState neighborState,
 	                                            WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 		if (!world.isClient()) {
-			world.createAndScheduleBlockTick(pos, this, BREAKING_DELAY);
+			world.scheduleBlockTick(pos, this, BREAKING_DELAY);
 		}
 		return state;
 	}

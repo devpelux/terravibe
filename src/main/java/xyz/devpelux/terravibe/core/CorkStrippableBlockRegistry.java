@@ -2,11 +2,11 @@ package xyz.devpelux.terravibe.core;
 
 import it.unimi.dsi.fastutil.Pair;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -66,7 +66,7 @@ public final class CorkStrippableBlockRegistry {
 	private static ActionResult corkStrippingHandler(PlayerEntity player, World world, Hand hand, BlockHitResult hit) {
 		//Adds a random chance to drop cork from the supported wood types.
 		//Only for axes.
-		if (!player.isSpectator() && player.getStackInHand(hand).isIn(ConventionalItemTags.AXES)) {
+		if (!player.isSpectator() && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
 			BlockPos pos = hit.getBlockPos();
 			Block block = world.getBlockState(pos).getBlock();
 			Pair<Item, Float> corkDrop = getCorkDrop(block);

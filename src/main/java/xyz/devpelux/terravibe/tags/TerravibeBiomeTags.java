@@ -1,7 +1,7 @@
 package xyz.devpelux.terravibe.tags;
 
 import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.world.biome.Biome;
 
 /**

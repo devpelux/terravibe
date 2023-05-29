@@ -9,13 +9,13 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import xyz.devpelux.terravibe.block.ContainerBlock.ContainerBehavior;
 import xyz.devpelux.terravibe.block.ContainerBlock.ContentTexture;
@@ -330,7 +330,7 @@ public final class ContainerBlockData {
 				//Sets the potion data on server side if empty.
 				if (currentLevel == 0 && result == ActionResult.CONSUME) {
 					NbtCompound nbt = new NbtCompound();
-					nbt.putString("Potion", Registry.POTION.getId(inputPotion).toString());
+					nbt.putString("Potion", Registries.POTION.getId(inputPotion).toString());
 					container.setValue("PotionData", nbt);
 				}
 			}

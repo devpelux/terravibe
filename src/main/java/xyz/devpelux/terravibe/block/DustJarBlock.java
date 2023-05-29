@@ -4,11 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.blockentity.ContainerBlockEntity;
@@ -46,20 +46,6 @@ public class DustJarBlock extends JarBlock {
 	}
 
 	/**
-	 * Initializes a new {@link DustJarBlock} with default settings.
-	 */
-	public static DustJarBlock of() {
-		return of(0);
-	}
-
-	/**
-	 * Initializes a new {@link DustJarBlock} with default settings and luminance per level.
-	 */
-	public static DustJarBlock of(int luminancePerLevel) {
-		return new DustJarBlock(settings(luminancePerLevel, LEVEL));
-	}
-
-	/**
 	 * Gets a value indicating if to use the default content textures.
 	 */
 	@Override
@@ -78,7 +64,7 @@ public class DustJarBlock extends JarBlock {
 		if (!world.isClient() && !player.getAbilities().creativeMode) {
 			ContainerBlockEntity container = getContainerEntity(world, pos);
 			if (container == null) return;
-			ItemStack contained = Registry.ITEM.get(new Identifier(getContent(container))).getDefaultStack();
+			ItemStack contained = Registries.ITEM.get(new Identifier(getContent(container))).getDefaultStack();
 			if (!contained.isEmpty()) {
 				contained.setCount(getLevel(state));
 				dropStack(world, pos, contained);

@@ -1,11 +1,7 @@
 package xyz.devpelux.terravibe.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.MapColor;
-import net.minecraft.block.Material;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -19,11 +15,6 @@ import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
  */
 public class GlowingDarkMoldBlock extends MoldBlock {
 	/**
-	 * Settings of the block.
-	 */
-	public static final Settings SETTINGS;
-
-	/**
 	 * Age of the block.
 	 */
 	public static final IntProperty AGE = Properties.AGE_1;
@@ -33,13 +24,6 @@ public class GlowingDarkMoldBlock extends MoldBlock {
 	 */
 	public GlowingDarkMoldBlock(Settings settings) {
 		super(settings);
-	}
-
-	/**
-	 * Initializes a new {@link GlowingDarkMoldBlock} with default settings.
-	 */
-	public static GlowingDarkMoldBlock of() {
-		return new GlowingDarkMoldBlock(SETTINGS);
 	}
 
 	/**
@@ -145,15 +129,5 @@ public class GlowingDarkMoldBlock extends MoldBlock {
 	@Override
 	protected boolean canSpread(BlockState state, World world, BlockPos pos, Random random) {
 		return isFullyGrown(state);
-	}
-
-	static {
-		SETTINGS = FabricBlockSettings.of(Material.REPLACEABLE_PLANT)
-				.mapColor(MapColor.BLACK)
-				.noCollision()
-				.breakInstantly()
-				.sounds(BlockSoundGroup.MOSS_BLOCK)
-				.luminance(s -> s.get(AGE) == 0 ? 1 : 3)
-				.offsetType(OffsetType.XYZ);
 	}
 }

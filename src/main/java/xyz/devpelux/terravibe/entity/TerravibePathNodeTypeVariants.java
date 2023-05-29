@@ -16,9 +16,9 @@ public final class TerravibePathNodeTypeVariants {
 	 */
 	public static void load() {
 		LandPathNodeTypesRegistry.register(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
-		LandPathNodeTypesRegistry.register(TerravibeBlocks.FLOWERING_OPUNTIA, PathNodeType.DAMAGE_CACTUS, PathNodeType.DANGER_CACTUS);
+		LandPathNodeTypesRegistry.register(TerravibeBlocks.FLOWERING_OPUNTIA, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 		LandPathNodeTypesRegistry.register(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
-		LandPathNodeTypesRegistry.register(TerravibeBlocks.OPUNTIA, PathNodeType.DAMAGE_CACTUS, PathNodeType.DANGER_CACTUS);
-		LandPathNodeTypesRegistry.register(TerravibeBlocks.THISTLE_PLANT, PathNodeType.DAMAGE_CACTUS, PathNodeType.DANGER_CACTUS);
+		LandPathNodeTypesRegistry.register(TerravibeBlocks.OPUNTIA, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
+		LandPathNodeTypesRegistry.register(TerravibeBlocks.THISTLE_PLANT, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 	}
 }

@@ -49,7 +49,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 	 */
 	public ShredderScreenHandler(@Nullable ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory) {
 		super(type, syncId);
-		this.world = playerInventory.player.world;
+		this.world = playerInventory.player.getWorld();
 		ingredients.addListener(this::onUpdatedInputs);
 		container.addListener(this::onUpdatedInputs);
 		loadSlots(playerInventory);
@@ -101,8 +101,8 @@ public class ShredderScreenHandler extends ScreenHandler {
 	 * Executed when the screen handler is closed.
 	 */
 	@Override
-	public void close(PlayerEntity player) {
-		super.close(player);
+	public void onClosed(PlayerEntity player) {
+		super.onClosed(player);
 		//Drops all the ingredients and the container.
 		dropInventory(player, ingredients);
 		dropInventory(player, container);
@@ -152,7 +152,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 
 			if (match.isPresent()) {
 				//If the recipe exists then set the output item stack to the crafting result.
-				if (!getSlot(5).hasStack()) getSlot(5).setStack(match.get().craft(inventory));
+				if (!getSlot(5).hasStack()) getSlot(5).setStack(match.get().craft(inventory, world.getRegistryManager()));
 			} else {
 				//If the recipe does not exist then clean the output item stack.
 				if (getSlot(5).hasStack()) getSlot(5).setStack(ItemStack.EMPTY);
@@ -165,7 +165,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 	 * (Eg. CTRL + CLICK)
 	 */
 	@Override
-	public ItemStack transferSlot(PlayerEntity player, int originIndex) {
+	public ItemStack quickMove(PlayerEntity player, int originIndex) {
 		//Gets the slot to transfer.
 		Slot originSlot = getSlot(originIndex);
 
