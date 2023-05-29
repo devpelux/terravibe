@@ -39,7 +39,7 @@ public class TerravibeLootPools {
 		List<LootPool> pools = new ArrayList<>();
 
 		//Ancient nightshade fern seeds at height 55 <-> 125.
-		LeafEntry.Builder<?> nightshadeFernSeeds = ItemEntry.builder(TerravibeItems.ANCIENT_NIGHTSHADE_FERN_SEEDS);
+		LeafEntry.Builder<?> nightshadeFernSeeds = ItemEntry.builder(TerravibeItems.NIGHTSHADE_FERN_SEEDS_ANCIENT);
 		nightshadeFernSeeds.conditionally(RandomChanceLootCondition.builder(0.005f));
 		nightshadeFernSeeds.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OLD_GROWTH_PINE_TAIGA, FloatRange.between(55, 125))),
@@ -57,7 +57,7 @@ public class TerravibeLootPools {
 		List<LootPool> pools = new ArrayList<>();
 
 		//Ancient gillyweed seeds at height 22 <-> 54.
-		LeafEntry.Builder<?> gillyweedSeedsH1 = ItemEntry.builder(TerravibeItems.ANCIENT_GILLYWEED_SEEDS);
+		LeafEntry.Builder<?> gillyweedSeedsH1 = ItemEntry.builder(TerravibeItems.GILLYWEED_SEEDS_ANCIENT);
 		gillyweedSeedsH1.conditionally(RandomChanceLootCondition.builder(0.002f));
 		gillyweedSeedsH1.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OCEAN, FloatRange.between(22, 54))),
@@ -67,7 +67,7 @@ public class TerravibeLootPools {
 		));
 
 		//Ancient gillyweed seeds at height 24 <-> 42.
-		LeafEntry.Builder<?> gillyweedSeedsH2 = ItemEntry.builder(TerravibeItems.ANCIENT_GILLYWEED_SEEDS);
+		LeafEntry.Builder<?> gillyweedSeedsH2 = ItemEntry.builder(TerravibeItems.GILLYWEED_SEEDS_ANCIENT);
 		gillyweedSeedsH2.conditionally(RandomChanceLootCondition.builder(0.008f)); //Total: 0,009984
 		gillyweedSeedsH2.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OCEAN, FloatRange.between(24, 42))),
