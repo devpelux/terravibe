@@ -1,8 +1,9 @@
 package xyz.devpelux.terravibe.tags;
 
-import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 
 /**
  * List of all the item tags.
@@ -33,9 +34,9 @@ public final class TerravibeItemTags {
 	public static final TagKey<Item> MOLDS;
 
 	static {
-		EDIBLE_MOLDS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("edible_molds");
-		JAR_PLUGS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("jar_plugs");
-		MILK_COAGULANTS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("milk_coagulants");
-		MOLDS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("molds");
+		EDIBLE_MOLDS = TagKey.of(RegistryKeys.ITEM, new Identifier("c", "edible_molds"));
+		JAR_PLUGS = TagKey.of(RegistryKeys.ITEM, new Identifier("c", "jar_plugs"));
+		MILK_COAGULANTS = TagKey.of(RegistryKeys.ITEM, new Identifier("c", "milk_coagulants"));
+		MOLDS = TagKey.of(RegistryKeys.ITEM, new Identifier("c", "molds"));
 	}
 }

@@ -1,7 +1,8 @@
 package xyz.devpelux.terravibe.tags;
 
-import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
 /**
@@ -15,6 +16,6 @@ public final class TerravibeBiomeTags {
 	public static final TagKey<Biome> WARM_OCEAN;
 
 	static {
-		WARM_OCEAN = TagRegistration.BIOME_TAG_REGISTRATION.registerCommon("warm_ocean");
+		WARM_OCEAN = TagKey.of(RegistryKeys.BIOME, new Identifier("c", "warm_ocean"));
 	}
 }

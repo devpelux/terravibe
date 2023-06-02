@@ -1,8 +1,9 @@
 package xyz.devpelux.terravibe.tags;
 
-import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.block.Block;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 
 /**
  * List of all the block tags.
@@ -27,8 +28,8 @@ public final class TerravibeBlockTags {
 	public static final TagKey<Block> MOLD_REPLACEABLE;
 
 	static {
-		FLOODED_FARMLAND = TagRegistration.BLOCK_TAG_REGISTRATION.registerCommon("flooded_farmland");
-		MOLD_INFESTABLE = TagRegistration.BLOCK_TAG_REGISTRATION.registerCommon("mold_infestable");
-		MOLD_REPLACEABLE = TagRegistration.BLOCK_TAG_REGISTRATION.registerCommon("mold_replaceable");
+		FLOODED_FARMLAND = TagKey.of(RegistryKeys.BLOCK, new Identifier("c", "flooded_farmland"));
+		MOLD_INFESTABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier("c", "mold_infestable"));
+		MOLD_REPLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier("c", "mold_replaceable"));
 	}
 }

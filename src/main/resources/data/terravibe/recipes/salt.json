@@ -1,13 +1,12 @@
 {
-  "type": "terravibe:crushing",
-  "ingredient": {
-	"item": "terravibe:salt_crystals"
-  },
-  "results": [
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
 	{
-	  "item": "terravibe:salt",
-	  "min_count": "1",
-	  "max_count": "2"
+	  "item": "terravibe:salt_crystals"
 	}
-  ]
+  ],
+  "result": {
+	"item": "terravibe:salt",
+	"count": 2
+  }
 }

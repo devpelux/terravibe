@@ -1,13 +1,12 @@
 {
-  "type": "terravibe:crushing",
-  "ingredient": {
-	"item": "terravibe:birch_mold"
-  },
-  "results": [
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
 	{
-	  "item": "terravibe:birch_mold_dust",
-	  "min_count": "1",
-	  "max_count": "3"
+	  "item": "terravibe:birch_mold"
 	}
-  ]
+  ],
+  "result": {
+	"item": "terravibe:birch_mold_dust",
+	"count": 1
+  }
 }

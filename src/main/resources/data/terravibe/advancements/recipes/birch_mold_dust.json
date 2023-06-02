@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:birch_mold_dust"
+	]
+  },
+  "criteria": {
+	"has_birch_mold": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:birch_mold"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:birch_mold_dust"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_birch_mold",
+	  "has_the_recipe"
+	]
+  ]
+}

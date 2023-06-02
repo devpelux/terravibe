@@ -1,13 +1,12 @@
 {
-  "type": "terravibe:crushing",
-  "ingredient": {
-	"item": "terravibe:glowing_dark_mold"
-  },
-  "results": [
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
 	{
-	  "item": "terravibe:glowing_dark_mold_dust",
-	  "min_count": "1",
-	  "max_count": "3"
+	  "item": "terravibe:glowing_dark_mold"
 	}
-  ]
+  ],
+  "result": {
+	"item": "terravibe:glowing_dark_mold_dust",
+	"count": 1
+  }
 }

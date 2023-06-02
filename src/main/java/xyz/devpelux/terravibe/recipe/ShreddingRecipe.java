@@ -89,7 +89,7 @@ public class ShreddingRecipe extends InventoryRecipe {
 	 */
 	public static class Serializer implements RecipeSerializer<ShreddingRecipe> {
 		/**
-		 * Initializes a new {@link CrushingRecipe.Serializer}.
+		 * Initializes a new {@link Serializer}.
 		 */
 		public Serializer() {
 		}

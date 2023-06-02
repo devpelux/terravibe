@@ -1,8 +1,9 @@
 package xyz.devpelux.terravibe.tags;
 
-import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 
 /**
  * List of all the fluid tags.
@@ -15,6 +16,6 @@ public final class TerravibeFluidTags {
 	public static final TagKey<Fluid> CLEANER;
 
 	static {
-		CLEANER = TagRegistration.FLUID_TAG_REGISTRATION.registerCommon("cleaner");
+		CLEANER = TagKey.of(RegistryKeys.FLUID, new Identifier("c", "cleaner"));
 	}
 }

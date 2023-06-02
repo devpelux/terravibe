@@ -9,11 +9,6 @@ import xyz.devpelux.terravibe.core.Terravibe;
  */
 public final class TerravibeRecipeTypes {
 	/**
-	 * Crushes an item to obtain another item with a successful chance.
-	 */
-	public static final RecipeType<CrushingRecipe> CRUSHING;
-
-	/**
 	 * Shreds a bunch of items to obtain something into a container.
 	 */
 	public static final RecipeType<ShreddingRecipe> SHREDDING;
@@ -26,7 +21,6 @@ public final class TerravibeRecipeTypes {
 	}
 
 	static {
-		CRUSHING = register("crushing");
 		SHREDDING = register("shredding");
 	}
 }

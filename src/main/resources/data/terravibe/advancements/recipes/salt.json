@@ -1,0 +1,34 @@
+{
+  "parent": "terravibe:recipes/root",
+  "rewards": {
+	"recipes": [
+	  "terravibe:salt"
+	]
+  },
+  "criteria": {
+	"has_salt_crystals": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:salt_crystals"
+			]
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "terravibe:salt"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_salt_crystals",
+	  "has_the_recipe"
+	]
+  ]
+}
