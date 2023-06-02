@@ -139,11 +139,6 @@ public final class TerravibeBlocks {
 	public static final Block SWEET_POTATO_CROP;
 
 	/**
-	 * Plant of the thistle.
-	 */
-	public static final Block THISTLE_PLANT;
-
-	/**
 	 * Crop of the tomato.
 	 */
 	public static final Block TOMATO_CROP;
@@ -227,7 +222,6 @@ public final class TerravibeBlocks {
 		RICE_CROP = register("rice_crop", new RiceCropBlock(TerravibeBlockSettings.rice_crop()));
 		SHREDDER = register("shredder", new ShredderBlock(TerravibeBlockSettings.shredder()));
 		SWEET_POTATO_CROP = register("sweet_potato_crop", new SweetPotatoCropBlock(TerravibeBlockSettings.sweet_potato_crop()));
-		THISTLE_PLANT = register("thistle_plant", new ThistlePlantBlock(TerravibeBlockSettings.thistle_plant()));
 		TOMATO_CROP = register("tomato_crop", new TomatoCropBlock(TerravibeBlockSettings.tomato_crop()));
 		TRAY = register("tray", new TrayBlock(TerravibeBlockSettings.tray()));
 		TUN = register("tun", new TunBlock(TerravibeBlockSettings.tun()));

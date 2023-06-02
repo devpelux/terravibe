@@ -47,8 +47,7 @@ public final class TerravibeItemInventory {
 				TerravibeItems.SWEET_POTATO,
 				TerravibeItems.BAKED_SWEET_POTATO,
 				TerravibeItems.RED_SWEET_POTATO,
-				TerravibeItems.TOMATO,
-				TerravibeItems.THISTLE_LEAVES);
+				TerravibeItems.TOMATO);
 
 		//Algae
 		entries.addBefore(Items.DRIED_KELP,
@@ -113,7 +112,6 @@ public final class TerravibeItemInventory {
 		entries.addAfter(Items.EGG,
 				TerravibeItems.SALT_CRYSTALS,
 				TerravibeItems.SALT,
-				TerravibeItems.THISTLE_STAMENS,
 				TerravibeItems.BIRCH_MOLD_DUST,
 				TerravibeItems.DARK_MOLD_DUST);
 	}
@@ -132,10 +130,6 @@ public final class TerravibeItemInventory {
 				TerravibeItems.DARK_OAK_CORK,
 				TerravibeItems.CRIMSON_CORK,
 				TerravibeItems.WARPED_CORK);
-
-		//Flowers
-		entries.addAfter(Items.LILY_OF_THE_VALLEY,
-				TerravibeItems.THISTLE);
 
 		//Plantable leaves
 		entries.addAfter(Items.SUGAR_CANE,

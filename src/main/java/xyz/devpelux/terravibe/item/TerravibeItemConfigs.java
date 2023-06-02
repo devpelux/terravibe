@@ -70,9 +70,6 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(RICE_GRAINS, 0.05f);
 		CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.2f);
-		CompostingChanceRegistry.INSTANCE.add(THISTLE, 0.4f);
-		CompostingChanceRegistry.INSTANCE.add(THISTLE_LEAVES, 0.2f);
-		CompostingChanceRegistry.INSTANCE.add(THISTLE_STAMENS, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(WARPED_CORK, 0.2f);

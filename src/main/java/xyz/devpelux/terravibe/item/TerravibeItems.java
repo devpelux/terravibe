@@ -161,11 +161,6 @@ public final class TerravibeItems {
 	public static final Item RED_SWEET_POTATO;
 
 	/**
-	 * Edible plant with purple flowers.
-	 */
-	public static final Item THISTLE;
-
-	/**
 	 * Edible red berry, commonly used to make sauces or for salad.
 	 */
 	public static final Item TOMATO;
@@ -328,11 +323,6 @@ public final class TerravibeItems {
 	 */
 	public static final Item SALAD_FULL;
 
-	/**
-	 * Leaves of thistle.
-	 */
-	public static final Item THISTLE_LEAVES;
-
 	//Non-food crafted items
 
 	/**
@@ -414,11 +404,6 @@ public final class TerravibeItems {
 	 * Salt crystals.
 	 */
 	public static final Item SALT_CRYSTALS;
-
-	/**
-	 * Stamens of thistle, used to coagulate milk.
-	 */
-	public static final Item THISTLE_STAMENS;
 
 	//Bottles
 
@@ -514,9 +499,6 @@ public final class TerravibeItems {
 		SHREDDER = register("shredder", new AliasedBlockItem(TerravibeBlocks.SHREDDER, TerravibeItemSettings.shredder()));
 		SWEET_POTATO = register("sweet_potato", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP, TerravibeItemSettings.sweet_potato()));
 		SWEET_POTATO_BUDS = register("sweet_potato_buds", new DuplicatedAliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP, TerravibeItemSettings.sweet_potato_buds()));
-		THISTLE = register("thistle", new AliasedBlockItem(TerravibeBlocks.THISTLE_PLANT, TerravibeItemSettings.thistle()));
-		THISTLE_LEAVES = register("thistle_leaves", new Item(TerravibeItemSettings.thistle_leaves()));
-		THISTLE_STAMENS = register("thistle_stamens", new Item(TerravibeItemSettings.thistle_stamens()));
 		TOMATO = register("tomato", new Item(TerravibeItemSettings.tomato()));
 		TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(TerravibeItemSettings.tomato_sauce_bottle()));
 		TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, TerravibeItemSettings.tomato_seeds()));

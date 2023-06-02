@@ -13,8 +13,7 @@ import net.minecraft.particle.DefaultParticleType;
  * Factories of {@link FloatingSporeParticle} particles.
  */
 public final class FloatingSporeParticleFactories {
-	private FloatingSporeParticleFactories() {
-	}
+	private FloatingSporeParticleFactories() { }
 
 	/**
 	 * Factory for the birch mold spore particle.
@@ -125,43 +124,6 @@ public final class FloatingSporeParticleFactories {
 			spore.setWind(5, 10, 0.001d);
 			spore.setColor(0f, 0.573f, 0.584f); //0x009295
 			spore.setLuminescence(0.6f, 0.8f, 200);
-			return spore;
-		}
-	}
-
-	/**
-	 * Factory for the thistle pollen particle.
-	 */
-	@Environment(EnvType.CLIENT)
-	public static class ThistlePollenFactory implements ParticleFactory<DefaultParticleType> {
-		/**
-		 * Contains some common settings.
-		 */
-		private static final ParticleGroup GROUP = new ParticleGroup(500);
-
-		/**
-		 * Sprite provider.
-		 */
-		private final SpriteProvider spriteProvider;
-
-		/**
-		 * Initializes a new {@link ThistlePollenFactory}.
-		 */
-		public ThistlePollenFactory(SpriteProvider spriteProvider) {
-			this.spriteProvider = spriteProvider;
-		}
-
-		/**
-		 * Creates the particle.
-		 */
-		@Override
-		public Particle createParticle(DefaultParticleType particle, ClientWorld world, double x, double y, double z, double vX, double vY, double vZ) {
-			FloatingSporeParticle spore = new FloatingSporeParticle(world, this.spriteProvider, x, y, z, vX + 0d, vY - 0.8d, vZ + 0d);
-			spore.setGroup(GROUP);
-			spore.setMaxAge(world.random.nextBetween(800, 1600));
-			spore.setScale(spore.getScale() * (world.random.nextFloat() * 0.3f + 0.3f)); //0.3 <-> 0.6
-			spore.setWind(5, 20, 0.001d);
-			spore.setColor(0.82f, 0.24f, 0.38f); //0xd03c62
 			return spore;
 		}
 	}

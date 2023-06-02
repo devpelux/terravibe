@@ -36,7 +36,6 @@ public final class TerravibeFoodComponents {
 	public static final FoodComponent SALAD_SIMPLE;
 	public static final FoodComponent SWEET_POTATO;
 	public static final FoodComponent SWEET_POTATO_BUDS;
-	public static final FoodComponent THISTLE_LEAVES;
 	public static final FoodComponent TOMATO;
 
 	static {
@@ -80,7 +79,6 @@ public final class TerravibeFoodComponents {
 		SWEET_POTATO_BUDS = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
 				.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 400, 1), 1f) //20s
 				.build();
-		THISTLE_LEAVES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
 		TOMATO = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
 	}
 }

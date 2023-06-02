@@ -31,7 +31,6 @@ public class TerravibeBlockConfigs {
 		LandPathNodeTypesRegistry.register(TerravibeBlocks.FLOWERING_OPUNTIA, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 		LandPathNodeTypesRegistry.register(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 		LandPathNodeTypesRegistry.register(TerravibeBlocks.OPUNTIA, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
-		LandPathNodeTypesRegistry.register(TerravibeBlocks.THISTLE_PLANT, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 	}
 
 	@Environment(EnvType.CLIENT)
@@ -73,7 +72,6 @@ public class TerravibeBlockConfigs {
 		BlockRenderLayerMap.INSTANCE.putBlock(OPUNTIA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(RICE_CROP, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SWEET_POTATO_CROP, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(THISTLE_PLANT, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(TOMATO_CROP, RenderLayer.getCutout());
 	}
 }

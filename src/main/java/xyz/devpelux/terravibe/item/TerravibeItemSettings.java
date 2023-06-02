@@ -323,18 +323,6 @@ public final class TerravibeItemSettings {
 		return stackOf(64).food(TerravibeFoodComponents.SWEET_POTATO_BUDS);
 	}
 
-	public static FabricItemSettings thistle() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings thistle_leaves() {
-		return stackOf(64).food(TerravibeFoodComponents.THISTLE_LEAVES);
-	}
-
-	public static FabricItemSettings thistle_stamens() {
-		return stackOf(64);
-	}
-
 	public static FabricItemSettings tomato() {
 		return stackOf(64).food(TerravibeFoodComponents.TOMATO);
 	}

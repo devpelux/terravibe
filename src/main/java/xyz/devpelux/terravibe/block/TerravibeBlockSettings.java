@@ -139,16 +139,6 @@ public final class TerravibeBlockSettings {
         return crop();
     }
 
-    public static FabricBlockSettings thistle_plant() {
-        return FabricBlockSettings.create()
-                .mapColor(MapColor.DARK_GREEN)
-                .noCollision()
-                .breakInstantly()
-                .sounds(BlockSoundGroup.GRASS)
-                .offset(AbstractBlock.OffsetType.XYZ)
-                .pistonBehavior(PistonBehavior.DESTROY);
-    }
-
     public static FabricBlockSettings tomato_crop() {
         return crop();
     }
