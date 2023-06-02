@@ -39,9 +39,6 @@ public final class TerravibeFoodComponents {
 	public static final FoodComponent THISTLE_LEAVES;
 	public static final FoodComponent TOMATO;
 
-	private TerravibeFoodComponents() {
-	}
-
 	static {
 		BAKED_SWEET_POTATO = new FoodComponent.Builder().hunger(5).saturationModifier(0.7f).build();
 		BEANS = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();

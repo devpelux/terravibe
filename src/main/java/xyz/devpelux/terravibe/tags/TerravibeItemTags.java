@@ -32,15 +32,6 @@ public final class TerravibeItemTags {
 	 */
 	public static final TagKey<Item> MOLDS;
 
-	private TerravibeItemTags() {
-	}
-
-	/**
-	 * Loads all the tags.
-	 */
-	public static void load() {
-	}
-
 	static {
 		EDIBLE_MOLDS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("edible_molds");
 		JAR_PLUGS = TagRegistration.ITEM_TAG_REGISTRATION.registerCommon("jar_plugs");

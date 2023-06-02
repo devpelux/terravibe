@@ -33,8 +33,7 @@ public final class CorkStrippableBlockRegistry {
 	 */
 	private final Map<Block, Pair<Item, Float>> CORK_STRIPPABLE = new IdentityHashMap<>();
 
-	private CorkStrippableBlockRegistry() {
-	}
+	private CorkStrippableBlockRegistry() { }
 
 	/**
 	 * Registers a cork for a block with a drop chance.

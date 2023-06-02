@@ -1,5 +1,7 @@
 package xyz.devpelux.terravibe.block;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.player.PlayerEntity;
@@ -77,23 +79,29 @@ public final class ContainerBlockData {
 	public static final ContainerBlockColorProvider COLORIZE_BURNED_DARK_MOLD_DUST;
 	public static final ContainerBlockColorProvider COLORIZE_BURNED_GLOWING_DARK_MOLD_DUST;
 
-	private ContainerBlockData() {
+	private ContainerBlockData() { }
+
+	/**
+	 * Registers the behaviors.
+	 */
+	public static void registerBehaviors() {
+		registerJarBehaviors();
+		registerTunBehaviors();
 	}
 
 	/**
-	 * Loads all the data.
+	 * Registers the color providers.
 	 */
-	public static void load() {
-		loadJarBehaviors();
-		loadTunBehaviors();
-		loadJarColorProviders();
-		loadTunColorProviders();
+	@Environment(EnvType.CLIENT)
+	public static void registerColorProviders() {
+		registerJarColorProviders();
+		registerTunColorProviders();
 	}
 
 	/**
-	 * Loads the {@link JarBlock} behaviors.
+	 * Registers the {@link JarBlock} behaviors.
 	 */
-	private static void loadJarBehaviors() {
+	private static void registerJarBehaviors() {
 		JarBlock.registerBehavior(CONTENT_EMPTY, Items.POTION, PUT_WATER_OR_POTION);
 		JarBlock.registerBehavior(CONTENT_EMPTY, Items.WATER_BUCKET, PUT_WATER_OR_POTION);
 		JarBlock.registerBehavior(CONTENT_EMPTY, Items.MILK_BUCKET, PUT_MILK);
@@ -130,9 +138,9 @@ public final class ContainerBlockData {
 	}
 
 	/**
-	 * Loads the {@link TunBlock} behaviors.
+	 * Registers the {@link TunBlock} behaviors.
 	 */
-	private static void loadTunBehaviors() {
+	private static void registerTunBehaviors() {
 		TunBlock.registerBehavior(CONTENT_EMPTY, Items.POTION, PUT_WATER_OR_POTION);
 		TunBlock.registerBehavior(CONTENT_EMPTY, Items.WATER_BUCKET, PUT_WATER_OR_POTION);
 		TunBlock.registerBehavior(CONTENT_EMPTY, Items.MILK_BUCKET, PUT_MILK);
@@ -151,9 +159,10 @@ public final class ContainerBlockData {
 	}
 
 	/**
-	 * Loads the {@link JarBlock} color providers.
+	 * Registers the {@link JarBlock} color providers.
 	 */
-	private static void loadJarColorProviders() {
+	@Environment(EnvType.CLIENT)
+	private static void registerJarColorProviders() {
 		JarBlock.registerColorProvider(CONTENT_WATER, COLORIZE_WATER_OR_POTION);
 		JarBlock.registerColorProvider(CONTENT_HONEY, COLORIZE_HONEY);
 		JarBlock.registerColorProvider(CONTENT_MILK, COLORIZE_MILK);
@@ -167,9 +176,10 @@ public final class ContainerBlockData {
 	}
 
 	/**
-	 * Loads the {@link TunBlock} color providers.
+	 * Registers the {@link TunBlock} color providers.
 	 */
-	private static void loadTunColorProviders() {
+	@Environment(EnvType.CLIENT)
+	private static void registerTunColorProviders() {
 		TunBlock.registerColorProvider(CONTENT_WATER, COLORIZE_WATER_OR_POTION);
 		TunBlock.registerColorProvider(CONTENT_HONEY, COLORIZE_HONEY);
 		TunBlock.registerColorProvider(CONTENT_MILK, COLORIZE_MILK);
@@ -345,7 +355,7 @@ public final class ContainerBlockData {
 
 		PUT_HONEY = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
 			return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
-					1, CONTENT_HONEY, ContentTexture.DenseFluid, new ItemStack(stack.getItem().getRecipeRemainder()), SoundEvents.ITEM_BOTTLE_EMPTY);
+					1, CONTENT_HONEY, ContentTexture.DenseFluid, stack.getRecipeRemainder(), SoundEvents.ITEM_BOTTLE_EMPTY);
 		};
 
 		GET_MILK = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
@@ -355,7 +365,7 @@ public final class ContainerBlockData {
 
 		PUT_MILK = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
 			return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
-					3, CONTENT_MILK, ContentTexture.Fluid, new ItemStack(stack.getItem().getRecipeRemainder()), SoundEvents.ITEM_BUCKET_EMPTY);
+					3, CONTENT_MILK, ContentTexture.Fluid, stack.getRecipeRemainder(), SoundEvents.ITEM_BUCKET_EMPTY);
 		};
 
 		GET_TOMATO_SAUCE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
@@ -365,7 +375,7 @@ public final class ContainerBlockData {
 
 		PUT_TOMATO_SAUCE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
 			return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
-					1, CONTENT_TOMATO_SAUCE, ContentTexture.DenseFluid, new ItemStack(stack.getItem().getRecipeRemainder()), SoundEvents.ITEM_BOTTLE_EMPTY);
+					1, CONTENT_TOMATO_SAUCE, ContentTexture.DenseFluid, stack.getRecipeRemainder(), SoundEvents.ITEM_BOTTLE_EMPTY);
 		};
 
 		GET_BIRCH_MOLD_DUST_JAR = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {

@@ -105,7 +105,7 @@ public class AncientSeedItem extends ColoredItem {
 			result.getOrCreateNbt().putInt("Dirty", newDirtyValue);
 			return result;
 		}
-		return new ItemStack(stack.getItem().getRecipeRemainder());
+		return stack.getRecipeRemainder();
 	}
 
 	/**

@@ -20,15 +20,6 @@ public final class TerravibeRecipeSerializers {
 	 */
 	public static final RecipeSerializer<ShreddingRecipe> SHREDDING;
 
-	private TerravibeRecipeSerializers() {
-	}
-
-	/**
-	 * Loads all the recipe serializers.
-	 */
-	public static void load() {
-	}
-
 	/**
 	 * Registers the specified recipe serializer with the specified id.
 	 */

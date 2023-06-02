@@ -7,16 +7,21 @@ import net.minecraft.item.Items;
 
 @SuppressWarnings("UnstableApiUsage")
 public final class TerravibeItemInventory {
+	private TerravibeItemInventory() { }
+
 	/**
-	 * Loads all item group modifiers.
+	 * Registers all item group modifiers.
 	 */
-	public static void loadItemGroupModifiers() {
+	public static void registerItemGroupModifiers() {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(TerravibeItemInventory::addFoodAndDrinks);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(TerravibeItemInventory::addFunctionals);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(TerravibeItemInventory::addIngredients);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(TerravibeItemInventory::addNaturals);
 	}
 
+	/**
+	 * Adds items to the food and drinks tab.
+	 */
 	private static void addFoodAndDrinks(FabricItemGroupEntries entries) {
 		//Berries
 		entries.addAfter(Items.GLOW_BERRIES,
@@ -81,6 +86,9 @@ public final class TerravibeItemInventory {
 				TerravibeItems.POTTAGE);
 	}
 
+	/**
+	 * Adds items to the functionals tab.
+	 */
 	private static void addFunctionals(FabricItemGroupEntries entries) {
 		//Functionals
 		entries.addAfter(Items.LOOM,
@@ -98,6 +106,9 @@ public final class TerravibeItemInventory {
 				TerravibeItems.TUN);
 	}
 
+	/**
+	 * Adds items to the ingredients tab.
+	 */
 	private static void addIngredients(FabricItemGroupEntries entries) {
 		//Food ingredients
 		entries.addAfter(Items.EGG,
@@ -108,6 +119,9 @@ public final class TerravibeItemInventory {
 				TerravibeItems.DARK_MOLD_DUST);
 	}
 
+	/**
+	 * Adds items to the naturals tab.
+	 */
 	private static void addNaturals(FabricItemGroupEntries entries) {
 		//Excavated mud
 		entries.addAfter(Items.MUD,

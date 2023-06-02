@@ -1,9 +1,9 @@
 package xyz.devpelux.terravibe;
 
 import net.fabricmc.api.ClientModInitializer;
-import xyz.devpelux.terravibe.block.TerravibeBlocks;
+import xyz.devpelux.terravibe.block.TerravibeBlockConfigs;
 import xyz.devpelux.terravibe.core.Terravibe;
-import xyz.devpelux.terravibe.item.TerravibeItems;
+import xyz.devpelux.terravibe.item.TerravibeItemConfigs;
 import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
 import xyz.devpelux.terravibe.screenhandler.TerravibeScreenHandlerTypes;
 
@@ -16,10 +16,18 @@ public class InitializerClient implements ClientModInitializer {
 	 */
 	@Override
 	public void onInitializeClient() {
-		TerravibeBlocks.loadClient();
-		TerravibeItems.loadClient();
-		TerravibeScreenHandlerTypes.loadClient();
-		TerravibeParticleTypes.loadClient();
+		//Loads block configurations
+		TerravibeBlockConfigs.registerColorProviders();
+		TerravibeBlockConfigs.registerRenderLayerMaps();
+
+		//Loads item configurations
+		TerravibeItemConfigs.registerColorProviders();
+
+		//Loads particles
+		TerravibeParticleTypes.registerParticleFactories();
+
+		//Loads screens
+		TerravibeScreenHandlerTypes.registerScreens();
 
 		Terravibe.LOGGER.info("Loaded Terravibe client components.");
 	}

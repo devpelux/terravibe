@@ -33,20 +33,11 @@ public final class TerravibeParticleTypes {
 	 */
 	public static final DefaultParticleType THISTLE_POLLEN;
 
-	private TerravibeParticleTypes() {
-	}
-
 	/**
-	 * Loads all the particle types.
-	 */
-	public static void load() {
-	}
-
-	/**
-	 * Loads all the client side things related to the particle types.
+	 * Registers all the particle factories to the corresponding particle types.
 	 */
 	@Environment(EnvType.CLIENT)
-	public static void loadClient() {
+	public static void registerParticleFactories() {
 		ParticleFactoryRegistry.getInstance().register(BIRCH_MOLD_SPORE, FloatingSporeParticleFactories.BirchMoldSporeFactory::new);
 		ParticleFactoryRegistry.getInstance().register(DARK_MOLD_SPORE, FloatingSporeParticleFactories.DarkMoldSporeFactory::new);
 		ParticleFactoryRegistry.getInstance().register(GLOWING_DARK_MOLD_SPORE, FloatingSporeParticleFactories.GlowingDarkMoldSporeFactory::new);

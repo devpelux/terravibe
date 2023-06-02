@@ -14,15 +14,6 @@ public final class TerravibeFluidTags {
 	 */
 	public static final TagKey<Fluid> CLEANER;
 
-	private TerravibeFluidTags() {
-	}
-
-	/**
-	 * Loads all the tags.
-	 */
-	public static void load() {
-	}
-
 	static {
 		CLEANER = TagRegistration.FLUID_TAG_REGISTRATION.registerCommon("cleaner");
 	}

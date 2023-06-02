@@ -11,8 +11,7 @@ import net.minecraft.sound.BlockSoundGroup;
  * List of all the block settings generators.
  */
 public final class TerravibeBlockSettings {
-    private TerravibeBlockSettings() {
-    }
+    private TerravibeBlockSettings() { }
 
     public static FabricBlockSettings basil_herb() {
         return FabricBlockSettings.copyOf(Blocks.GRASS);

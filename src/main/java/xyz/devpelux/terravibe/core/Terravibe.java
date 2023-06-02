@@ -18,8 +18,7 @@ public final class Terravibe {
 	 */
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 
-	private Terravibe() {
-	}
+	private Terravibe() { }
 
 	/**
 	 * Creates an identifier with "terravibe" namespace.

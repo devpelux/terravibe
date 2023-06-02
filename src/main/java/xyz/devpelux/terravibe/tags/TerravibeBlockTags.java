@@ -26,15 +26,6 @@ public final class TerravibeBlockTags {
 	 */
 	public static final TagKey<Block> MOLD_REPLACEABLE;
 
-	private TerravibeBlockTags() {
-	}
-
-	/**
-	 * Loads all the tags.
-	 */
-	public static void load() {
-	}
-
 	static {
 		FLOODED_FARMLAND = TagRegistration.BLOCK_TAG_REGISTRATION.registerCommon("flooded_farmland");
 		MOLD_INFESTABLE = TagRegistration.BLOCK_TAG_REGISTRATION.registerCommon("mold_infestable");

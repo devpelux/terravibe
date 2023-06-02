@@ -14,15 +14,6 @@ public final class TerravibeBiomeTags {
 	 */
 	public static final TagKey<Biome> WARM_OCEAN;
 
-	private TerravibeBiomeTags() {
-	}
-
-	/**
-	 * Loads all the tags.
-	 */
-	public static void load() {
-	}
-
 	static {
 		WARM_OCEAN = TagRegistration.BIOME_TAG_REGISTRATION.registerCommon("warm_ocean");
 	}

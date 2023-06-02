@@ -15,8 +15,7 @@ import java.util.function.Supplier;
  * List of all the item settings generators.
  */
 public final class TerravibeItemSettings {
-	private TerravibeItemSettings() {
-	}
+	private TerravibeItemSettings() { }
 
 	public static FabricItemSettings terravibe() {
 		return stackOf(1).rarity(Rarity.EPIC);

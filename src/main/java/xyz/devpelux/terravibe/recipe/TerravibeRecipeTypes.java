@@ -18,15 +18,6 @@ public final class TerravibeRecipeTypes {
 	 */
 	public static final RecipeType<ShreddingRecipe> SHREDDING;
 
-	private TerravibeRecipeTypes() {
-	}
-
-	/**
-	 * Loads all the recipe types.
-	 */
-	public static void load() {
-	}
-
 	/**
 	 * Registers a new recipe type with the specified id.
 	 */

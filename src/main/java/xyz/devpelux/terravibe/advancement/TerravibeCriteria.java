@@ -18,15 +18,6 @@ public final class TerravibeCriteria {
 	 */
 	public static final TickCriterion MAKE_DAIRY_PRODUCTS;
 
-	private TerravibeCriteria() {
-	}
-
-	/**
-	 * Loads all the criteria.
-	 */
-	public static void load() {
-	}
-
 	/**
 	 * Registers a {@link TickCriterion} with the specified id.
 	 */

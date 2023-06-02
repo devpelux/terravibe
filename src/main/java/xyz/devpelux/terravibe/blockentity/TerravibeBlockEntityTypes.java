@@ -22,15 +22,6 @@ public final class TerravibeBlockEntityTypes {
 	 */
 	public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
 
-	private TerravibeBlockEntityTypes() {
-	}
-
-	/**
-	 * Loads all the block entity types.
-	 */
-	public static void load() {
-	}
-
 	/**
 	 * Registers the specified block entity type with the specified id.
 	 */

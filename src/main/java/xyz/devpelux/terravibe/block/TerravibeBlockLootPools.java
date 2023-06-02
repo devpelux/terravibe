@@ -28,14 +28,29 @@ import java.util.List;
 /**
  * List of all the extra loot pools added to existing blocks.
  */
-public class TerravibeLootPools {
-	private TerravibeLootPools() {
+public class TerravibeBlockLootPools {
+	private TerravibeBlockLootPools() { }
+
+	/**
+	 * Registers all the loot table modifiers.
+	 */
+	public static void registerLootTableModifiers() {
+		LootTableEvents.MODIFY.register(TerravibeBlockLootPools::lootTableModifier);
+	}
+
+	/**
+	 * Executed when the loot tables are ready to be modified.
+	 */
+	private static void lootTableModifier(ResourceManager resourceManager, LootManager lootManager, Identifier id,
+	                                      LootTable.Builder tableBuilder, LootTableSource source) {
+		if (id.equals(Blocks.DIRT.getLootTableId())) tableBuilder.pools(dirt());
+		else if (id.equals(Blocks.GRAVEL.getLootTableId())) tableBuilder.pools(gravel());
 	}
 
 	/**
 	 * Gets all the pools added to dirt block.
 	 */
-	public static List<LootPool> dirt() {
+	private static List<LootPool> dirt() {
 		List<LootPool> pools = new ArrayList<>();
 
 		//Ancient nightshade fern seeds at height 55 <-> 125.
@@ -53,7 +68,7 @@ public class TerravibeLootPools {
 	/**
 	 * Gets all the pools added to gravel block.
 	 */
-	public static List<LootPool> gravel() {
+	private static List<LootPool> gravel() {
 		List<LootPool> pools = new ArrayList<>();
 
 		//Ancient gillyweed seeds at height 22 <-> 54.
@@ -78,22 +93,6 @@ public class TerravibeLootPools {
 		pools.add(LootPool.builder().with(AlternativeEntry.builder(gillyweedSeedsH1, gillyweedSeedsH2)).build());
 
 		return pools;
-	}
-
-	/**
-	 * Loads the loot table event listeners that will add the pools.
-	 */
-	public static void load() {
-		LootTableEvents.MODIFY.register(TerravibeLootPools::lootTableModifier);
-	}
-
-	/**
-	 * Executed when the loot tables are ready to be modified.
-	 */
-	private static void lootTableModifier(ResourceManager resourceManager, LootManager lootManager, Identifier id,
-	                                      LootTable.Builder tableBuilder, LootTableSource source) {
-		if (id.equals(Blocks.DIRT.getLootTableId())) tableBuilder.pools(dirt());
-		else if (id.equals(Blocks.GRAVEL.getLootTableId())) tableBuilder.pools(gravel());
 	}
 
 	/**
