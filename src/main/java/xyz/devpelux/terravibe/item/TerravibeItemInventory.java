@@ -92,7 +92,6 @@ public final class TerravibeItemInventory {
 	private static void addFunctionals(FabricItemGroupEntries entries) {
 		//Functionals
 		entries.addAfter(Items.LOOM,
-				TerravibeItems.MORTAR,
 				TerravibeItems.SHREDDER,
 				TerravibeItems.TRAY);
 

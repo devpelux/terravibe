@@ -42,11 +42,6 @@ public final class TerravibeBlocks {
 	public static final Block MILK_CAULDRON;
 
 	/**
-	 * Crushes an item to obtain other items.
-	 */
-	public static final Block MORTAR;
-
-	/**
 	 * Shreds a bunch of items to obtain something.
 	 */
 	public static final Block SHREDDER;
@@ -223,7 +218,6 @@ public final class TerravibeBlocks {
 		LETTUCE_CROP = register("lettuce_crop", new LettuceCropBlock(TerravibeBlockSettings.lettuce()));
 		MILK_CAULDRON = register("milk_cauldron", new MilkCauldronBlock(TerravibeBlockSettings.milk_cauldron()));
 		MOLD_DUST_JAR = register("mold_dust_jar", new MoldDustJarBlock(TerravibeBlockSettings.mold_dust_jar()));
-		MORTAR = register("mortar", new MortarBlock(TerravibeBlockSettings.mortar()));
 		NIGHTLOCK_BERRY_BUSH = register("nightlock_berry_bush", new NightlockBerryBushBlock(TerravibeBlockSettings.nightlock_berry_bush()));
 		NIGHTSHADE_FERN = register("nightshade_fern", new NightshadeFernBlock(TerravibeBlockSettings.nightshade_fern()));
 		ONION_CROP = register("onion_crop", new OnionCropBlock(TerravibeBlockSettings.onion_crop()));

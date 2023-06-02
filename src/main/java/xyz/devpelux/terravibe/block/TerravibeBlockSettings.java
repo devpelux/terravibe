@@ -99,10 +99,6 @@ public final class TerravibeBlockSettings {
         return FabricBlockSettings.copyOf(Blocks.CAULDRON);
     }
 
-    public static FabricBlockSettings mortar() {
-        return FabricBlockSettings.copyOf(Blocks.FLOWER_POT).mapColor(MapColor.OAK_TAN);
-    }
-
     public static FabricBlockSettings nightlock_berry_bush() {
         return crop().mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.SWEET_BERRY_BUSH);
     }

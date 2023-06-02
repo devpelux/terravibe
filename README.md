@@ -57,12 +57,6 @@ You can obtain oil from olives, tomato sauce from tomatoes, minced meat, and oth
 
 <img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/shredder.jpg"/>
 
-Mortar is similar to shredder but for solid things, generally to smash things.
-You can pulverize salt crystals to get salt, or molds to get their dust.
-You can also use it to get sweet potato buds from poisonous potatoes.
-
-<img height="400px" src="https://raw.githubusercontent.com/devpelux/terravibe/4b7724450308616e1e788edb8046212ca75dbd76/assets/screenshots/mortar.jpg"/>
-
 
 <!-- license -->
 

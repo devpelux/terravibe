@@ -34,11 +34,6 @@ public final class TerravibeItems {
 	public static final Item CLOSED_JAR_FILLED;
 
 	/**
-	 * Item of the mortar block.
-	 */
-	public static final Item MORTAR;
-
-	/**
 	 * Item of the shredder block.
 	 */
 	public static final Item SHREDDER;
@@ -488,7 +483,6 @@ public final class TerravibeItems {
 		KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, TerravibeItemSettings.kale_seeds()));
 		LETTUCE_LEAVES = register("lettuce_leaves", new Item(TerravibeItemSettings.lettuce_leaves()));
 		LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, TerravibeItemSettings.lettuce_seeds()));
-		MORTAR = register("mortar", new AliasedBlockItem(TerravibeBlocks.MORTAR, TerravibeItemSettings.mortar()));
 		MOZZARELLA = register("mozzarella", new Item(TerravibeItemSettings.mozzarella()));
 		MOZZARELLA_FLAKES = register("mozzarella_flakes", new Item(TerravibeItemSettings.mozzarella_flakes()));
 		NIGHTLOCK_BERRIES = register("nightlock_berries", new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, TerravibeItemSettings.nightlock_berries()));

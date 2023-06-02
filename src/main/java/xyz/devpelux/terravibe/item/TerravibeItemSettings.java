@@ -199,10 +199,6 @@ public final class TerravibeItemSettings {
 		return stackOf(64);
 	}
 
-	public static FabricItemSettings mortar() {
-		return stackOf(64);
-	}
-
 	public static FabricItemSettings mozzarella() {
 		return stackOf(64).food(TerravibeFoodComponents.MOZZARELLA);
 	}
