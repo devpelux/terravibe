@@ -259,29 +259,14 @@ public final class TerravibeItems {
 	public static final Item CHEESE;
 
 	/**
-	 * Flakes of cheese.
-	 */
-	public static final Item CHEESE_FLAKES;
-
-	/**
 	 * Cheese with mold.
 	 */
 	public static final Item GORGONZOLA;
 
 	/**
-	 * Flakes of gorgonzola.
-	 */
-	public static final Item GORGONZOLA_FLAKES;
-
-	/**
 	 * Mozzarella.
 	 */
 	public static final Item MOZZARELLA;
-
-	/**
-	 * Flakes of mozzarella.
-	 */
-	public static final Item MOZZARELLA_FLAKES;
 
 	/**
 	 * Slice of pizza four cheese.
@@ -438,7 +423,6 @@ public final class TerravibeItems {
 		BURNED_DARK_MOLD_DUST = register("burned_dark_mold_dust", new Item(TerravibeItemSettings.burned_dark_mold_dust()));
 		BURNED_GLOWING_DARK_MOLD_DUST = register("burned_glowing_dark_mold_dust", new Item(TerravibeItemSettings.burned_glowing_dark_mold_dust()));
 		CHEESE = register("cheese", new Item(TerravibeItemSettings.cheese()));
-		CHEESE_FLAKES = register("cheese_flakes", new Item(TerravibeItemSettings.cheese_flakes()));
 		CHEESE_WHEEL = register("cheese_wheel", new AliasedBlockItem(TerravibeBlocks.CHEESE_WHEEL, TerravibeItemSettings.cheese_wheel()));
 		CLOSED_JAR_EMPTY = register("closed_jar_empty", new ClosedJarItem(TerravibeItemSettings.closed_jar_empty()));
 		CLOSED_JAR_FILLED = register("closed_jar_filled", new ClosedJarItem(TerravibeItemSettings.closed_jar_filled()));
@@ -461,7 +445,6 @@ public final class TerravibeItems {
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", new Item(TerravibeItemSettings.glowing_dark_mold()));
 		GLOWING_DARK_MOLD_DUST = register("glowing_dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.GLOWING_DARK_MOLD, TerravibeItemSettings.glowing_dark_mold_dust()));
 		GORGONZOLA = register("gorgonzola", new Item(TerravibeItemSettings.gorgonzola()));
-		GORGONZOLA_FLAKES = register("gorgonzola_flakes", new Item(TerravibeItemSettings.gorgonzola_flakes()));
 		GORGONZOLA_WHEEL = register("gorgonzola_wheel", new AliasedBlockItem(TerravibeBlocks.GORGONZOLA_WHEEL, TerravibeItemSettings.gorgonzola_wheel()));
 		JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, TerravibeItemSettings.jar()));
 		KALE = register("kale", new Item(TerravibeItemSettings.kale()));
@@ -469,7 +452,6 @@ public final class TerravibeItems {
 		LETTUCE_LEAVES = register("lettuce_leaves", new Item(TerravibeItemSettings.lettuce_leaves()));
 		LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, TerravibeItemSettings.lettuce_seeds()));
 		MOZZARELLA = register("mozzarella", new Item(TerravibeItemSettings.mozzarella()));
-		MOZZARELLA_FLAKES = register("mozzarella_flakes", new Item(TerravibeItemSettings.mozzarella_flakes()));
 		NIGHTLOCK_BERRIES = register("nightlock_berries", new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, TerravibeItemSettings.nightlock_berries()));
 		NIGHTSHADE_FERN_BLUEBERRIES = register("nightshade_fern_blueberries", new SideEffectFoodItem(TerravibeItemSettings.nightshade_fern_blueberries()));
 		NIGHTSHADE_FERN_SEEDS = register("nightshade_fern_seeds", new AliasedBlockItem(TerravibeBlocks.NIGHTSHADE_FERN, TerravibeItemSettings.nightshade_fern_seeds()));

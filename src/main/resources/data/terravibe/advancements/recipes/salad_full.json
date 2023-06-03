@@ -42,13 +42,13 @@
 		]
 	  }
 	},
-	"has_mozzarella_flakes": {
+	"has_mozzarella": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "terravibe:mozzarella_flakes"
+			  "terravibe:mozzarella"
 			]
 		  }
 		]
@@ -102,7 +102,7 @@
 	  "has_bowl",
 	  "has_tomato",
 	  "has_lettuce_leaves",
-	  "has_mozzarella_flakes",
+	  "has_mozzarella",
 	  "has_onion",
 	  "has_corn_grains",
 	  "has_olives",

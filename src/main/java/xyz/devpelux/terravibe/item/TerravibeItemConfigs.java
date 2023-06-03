@@ -24,7 +24,6 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(BURNED_DARK_MOLD_DUST, 0.01f);
 		CompostingChanceRegistry.INSTANCE.add(BURNED_GLOWING_DARK_MOLD_DUST, 0.01f);
 		CompostingChanceRegistry.INSTANCE.add(CHEESE, 0.65f);
-		CompostingChanceRegistry.INSTANCE.add(CHEESE_FLAKES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(CHEESE_WHEEL, 1f);
 		CompostingChanceRegistry.INSTANCE.add(CORN, 0.6f);
 		CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.1f);
@@ -41,14 +40,12 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(GLOWING_DARK_MOLD_DUST, 0.04f);
 		CompostingChanceRegistry.INSTANCE.add(GORGONZOLA, 0.65f);
-		CompostingChanceRegistry.INSTANCE.add(GORGONZOLA_FLAKES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(GORGONZOLA_WHEEL, 1f);
 		CompostingChanceRegistry.INSTANCE.add(KALE, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, 0.5f);
 		CompostingChanceRegistry.INSTANCE.add(LETTUCE_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(MOZZARELLA, 0.5f);
-		CompostingChanceRegistry.INSTANCE.add(MOZZARELLA_FLAKES, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(NIGHTLOCK_BERRIES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_BLUEBERRIES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_SEEDS, 0.3f);

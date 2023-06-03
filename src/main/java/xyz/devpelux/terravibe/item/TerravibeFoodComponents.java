@@ -11,16 +11,13 @@ public final class TerravibeFoodComponents {
 	public static final FoodComponent BAKED_SWEET_POTATO;
 	public static final FoodComponent BEANS;
 	public static final FoodComponent CHEESE;
-	public static final FoodComponent CHEESE_FLAKES;
 	public static final FoodComponent DARK_SWEET_BERRIES;
 	public static final FoodComponent EGGPLANT;
 	public static final FoodComponent GILLYWEED;
 	public static final FoodComponent GORGONZOLA;
-	public static final FoodComponent GORGONZOLA_FLAKES;
 	public static final FoodComponent KALE;
 	public static final FoodComponent LETTUCE_LEAVES;
 	public static final FoodComponent MOZZARELLA;
-	public static final FoodComponent MOZZARELLA_FLAKES;
 	public static final FoodComponent NIGHTLOCK_BERRIES;
 	public static final FoodComponent NIGHTSHADE_FERN_BLUEBERRIES;
 	public static final FoodComponent ONION;
@@ -42,7 +39,6 @@ public final class TerravibeFoodComponents {
 		BAKED_SWEET_POTATO = new FoodComponent.Builder().hunger(5).saturationModifier(0.7f).build();
 		BEANS = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
 		CHEESE = new FoodComponent.Builder().hunger(3).saturationModifier(0.7f).build();
-		CHEESE_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build();
 		DARK_SWEET_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();
 		EGGPLANT = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
 		GILLYWEED = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
@@ -50,11 +46,9 @@ public final class TerravibeFoodComponents {
 				.alwaysEdible()
 				.build();
 		GORGONZOLA = new FoodComponent.Builder().hunger(4).saturationModifier(0.7f).build();
-		GORGONZOLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build();
 		KALE = new FoodComponent.Builder().hunger(2).saturationModifier(0.4f).build();
 		LETTUCE_LEAVES = new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build();
 		MOZZARELLA = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
-		MOZZARELLA_FLAKES = new FoodComponent.Builder().hunger(1).saturationModifier(0.15f).build();
 		NIGHTLOCK_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();
 		NIGHTSHADE_FERN_BLUEBERRIES = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f)
 				.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0), 1f) //15s

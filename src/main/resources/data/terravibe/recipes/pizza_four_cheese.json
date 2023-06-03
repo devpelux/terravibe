@@ -13,16 +13,16 @@
 	  "item": "terravibe:tomato_sauce_bottle"
 	},
 	"M": {
-	  "item": "terravibe:mozzarella_flakes"
+	  "item": "terravibe:mozzarella"
 	},
 	"B": {
 	  "item": "terravibe:basil"
 	},
 	"C": {
-	  "item": "terravibe:cheese_flakes"
+	  "item": "terravibe:cheese"
 	},
 	"G": {
-	  "item": "terravibe:gorgonzola_flakes"
+	  "item": "terravibe:gorgonzola"
 	}
   },
   "result": {

@@ -79,10 +79,6 @@ public final class TerravibeItemSettings {
 		return stackOf(64).food(TerravibeFoodComponents.CHEESE);
 	}
 
-	public static FabricItemSettings cheese_flakes() {
-		return stackOf(64).food(TerravibeFoodComponents.CHEESE_FLAKES);
-	}
-
 	public static FabricItemSettings cheese_wheel() {
 		return stackOf(16);
 	}
@@ -171,10 +167,6 @@ public final class TerravibeItemSettings {
 		return stackOf(64).food(TerravibeFoodComponents.GORGONZOLA);
 	}
 
-	public static FabricItemSettings gorgonzola_flakes() {
-		return stackOf(64).food(TerravibeFoodComponents.GORGONZOLA_FLAKES);
-	}
-
 	public static FabricItemSettings gorgonzola_wheel() {
 		return stackOf(16);
 	}
@@ -201,10 +193,6 @@ public final class TerravibeItemSettings {
 
 	public static FabricItemSettings mozzarella() {
 		return stackOf(64).food(TerravibeFoodComponents.MOZZARELLA);
-	}
-
-	public static FabricItemSettings mozzarella_flakes() {
-		return stackOf(64).food(TerravibeFoodComponents.MOZZARELLA_FLAKES);
 	}
 
 	public static FabricItemSettings nightlock_berries() {

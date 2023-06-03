@@ -56,13 +56,10 @@ public final class TerravibeItemInventory {
 		//Milk derivatives
 		entries.addAfter(Items.PUMPKIN_PIE,
 				TerravibeItems.MOZZARELLA,
-				TerravibeItems.MOZZARELLA_FLAKES,
 				TerravibeItems.CHEESE_WHEEL,
 				TerravibeItems.CHEESE,
-				TerravibeItems.CHEESE_FLAKES,
 				TerravibeItems.GORGONZOLA_WHEEL,
-				TerravibeItems.GORGONZOLA,
-				TerravibeItems.GORGONZOLA_FLAKES);
+				TerravibeItems.GORGONZOLA);
 
 		//Pizzas
 		entries.addAfter(Items.PUMPKIN_PIE,

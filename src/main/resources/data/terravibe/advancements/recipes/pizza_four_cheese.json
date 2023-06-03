@@ -30,13 +30,13 @@
 		]
 	  }
 	},
-	"has_mozzarella_flakes": {
+	"has_mozzarella": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "terravibe:mozzarella_flakes"
+			  "terravibe:mozzarella"
 			]
 		  }
 		]
@@ -54,25 +54,25 @@
 		]
 	  }
 	},
-	"has_cheese_flakes": {
+	"has_cheese": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "terravibe:cheese_flakes"
+			  "terravibe:cheese"
 			]
 		  }
 		]
 	  }
 	},
-	"has_gorgonzola_flakes": {
+	"has_gorgonzola": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "terravibe:gorgonzola_flakes"
+			  "terravibe:gorgonzola"
 			]
 		  }
 		]
@@ -89,10 +89,10 @@
 	[
 	  "has_wheat",
 	  "has_tomato_sauce_bottle",
-	  "has_mozzarella_flakes",
+	  "has_mozzarella",
 	  "has_basil",
-	  "has_cheese_flakes",
-	  "has_gorgonzola_flakes",
+	  "has_cheese",
+	  "has_gorgonzola",
 	  "has_the_recipe"
 	]
   ]
