@@ -3,19 +3,16 @@
 	"content=milk": {
 	  "model": "terravibe:block/milk_cauldron_milk"
 	},
-	"content=salted_milk": {
-	  "model": "terravibe:block/milk_cauldron_milk"
-	},
 	"content=acid_milk": {
 	  "model": "terravibe:block/milk_cauldron_milk"
 	},
-	"content=acid_milk_with_mold": {
+	"content=acid_milk_with_salt": {
+	  "model": "terravibe:block/milk_cauldron_milk"
+	},
+	"content=acid_milk_with_salt_and_mold": {
 	  "model": "terravibe:block/milk_cauldron_milk"
 	},
 	"content=mozzarella": {
-	  "model": "terravibe:block/milk_cauldron_mozzarella"
-	},
-	"content=mozzarella_with_mold": {
 	  "model": "terravibe:block/milk_cauldron_mozzarella"
 	},
 	"content=cheese": {

@@ -1,0 +1,21 @@
+{
+  "type": "terravibe:shredding",
+  "ingredients": [
+	{
+	  "item": "terravibe:lemon"
+	},
+	{
+	  "item": "terravibe:lemon"
+	},
+	{
+	  "item": "terravibe:lemon"
+	},
+	{
+	  "item": "terravibe:lemon"
+	}
+  ],
+  "container": {
+	"item": "minecraft:glass_bottle"
+  },
+  "result": "terravibe:lemon_juice"
+}

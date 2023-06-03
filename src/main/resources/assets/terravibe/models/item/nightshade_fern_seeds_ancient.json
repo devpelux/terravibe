@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+	"layer0": "terravibe:item/nightshade_fern_seeds_ancient"
+  }
+}

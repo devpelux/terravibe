@@ -1,6 +1,7 @@
 package xyz.devpelux.terravibe.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Items;
@@ -183,6 +184,14 @@ public final class TerravibeItemSettings {
 		return stackOf(64);
 	}
 
+	public static FabricItemSettings lemon() {
+		return stackOf(64).food(TerravibeFoodComponents.LEMON);
+	}
+
+	public static ColoredItemSettings lemon_juice() {
+		return coloredBottle(ColoredItem.color(1, 0xf3ff93));
+	}
+
 	public static FabricItemSettings lettuce_leaves() {
 		return stackOf(64).food(TerravibeFoodComponents.LETTUCE_LEAVES);
 	}
@@ -217,6 +226,10 @@ public final class TerravibeItemSettings {
 
 	public static ColoredItemSettings oak_cork_plug() {
 		return stackOf(64, ColoredItemSettings::new).colorProvider(ColoredItem.color(1, 0xb8945f));
+	}
+
+	public static ColoredItemSettings oil() {
+		return coloredBottle(ColoredItem.color(1, 0x808000));
 	}
 
 	public static FabricItemSettings olives() {
@@ -315,11 +328,8 @@ public final class TerravibeItemSettings {
 		return stackOf(64).food(TerravibeFoodComponents.TOMATO);
 	}
 
-	public static ColoredItemSettings tomato_sauce_bottle() {
-		ColoredItemSettings settings = stackOf(16, ColoredItemSettings::new);
-		settings.colorProvider(ColoredItem.color(1, 0xf61815));
-		settings.recipeRemainder(Items.GLASS_BOTTLE);
-		return settings;
+	public static ColoredItemSettings tomato_sauce() {
+		return coloredBottle(ColoredItem.color(1, 0xf61815));
 	}
 
 	public static FabricItemSettings tomato_seeds() {
@@ -340,6 +350,16 @@ public final class TerravibeItemSettings {
 
 	public static ColoredItemSettings warped_cork_plug() {
 		return stackOf(64, ColoredItemSettings::new).colorProvider(ColoredItem.color(1, 0x398382));
+	}
+
+	/**
+	 * Generates settings for a colored bottle.
+	 */
+	private static ColoredItemSettings coloredBottle(ItemColorProvider colorProvider) {
+		ColoredItemSettings settings = stackOf(16, ColoredItemSettings::new);
+		settings.colorProvider(colorProvider);
+		settings.recipeRemainder(Items.GLASS_BOTTLE);
+		return settings;
 	}
 
 	/**

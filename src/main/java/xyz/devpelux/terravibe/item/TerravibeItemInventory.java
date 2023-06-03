@@ -31,6 +31,7 @@ public final class TerravibeItemInventory {
 
 		//Fruits
 		entries.addBefore(Items.CHORUS_FRUIT,
+				TerravibeItems.LEMON,
 				TerravibeItems.PRICKLY_PEAR);
 
 		//Sweet potato buds
@@ -70,7 +71,9 @@ public final class TerravibeItemInventory {
 
 		//Bottles
 		entries.addAfter(Items.SPIDER_EYE,
-				TerravibeItems.TOMATO_SAUCE_BOTTLE);
+				TerravibeItems.LEMON_JUICE,
+				TerravibeItems.TOMATO_SAUCE,
+				TerravibeItems.OIL);
 
 		//Salads
 		entries.addBefore(Items.MUSHROOM_STEW,

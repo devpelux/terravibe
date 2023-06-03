@@ -18,18 +18,6 @@
 		]
 	  }
 	},
-	"has_tomato_sauce_bottle": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"items": [
-			  "terravibe:tomato_sauce_bottle"
-			]
-		  }
-		]
-	  }
-	},
 	"has_mozzarella": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
@@ -37,18 +25,6 @@
 		  {
 			"items": [
 			  "terravibe:mozzarella"
-			]
-		  }
-		]
-	  }
-	},
-	"has_basil": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"items": [
-			  "terravibe:basil"
 			]
 		  }
 		]
@@ -78,6 +54,18 @@
 		]
 	  }
 	},
+	"has_oil": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"items": [
+			  "terravibe:oil"
+			]
+		  }
+		]
+	  }
+	},
 	"has_the_recipe": {
 	  "trigger": "minecraft:recipe_unlocked",
 	  "conditions": {
@@ -88,11 +76,10 @@
   "requirements": [
 	[
 	  "has_wheat",
-	  "has_tomato_sauce_bottle",
 	  "has_mozzarella",
-	  "has_basil",
 	  "has_cheese",
 	  "has_gorgonzola",
+	  "has_oil",
 	  "has_the_recipe"
 	]
   ]

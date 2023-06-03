@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-	"layer0": "terravibe:item/ancient_gillyweed_seeds_layer0",
-	"layer1": "terravibe:item/ancient_gillyweed_seeds_layer1"
-  }
-}

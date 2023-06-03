@@ -225,6 +225,11 @@ public final class TerravibeItems {
 	public static final Item WARPED_CORK;
 
 	/**
+	 * Fruit used in juices and to make cheese.
+	 */
+	public static final Item LEMON;
+
+	/**
 	 * Fruit used in salads, stews and various recipes.
 	 */
 	public static final Item OLIVES;
@@ -393,9 +398,19 @@ public final class TerravibeItems {
 	//Bottles
 
 	/**
-	 * Bottle that contains tomato sauce.
+	 * Bottle of lemon juice.
 	 */
-	public static final Item TOMATO_SAUCE_BOTTLE;
+	public static final Item LEMON_JUICE;
+
+	/**
+	 * Bottle of oil.
+	 */
+	public static final Item OIL;
+
+	/**
+	 * Bottle of tomato sauce.
+	 */
+	public static final Item TOMATO_SAUCE;
 
 	//Terrain blocks
 
@@ -441,7 +456,7 @@ public final class TerravibeItems {
 		FLOWERING_OPUNTIA = register("flowering_opuntia", new AliasedBlockItem(TerravibeBlocks.FLOWERING_OPUNTIA, TerravibeItemSettings.flowering_opuntia()));
 		GILLYWEED = register("gillyweed", new SideEffectFoodItem(TerravibeItemSettings.gillyweed()));
 		GILLYWEED_SEEDS = register("gillyweed_seeds", new AliasedBlockItem(TerravibeBlocks.GILLYWEED_ALGA, TerravibeItemSettings.gillyweed_seeds()));
-		GILLYWEED_SEEDS_ANCIENT = register("ancient_gillyweed_seeds", new AncientSeedItem(TerravibeItemSettings.ancient_gillyweed_seeds()));
+		GILLYWEED_SEEDS_ANCIENT = register("gillyweed_seeds_ancient", new AncientSeedItem(TerravibeItemSettings.ancient_gillyweed_seeds()));
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", new Item(TerravibeItemSettings.glowing_dark_mold()));
 		GLOWING_DARK_MOLD_DUST = register("glowing_dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.GLOWING_DARK_MOLD, TerravibeItemSettings.glowing_dark_mold_dust()));
 		GORGONZOLA = register("gorgonzola", new Item(TerravibeItemSettings.gorgonzola()));
@@ -449,15 +464,18 @@ public final class TerravibeItems {
 		JAR = register("jar", new AliasedBlockItem(TerravibeBlocks.JAR, TerravibeItemSettings.jar()));
 		KALE = register("kale", new Item(TerravibeItemSettings.kale()));
 		KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, TerravibeItemSettings.kale_seeds()));
+		LEMON = register("lemon", new Item(TerravibeItemSettings.lemon()));
+		LEMON_JUICE = register("lemon_juice", new ColoredItem(TerravibeItemSettings.lemon_juice()));
 		LETTUCE_LEAVES = register("lettuce_leaves", new Item(TerravibeItemSettings.lettuce_leaves()));
 		LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, TerravibeItemSettings.lettuce_seeds()));
 		MOZZARELLA = register("mozzarella", new Item(TerravibeItemSettings.mozzarella()));
 		NIGHTLOCK_BERRIES = register("nightlock_berries", new NightlockBerriesItem(TerravibeBlocks.NIGHTLOCK_BERRY_BUSH, TerravibeItemSettings.nightlock_berries()));
 		NIGHTSHADE_FERN_BLUEBERRIES = register("nightshade_fern_blueberries", new SideEffectFoodItem(TerravibeItemSettings.nightshade_fern_blueberries()));
 		NIGHTSHADE_FERN_SEEDS = register("nightshade_fern_seeds", new AliasedBlockItem(TerravibeBlocks.NIGHTSHADE_FERN, TerravibeItemSettings.nightshade_fern_seeds()));
-		NIGHTSHADE_FERN_SEEDS_ANCIENT = register("ancient_nightshade_fern_seeds", new AncientSeedItem(TerravibeItemSettings.ancient_nightshade_fern_seeds()));
+		NIGHTSHADE_FERN_SEEDS_ANCIENT = register("nightshade_fern_seeds_ancient", new AncientSeedItem(TerravibeItemSettings.ancient_nightshade_fern_seeds()));
 		OAK_CORK = register("oak_cork", new Item(TerravibeItemSettings.oak_cork()));
 		OAK_CORK_PLUG = register("oak_cork_plug", new ColoredItem(TerravibeItemSettings.oak_cork_plug()));
+		OIL = register("oil", new ColoredItem(TerravibeItemSettings.oil()));
 		OLIVES = register("olives", new Item(TerravibeItemSettings.olives()));
 		ONION = register("onion", new Item(TerravibeItemSettings.onion()));
 		ONION_SEEDS = register("onion_seeds", new AliasedBlockItem(TerravibeBlocks.ONION_CROP, TerravibeItemSettings.onion_seeds()));
@@ -482,7 +500,7 @@ public final class TerravibeItems {
 		SWEET_POTATO = register("sweet_potato", new AliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP, TerravibeItemSettings.sweet_potato()));
 		SWEET_POTATO_BUDS = register("sweet_potato_buds", new DuplicatedAliasedBlockItem(TerravibeBlocks.SWEET_POTATO_CROP, TerravibeItemSettings.sweet_potato_buds()));
 		TOMATO = register("tomato", new Item(TerravibeItemSettings.tomato()));
-		TOMATO_SAUCE_BOTTLE = register("tomato_sauce_bottle", new ColoredItem(TerravibeItemSettings.tomato_sauce_bottle()));
+		TOMATO_SAUCE = register("tomato_sauce", new ColoredItem(TerravibeItemSettings.tomato_sauce()));
 		TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, TerravibeItemSettings.tomato_seeds()));
 		TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, TerravibeItemSettings.tray()));
 		TUN = register("tun", new AliasedBlockItem(TerravibeBlocks.TUN, TerravibeItemSettings.tun()));

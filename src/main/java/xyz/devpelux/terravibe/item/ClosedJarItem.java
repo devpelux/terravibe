@@ -40,6 +40,8 @@ public class ClosedJarItem extends Item implements ItemColorProvider {
 	public static final String CONTENT_WATER = "minecraft:water";
 	public static final String CONTENT_HONEY = "minecraft:honey";
 	public static final String CONTENT_MILK = "minecraft:milk";
+	public static final String CONTENT_LEMON_JUICE = "terravibe:lemon_juice";
+	public static final String CONTENT_OIL = "terravibe:oil";
 	public static final String CONTENT_TOMATO_SAUCE = "terravibe:tomato_sauce";
 	public static final String CONTENT_BIRCH_MOLD_DUST = "terravibe:birch_mold_dust";
 	public static final String CONTENT_DARK_MOLD_DUST = "terravibe:dark_mold_dust";
@@ -270,6 +272,8 @@ public class ClosedJarItem extends Item implements ItemColorProvider {
 		registerColorProvider(CONTENT_WATER, (s, i) -> getPotionColor(s));
 		registerColorProvider(CONTENT_MILK, (s, i) -> 0xffffff);
 		registerColorProvider(CONTENT_HONEY, (s, i) -> 0x976018);
+		registerColorProvider(CONTENT_LEMON_JUICE, (s, i) -> 0xf3ff93);
+		registerColorProvider(CONTENT_OIL, (s, i) -> 0x808000);
 		registerColorProvider(CONTENT_TOMATO_SAUCE, (s, i) -> 0xf61815);
 		registerColorProvider(CONTENT_BIRCH_MOLD_DUST, (s, i) -> 0xb3af9c);
 		registerColorProvider(CONTENT_DARK_MOLD_DUST, (s, i) -> 0x273832);
@@ -282,6 +286,8 @@ public class ClosedJarItem extends Item implements ItemColorProvider {
 		registerTooltipProvider(CONTENT_WATER, ClosedJarItem::getTooltipKeyFromPotion);
 		registerTooltipProvider(CONTENT_MILK, ClosedJarItem::getTooltipKeyFromContent);
 		registerTooltipProvider(CONTENT_HONEY, ClosedJarItem::getTooltipKeyFromContent);
+		registerTooltipProvider(CONTENT_LEMON_JUICE, ClosedJarItem::getTooltipKeyFromContent);
+		registerTooltipProvider(CONTENT_OIL, ClosedJarItem::getTooltipKeyFromContent);
 		registerTooltipProvider(CONTENT_TOMATO_SAUCE, ClosedJarItem::getTooltipKeyFromContent);
 		registerTooltipProvider(CONTENT_BIRCH_MOLD_DUST, ClosedJarItem::getTooltipKeyFromContent);
 		registerTooltipProvider(CONTENT_DARK_MOLD_DUST, ClosedJarItem::getTooltipKeyFromContent);

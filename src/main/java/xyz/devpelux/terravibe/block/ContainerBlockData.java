@@ -35,6 +35,8 @@ public final class ContainerBlockData {
 	public static final String CONTENT_WATER = "minecraft:water";
 	public static final String CONTENT_HONEY = "minecraft:honey";
 	public static final String CONTENT_MILK = "minecraft:milk";
+	public static final String CONTENT_LEMON_JUICE = "terravibe:lemon_juice";
+	public static final String CONTENT_OIL = "terravibe:oil";
 	public static final String CONTENT_TOMATO_SAUCE = "terravibe:tomato_sauce";
 	public static final String CONTENT_BIRCH_MOLD_DUST = "terravibe:birch_mold_dust";
 	public static final String CONTENT_DARK_MOLD_DUST = "terravibe:dark_mold_dust";
@@ -51,6 +53,10 @@ public final class ContainerBlockData {
 	public static final ContainerBehavior PUT_HONEY;
 	public static final ContainerBehavior GET_MILK;
 	public static final ContainerBehavior PUT_MILK;
+	public static final ContainerBehavior GET_LEMON_JUICE;
+	public static final ContainerBehavior PUT_LEMON_JUICE;
+	public static final ContainerBehavior GET_OIL;
+	public static final ContainerBehavior PUT_OIL;
 	public static final ContainerBehavior GET_TOMATO_SAUCE;
 	public static final ContainerBehavior PUT_TOMATO_SAUCE;
 	public static final ContainerBehavior GET_BIRCH_MOLD_DUST_JAR;
@@ -71,6 +77,8 @@ public final class ContainerBlockData {
 	public static final ContainerBlockColorProvider COLORIZE_WATER_OR_POTION;
 	public static final ContainerBlockColorProvider COLORIZE_HONEY;
 	public static final ContainerBlockColorProvider COLORIZE_MILK;
+	public static final ContainerBlockColorProvider COLORIZE_LEMON_JUICE;
+	public static final ContainerBlockColorProvider COLORIZE_OIL;
 	public static final ContainerBlockColorProvider COLORIZE_TOMATO_SAUCE;
 	public static final ContainerBlockColorProvider COLORIZE_BIRCH_MOLD_DUST;
 	public static final ContainerBlockColorProvider COLORIZE_DARK_MOLD_DUST;
@@ -106,7 +114,9 @@ public final class ContainerBlockData {
 		JarBlock.registerBehavior(CONTENT_EMPTY, Items.WATER_BUCKET, PUT_WATER_OR_POTION);
 		JarBlock.registerBehavior(CONTENT_EMPTY, Items.MILK_BUCKET, PUT_MILK);
 		JarBlock.registerBehavior(CONTENT_EMPTY, Items.HONEY_BOTTLE, PUT_HONEY);
-		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.TOMATO_SAUCE_BOTTLE, PUT_TOMATO_SAUCE);
+		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.LEMON_JUICE, PUT_LEMON_JUICE);
+		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.OIL, PUT_OIL);
+		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.TOMATO_SAUCE, PUT_TOMATO_SAUCE);
 		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.BIRCH_MOLD_DUST, PUT_BIRCH_MOLD_DUST_JAR);
 		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.DARK_MOLD_DUST, PUT_DARK_MOLD_DUST_JAR);
 		JarBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.GLOWING_DARK_MOLD_DUST, PUT_GLOWING_DARK_MOLD_DUST_JAR);
@@ -121,7 +131,11 @@ public final class ContainerBlockData {
 		JarBlock.registerBehavior(CONTENT_MILK, Items.BUCKET, GET_MILK);
 		JarBlock.registerBehavior(CONTENT_HONEY, Items.HONEY_BOTTLE, PUT_HONEY);
 		JarBlock.registerBehavior(CONTENT_HONEY, Items.GLASS_BOTTLE, GET_HONEY);
-		JarBlock.registerBehavior(CONTENT_TOMATO_SAUCE, TerravibeItems.TOMATO_SAUCE_BOTTLE, PUT_TOMATO_SAUCE);
+		JarBlock.registerBehavior(CONTENT_LEMON_JUICE, TerravibeItems.LEMON_JUICE, PUT_LEMON_JUICE);
+		JarBlock.registerBehavior(CONTENT_LEMON_JUICE, Items.GLASS_BOTTLE, GET_LEMON_JUICE);
+		JarBlock.registerBehavior(CONTENT_OIL, TerravibeItems.OIL, PUT_OIL);
+		JarBlock.registerBehavior(CONTENT_OIL, Items.GLASS_BOTTLE, GET_OIL);
+		JarBlock.registerBehavior(CONTENT_TOMATO_SAUCE, TerravibeItems.TOMATO_SAUCE, PUT_TOMATO_SAUCE);
 		JarBlock.registerBehavior(CONTENT_TOMATO_SAUCE, Items.GLASS_BOTTLE, GET_TOMATO_SAUCE);
 		JarBlock.registerBehavior(CONTENT_BIRCH_MOLD_DUST, TerravibeItems.BIRCH_MOLD_DUST, PUT_BIRCH_MOLD_DUST_JAR);
 		JarBlock.registerBehavior(CONTENT_BIRCH_MOLD_DUST, Items.AIR, GET_BIRCH_MOLD_DUST_JAR);
@@ -145,7 +159,9 @@ public final class ContainerBlockData {
 		TunBlock.registerBehavior(CONTENT_EMPTY, Items.WATER_BUCKET, PUT_WATER_OR_POTION);
 		TunBlock.registerBehavior(CONTENT_EMPTY, Items.MILK_BUCKET, PUT_MILK);
 		TunBlock.registerBehavior(CONTENT_EMPTY, Items.HONEY_BOTTLE, PUT_HONEY);
-		TunBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.TOMATO_SAUCE_BOTTLE, PUT_TOMATO_SAUCE);
+		TunBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.LEMON_JUICE, PUT_LEMON_JUICE);
+		TunBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.OIL, PUT_OIL);
+		TunBlock.registerBehavior(CONTENT_EMPTY, TerravibeItems.TOMATO_SAUCE, PUT_TOMATO_SAUCE);
 		TunBlock.registerBehavior(CONTENT_WATER, Items.POTION, PUT_WATER_OR_POTION);
 		TunBlock.registerBehavior(CONTENT_WATER, Items.WATER_BUCKET, PUT_WATER_OR_POTION);
 		TunBlock.registerBehavior(CONTENT_WATER, Items.GLASS_BOTTLE, GET_WATER_OR_POTION);
@@ -154,7 +170,11 @@ public final class ContainerBlockData {
 		TunBlock.registerBehavior(CONTENT_MILK, Items.BUCKET, GET_MILK);
 		TunBlock.registerBehavior(CONTENT_HONEY, Items.HONEY_BOTTLE, PUT_HONEY);
 		TunBlock.registerBehavior(CONTENT_HONEY, Items.GLASS_BOTTLE, GET_HONEY);
-		TunBlock.registerBehavior(CONTENT_TOMATO_SAUCE, TerravibeItems.TOMATO_SAUCE_BOTTLE, PUT_TOMATO_SAUCE);
+		TunBlock.registerBehavior(CONTENT_LEMON_JUICE, TerravibeItems.LEMON_JUICE, PUT_LEMON_JUICE);
+		TunBlock.registerBehavior(CONTENT_LEMON_JUICE, Items.GLASS_BOTTLE, GET_LEMON_JUICE);
+		TunBlock.registerBehavior(CONTENT_OIL, TerravibeItems.OIL, PUT_OIL);
+		TunBlock.registerBehavior(CONTENT_OIL, Items.GLASS_BOTTLE, GET_OIL);
+		TunBlock.registerBehavior(CONTENT_TOMATO_SAUCE, TerravibeItems.TOMATO_SAUCE, PUT_TOMATO_SAUCE);
 		TunBlock.registerBehavior(CONTENT_TOMATO_SAUCE, Items.GLASS_BOTTLE, GET_TOMATO_SAUCE);
 	}
 
@@ -166,6 +186,8 @@ public final class ContainerBlockData {
 		JarBlock.registerColorProvider(CONTENT_WATER, COLORIZE_WATER_OR_POTION);
 		JarBlock.registerColorProvider(CONTENT_HONEY, COLORIZE_HONEY);
 		JarBlock.registerColorProvider(CONTENT_MILK, COLORIZE_MILK);
+		JarBlock.registerColorProvider(CONTENT_LEMON_JUICE, COLORIZE_LEMON_JUICE);
+		JarBlock.registerColorProvider(CONTENT_OIL, COLORIZE_OIL);
 		JarBlock.registerColorProvider(CONTENT_TOMATO_SAUCE, COLORIZE_TOMATO_SAUCE);
 		JarBlock.registerColorProvider(CONTENT_BIRCH_MOLD_DUST, COLORIZE_BIRCH_MOLD_DUST);
 		JarBlock.registerColorProvider(CONTENT_DARK_MOLD_DUST, COLORIZE_DARK_MOLD_DUST);
@@ -183,6 +205,8 @@ public final class ContainerBlockData {
 		TunBlock.registerColorProvider(CONTENT_WATER, COLORIZE_WATER_OR_POTION);
 		TunBlock.registerColorProvider(CONTENT_HONEY, COLORIZE_HONEY);
 		TunBlock.registerColorProvider(CONTENT_MILK, COLORIZE_MILK);
+		TunBlock.registerColorProvider(CONTENT_LEMON_JUICE, COLORIZE_LEMON_JUICE);
+		TunBlock.registerColorProvider(CONTENT_OIL, COLORIZE_OIL);
 		TunBlock.registerColorProvider(CONTENT_TOMATO_SAUCE, COLORIZE_TOMATO_SAUCE);
 		TunBlock.registerColorProvider(CONTENT_BIRCH_MOLD_DUST, COLORIZE_BIRCH_MOLD_DUST);
 		TunBlock.registerColorProvider(CONTENT_DARK_MOLD_DUST, COLORIZE_DARK_MOLD_DUST);
@@ -368,9 +392,29 @@ public final class ContainerBlockData {
 					3, CONTENT_MILK, ContentTexture.Fluid, stack.getRecipeRemainder(), SoundEvents.ITEM_BUCKET_EMPTY);
 		};
 
+		GET_LEMON_JUICE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
+			return getFromContainer(state, world, pos, player, stack, container, level, currentLevel,
+					1, TerravibeItems.LEMON_JUICE.getDefaultStack(), SoundEvents.ITEM_BOTTLE_FILL);
+		};
+
+		PUT_LEMON_JUICE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
+			return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
+					1, CONTENT_LEMON_JUICE, ContentTexture.Fluid, stack.getRecipeRemainder(), SoundEvents.ITEM_BOTTLE_EMPTY);
+		};
+
+		GET_OIL = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
+			return getFromContainer(state, world, pos, player, stack, container, level, currentLevel,
+					1, TerravibeItems.OIL.getDefaultStack(), SoundEvents.ITEM_BOTTLE_FILL);
+		};
+
+		PUT_OIL = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
+			return putInContainer(state, world, pos, player, stack, container, level, currentLevel, maxLevel,
+					1, CONTENT_OIL, ContentTexture.DenseFluid, stack.getRecipeRemainder(), SoundEvents.ITEM_BOTTLE_EMPTY);
+		};
+
 		GET_TOMATO_SAUCE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
 			return getFromContainer(state, world, pos, player, stack, container, level, currentLevel,
-					1, TerravibeItems.TOMATO_SAUCE_BOTTLE.getDefaultStack(), SoundEvents.ITEM_BOTTLE_FILL);
+					1, TerravibeItems.TOMATO_SAUCE.getDefaultStack(), SoundEvents.ITEM_BOTTLE_FILL);
 		};
 
 		PUT_TOMATO_SAUCE = (state, world, pos, player, stack, container, level, currentLevel, maxLevel) -> {
@@ -481,6 +525,8 @@ public final class ContainerBlockData {
 		};
 		COLORIZE_HONEY = (container, state, world, pos, tintIndex) -> 0x976018;
 		COLORIZE_MILK = (container, state, world, pos, tintIndex) -> 0xffffff;
+		COLORIZE_LEMON_JUICE = (container, state, world, pos, tintIndex) -> 0xf3ff93;
+		COLORIZE_OIL = (container, state, world, pos, tintIndex) -> 0x808000;
 		COLORIZE_TOMATO_SAUCE = (container, state, world, pos, tintIndex) -> 0xf61815;
 		COLORIZE_BIRCH_MOLD_DUST = (container, state, world, pos, tintIndex) -> {
 			return switch (tintIndex) {

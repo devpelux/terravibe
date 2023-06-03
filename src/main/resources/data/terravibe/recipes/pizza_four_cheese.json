@@ -1,28 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"CBG",
-	"MTM",
+	" O ",
+	"MCG",
 	"WWW"
   ],
   "key": {
 	"W": {
 	  "item": "minecraft:wheat"
 	},
-	"T": {
-	  "item": "terravibe:tomato_sauce_bottle"
-	},
 	"M": {
 	  "item": "terravibe:mozzarella"
-	},
-	"B": {
-	  "item": "terravibe:basil"
 	},
 	"C": {
 	  "item": "terravibe:cheese"
 	},
 	"G": {
 	  "item": "terravibe:gorgonzola"
+	},
+	"O": {
+	  "item": "terravibe:oil"
 	}
   },
   "result": {

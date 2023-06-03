@@ -43,6 +43,7 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(GORGONZOLA_WHEEL, 1f);
 		CompostingChanceRegistry.INSTANCE.add(KALE, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(KALE_SEEDS, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(LEMON, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(LETTUCE_LEAVES, 0.5f);
 		CompostingChanceRegistry.INSTANCE.add(LETTUCE_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(MOZZARELLA, 0.5f);
@@ -88,9 +89,11 @@ public class TerravibeItemConfigs {
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) DARK_OAK_CORK_PLUG, DARK_OAK_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) GILLYWEED_SEEDS_ANCIENT, GILLYWEED_SEEDS_ANCIENT);
+		ColorProviderRegistry.ITEM.register((ItemColorProvider) LEMON_JUICE, LEMON_JUICE);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) NIGHTSHADE_FERN_SEEDS_ANCIENT, NIGHTSHADE_FERN_SEEDS_ANCIENT);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) TOMATO_SAUCE_BOTTLE, TOMATO_SAUCE_BOTTLE);
+		ColorProviderRegistry.ITEM.register((ItemColorProvider) OIL, OIL);
+		ColorProviderRegistry.ITEM.register((ItemColorProvider) TOMATO_SAUCE, TOMATO_SAUCE);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) WARPED_CORK_PLUG, WARPED_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) CLOSED_JAR_EMPTY, CLOSED_JAR_EMPTY);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) CLOSED_JAR_FILLED, CLOSED_JAR_FILLED);

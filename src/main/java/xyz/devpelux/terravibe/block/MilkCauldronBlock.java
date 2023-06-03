@@ -143,7 +143,9 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 
 				//Consumes the item used, if the player is not in creative mode.
 				if (!player.getAbilities().creativeMode) {
+					ItemStack drop = ingredient.getRecipeRemainder();
 					ingredient.decrement(1);
+					player.getInventory().offerOrDrop(drop);
 				}
 
 				//Plays the put sound.
@@ -201,8 +203,8 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	@Override
 	protected double getFluidHeight(BlockState state) {
 		return switch (state.get(CONTENT)) {
-			case Milk, SaltedMilk, AcidMilk, AcidMilkWithMold -> 0.9375;
-			case Mozzarella, MozzarellaWithMold -> 0.75;
+			case Milk, AcidMilk, AcidMilkWithSalt, AcidMilkWithSaltAndMold -> 0.9375;
+			case Mozzarella -> 0.75;
 			case Cheese, Gorgonzola -> 0.5625;
 		};
 	}
@@ -213,9 +215,9 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	@Override
 	public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
 		return switch (state.get(CONTENT)) {
-			case SaltedMilk -> 4;
-			case Milk, AcidMilk, AcidMilkWithMold -> 3;
-			case Mozzarella, MozzarellaWithMold -> 2;
+			case Milk -> 4;
+			case AcidMilk, AcidMilkWithSalt, AcidMilkWithSaltAndMold -> 3;
+			case Mozzarella -> 2;
 			case Cheese, Gorgonzola -> 1;
 		};
 	}
@@ -226,7 +228,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		return switch (state.get(CONTENT)) {
-			case Mozzarella, MozzarellaWithMold, Cheese, Gorgonzola -> SOLID_FILLED_CAULDRON_OUTLINE_SHAPE;
+			case Mozzarella, Cheese, Gorgonzola -> SOLID_FILLED_CAULDRON_OUTLINE_SHAPE;
 			default -> super.getOutlineShape(state, world, pos, context);
 		};
 	}
@@ -238,8 +240,8 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
 		if (tintIndex == 0) {
 			return switch (state.get(CONTENT)) {
-				case Milk, SaltedMilk -> 0xffffff;
-				case AcidMilk, AcidMilkWithMold -> 0xf0f0dd;
+				case Milk -> 0xffffff;
+				case AcidMilk, AcidMilkWithSalt, AcidMilkWithSaltAndMold -> 0xfcffe7;
 				default -> -1;
 			};
 		}
@@ -252,9 +254,8 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	private Content getNextStage(Content content) {
 		return switch (content) {
 			case AcidMilk -> Content.Mozzarella;
-			case AcidMilkWithMold -> Content.MozzarellaWithMold;
-			case Mozzarella -> Content.Cheese;
-			case MozzarellaWithMold -> Content.Gorgonzola;
+			case AcidMilkWithSalt -> Content.Cheese;
+			case AcidMilkWithSaltAndMold -> Content.Gorgonzola;
 			default -> content;
 		};
 	}
@@ -264,9 +265,9 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	 */
 	private Content getRecipeResult(Content content, ItemStack ingredient) {
 		return switch (content) {
-			case Milk -> ingredient.isOf(TerravibeItems.SALT) ? Content.SaltedMilk : content;
-			case SaltedMilk -> ingredient.isIn(TerravibeItemTags.MILK_COAGULANTS) ? Content.AcidMilk : content;
-			case AcidMilk -> ingredient.isIn(TerravibeItemTags.EDIBLE_MOLDS) ? Content.AcidMilkWithMold : content;
+			case Milk -> ingredient.isIn(TerravibeItemTags.MILK_COAGULANTS) ? Content.AcidMilk : content;
+			case AcidMilk -> ingredient.isOf(TerravibeItems.SALT) ? Content.AcidMilkWithSalt : content;
+			case AcidMilkWithSalt -> ingredient.isIn(TerravibeItemTags.EDIBLE_MOLDS) ? Content.AcidMilkWithSaltAndMold : content;
 			default -> content;
 		};
 	}
@@ -276,7 +277,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	 */
 	private ItemStack getResult(Content content) {
 		return switch (content) {
-			case Mozzarella, MozzarellaWithMold -> new ItemStack(TerravibeItems.MOZZARELLA, 6);
+			case Mozzarella -> new ItemStack(TerravibeItems.MOZZARELLA, 8);
 			case Cheese -> new ItemStack(TerravibeItems.CHEESE_WHEEL, 1);
 			case Gorgonzola -> new ItemStack(TerravibeItems.GORGONZOLA_WHEEL, 1);
 			default -> ItemStack.EMPTY;
@@ -288,7 +289,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	 */
 	private SoundEvent getPickSound(Content content) {
 		return switch (content) {
-			case Mozzarella, MozzarellaWithMold -> SoundEvents.BLOCK_HONEY_BLOCK_BREAK;
+			case Mozzarella -> SoundEvents.BLOCK_HONEY_BLOCK_BREAK;
 			case Cheese, Gorgonzola -> SoundEvents.BLOCK_WOOL_BREAK;
 			default -> SoundEvents.ITEM_BUCKET_FILL;
 		};
@@ -299,9 +300,10 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	 */
 	private SoundEvent getPutSound(Content recipeResult) {
 		return switch (recipeResult) {
-			case SaltedMilk -> SoundEvents.BLOCK_SAND_BREAK;
-			case AcidMilkWithMold -> SoundEvents.BLOCK_MOSS_PLACE;
-			default -> SoundEvents.ITEM_BOTTLE_EMPTY;
+			case AcidMilk -> SoundEvents.ITEM_BOTTLE_EMPTY;
+			case AcidMilkWithSalt -> SoundEvents.BLOCK_SAND_BREAK;
+			case AcidMilkWithSaltAndMold -> SoundEvents.BLOCK_MOSS_PLACE;
+			default -> SoundEvents.ITEM_BUCKET_EMPTY;
 		};
 	}
 
@@ -341,29 +343,24 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 		Milk("milk"),
 
 		/**
-		 * The cauldron contains salted milk.
-		 */
-		SaltedMilk("salted_milk"),
-
-		/**
 		 * The cauldron contains acid milk.
 		 */
 		AcidMilk("acid_milk"),
 
 		/**
-		 * The cauldron contains acid milk with mold.
+		 * The cauldron contains acid milk with salt.
 		 */
-		AcidMilkWithMold("acid_milk_with_mold"),
+		AcidMilkWithSalt("acid_milk_with_salt"),
+
+		/**
+		 * The cauldron contains acid milk with salt and mold.
+		 */
+		AcidMilkWithSaltAndMold("acid_milk_with_salt_and_mold"),
 
 		/**
 		 * The cauldron contains mozzarella.
 		 */
 		Mozzarella("mozzarella"),
-
-		/**
-		 * The cauldron contains mozzarella with mold.
-		 */
-		MozzarellaWithMold("mozzarella_with_mold"),
 
 		/**
 		 * The cauldron contains cheese.
