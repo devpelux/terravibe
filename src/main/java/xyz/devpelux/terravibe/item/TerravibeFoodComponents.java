@@ -17,6 +17,7 @@ public final class TerravibeFoodComponents {
 	public static final FoodComponent GORGONZOLA;
 	public static final FoodComponent KALE;
 	public static final FoodComponent LEMON;
+	public static final FoodComponent LEMON_JUICE;
 	public static final FoodComponent LETTUCE_LEAVES;
 	public static final FoodComponent MOZZARELLA;
 	public static final FoodComponent NIGHTLOCK_BERRIES;
@@ -48,7 +49,8 @@ public final class TerravibeFoodComponents {
 				.build();
 		GORGONZOLA = new FoodComponent.Builder().hunger(4).saturationModifier(0.7f).build();
 		KALE = new FoodComponent.Builder().hunger(2).saturationModifier(0.4f).build();
-		LEMON = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
+		LEMON = new FoodComponent.Builder().hunger(3).saturationModifier(0.4f).build();
+		LEMON_JUICE = new FoodComponent.Builder().hunger(4).saturationModifier(0.6f).build();
 		LETTUCE_LEAVES = new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build();
 		MOZZARELLA = new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build();
 		NIGHTLOCK_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build();

@@ -465,7 +465,7 @@ public final class TerravibeItems {
 		KALE = register("kale", new Item(TerravibeItemSettings.kale()));
 		KALE_SEEDS = register("kale_seeds", new AliasedBlockItem(TerravibeBlocks.KALE_CROP, TerravibeItemSettings.kale_seeds()));
 		LEMON = register("lemon", new Item(TerravibeItemSettings.lemon()));
-		LEMON_JUICE = register("lemon_juice", new ColoredItem(TerravibeItemSettings.lemon_juice()));
+		LEMON_JUICE = register("lemon_juice", new JuiceItem(TerravibeItemSettings.lemon_juice()));
 		LETTUCE_LEAVES = register("lettuce_leaves", new Item(TerravibeItemSettings.lettuce_leaves()));
 		LETTUCE_SEEDS = register("lettuce_seeds", new AliasedBlockItem(TerravibeBlocks.LETTUCE_CROP, TerravibeItemSettings.lettuce_seeds()));
 		MOZZARELLA = register("mozzarella", new Item(TerravibeItemSettings.mozzarella()));

@@ -89,7 +89,7 @@ public class TerravibeItemConfigs {
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) DARK_OAK_CORK_PLUG, DARK_OAK_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) GILLYWEED_SEEDS_ANCIENT, GILLYWEED_SEEDS_ANCIENT);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) LEMON_JUICE, LEMON_JUICE);
+		ColorProviderRegistry.ITEM.register((s, i) -> i == 1 ? 0xf3ff93 : -1, LEMON_JUICE);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) NIGHTSHADE_FERN_SEEDS_ANCIENT, NIGHTSHADE_FERN_SEEDS_ANCIENT);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
 		ColorProviderRegistry.ITEM.register((ItemColorProvider) OIL, OIL);

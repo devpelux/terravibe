@@ -188,8 +188,8 @@ public final class TerravibeItemSettings {
 		return stackOf(64).food(TerravibeFoodComponents.LEMON);
 	}
 
-	public static ColoredItemSettings lemon_juice() {
-		return coloredBottle(ColoredItem.color(1, 0xf3ff93));
+	public static FabricItemSettings lemon_juice() {
+		return stackOf(16).recipeRemainder(Items.GLASS_BOTTLE).food(TerravibeFoodComponents.LEMON_JUICE);
 	}
 
 	public static FabricItemSettings lettuce_leaves() {
