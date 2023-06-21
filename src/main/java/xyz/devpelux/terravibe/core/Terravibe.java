@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Contains some information about Terravibe.
+ * Contains some information about the mod.
  */
 public final class Terravibe {
 	/**
@@ -21,7 +21,7 @@ public final class Terravibe {
 	private Terravibe() { }
 
 	/**
-	 * Creates an identifier with "terravibe" namespace.
+	 * Creates an identifier with the mod namespace.
 	 */
 	public static Identifier identified(String path) {
 		return new Identifier(ID, path);
