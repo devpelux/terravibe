@@ -2,17 +2,17 @@
   "parent": "terravibe:recipes/root",
   "rewards": {
 	"recipes": [
-	  "terravibe:warped_cork_plug"
+	  "terravibe:dark_cork_plug"
 	]
   },
   "criteria": {
-	"has_warped_cork": {
+	"has_dark_cork": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "terravibe:warped_cork"
+			  "terravibe:dark_cork"
 			]
 		  }
 		]
@@ -21,13 +21,13 @@
 	"has_the_recipe": {
 	  "trigger": "minecraft:recipe_unlocked",
 	  "conditions": {
-		"recipe": "terravibe:warped_cork_plug"
+		"recipe": "terravibe:dark_cork_plug"
 	  }
 	}
   },
   "requirements": [
 	[
-	  "has_warped_cork",
+	  "has_dark_cork",
 	  "has_the_recipe"
 	]
   ]

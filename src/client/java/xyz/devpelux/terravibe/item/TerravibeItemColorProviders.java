@@ -23,34 +23,6 @@ public class TerravibeItemColorProviders {
 	}
 
 	/**
-	 * Gets the color of the oak cork plug item.
-	 */
-	public static int getOakCorkPlugColor(ItemStack stack, int tintIndex) {
-		return tintIndex == 1 ? 0xb8945f : -1;
-	}
-
-	/**
-	 * Gets the color of the dark oak cork plug item.
-	 */
-	public static int getDarkOakCorkPlugColor(ItemStack stack, int tintIndex) {
-		return tintIndex == 1 ? 0x4f3218 : -1;
-	}
-
-	/**
-	 * Gets the color of the crimson cork plug item.
-	 */
-	public static int getCrimsonCorkPlugColor(ItemStack stack, int tintIndex) {
-		return tintIndex == 1 ? 0x7e3a56 : -1;
-	}
-
-	/**
-	 * Gets the color of the warped cork plug item.
-	 */
-	public static int getWarpedCorkPlugColor(ItemStack stack, int tintIndex) {
-		return tintIndex == 1 ? 0x398382 : -1;
-	}
-
-	/**
 	 * Gets the color of the warped cork plug item.
 	 */
 	public static int getTomatoSauceBottleColor(ItemStack stack, int tintIndex) {

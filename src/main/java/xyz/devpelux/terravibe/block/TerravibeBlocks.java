@@ -168,13 +168,13 @@ public final class TerravibeBlocks {
 		CHEESE_WHEEL = register("cheese_wheel", new CheeseWheelBlock(TerravibeBlockSettings.cheese_wheel()));
 		CORN_CROP = register("corn_crop", new CornCropBlock(TerravibeBlockSettings.corn_crop()));
 		DARK_MOLD = register("dark_mold", new DarkMoldBlock(TerravibeBlockSettings.dark_mold()));
+		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", new DarkSweetBerryBushBlock(TerravibeBlockSettings.dark_sweet_berry_bush()));
+		EGGPLANT_CROP = register("eggplant_crop", new EggplantCropBlock(TerravibeBlockSettings.eggplant_crop()));
 		EXCAVATED_MUD = register("excavated_mud", new ExcavatedMudBlock(TerravibeBlockSettings.excavated_mud()));
 		FLOWERING_OPUNTIA = register("flowering_opuntia", new FloweringOpuntiaBlock(TerravibeBlockSettings.flowering_opuntia()));
 		GILLYWEED_ALGA = register("gillyweed_alga", new GillyweedAlgaBlock(TerravibeBlockSettings.gillyweed_alga()));
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", new GlowingDarkMoldBlock(TerravibeBlockSettings.glowing_dark_mold()));
 		GORGONZOLA_WHEEL = register("gorgonzola_wheel", new CheeseWheelBlock(TerravibeBlockSettings.gorgonzola_wheel()));
-		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", new DarkSweetBerryBushBlock(TerravibeBlockSettings.dark_sweet_berry_bush()));
-		EGGPLANT_CROP = register("eggplant_crop", new EggplantCropBlock(TerravibeBlockSettings.eggplant_crop()));
 		KALE_CROP = register("kale_crop", new KaleCropBlock(TerravibeBlockSettings.kale()));
 		LETTUCE_CROP = register("lettuce_crop", new LettuceCropBlock(TerravibeBlockSettings.lettuce()));
 		MILK_CAULDRON = register("milk_cauldron", new MilkCauldronBlock(TerravibeBlockSettings.milk_cauldron()));

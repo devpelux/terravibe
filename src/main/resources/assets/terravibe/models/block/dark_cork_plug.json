@@ -1,0 +1,6 @@
+{
+  "parent": "terravibe:block/cork_plug",
+  "textures": {
+	"cork": "terravibe:block/dark_cork_plug"
+  }
+}

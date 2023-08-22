@@ -94,10 +94,8 @@ public final class TerravibeItemInventory {
 
 		//Containers and plugs
 		entries.addAfter(Items.PINK_SHULKER_BOX,
-				TerravibeItems.OAK_CORK_PLUG,
-				TerravibeItems.DARK_OAK_CORK_PLUG,
-				TerravibeItems.CRIMSON_CORK_PLUG,
-				TerravibeItems.WARPED_CORK_PLUG);
+				TerravibeItems.CORK_PLUG,
+				TerravibeItems.DARK_CORK_PLUG);
 	}
 
 	/**
@@ -122,10 +120,8 @@ public final class TerravibeItemInventory {
 
 		//Corks
 		entries.addAfter(Items.SHROOMLIGHT,
-				TerravibeItems.OAK_CORK,
-				TerravibeItems.DARK_OAK_CORK,
-				TerravibeItems.CRIMSON_CORK,
-				TerravibeItems.WARPED_CORK);
+				TerravibeItems.CORK,
+				TerravibeItems.DARK_CORK);
 
 		//Plantable leaves
 		entries.addAfter(Items.SUGAR_CANE,

@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
 	{
-	  "item": "terravibe:warped_cork"
+	  "item": "terravibe:cork"
 	}
   ],
   "result": {
-	"item": "terravibe:warped_cork_plug",
-	"count": 1
+	"item": "terravibe:cork_plug",
+	"count": 2
   }
 }

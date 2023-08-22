@@ -21,11 +21,11 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(CHEESE_WHEEL, 1f);
 		CompostingChanceRegistry.INSTANCE.add(CORN, 0.6f);
 		CompostingChanceRegistry.INSTANCE.add(CORN_GRAINS, 0.1f);
-		CompostingChanceRegistry.INSTANCE.add(CRIMSON_CORK, 0.2f);
-		CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(CORK, 0.2f);
+		CompostingChanceRegistry.INSTANCE.add(DARK_CORK, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(DARK_MOLD, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(DARK_MOLD_DUST, 0.04f);
-		CompostingChanceRegistry.INSTANCE.add(DARK_OAK_CORK, 0.2f);
+		CompostingChanceRegistry.INSTANCE.add(DARK_SWEET_BERRIES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(EGGPLANT, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(EGGPLANT_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(GILLYWEED, 0.5f);
@@ -45,7 +45,6 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_BLUEBERRIES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_SEEDS, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(NIGHTSHADE_FERN_SEEDS_ANCIENT, 0.3f);
-		CompostingChanceRegistry.INSTANCE.add(OAK_CORK, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(OLIVES, 0.3f);
 		CompostingChanceRegistry.INSTANCE.add(ONION, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(ONION_SEEDS, 0.3f);
@@ -64,17 +63,12 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
-		CompostingChanceRegistry.INSTANCE.add(WARPED_CORK, 0.2f);
 	}
 
 	public static void registerCorkStrippables() {
-		CorkStrippableBlockRegistry.register(Blocks.CRIMSON_STEM, CRIMSON_CORK, 0.1f);
-		CorkStrippableBlockRegistry.register(Blocks.CRIMSON_HYPHAE, CRIMSON_CORK, 0.1f);
-		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_LOG, DARK_OAK_CORK, 0.1f);
-		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_WOOD, DARK_OAK_CORK, 0.1f);
-		CorkStrippableBlockRegistry.register(Blocks.OAK_LOG, OAK_CORK, 0.2f);
-		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, OAK_CORK, 0.2f);
-		CorkStrippableBlockRegistry.register(Blocks.WARPED_STEM, WARPED_CORK, 0.2f);
-		CorkStrippableBlockRegistry.register(Blocks.WARPED_HYPHAE, WARPED_CORK, 0.2f);
+		CorkStrippableBlockRegistry.register(Blocks.OAK_LOG, CORK, 0.2f);
+		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, CORK, 0.2f);
+		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_LOG, DARK_CORK, 0.1f);
+		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_WOOD, DARK_CORK, 0.1f);
 	}
 }

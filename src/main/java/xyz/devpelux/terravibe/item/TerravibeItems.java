@@ -185,24 +185,14 @@ public final class TerravibeItems {
 	//Items dropped from trees
 
 	/**
-	 * Material obtained from stripping crimson stems.
+	 * Material obtained from stripping some logs (light variant).
 	 */
-	public static final Item CRIMSON_CORK;
+	public static final Item CORK;
 
 	/**
-	 * Material obtained from stripping dark oak logs.
+	 * Material obtained from stripping some logs (dark variant).
 	 */
-	public static final Item DARK_OAK_CORK;
-
-	/**
-	 * Material obtained from stripping oak logs.
-	 */
-	public static final Item OAK_CORK;
-
-	/**
-	 * Material obtained from stripping warped stems.
-	 */
-	public static final Item WARPED_CORK;
+	public static final Item DARK_CORK;
 
 	/**
 	 * Fruit used in juices and to make cheese.
@@ -346,24 +336,14 @@ public final class TerravibeItems {
 	public static final Item PIZZA_MARGHERITA;
 
 	/**
-	 * Plug obtained from crimson cork.
+	 * Plug obtained from cork.
 	 */
-	public static final Item CRIMSON_CORK_PLUG;
+	public static final Item CORK_PLUG;
 
 	/**
-	 * Plug obtained from dark oak cork.
+	 * Plug obtained from dark cork.
 	 */
-	public static final Item DARK_OAK_CORK_PLUG;
-
-	/**
-	 * Plug obtained from oak cork.
-	 */
-	public static final Item OAK_CORK_PLUG;
-
-	/**
-	 * Plug obtained from warped cork.
-	 */
-	public static final Item WARPED_CORK_PLUG;
+	public static final Item DARK_CORK_PLUG;
 
 	/**
 	 * Salt.
@@ -421,12 +401,12 @@ public final class TerravibeItems {
 		CHEESE_WHEEL = register("cheese_wheel", new AliasedBlockItem(TerravibeBlocks.CHEESE_WHEEL, TerravibeItemSettings.cheese_wheel()));
 		CORN = register("corn", new Item(TerravibeItemSettings.corn()));
 		CORN_GRAINS = register("corn_grains", new AliasedBlockItem(TerravibeBlocks.CORN_CROP, TerravibeItemSettings.corn_grains()));
-		CRIMSON_CORK = register("crimson_cork", new Item(TerravibeItemSettings.crimson_cork()));
-		CRIMSON_CORK_PLUG = register("crimson_cork_plug", new Item(TerravibeItemSettings.crimson_cork_plug()));
+		CORK = register("cork", new Item(TerravibeItemSettings.cork()));
+		CORK_PLUG = register("cork_plug", new Item(TerravibeItemSettings.cork_plug()));
+		DARK_CORK = register("dark_cork", new Item(TerravibeItemSettings.dark_cork()));
+		DARK_CORK_PLUG = register("dark_cork_plug", new Item(TerravibeItemSettings.dark_cork_plug()));
 		DARK_MOLD = register("dark_mold", new Item(TerravibeItemSettings.dark_mold()));
 		DARK_MOLD_DUST = register("dark_mold_dust", new AliasedBlockItem(TerravibeBlocks.DARK_MOLD, TerravibeItemSettings.dark_mold_dust()));
-		DARK_OAK_CORK = register("dark_oak_cork", new Item(TerravibeItemSettings.dark_oak_cork()));
-		DARK_OAK_CORK_PLUG = register("dark_oak_cork_plug", new Item(TerravibeItemSettings.dark_oak_cork_plug()));
 		DARK_SWEET_BERRIES = register("dark_sweet_berries", new AliasedBlockItem(TerravibeBlocks.DARK_SWEET_BERRY_BUSH, TerravibeItemSettings.dark_sweet_berries()));
 		EGGPLANT = register("eggplant", new Item(TerravibeItemSettings.eggplant()));
 		EGGPLANT_SEEDS = register("eggplant_seeds", new AliasedBlockItem(TerravibeBlocks.EGGPLANT_CROP, TerravibeItemSettings.eggplant_seeds()));
@@ -450,8 +430,6 @@ public final class TerravibeItems {
 		NIGHTSHADE_FERN_BLUEBERRIES = register("nightshade_fern_blueberries", new SideEffectFoodItem(TerravibeItemSettings.nightshade_fern_blueberries(), TerravibeFoodEffects.NIGHTSHADE_FERN_BLUEBERRIES_SIDE_EFFECTS));
 		NIGHTSHADE_FERN_SEEDS = register("nightshade_fern_seeds", new AliasedBlockItem(TerravibeBlocks.NIGHTSHADE_FERN, TerravibeItemSettings.nightshade_fern_seeds()));
 		NIGHTSHADE_FERN_SEEDS_ANCIENT = register("nightshade_fern_seeds_ancient", new AncientSeedItem(TerravibeItemSettings.ancient_nightshade_fern_seeds(), 3));
-		OAK_CORK = register("oak_cork", new Item(TerravibeItemSettings.oak_cork()));
-		OAK_CORK_PLUG = register("oak_cork_plug", new Item(TerravibeItemSettings.oak_cork_plug()));
 		OIL = register("oil", new Item(TerravibeItemSettings.oil()));
 		OLIVES = register("olives", new Item(TerravibeItemSettings.olives()));
 		ONION = register("onion", new Item(TerravibeItemSettings.onion()));
@@ -480,7 +458,5 @@ public final class TerravibeItems {
 		TOMATO_SAUCE = register("tomato_sauce", new Item(TerravibeItemSettings.tomato_sauce()));
 		TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TerravibeBlocks.TOMATO_CROP, TerravibeItemSettings.tomato_seeds()));
 		TRAY = register("tray", new AliasedBlockItem(TerravibeBlocks.TRAY, TerravibeItemSettings.tray()));
-		WARPED_CORK = register("warped_cork", new Item(TerravibeItemSettings.warped_cork()));
-		WARPED_CORK_PLUG = register("warped_cork_plug", new Item(TerravibeItemSettings.warped_cork_plug()));
 	}
 }

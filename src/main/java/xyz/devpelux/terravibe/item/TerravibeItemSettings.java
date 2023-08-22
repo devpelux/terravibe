@@ -68,11 +68,19 @@ public final class TerravibeItemSettings {
 		return stackOf(64);
 	}
 
-	public static FabricItemSettings crimson_cork() {
+	public static FabricItemSettings cork() {
 		return stackOf(64);
 	}
 
-	public static FabricItemSettings crimson_cork_plug() {
+	public static FabricItemSettings cork_plug() {
+		return stackOf(64);
+	}
+
+	public static FabricItemSettings dark_cork() {
+		return stackOf(64);
+	}
+
+	public static FabricItemSettings dark_cork_plug() {
 		return stackOf(64);
 	}
 
@@ -81,14 +89,6 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings dark_mold_dust() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings dark_oak_cork() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings dark_oak_cork_plug() {
 		return stackOf(64);
 	}
 
@@ -173,14 +173,6 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings nightshade_fern_seeds() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings oak_cork() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings oak_cork_plug() {
 		return stackOf(64);
 	}
 
@@ -293,14 +285,6 @@ public final class TerravibeItemSettings {
 	}
 
 	public static FabricItemSettings tray() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings warped_cork() {
-		return stackOf(64);
-	}
-
-	public static FabricItemSettings warped_cork_plug() {
 		return stackOf(64);
 	}
 

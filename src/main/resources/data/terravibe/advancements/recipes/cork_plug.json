@@ -2,17 +2,17 @@
   "parent": "terravibe:recipes/root",
   "rewards": {
 	"recipes": [
-	  "terravibe:crimson_cork_plug"
+	  "terravibe:cork_plug"
 	]
   },
   "criteria": {
-	"has_crimson_cork": {
+	"has_cork": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "terravibe:crimson_cork"
+			  "terravibe:cork"
 			]
 		  }
 		]
@@ -21,13 +21,13 @@
 	"has_the_recipe": {
 	  "trigger": "minecraft:recipe_unlocked",
 	  "conditions": {
-		"recipe": "terravibe:crimson_cork_plug"
+		"recipe": "terravibe:cork_plug"
 	  }
 	}
   },
   "requirements": [
 	[
-	  "has_crimson_cork",
+	  "has_cork",
 	  "has_the_recipe"
 	]
   ]
