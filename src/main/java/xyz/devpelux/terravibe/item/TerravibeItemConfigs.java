@@ -1,19 +1,13 @@
 package xyz.devpelux.terravibe.item;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.item.Items;
 import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
 
 import static xyz.devpelux.terravibe.item.TerravibeItems.*;
 
 public class TerravibeItemConfigs {
-	private TerravibeItemConfigs() { }
-
 	public static void registerCompostingChances() {
 		CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, 0.85f);
 		CompostingChanceRegistry.INSTANCE.add(BASIL, 0.3f);
@@ -82,20 +76,5 @@ public class TerravibeItemConfigs {
 		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, OAK_CORK, 0.2f);
 		CorkStrippableBlockRegistry.register(Blocks.WARPED_STEM, WARPED_CORK, 0.2f);
 		CorkStrippableBlockRegistry.register(Blocks.WARPED_HYPHAE, WARPED_CORK, 0.2f);
-	}
-
-	@Environment(EnvType.CLIENT)
-	public static void registerColorProviders() {
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) CRIMSON_CORK_PLUG, CRIMSON_CORK_PLUG);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) DARK_OAK_CORK_PLUG, DARK_OAK_CORK_PLUG);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) GILLYWEED_SEEDS_ANCIENT, GILLYWEED_SEEDS_ANCIENT);
-		ColorProviderRegistry.ITEM.register((s, i) -> i == 1 ? 0xf3ff93 : -1, LEMON_JUICE);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) NIGHTSHADE_FERN_SEEDS_ANCIENT, NIGHTSHADE_FERN_SEEDS_ANCIENT);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) OAK_CORK_PLUG, OAK_CORK_PLUG);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) OIL, OIL);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) TOMATO_SAUCE, TOMATO_SAUCE);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) WARPED_CORK_PLUG, WARPED_CORK_PLUG);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) CLOSED_JAR_EMPTY, CLOSED_JAR_EMPTY);
-		ColorProviderRegistry.ITEM.register((ItemColorProvider) CLOSED_JAR_FILLED, CLOSED_JAR_FILLED);
 	}
 }

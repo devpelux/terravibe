@@ -13,11 +13,6 @@ import xyz.devpelux.terravibe.core.Terravibe;
  */
 public final class TerravibeBlockEntityTypes {
 	/**
-	 * Block entity type for containers.
-	 */
-	public static final BlockEntityType<ContainerBlockEntity> CONTAINER;
-
-	/**
 	 * Block entity type for the shredder block.
 	 */
 	public static final BlockEntityType<ShredderBlockEntity> SHREDDER;
@@ -30,8 +25,6 @@ public final class TerravibeBlockEntityTypes {
 	}
 
 	static {
-		CONTAINER = register("container", FabricBlockEntityTypeBuilder.create(ContainerBlockEntity::new,
-				TerravibeBlocks.TUN, TerravibeBlocks.JAR).build());
 		SHREDDER = register("shredder", FabricBlockEntityTypeBuilder.create(ShredderBlockEntity::new,
 				TerravibeBlocks.SHREDDER).build());
 	}

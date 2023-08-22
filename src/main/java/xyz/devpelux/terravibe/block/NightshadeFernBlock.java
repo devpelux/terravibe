@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -13,9 +12,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Optional;
@@ -23,7 +20,7 @@ import java.util.Optional;
 /**
  * An extinct fern that produces nightshade fern blueberries.
  */
-public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColorProvider {
+public class NightshadeFernBlock extends TallFruitCropBlock {
 	/**
 	 * Voxel shapes of the lower block the crop.
 	 */
@@ -113,18 +110,6 @@ public class NightshadeFernBlock extends TallFruitCropBlock implements BlockColo
 	public VoxelShape getUpperOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		Vec3d vec3d = state.getModelOffset(world, pos);
 		return UPPER_AGE_TO_SHAPE[getAge(state)].offset(vec3d.x, vec3d.y, vec3d.z);
-	}
-
-	/**
-	 * Gets the colors of the block.
-	 */
-	@Override
-	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-		return switch (tintIndex) {
-			case 0 -> 0x87cb87;
-			case 1 -> getAge(state) == 7 ? 0x4d4067 : 0x569211;
-			default -> -1;
-		};
 	}
 
 	static {

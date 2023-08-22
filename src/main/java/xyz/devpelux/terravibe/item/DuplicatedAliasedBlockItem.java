@@ -22,5 +22,6 @@ public class DuplicatedAliasedBlockItem extends AliasedBlockItem {
 	 * By default, avoids the association because this is a duplicated item.
 	 */
 	@Override
-	public void appendBlocks(Map<Block, Item> map, Item item) { }
+	public void appendBlocks(Map<Block, Item> map, Item item) {
+	}
 }

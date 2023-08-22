@@ -21,8 +21,6 @@ import java.util.Map;
  * Registry for logs that will drop cork when stripped, with the type of cork dropped.
  */
 public final class CorkStrippableBlockRegistry {
-	private static boolean enabled = false;
-
 	/**
 	 * Singleton instance.
 	 */
@@ -33,7 +31,9 @@ public final class CorkStrippableBlockRegistry {
 	 */
 	private final Map<Block, Pair<Item, Float>> CORK_STRIPPABLE = new IdentityHashMap<>();
 
-	private CorkStrippableBlockRegistry() { }
+	private CorkStrippableBlockRegistry() {
+		UseBlockCallback.EVENT.register(this::corkStrippingHandler);
+	}
 
 	/**
 	 * Registers a cork for a block with a drop chance.
@@ -42,12 +42,6 @@ public final class CorkStrippableBlockRegistry {
 	 */
 	public static void register(Block log, Item cork, float chance) {
 		INSTANCE.CORK_STRIPPABLE.putIfAbsent(log, Pair.of(cork, chance));
-
-		//Enables the use-block event handler.
-		if (!enabled) {
-			UseBlockCallback.EVENT.register(CorkStrippableBlockRegistry::corkStrippingHandler);
-			enabled = true;
-		}
 	}
 
 	/**
@@ -62,7 +56,7 @@ public final class CorkStrippableBlockRegistry {
 	/**
 	 * Handles the drop mechanic from the registered blocks.
 	 */
-	private static ActionResult corkStrippingHandler(PlayerEntity player, World world, Hand hand, BlockHitResult hit) {
+	private ActionResult corkStrippingHandler(PlayerEntity player, World world, Hand hand, BlockHitResult hit) {
 		//Adds a random chance to drop cork from the supported wood types.
 		//Only for axes.
 		if (!player.isSpectator() && player.getStackInHand(hand).isIn(ItemTags.AXES)) {

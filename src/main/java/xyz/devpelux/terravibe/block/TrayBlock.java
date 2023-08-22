@@ -3,8 +3,6 @@ package xyz.devpelux.terravibe.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.client.color.block.BlockColorProvider;
-import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -23,12 +21,10 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.Optional;
@@ -36,7 +32,7 @@ import java.util.Optional;
 /**
  * Tray used to make salt.
  */
-public class TrayBlock extends Block implements BlockColorProvider {
+public class TrayBlock extends Block {
 	/**
 	 * Content of the tray.
 	 */
@@ -224,15 +220,6 @@ public class TrayBlock extends Block implements BlockColorProvider {
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		return OUTLINE_SHAPE;
-	}
-
-	/**
-	 * Gets the colors of the block.
-	 */
-	@Override
-	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-		if (tintIndex != 1 || world == null || pos == null) return -1;
-		return BiomeColors.getWaterColor(world, pos);
 	}
 
 	static {

@@ -152,17 +152,21 @@ public class ShredderScreenHandler extends ScreenHandler {
 
 			if (match.isPresent()) {
 				//If the recipe exists then set the output item stack to the crafting result.
-				if (!getSlot(5).hasStack()) getSlot(5).setStack(match.get().craft(inventory, world.getRegistryManager()));
+				if (!getSlot(5).hasStack()) {
+					getSlot(5).setStack(match.get().craft(inventory, world.getRegistryManager()));
+				}
 			} else {
 				//If the recipe does not exist then clean the output item stack.
-				if (getSlot(5).hasStack()) getSlot(5).setStack(ItemStack.EMPTY);
+				if (getSlot(5).hasStack()) {
+					getSlot(5).setStack(ItemStack.EMPTY);
+				}
 			}
 		}
 	}
 
 	/**
 	 * Transfer a slot away from the specified slot when clicking the slot with the combination for auto transfer.
-	 * (Eg. CTRL + CLICK)
+	 * (E.g. CTRL + CLICK)
 	 */
 	@Override
 	public ItemStack quickMove(PlayerEntity player, int originIndex) {

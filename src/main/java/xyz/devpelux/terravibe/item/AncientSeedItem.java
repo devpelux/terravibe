@@ -1,9 +1,9 @@
 package xyz.devpelux.terravibe.item;
 
-import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.nbt.NbtCompound;
@@ -30,25 +30,36 @@ import java.util.Optional;
 /**
  * Ancient seed item.
  */
-public class AncientSeedItem extends ColoredItem {
+public class AncientSeedItem extends Item {
 	protected final int minCleaningAmount;
 	protected final int maxCleaningAmount;
 
 	/**
 	 * Initializes a new {@link AncientSeedItem}.
 	 */
-	public AncientSeedItem(AncientSeedItemSettings settings) {
+	public AncientSeedItem(Settings settings, int dirtyLevel) {
 		super(settings);
-		int avgCleaningAmount = 100 / settings.dirtyLevel;
+		//Sets the cleaning amount basing on the dirty level.
+		//More high the dirty level is, more low the cleaning amount is.
+		//Every wash, will clean the item by a random cleaning amount between a minimum and a maximum.
+		int avgCleaningAmount = 100 / MathHelper.clamp(dirtyLevel, 1, 100);
 		this.minCleaningAmount = avgCleaningAmount - (avgCleaningAmount / 2);
 		this.maxCleaningAmount = avgCleaningAmount + (avgCleaningAmount / 2);
 	}
 
 	/**
-	 * Generates a color provider to color the item basing on the dirty value and tint index.
+	 * Gets the dirty value from the stack, by default returns 100.
+	 * If the item is not an ancient seed returns 0.
 	 */
-	public static ItemColorProvider dirtyColor(DirtyColorProvider provider) {
-		return (s, i) -> provider.getColor(getDirtyValue(s), i);
+	public static int getDirtyValue(ItemStack stack) {
+		if (stack.getItem() instanceof AncientSeedItem) {
+			NbtCompound nbt = stack.getOrCreateNbt();
+			if (nbt.contains("Dirty", NbtElement.INT_TYPE)) {
+				return nbt.getInt("Dirty");
+			}
+			return 100;
+		}
+		return 0;
 	}
 
 	/**
@@ -84,6 +95,7 @@ public class AncientSeedItem extends ColoredItem {
 			FluidState state = world.getFluidState(pos);
 			if (state.isIn(TerravibeFluidTags.CLEANER)) {
 				//If the hit result is a cleaner fluid, cleans the item.
+				//Every wash, will clean the item by a random cleaning amount between a minimum and a maximum.
 				ItemStack used = player.getStackInHand(hand);
 				ItemStack result = ItemUsage.exchangeStack(used, player, getLessDirty(used, world.getRandom()));
 				getWashSound().ifPresent(sound -> player.playSound(sound, 0.5f, 0.9f));
@@ -106,46 +118,5 @@ public class AncientSeedItem extends ColoredItem {
 			return result;
 		}
 		return stack.getRecipeRemainder();
-	}
-
-	/**
-	 * Gets the dirty value from the stack (default = 100).
-	 */
-	protected static int getDirtyValue(ItemStack stack) {
-		NbtCompound nbt = stack.getOrCreateNbt();
-		if (nbt.contains("Dirty", NbtElement.INT_TYPE)) {
-			return nbt.getInt("Dirty");
-		}
-		return 100;
-	}
-
-
-	/**
-	 * Color provider for items of type {@link AncientSeedItem} similar to {@link ItemColorProvider}
-	 * to get a color basing on the dirty value of the stack and the tint index.
-	 */
-	@FunctionalInterface
-	public interface DirtyColorProvider {
-		/**
-		 * Gets the color.
-		 */
-		int getColor(int dirtyValue, int tintIndex);
-	}
-
-
-	/**
-	 * Settings for items of type {@link AncientSeedItem}.
-	 */
-	public static class AncientSeedItemSettings extends ColoredItemSettings {
-		protected int dirtyLevel = 1;
-
-		/**
-		 * Sets the dirty level.
-		 * It will be clamped between 1 and 100.
-		 */
-		public AncientSeedItemSettings dirtyLevel(int dirtyLevel) {
-			this.dirtyLevel = MathHelper.clamp(dirtyLevel, 1, 100);
-			return this;
-		}
 	}
 }

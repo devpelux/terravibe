@@ -16,6 +16,18 @@ repositories {
 	// Info: https://docs.gradle.org/current/userguide/declaring_repositories.html
 }
 
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"terravibe" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+}
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -24,7 +36,6 @@ dependencies {
 
 	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 }
 
 processResources {

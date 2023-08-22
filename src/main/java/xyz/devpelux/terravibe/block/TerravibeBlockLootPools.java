@@ -15,9 +15,9 @@ import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.NumberRange.FloatRange;
 import net.minecraft.predicate.entity.LocationPredicate;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import xyz.devpelux.terravibe.item.TerravibeItems;
@@ -29,8 +29,6 @@ import java.util.List;
  * List of all the extra loot pools added to existing blocks.
  */
 public class TerravibeBlockLootPools {
-	private TerravibeBlockLootPools() { }
-
 	/**
 	 * Registers all the loot table modifiers.
 	 */

@@ -12,31 +12,6 @@ public final class TerravibeBlocks {
 	//Objects
 
 	/**
-	 * Container for things.
-	 */
-	public static final Block JAR;
-
-	/**
-	 * A jar for dusts.
-	 */
-	public static final Block DUST_JAR;
-
-	/**
-	 * A jar for mold dusts.
-	 */
-	public static final Block MOLD_DUST_JAR;
-
-	/**
-	 * A jar for burned glowing dark mold dust.
-	 */
-	public static final Block BURNED_GLOWING_DARK_MOLD_DUST_JAR;
-
-	/**
-	 * A jar for glowing dark mold dust.
-	 */
-	public static final Block GLOWING_DARK_MOLD_DUST_JAR;
-
-	/**
 	 * A cauldron that contains milk.
 	 */
 	public static final Block MILK_CAULDRON;
@@ -50,11 +25,6 @@ public final class TerravibeBlocks {
 	 * Tray used to make salt.
 	 */
 	public static final Block TRAY;
-
-	/**
-	 * Container for "non-lava" fluids.
-	 */
-	public static final Block TUN;
 
 	//Plants
 
@@ -195,24 +165,19 @@ public final class TerravibeBlocks {
 		BASIL_HERB = register("basil_herb", new BasilHerbBlock(TerravibeBlockSettings.basil_herb()));
 		BEANS_CROP = register("beans_crop", new BeansCropBlock(TerravibeBlockSettings.beans_crop()));
 		BIRCH_MOLD = register("birch_mold", new BirchMoldBlock(TerravibeBlockSettings.birch_mold()));
-		BURNED_GLOWING_DARK_MOLD_DUST_JAR = register("burned_glowing_dark_mold_dust_jar", new DustJarBlock(TerravibeBlockSettings.burned_glowing_dark_mold_dust_jar()));
 		CHEESE_WHEEL = register("cheese_wheel", new CheeseWheelBlock(TerravibeBlockSettings.cheese_wheel()));
 		CORN_CROP = register("corn_crop", new CornCropBlock(TerravibeBlockSettings.corn_crop()));
 		DARK_MOLD = register("dark_mold", new DarkMoldBlock(TerravibeBlockSettings.dark_mold()));
-		DUST_JAR = register("dust_jar", new DustJarBlock(TerravibeBlockSettings.dust_jar()));
 		EXCAVATED_MUD = register("excavated_mud", new ExcavatedMudBlock(TerravibeBlockSettings.excavated_mud()));
 		FLOWERING_OPUNTIA = register("flowering_opuntia", new FloweringOpuntiaBlock(TerravibeBlockSettings.flowering_opuntia()));
 		GILLYWEED_ALGA = register("gillyweed_alga", new GillyweedAlgaBlock(TerravibeBlockSettings.gillyweed_alga()));
 		GLOWING_DARK_MOLD = register("glowing_dark_mold", new GlowingDarkMoldBlock(TerravibeBlockSettings.glowing_dark_mold()));
-		GLOWING_DARK_MOLD_DUST_JAR = register("glowing_dark_mold_dust_jar", new MoldDustJarBlock(TerravibeBlockSettings.glowing_dark_mold_dust_jar()));
 		GORGONZOLA_WHEEL = register("gorgonzola_wheel", new CheeseWheelBlock(TerravibeBlockSettings.gorgonzola_wheel()));
 		DARK_SWEET_BERRY_BUSH = register("dark_sweet_berry_bush", new DarkSweetBerryBushBlock(TerravibeBlockSettings.dark_sweet_berry_bush()));
 		EGGPLANT_CROP = register("eggplant_crop", new EggplantCropBlock(TerravibeBlockSettings.eggplant_crop()));
-		JAR = register("jar", new JarBlock(TerravibeBlockSettings.jar()));
 		KALE_CROP = register("kale_crop", new KaleCropBlock(TerravibeBlockSettings.kale()));
 		LETTUCE_CROP = register("lettuce_crop", new LettuceCropBlock(TerravibeBlockSettings.lettuce()));
 		MILK_CAULDRON = register("milk_cauldron", new MilkCauldronBlock(TerravibeBlockSettings.milk_cauldron()));
-		MOLD_DUST_JAR = register("mold_dust_jar", new MoldDustJarBlock(TerravibeBlockSettings.mold_dust_jar()));
 		NIGHTLOCK_BERRY_BUSH = register("nightlock_berry_bush", new NightlockBerryBushBlock(TerravibeBlockSettings.nightlock_berry_bush()));
 		NIGHTSHADE_FERN = register("nightshade_fern", new NightshadeFernBlock(TerravibeBlockSettings.nightshade_fern()));
 		ONION_CROP = register("onion_crop", new OnionCropBlock(TerravibeBlockSettings.onion_crop()));
@@ -224,6 +189,5 @@ public final class TerravibeBlocks {
 		SWEET_POTATO_CROP = register("sweet_potato_crop", new SweetPotatoCropBlock(TerravibeBlockSettings.sweet_potato_crop()));
 		TOMATO_CROP = register("tomato_crop", new TomatoCropBlock(TerravibeBlockSettings.tomato_crop()));
 		TRAY = register("tray", new TrayBlock(TerravibeBlockSettings.tray()));
-		TUN = register("tun", new TunBlock(TerravibeBlockSettings.tun()));
 	}
 }

@@ -7,8 +7,6 @@ import net.minecraft.item.Items;
 
 @SuppressWarnings("UnstableApiUsage")
 public final class TerravibeItemInventory {
-	private TerravibeItemInventory() { }
-
 	/**
 	 * Registers all item group modifiers.
 	 */
@@ -96,12 +94,10 @@ public final class TerravibeItemInventory {
 
 		//Containers and plugs
 		entries.addAfter(Items.PINK_SHULKER_BOX,
-				TerravibeItems.JAR,
 				TerravibeItems.OAK_CORK_PLUG,
 				TerravibeItems.DARK_OAK_CORK_PLUG,
 				TerravibeItems.CRIMSON_CORK_PLUG,
-				TerravibeItems.WARPED_CORK_PLUG,
-				TerravibeItems.TUN);
+				TerravibeItems.WARPED_CORK_PLUG);
 	}
 
 	/**

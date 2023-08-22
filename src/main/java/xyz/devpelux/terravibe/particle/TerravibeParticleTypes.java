@@ -1,8 +1,5 @@
 package xyz.devpelux.terravibe.particle;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.registry.Registries;
@@ -27,16 +24,6 @@ public final class TerravibeParticleTypes {
 	 * Glowing dark mold spore particle.
 	 */
 	public static final DefaultParticleType GLOWING_DARK_MOLD_SPORE;
-
-	/**
-	 * Registers all the particle factories to the corresponding particle types.
-	 */
-	@Environment(EnvType.CLIENT)
-	public static void registerParticleFactories() {
-		ParticleFactoryRegistry.getInstance().register(BIRCH_MOLD_SPORE, FloatingSporeParticleFactories.BirchMoldSporeFactory::new);
-		ParticleFactoryRegistry.getInstance().register(DARK_MOLD_SPORE, FloatingSporeParticleFactories.DarkMoldSporeFactory::new);
-		ParticleFactoryRegistry.getInstance().register(GLOWING_DARK_MOLD_SPORE, FloatingSporeParticleFactories.GlowingDarkMoldSporeFactory::new);
-	}
 
 	/**
 	 * Registers a new particle type with the specified id.

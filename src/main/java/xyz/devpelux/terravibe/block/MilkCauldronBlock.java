@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.cauldron.CauldronBehavior;
-import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -28,10 +27,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import xyz.devpelux.terravibe.advancement.TerravibeCriteria;
 import xyz.devpelux.terravibe.item.TerravibeItems;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
@@ -41,7 +38,7 @@ import java.util.Map;
 /**
  * A cauldron that contains milk.
  */
-public final class MilkCauldronBlock extends AbstractCauldronBlock implements BlockColorProvider {
+public final class MilkCauldronBlock extends AbstractCauldronBlock {
 	/**
 	 * Fermenting time to the next stage.
 	 */
@@ -234,21 +231,6 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 	}
 
 	/**
-	 * Gets the colors of the block.
-	 */
-	@Override
-	public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-		if (tintIndex == 0) {
-			return switch (state.get(CONTENT)) {
-				case Milk -> 0xffffff;
-				case AcidMilk, AcidMilkWithSalt, AcidMilkWithSaltAndMold -> 0xfcffe7;
-				default -> -1;
-			};
-		}
-		return -1;
-	}
-
-	/**
 	 * Gets the next milk stage basing on the current content.
 	 */
 	private Content getNextStage(Content content) {
@@ -267,7 +249,8 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock implements Bl
 		return switch (content) {
 			case Milk -> ingredient.isIn(TerravibeItemTags.MILK_COAGULANTS) ? Content.AcidMilk : content;
 			case AcidMilk -> ingredient.isOf(TerravibeItems.SALT) ? Content.AcidMilkWithSalt : content;
-			case AcidMilkWithSalt -> ingredient.isIn(TerravibeItemTags.EDIBLE_MOLDS) ? Content.AcidMilkWithSaltAndMold : content;
+			case AcidMilkWithSalt ->
+					ingredient.isIn(TerravibeItemTags.EDIBLE_MOLDS) ? Content.AcidMilkWithSaltAndMold : content;
 			default -> content;
 		};
 	}
