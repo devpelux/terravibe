@@ -7,11 +7,11 @@ import net.minecraft.item.Item;
 import java.util.Map;
 
 /**
- * {@link AliasedBlockItem} for extra items associated with the same block.
+ * Object for extra items associated to the same block.
  */
 public class DuplicatedAliasedBlockItem extends AliasedBlockItem {
 	/**
-	 * Initializes a new {@link DuplicatedAliasedBlockItem}.
+	 * Initializes a new instance.
 	 */
 	public DuplicatedAliasedBlockItem(Block block, Settings settings) {
 		super(block, settings);

@@ -59,7 +59,7 @@ public class TrayBlock extends Block {
 	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
-	 * Initializes a new {@link TrayBlock}.
+	 * Initializes a new instance.
 	 */
 	public TrayBlock(Settings settings) {
 		super(settings);
@@ -182,13 +182,17 @@ public class TrayBlock extends Block {
 
 	/**
 	 * Executed every tick.
+	 * Handles the evaporation, which is higher when the block is under the sun.
 	 */
 	@Override
 	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		if (!world.hasRain(pos.up())) {
+			//Calculates the evaporation time, that is lower when the block is under the sun.
 			int light = world.getLightLevel(LightType.SKY, pos);
 			int lightBonus = (int) ((MAX_EVAPORATION_TIME - MIN_EVAPORATION_TIME) * (light / 15d));
 			int evaporationTime = MAX_EVAPORATION_TIME - lightBonus;
+
+			//Attempt to evaporate the water.
 			int attempt = random.nextInt(evaporationTime + 1);
 			if (attempt == 0) world.setBlockState(pos, state.with(CONTENT, Content.Salt));
 		}
@@ -229,7 +233,7 @@ public class TrayBlock extends Block {
 
 
 	/**
-	 * Represents the content type of {@link TrayBlock}.
+	 * Represents the content type of the tray block.
 	 */
 	public enum Content implements StringIdentifiable {
 		/**

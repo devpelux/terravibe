@@ -1,13 +1,17 @@
 package xyz.devpelux.terravibe.item;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
-import xyz.devpelux.terravibe.core.CorkStrippableBlockRegistry;
 
 import static xyz.devpelux.terravibe.item.TerravibeItems.*;
 
+/**
+ * Item configurations.
+ */
 public class TerravibeItemConfigs {
+	/**
+	 * Registers all the item composting chances.
+	 */
 	public static void registerCompostingChances() {
 		CompostingChanceRegistry.INSTANCE.add(BAKED_SWEET_POTATO, 0.85f);
 		CompostingChanceRegistry.INSTANCE.add(BASIL, 0.3f);
@@ -63,12 +67,5 @@ public class TerravibeItemConfigs {
 		CompostingChanceRegistry.INSTANCE.add(SWEET_POTATO_BUDS, 0.2f);
 		CompostingChanceRegistry.INSTANCE.add(TOMATO, 0.65f);
 		CompostingChanceRegistry.INSTANCE.add(TOMATO_SEEDS, 0.3f);
-	}
-
-	public static void registerCorkStrippables() {
-		CorkStrippableBlockRegistry.register(Blocks.OAK_LOG, CORK, 0.2f);
-		CorkStrippableBlockRegistry.register(Blocks.OAK_WOOD, CORK, 0.2f);
-		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_LOG, DARK_CORK, 0.1f);
-		CorkStrippableBlockRegistry.register(Blocks.DARK_OAK_WOOD, DARK_CORK, 0.1f);
 	}
 }

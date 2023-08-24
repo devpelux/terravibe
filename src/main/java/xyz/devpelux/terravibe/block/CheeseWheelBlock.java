@@ -22,7 +22,7 @@ public class CheeseWheelBlock extends HorizontalFacingBlock {
 	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
-	 * Initializes a new {@link CheeseWheelBlock}.
+	 * Initializes a new instance.
 	 */
 	public CheeseWheelBlock(Settings settings) {
 		super(settings);

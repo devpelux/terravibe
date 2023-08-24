@@ -2,11 +2,15 @@ package xyz.devpelux.terravibe.item;
 
 import net.minecraft.item.ItemStack;
 
+/**
+ * Color providers for the items.
+ */
 public class TerravibeItemColorProviders {
 	/**
 	 * Gets the color of the ancient gillyweed seeds item.
 	 */
 	public static int getGillyweedSeedsAncientColor(ItemStack stack, int tintIndex) {
+		//For layer 1 the color changes basing on the dirty value of the item.
 		int dirtyValue = AncientSeedItem.getDirtyValue(stack);
 		return switch (tintIndex) {
 			case 0 -> 0x619976;

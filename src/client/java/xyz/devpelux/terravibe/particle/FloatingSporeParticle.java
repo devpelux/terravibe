@@ -18,7 +18,7 @@ public class FloatingSporeParticle extends GlowingDustParticle {
 	private ParticleGroup group = null;
 
 	/**
-	 * Initializes a new {@link FloatingSporeParticle}.
+	 * Initializes a new instance.
 	 */
 	FloatingSporeParticle(ClientWorld world, SpriteProvider sprite, double x, double y, double z, double vX, double vY, double vZ) {
 		super(world, sprite, x, y - 0.125d, z, vX, vY, vZ);

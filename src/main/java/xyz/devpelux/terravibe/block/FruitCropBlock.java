@@ -22,7 +22,7 @@ import java.util.Optional;
  */
 public abstract class FruitCropBlock extends CropBlock {
 	/**
-	 * Initializes a new {@link FruitCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public FruitCropBlock(Settings settings) {
 		super(settings);

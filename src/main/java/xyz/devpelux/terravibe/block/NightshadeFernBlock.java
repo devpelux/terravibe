@@ -32,7 +32,7 @@ public class NightshadeFernBlock extends TallFruitCropBlock {
 	private static final VoxelShape[] UPPER_AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link TallFruitCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public NightshadeFernBlock(Settings settings) {
 		super(settings);

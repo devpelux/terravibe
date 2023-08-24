@@ -32,7 +32,7 @@ public class DarkSweetBerryBushBlock extends BerryBushBlock {
 	public static final double MIN_MOVEMENT_FOR_THORNS_DAMAGE = 0.003;
 
 	/**
-	 * Initializes a new {@link DarkSweetBerryBushBlock}.
+	 * Initializes a new instance.
 	 */
 	public DarkSweetBerryBushBlock(Settings settings) {
 		super(settings);

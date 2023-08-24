@@ -9,15 +9,14 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.block.ShredderBlock;
 import xyz.devpelux.terravibe.screenhandler.ShredderScreenHandler;
 
 /**
- * Block entity for the {@link ShredderBlock}.
+ * Block entity for the shredder block.
  */
 public class ShredderBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
 	/**
-	 * Initializes a new {@link ShredderBlockEntity}.
+	 * Initializes a new instance.
 	 */
 	public ShredderBlockEntity(BlockPos pos, BlockState state) {
 		super(TerravibeBlockEntityTypes.SHREDDER, pos, state);
@@ -32,7 +31,7 @@ public class ShredderBlockEntity extends BlockEntity implements NamedScreenHandl
 	}
 
 	/**
-	 * Gets the {@link ScreenHandler} for handling the UI of this block entity.
+	 * Gets the screen handler for handling the UI of this block entity.
 	 */
 	@Nullable
 	@Override

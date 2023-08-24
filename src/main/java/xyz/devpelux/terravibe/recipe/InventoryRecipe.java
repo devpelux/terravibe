@@ -21,7 +21,7 @@ public abstract class InventoryRecipe implements Recipe<Inventory> {
 	private final RecipeSerializer<?> serializer;
 
 	/**
-	 * Initializes a new {@link InventoryRecipe}.
+	 * Initializes a new instance.
 	 */
 	public InventoryRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, Identifier id, String group, DefaultedList<Ingredient> ingredients) {
 		this.id = id;

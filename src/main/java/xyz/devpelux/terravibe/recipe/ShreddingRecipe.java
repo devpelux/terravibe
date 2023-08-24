@@ -25,7 +25,7 @@ public class ShreddingRecipe extends InventoryRecipe {
 	protected final ItemStack output;
 
 	/**
-	 * Initializes a new {@link ShreddingRecipe}.
+	 * Initializes a new instance.
 	 */
 	public ShreddingRecipe(Identifier id, DefaultedList<Ingredient> ingredients, Ingredient container, ItemStack output) {
 		super(TerravibeRecipeTypes.SHREDDING, TerravibeRecipeSerializers.SHREDDING, id, "", ingredients);
@@ -80,16 +80,16 @@ public class ShreddingRecipe extends InventoryRecipe {
 
 		//Checks if all the items in the inventory are valid ingredient (no item left in the list).
 		//Then checks if the container is valid (the container must be the last item stack of the inventory).
-		return itemStacks.size() == 0 && container.test(inventory.getStack(inventory.size() - 1));
+		return itemStacks.isEmpty() && container.test(inventory.getStack(inventory.size() - 1));
 	}
 
 
 	/**
-	 * {@link ShreddingRecipe} json serializer.
+	 * Shredding recipe json serializer.
 	 */
 	public static class Serializer implements RecipeSerializer<ShreddingRecipe> {
 		/**
-		 * Initializes a new {@link Serializer}.
+		 * Initializes a new instance.
 		 */
 		public Serializer() {
 		}
@@ -113,7 +113,7 @@ public class ShreddingRecipe extends InventoryRecipe {
 			}
 
 			//Checking if there is at least one ingredient
-			if (ingredients.size() == 0) throw new JsonSyntaxException("Required at least one ingredient");
+			if (ingredients.isEmpty()) throw new JsonSyntaxException("Required at least one ingredient");
 
 			//Container
 			Ingredient container = Ingredient.fromJson(recipe.container);
@@ -155,9 +155,8 @@ public class ShreddingRecipe extends InventoryRecipe {
 
 
 		/**
-		 * {@link ShreddingRecipe} json format.
+		 * Shredding recipe json format.
 		 */
-		@SuppressWarnings("unused")
 		private static class ShreddingRecipeFormat {
 			public JsonArray ingredients;
 			public JsonElement container;

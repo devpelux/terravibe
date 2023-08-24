@@ -6,7 +6,13 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 
 import static xyz.devpelux.terravibe.item.TerravibeItems.*;
 
+/**
+ * Item configurations.
+ */
 public class TerravibeItemConfigsClient {
+	/**
+	 * Registers all the item color providers.
+	 */
 	@Environment(EnvType.CLIENT)
 	public static void registerColorProviders() {
 		ColorProviderRegistry.ITEM.register(TerravibeItemColorProviders::getGillyweedSeedsAncientColor, GILLYWEED_SEEDS_ANCIENT);

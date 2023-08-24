@@ -65,7 +65,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock {
 	private static final Map<Item, CauldronBehavior> MILK_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
 
 	/**
-	 * Initializes a new {@link MilkCauldronBlock}.
+	 * Initializes a new instance.
 	 */
 	public MilkCauldronBlock(Settings settings) {
 		super(settings, MILK_CAULDRON_BEHAVIOR);
@@ -317,7 +317,7 @@ public final class MilkCauldronBlock extends AbstractCauldronBlock {
 
 
 	/**
-	 * Represents the milk type contained in a {@link MilkCauldronBlock}.
+	 * Represents the content type of the milk cauldron.
 	 */
 	public enum Content implements StringIdentifiable {
 		/**

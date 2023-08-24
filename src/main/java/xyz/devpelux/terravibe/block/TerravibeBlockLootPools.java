@@ -81,7 +81,7 @@ public class TerravibeBlockLootPools {
 
 		//Ancient gillyweed seeds at height 24 <-> 42.
 		LeafEntry.Builder<?> gillyweedSeedsH2 = ItemEntry.builder(TerravibeItems.GILLYWEED_SEEDS_ANCIENT);
-		gillyweedSeedsH2.conditionally(RandomChanceLootCondition.builder(0.008f)); //Total: 0,009984
+		gillyweedSeedsH2.conditionally(RandomChanceLootCondition.builder(0.008f));
 		gillyweedSeedsH2.conditionally(AnyOfLootCondition.builder(
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.OCEAN, FloatRange.between(24, 42))),
 				LocationCheckLootCondition.builder(biomeAndY(BiomeKeys.DEEP_OCEAN, FloatRange.between(24, 42))),
@@ -94,7 +94,7 @@ public class TerravibeBlockLootPools {
 	}
 
 	/**
-	 * Generates a {@link LocationPredicate.Builder} to filter with the specified biome and y range.
+	 * Generates a location predicate to filter with the specified biome and y range.
 	 */
 	private static LocationPredicate.Builder biomeAndY(RegistryKey<Biome> biome, NumberRange.FloatRange y) {
 		return new LocationPredicate.Builder().biome(biome).y(y);

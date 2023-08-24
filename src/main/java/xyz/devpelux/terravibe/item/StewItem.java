@@ -13,7 +13,7 @@ import net.minecraft.world.World;
  */
 public class StewItem extends Item {
 	/**
-	 * Initializes a new {@link StewItem}.
+	 * Initializes a new instance.
 	 */
 	public StewItem(Settings settings) {
 		super(settings);

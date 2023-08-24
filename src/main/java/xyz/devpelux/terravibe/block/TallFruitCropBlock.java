@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 public abstract class TallFruitCropBlock extends TallCropBlock {
 	/**
-	 * Initializes a new {@link TallFruitCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public TallFruitCropBlock(Settings settings) {
 		super(settings);

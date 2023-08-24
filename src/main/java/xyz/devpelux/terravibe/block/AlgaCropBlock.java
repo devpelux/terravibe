@@ -20,7 +20,7 @@ import net.minecraft.world.event.GameEvent;
  */
 public abstract class AlgaCropBlock extends CropBlock implements FluidFillable {
 	/**
-	 * Initializes a new {@link AlgaCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public AlgaCropBlock(Settings settings) {
 		super(settings);

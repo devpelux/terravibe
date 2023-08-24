@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import xyz.devpelux.terravibe.core.Terravibe;
 
 /**
- * Screen for the {@link ShredderScreenHandler}: handles the rendering of the UI background texture.
+ * Screen for the shredder block UI: handles the rendering of the UI background texture.
  */
 public class ShredderScreen extends HandledScreen<ScreenHandler> {
 	/**
@@ -20,7 +20,7 @@ public class ShredderScreen extends HandledScreen<ScreenHandler> {
 	private static final Identifier TEXTURE = Terravibe.identified("textures/gui/shredder.png");
 
 	/**
-	 * Initializes a new {@link ShredderScreen}.
+	 * Initializes a new instance.
 	 */
 	public ShredderScreen(ScreenHandler handler, PlayerInventory inventory, Text title) {
 		super(handler, inventory, title);
@@ -32,7 +32,7 @@ public class ShredderScreen extends HandledScreen<ScreenHandler> {
 	@Override
 	protected void init() {
 		super.init();
-		// Centers the title
+		//Centers the title.
 		titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
 	}
 
@@ -51,6 +51,7 @@ public class ShredderScreen extends HandledScreen<ScreenHandler> {
 	 */
 	@Override
 	protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
+		//Sets the shader, color, texture, then draws the texture at the center of the display.
 		RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, TEXTURE);

@@ -31,6 +31,9 @@ public final class CorkStrippableBlockRegistry {
 	 */
 	private final Map<Block, Pair<Item, Float>> CORK_STRIPPABLE = new IdentityHashMap<>();
 
+	/**
+	 * Initializes a new instance.
+	 */
 	private CorkStrippableBlockRegistry() {
 		UseBlockCallback.EVENT.register(this::corkStrippingHandler);
 	}

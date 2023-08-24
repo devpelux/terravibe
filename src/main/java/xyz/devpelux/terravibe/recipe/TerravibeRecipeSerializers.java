@@ -11,7 +11,7 @@ import xyz.devpelux.terravibe.core.Terravibe;
  */
 public final class TerravibeRecipeSerializers {
 	/**
-	 * Json serializer of the {@link ShreddingRecipe}.
+	 * Json serializer of the shredding recipe.
 	 */
 	public static final RecipeSerializer<ShreddingRecipe> SHREDDING;
 

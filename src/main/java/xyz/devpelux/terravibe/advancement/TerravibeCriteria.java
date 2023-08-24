@@ -19,7 +19,7 @@ public final class TerravibeCriteria {
 	public static final TickCriterion MAKE_DAIRY_PRODUCTS;
 
 	/**
-	 * Registers a {@link TickCriterion} with the specified id.
+	 * Registers a tick criterion with the specified id.
 	 */
 	private static TickCriterion registerTickCriterion(String id) {
 		return Criteria.register(new TickCriterion(Terravibe.identified(id)));

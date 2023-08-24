@@ -5,7 +5,7 @@ package xyz.devpelux.terravibe.block;
  */
 public class BasilHerbBlock extends HerbBlock {
 	/**
-	 * Initializes a new {@link BasilHerbBlock}.
+	 * Initializes a new instance.
 	 */
 	public BasilHerbBlock(Settings settings) {
 		super(settings);

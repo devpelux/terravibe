@@ -22,10 +22,12 @@ public class SideEffectFoodItem extends Item {
 	 * List of player ids that have a cooldown for this item.
 	 */
 	private final Map<Integer, Integer> COOLDOWNS = new HashMap<>();
+
 	/**
 	 * List of side effects of the item.
 	 */
 	private final SideEffects sideEffects;
+
 	/**
 	 * Stores the current time.
 	 */

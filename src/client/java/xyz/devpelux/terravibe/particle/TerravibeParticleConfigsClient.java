@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import static xyz.devpelux.terravibe.particle.TerravibeParticleTypes.*;
 
 /**
- * List of all the particle types.
+ * Particle configurations.
  */
 public final class TerravibeParticleConfigsClient {
 	/**

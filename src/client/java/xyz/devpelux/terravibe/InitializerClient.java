@@ -16,17 +16,17 @@ public class InitializerClient implements ClientModInitializer {
 	 */
 	@Override
 	public void onInitializeClient() {
-		//Loads block configurations
+		//Loads block configurations.
 		TerravibeBlockConfigsClient.registerColorProviders();
 		TerravibeBlockConfigsClient.registerRenderLayerMaps();
 
-		//Loads item configurations
+		//Loads item configurations.
 		TerravibeItemConfigsClient.registerColorProviders();
 
-		//Loads particles
+		//Loads particle configurations.
 		TerravibeParticleConfigsClient.registerParticleFactories();
 
-		//Loads screens
+		//Loads screen configurations.
 		TerravibeScreenConfigsClient.registerScreens();
 
 		Terravibe.LOGGER.info("Loaded Terravibe client components.");

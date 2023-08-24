@@ -20,7 +20,7 @@ public class KaleCropBlock extends CropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link KaleCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public KaleCropBlock(Settings settings) {
 		super(settings);

@@ -82,7 +82,7 @@ public class FloweringOpuntiaBlock extends FacingBlock {
 	private static final VoxelShape[][] SHAPES;
 
 	/**
-	 * Initializes a new {@link FloweringOpuntiaBlock}.
+	 * Initializes a new instance.
 	 */
 	public FloweringOpuntiaBlock(Settings settings) {
 		super(settings);

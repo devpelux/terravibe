@@ -15,7 +15,7 @@ import net.minecraft.world.World;
  */
 public class JuiceItem extends Item {
 	/**
-	 * Initializes a new {@link JuiceItem}.
+	 * Initializes a new instance.
 	 */
 	public JuiceItem(Settings settings) {
 		super(settings);

@@ -10,6 +10,7 @@ import xyz.devpelux.terravibe.item.SideEffectFoodItem.SideEffects;
  */
 public final class TerravibeFoodEffects {
 	//Food components
+	
 	public static final FoodComponent BAKED_SWEET_POTATO;
 	public static final FoodComponent BEANS;
 	public static final FoodComponent CHEESE;
@@ -40,6 +41,7 @@ public final class TerravibeFoodEffects {
 	public static final FoodComponent TOMATO;
 
 	//Side effects
+
 	public static final SideEffects GILLYWEED_SIDE_EFFECTS;
 	public static final SideEffects NIGHTSHADE_FERN_BLUEBERRIES_SIDE_EFFECTS;
 

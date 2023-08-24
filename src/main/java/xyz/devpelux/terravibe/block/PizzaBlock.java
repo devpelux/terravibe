@@ -45,7 +45,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	private static final VoxelShape[][] OUTLINE_SHAPES;
 
 	/**
-	 * Initializes a new {@link PizzaBlock}.
+	 * Initializes a new instance.
 	 */
 	public PizzaBlock(Settings settings) {
 		super(settings);
@@ -196,7 +196,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 		if (southWest) shapeList.add(Block.createCuboidShape(1, 0, 8, 8, 1, 15));
 		if (northWest) shapeList.add(Block.createCuboidShape(1, 0, 1, 8, 1, 8));
 
-		if (shapeList.size() == 0) return VoxelShapes.empty();
+		if (shapeList.isEmpty()) return VoxelShapes.empty();
 		return shapeList.stream().reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 	}
 

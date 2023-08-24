@@ -10,7 +10,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
 /**
- * Factories of {@link FloatingSporeParticle} particles.
+ * Factories of floating spore particles.
  */
 public final class FloatingSporeParticleFactories {
 	/**
@@ -29,7 +29,7 @@ public final class FloatingSporeParticleFactories {
 		private final SpriteProvider spriteProvider;
 
 		/**
-		 * Initializes a new {@link DarkMoldSporeFactory}.
+		 * Initializes a new instance.
 		 */
 		public BirchMoldSporeFactory(SpriteProvider spriteProvider) {
 			this.spriteProvider = spriteProvider;
@@ -67,7 +67,7 @@ public final class FloatingSporeParticleFactories {
 		private final SpriteProvider spriteProvider;
 
 		/**
-		 * Initializes a new {@link DarkMoldSporeFactory}.
+		 * Initializes a new instance.
 		 */
 		public DarkMoldSporeFactory(SpriteProvider spriteProvider) {
 			this.spriteProvider = spriteProvider;
@@ -104,7 +104,7 @@ public final class FloatingSporeParticleFactories {
 		private final SpriteProvider spriteProvider;
 
 		/**
-		 * Initializes a new {@link DarkMoldSporeFactory}.
+		 * Initializes a new instance.
 		 */
 		public GlowingDarkMoldSporeFactory(SpriteProvider spriteProvider) {
 			this.spriteProvider = spriteProvider;

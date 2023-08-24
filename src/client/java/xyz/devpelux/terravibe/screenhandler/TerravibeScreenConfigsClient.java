@@ -5,7 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 
 /**
- * List of all the screen handler types.
+ * Screen configurations.
  */
 public final class TerravibeScreenConfigsClient {
 	/**

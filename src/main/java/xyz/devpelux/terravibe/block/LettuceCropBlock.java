@@ -20,7 +20,7 @@ public class LettuceCropBlock extends CropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link LettuceCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public LettuceCropBlock(Settings settings) {
 		super(settings);

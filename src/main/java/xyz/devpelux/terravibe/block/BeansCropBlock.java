@@ -20,7 +20,7 @@ public class BeansCropBlock extends CropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link BeansCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public BeansCropBlock(Settings settings) {
 		super(settings);

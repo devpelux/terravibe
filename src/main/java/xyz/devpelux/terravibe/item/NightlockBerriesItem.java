@@ -15,7 +15,7 @@ import net.minecraft.world.World;
  */
 public class NightlockBerriesItem extends AliasedBlockItem {
 	/**
-	 * Initializes a new {@link NightlockBerriesItem}.
+	 * Initializes a new instance.
 	 */
 	public NightlockBerriesItem(Block block, Settings settings) {
 		super(block, settings);

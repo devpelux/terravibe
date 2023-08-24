@@ -19,8 +19,6 @@ import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
 import xyz.devpelux.terravibe.tags.TerravibeFluidTags;
 import xyz.devpelux.terravibe.tags.TerravibeItemTags;
 
-//1346728994490959230
-
 /**
  * Main mod initializer.
  */
@@ -37,13 +35,13 @@ public class Initializer implements ModInitializer {
 
 		//Loads block configurations
 		TerravibeBlockConfigs.registerBehaviors();
+		TerravibeBlockConfigs.registerCorkStrippables();
 		TerravibeBlockConfigs.registerFlattenables();
 		TerravibeBlockConfigs.registerLandPathNodeTypes();
 		TerravibeBlockLootPools.registerLootTableModifiers();
 
 		//Loads item configurations
 		TerravibeItemConfigs.registerCompostingChances();
-		TerravibeItemConfigs.registerCorkStrippables();
 		TerravibeItemInventory.registerItemGroupModifiers();
 
 		//Loads block entities

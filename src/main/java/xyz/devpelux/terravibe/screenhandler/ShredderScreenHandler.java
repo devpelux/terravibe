@@ -13,7 +13,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import xyz.devpelux.terravibe.blockentity.ShredderBlockEntity;
 import xyz.devpelux.terravibe.core.ResultSlot;
 import xyz.devpelux.terravibe.recipe.ShreddingRecipe;
 import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
@@ -21,7 +20,7 @@ import xyz.devpelux.terravibe.recipe.TerravibeRecipeTypes;
 import java.util.Optional;
 
 /**
- * Screen handler for the {@link ShredderBlockEntity} UI: handles the interactions with the UI.
+ * Screen handler for the shredder block UI: handles the interactions with the UI.
  */
 public class ShredderScreenHandler extends ScreenHandler {
 	/**
@@ -45,7 +44,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 	private final SimpleInventory output = new SimpleInventory(1);
 
 	/**
-	 * Initializes a new {@link ShredderScreenHandler}.
+	 * Initializes a new instance.
 	 */
 	public ShredderScreenHandler(@Nullable ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory) {
 		super(type, syncId);
@@ -56,7 +55,7 @@ public class ShredderScreenHandler extends ScreenHandler {
 	}
 
 	/**
-	 * Creates a new {@link ShredderScreenHandler} for shredder type.
+	 * Creates a new basic instance.
 	 */
 	public static ShredderScreenHandler create(int syncId, PlayerInventory playerInventory) {
 		return new ShredderScreenHandler(TerravibeScreenHandlerTypes.SHREDDER, syncId, playerInventory);
@@ -176,13 +175,18 @@ public class ShredderScreenHandler extends ScreenHandler {
 		if (originSlot.hasStack()) {
 			ItemStack originStack = originSlot.getStack();
 
+
 			if (originIndex <= 5) {
+				//Transfer the item from the origin slot in the shredder inventory to the player inventory.
 				if (!insertItem(originStack.copy(), 6, slots.size(), false)) return ItemStack.EMPTY;
 			} else {
+				//Transfer the item from the origin slot in the player inventory to the shredder inventory.
 				if (!insertItem(originStack.copy(), 0, 3, false)) return ItemStack.EMPTY;
 			}
 
 			originSlot.setStack(ItemStack.EMPTY);
+
+			//This will call quickMove recursively until the slot is empty.
 			originSlot.onTakeItem(player, originStack.copy());
 
 			return originStack;

@@ -27,7 +27,7 @@ public class ResultSlot extends Slot {
 	private BiConsumer<PlayerEntity, ItemStack> onItemTakenListener;
 
 	/**
-	 * Initializes a new {@link ResultSlot}
+	 * Initializes a new instance
 	 */
 	public ResultSlot(PlayerEntity player, Inventory inventory, int index, int x, int y) {
 		super(inventory, index, x, y);
@@ -43,7 +43,7 @@ public class ResultSlot extends Slot {
 	}
 
 	/**
-	 * Gets a value indicating if an {@link ItemStack} can be inserted into the slot. (Always false)
+	 * Gets a value indicating if a stack can be inserted into the slot. (Always false)
 	 */
 	@Override
 	public boolean canInsert(ItemStack stack) {

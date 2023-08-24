@@ -20,7 +20,7 @@ public class GlowingDarkMoldBlock extends MoldBlock {
 	public static final IntProperty AGE = Properties.AGE_1;
 
 	/**
-	 * Initializes a new {@link GlowingDarkMoldBlock}.
+	 * Initializes a new instance.
 	 */
 	public GlowingDarkMoldBlock(Settings settings) {
 		super(settings);

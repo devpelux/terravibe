@@ -40,7 +40,7 @@ public class ShredderBlock extends BlockWithEntity {
 	private static final VoxelShape OUTLINE_SHAPE;
 
 	/**
-	 * Initializes a new {@link ShredderBlock}.
+	 * Initializes a new instance.
 	 */
 	public ShredderBlock(Settings settings) {
 		super(settings);

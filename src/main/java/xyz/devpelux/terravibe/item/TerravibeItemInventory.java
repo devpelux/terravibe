@@ -5,6 +5,9 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 
+/**
+ * Contains methods to populate the creative inventory.
+ */
 @SuppressWarnings("UnstableApiUsage")
 public final class TerravibeItemInventory {
 	/**

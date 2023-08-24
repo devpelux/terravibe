@@ -31,7 +31,7 @@ public class GillyweedAlgaBlock extends AlgaCropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link GillyweedAlgaBlock}.
+	 * Initializes a new instance.
 	 */
 	public GillyweedAlgaBlock(Settings settings) {
 		super(settings);

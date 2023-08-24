@@ -19,7 +19,7 @@ public class RiceCropBlock extends FloodedCropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link RiceCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public RiceCropBlock(Settings settings) {
 		super(settings);

@@ -61,7 +61,7 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
 	private Vec3d wind = Vec3d.ZERO;
 
 	/**
-	 * Initializes a new {@link GlowingDustParticle} specifying the sprite and position.
+	 * Initializes a new instance specifying the sprite and position.
 	 */
 	@SuppressWarnings("unused")
 	protected GlowingDustParticle(ClientWorld world, SpriteProvider sprite, double x, double y, double z) {
@@ -74,7 +74,7 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
 	}
 
 	/**
-	 * Initializes a new {@link GlowingDustParticle} specifying the sprite, position, and initial speed.
+	 * Initializes a new instance specifying the sprite, position, and initial speed.
 	 */
 	protected GlowingDustParticle(ClientWorld world, SpriteProvider sprite, double x, double y, double z, double vX, double vY, double vZ) {
 		super(world, x, y, z, vX, vY, vZ);
@@ -114,10 +114,14 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
 	@Override
 	public int getBrightness(float tickDelta) {
 		if (maxLuminescence > 0) {
+			//Gets the brightness of the particle basing on the skylight, block light, and the particle luminescence.
+			//The skylight and block light are obtained from the current position of the particle.
+			//The result is the maximum value between these light values.
 			int brightness = super.getBrightness(tickDelta);
 			int sky = brightness >> 16 & 255;
 			int block = brightness & 255;
 
+			//The luminescence of the particle is added to the block light.
 			block += (int) (getLuminescence(tickDelta) * 240f);
 			if (block > 240) {
 				block = 240;
@@ -132,12 +136,14 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
 	 * Gets the luminescence of the particle between 0 and 1.
 	 */
 	private float getLuminescence(float tickDelta) {
+		//If is specified a positive blink interval, the luminescence changes periodically.
 		if (blinkInterval > 0) {
+			//Calculates the current time in the interval (in a range between 0 and 2PI).
 			float time = Math.min(blinkTicks + tickDelta, blinkInterval);
 			float maxTime = blinkInterval;
-			//The time passed in a range between 0 and 2PI.
 			float piTime = time / maxTime * MathHelper.PI * 2f;
 
+			//Calculates a luminescence between a min and a max basing on the current time in the interval.
 			return MathHelper.map(MathHelper.sin(piTime), -1f, 1f, minLuminescence, maxLuminescence);
 		}
 		return maxLuminescence;
@@ -156,9 +162,11 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
 			}
 		}
 
-		//Updates the wind tick and applies the wins if there is a wind.
+		//Updates the wind tick and applies the wind if there is a wind.
 		if (maxWindDuration > 0) {
 			windTicks++;
+
+			//At the end of the wind, resets a new wind.
 			if (windTicks >= windEndTicks) {
 				windTicks = 0;
 				windEndTicks = random.nextBetween(minWindDuration, maxWindDuration);
@@ -167,6 +175,8 @@ public abstract class GlowingDustParticle extends SpriteBillboardParticle {
 				double windZ = Math.random() * windStrength * 2d - windStrength;
 				wind = new Vec3d(windX, windY, windZ);
 			}
+
+			//If the wind is not ended, accelerates the particle.
 			accelerate(wind);
 		}
 

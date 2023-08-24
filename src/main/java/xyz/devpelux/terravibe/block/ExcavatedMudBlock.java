@@ -38,7 +38,7 @@ public class ExcavatedMudBlock extends Block implements FluidFillable {
 	private static final VoxelShape COLLISION_SHAPE;
 
 	/**
-	 * Initializes a new {@link ExcavatedMudBlock}.
+	 * Initializes a new instance.
 	 */
 	public ExcavatedMudBlock(Settings settings) {
 		super(settings);

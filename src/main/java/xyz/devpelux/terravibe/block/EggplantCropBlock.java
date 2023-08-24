@@ -24,7 +24,7 @@ public class EggplantCropBlock extends FruitCropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link EggplantCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public EggplantCropBlock(Settings settings) {
 		super(settings);

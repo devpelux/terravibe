@@ -50,7 +50,7 @@ public class SideEffectsFromFoodCriterion extends AbstractCriterion<SideEffectsF
 		private final ItemPredicate itemPredicate;
 
 		/**
-		 * Initializes a new {@link Conditions}.
+		 * Initializes a new instance.
 		 */
 		public Conditions(LootContextPredicate playerPredicate, ItemPredicate itemPredicate) {
 			super(ID, playerPredicate);

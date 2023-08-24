@@ -6,7 +6,13 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 
+/**
+ * Block configurations.
+ */
 public class TerravibeBlockConfigsClient {
+	/**
+	 * Registers all the block color providers.
+	 */
 	@Environment(EnvType.CLIENT)
 	public static void registerColorProviders() {
 		ColorProviderRegistry.BLOCK.register(TerravibeBlockColorProviders::getMilkCauldronColor, TerravibeBlocks.MILK_CAULDRON);
@@ -14,6 +20,9 @@ public class TerravibeBlockConfigsClient {
 		ColorProviderRegistry.BLOCK.register(TerravibeBlockColorProviders::getTrayColor, TerravibeBlocks.TRAY);
 	}
 
+	/**
+	 * Registers all the block render layer maps.
+	 */
 	@Environment(EnvType.CLIENT)
 	public static void registerRenderLayerMaps() {
 		BlockRenderLayerMap.INSTANCE.putBlock(TerravibeBlocks.BASIL_HERB, RenderLayer.getCutout());

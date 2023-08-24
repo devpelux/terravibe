@@ -49,7 +49,7 @@ public abstract class MoldBlock extends PlantBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link MoldBlock}.
+	 * Initializes a new instance.
 	 */
 	public MoldBlock(Settings settings) {
 		super(settings);

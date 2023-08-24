@@ -36,7 +36,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link BerryBushBlock}.
+	 * Initializes a new instance.
 	 */
 	public BerryBushBlock(Settings settings) {
 		super(settings);
@@ -125,7 +125,7 @@ public abstract class BerryBushBlock extends PlantBlock implements Fertilizable 
 
 	/**
 	 * Executed when the block is used.
-	 * Drops the stack to pick and decrement the age or bonemeals the bush.
+	 * Drops the stack to pick and decrement the age or bone-meals the bush.
 	 */
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {

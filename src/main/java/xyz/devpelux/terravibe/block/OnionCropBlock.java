@@ -20,7 +20,7 @@ public class OnionCropBlock extends CropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link OnionCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public OnionCropBlock(Settings settings) {
 		super(settings);

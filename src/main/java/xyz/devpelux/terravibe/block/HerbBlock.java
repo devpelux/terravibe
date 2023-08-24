@@ -28,7 +28,7 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link HerbBlock}.
+	 * Initializes a new instance.
 	 */
 	public HerbBlock(Settings settings) {
 		super(settings);

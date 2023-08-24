@@ -30,7 +30,7 @@ public class TomatoCropBlock extends TallFruitCropBlock {
 	private static final VoxelShape[] UPPER_AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link TomatoCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public TomatoCropBlock(Settings settings) {
 		super(settings);

@@ -22,7 +22,7 @@ public class SweetPotatoCropBlock extends CropBlock {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link SweetPotatoCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public SweetPotatoCropBlock(Settings settings) {
 		super(settings);

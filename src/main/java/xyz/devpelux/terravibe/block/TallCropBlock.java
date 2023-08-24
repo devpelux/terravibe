@@ -33,7 +33,7 @@ public abstract class TallCropBlock extends CropBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
 
 	/**
-	 * Initializes a new {@link TallCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public TallCropBlock(Settings settings) {
 		super(settings);

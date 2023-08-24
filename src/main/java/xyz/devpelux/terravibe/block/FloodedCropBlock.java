@@ -14,7 +14,7 @@ import xyz.devpelux.terravibe.tags.TerravibeBlockTags;
  */
 public abstract class FloodedCropBlock extends CropBlock {
 	/**
-	 * Initializes a new {@link FloodedCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public FloodedCropBlock(Settings settings) {
 		super(settings);

@@ -15,7 +15,7 @@ import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
  */
 public class BirchMoldBlock extends MoldBlock {
 	/**
-	 * Initializes a new {@link BirchMoldBlock}.
+	 * Initializes a new instance.
 	 */
 	public BirchMoldBlock(Settings settings) {
 		super(settings);

@@ -27,7 +27,7 @@ public class CornCropBlock extends TallCropBlock {
 	private static final VoxelShape[] UPPER_AGE_TO_SHAPE;
 
 	/**
-	 * Initializes a new {@link CornCropBlock}.
+	 * Initializes a new instance.
 	 */
 	public CornCropBlock(Settings settings) {
 		super(settings);

@@ -76,7 +76,7 @@ public class OpuntiaBlock extends FacingBlock {
 	private static final Direction[] FACES;
 
 	/**
-	 * Initializes a new {@link OpuntiaBlock}.
+	 * Initializes a new instance.
 	 */
 	public OpuntiaBlock(Settings settings) {
 		super(settings);

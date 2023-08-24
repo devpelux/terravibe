@@ -15,7 +15,7 @@ import xyz.devpelux.terravibe.particle.TerravibeParticleTypes;
  */
 public class DarkMoldBlock extends MoldBlock {
 	/**
-	 * Initializes a new {@link DarkMoldBlock}.
+	 * Initializes a new instance.
 	 */
 	public DarkMoldBlock(Settings settings) {
 		super(settings);

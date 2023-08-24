@@ -35,7 +35,7 @@ public class AncientSeedItem extends Item {
 	protected final int maxCleaningAmount;
 
 	/**
-	 * Initializes a new {@link AncientSeedItem}.
+	 * Initializes a new instance.
 	 */
 	public AncientSeedItem(Settings settings, int dirtyLevel) {
 		super(settings);
@@ -76,10 +76,9 @@ public class AncientSeedItem extends Item {
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 		super.appendTooltip(stack, world, tooltip, context);
 
-		int dirty = getDirtyValue(stack);
-
 		//Shows the dirty value as a tooltip.
-		tooltip.add(Text.translatable("item.terravibe.ancient_seed.dirty").append(" " + dirty + "%")
+		int dirtyValue = getDirtyValue(stack);
+		tooltip.add(Text.translatable("item.terravibe.ancient_seed.dirty").append(" " + dirtyValue + "%")
 				.formatted(Formatting.DARK_GRAY));
 	}
 

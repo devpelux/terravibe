@@ -27,7 +27,7 @@ public class NightlockBerryBushBlock extends BerryBushBlock {
 	public static final Vec3d MOVEMENT_SLOWING_AMOUNT = new Vec3d(0.8, 0.75, 0.8);
 
 	/**
-	 * Initializes a new {@link NightlockBerryBushBlock}.
+	 * Initializes a new instance.
 	 */
 	public NightlockBerryBushBlock(Settings settings) {
 		super(settings);
