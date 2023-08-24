@@ -21,11 +21,6 @@ import xyz.devpelux.terravibe.tags.TerravibeBiomeTags;
  */
 public class GillyweedAlgaBlock extends AlgaCropBlock {
 	/**
-	 * Maximum y in which the plant can grow.
-	 */
-	public static final int MAX_Y_TO_FULLY_GROW = 54;
-
-	/**
 	 * Voxel shapes of the block.
 	 */
 	private static final VoxelShape[] AGE_TO_SHAPE;
@@ -83,7 +78,7 @@ public class GillyweedAlgaBlock extends AlgaCropBlock {
 	 */
 	@Override
 	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-		if ((getAge(state) < 3) || (pos.getY() <= MAX_Y_TO_FULLY_GROW && world.getBiome(pos).isIn(TerravibeBiomeTags.WARM_OCEAN))) {
+		if ((getAge(state) < 3) || world.getBiome(pos).isIn(TerravibeBiomeTags.WARM_OCEAN)) {
 			super.randomTick(state, world, pos, random);
 		}
 	}

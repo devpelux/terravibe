@@ -21,14 +21,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
-import xyz.devpelux.terravibe.item.TerravibeItems;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 /**
  * Famous italian food with various ingredients.
  */
-public abstract class PizzaBlock extends HorizontalFacingBlock {
+public class PizzaBlock extends HorizontalFacingBlock {
 	/**
 	 * Max number of slices.
 	 */
@@ -45,41 +45,17 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 	private static final VoxelShape[][] OUTLINE_SHAPES;
 
 	/**
+	 * Slice item.
+	 */
+	private final Supplier<ItemConvertible> sliceItem;
+
+	/**
 	 * Initializes a new instance.
 	 */
-	public PizzaBlock(Settings settings) {
+	public PizzaBlock(Settings settings, Supplier<ItemConvertible> sliceItem) {
 		super(settings);
+		this.sliceItem = sliceItem;
 		setDefaultState(getDefaultState().with(FACING, Direction.NORTH).with(SLICES, 4));
-	}
-
-	/**
-	 * Generates a new block of pizza four cheese.
-	 */
-	public static PizzaBlock fourCheese(Settings settings) {
-		return new PizzaBlock(settings) {
-			/**
-			 * Gets the item of the slice.
-			 */
-			@Override
-			public ItemConvertible getSliceItem() {
-				return TerravibeItems.PIZZA_SLICE_FOUR_CHEESE;
-			}
-		};
-	}
-
-	/**
-	 * Generates a new block of pizza margherita.
-	 */
-	public static PizzaBlock margherita(Settings settings) {
-		return new PizzaBlock(settings) {
-			/**
-			 * Gets the item of the slice.
-			 */
-			@Override
-			public ItemConvertible getSliceItem() {
-				return TerravibeItems.PIZZA_SLICE_MARGHERITA;
-			}
-		};
 	}
 
 	/**
@@ -90,11 +66,6 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 		super.appendProperties(builder);
 		builder.add(FACING, SLICES);
 	}
-
-	/**
-	 * Gets the item of the slice.
-	 */
-	public abstract ItemConvertible getSliceItem();
 
 	/**
 	 * Gets the placement state of the block.
@@ -124,7 +95,7 @@ public abstract class PizzaBlock extends HorizontalFacingBlock {
 				}
 
 				//Gives the slice to the player hand.
-				player.setStackInHand(hand, new ItemStack(getSliceItem()));
+				player.setStackInHand(hand, new ItemStack(sliceItem.get()));
 			}
 
 			//Client: SUCCESS / Server: CONSUME

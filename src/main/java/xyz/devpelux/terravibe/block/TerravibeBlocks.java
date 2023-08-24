@@ -162,7 +162,7 @@ public final class TerravibeBlocks {
 	}
 
 	static {
-		BASIL_HERB = register("basil_herb", new BasilHerbBlock(TerravibeBlockSettings.basil_herb()));
+		BASIL_HERB = register("basil_herb", new HerbBlock(TerravibeBlockSettings.basil_herb(), 20));
 		BEANS_CROP = register("beans_crop", new BeansCropBlock(TerravibeBlockSettings.beans_crop()));
 		BIRCH_MOLD = register("birch_mold", new BirchMoldBlock(TerravibeBlockSettings.birch_mold()));
 		CHEESE_WHEEL = register("cheese_wheel", new CheeseWheelBlock(TerravibeBlockSettings.cheese_wheel()));
@@ -182,8 +182,8 @@ public final class TerravibeBlocks {
 		NIGHTSHADE_FERN = register("nightshade_fern", new NightshadeFernBlock(TerravibeBlockSettings.nightshade_fern()));
 		ONION_CROP = register("onion_crop", new OnionCropBlock(TerravibeBlockSettings.onion_crop()));
 		OPUNTIA = register("opuntia", new OpuntiaBlock(TerravibeBlockSettings.opuntia()));
-		PIZZA_FOUR_CHEESE = register("pizza_four_cheese", PizzaBlock.fourCheese(TerravibeBlockSettings.pizza_four_cheese()));
-		PIZZA_MARGHERITA = register("pizza_margherita", PizzaBlock.margherita(TerravibeBlockSettings.pizza_margherita()));
+		PIZZA_FOUR_CHEESE = register("pizza_four_cheese", PizzaBlockFactories.createPizzaFourCheese(TerravibeBlockSettings.pizza_four_cheese()));
+		PIZZA_MARGHERITA = register("pizza_margherita", PizzaBlockFactories.createPizzaMargherita(TerravibeBlockSettings.pizza_margherita()));
 		RICE_CROP = register("rice_crop", new RiceCropBlock(TerravibeBlockSettings.rice_crop()));
 		SHREDDER = register("shredder", new ShredderBlock(TerravibeBlockSettings.shredder()));
 		SWEET_POTATO_CROP = register("sweet_potato_crop", new SweetPotatoCropBlock(TerravibeBlockSettings.sweet_potato_crop()));

@@ -16,11 +16,16 @@ import net.minecraft.world.event.GameEvent;
 /**
  * A herb with two stages that can be planted everywhere (in dirt).
  */
-public abstract class HerbBlock extends PlantBlock implements Fertilizable {
+public class HerbBlock extends PlantBlock implements Fertilizable {
 	/**
 	 * Age of the herb.
 	 */
 	public static final IntProperty AGE;
+
+	/**
+	 * Required light to grow.
+	 */
+	public static final int MIN_LIGHT_TO_GROW = 7;
 
 	/**
 	 * Voxel shapes of the block.
@@ -28,10 +33,16 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
 	private static final VoxelShape[] AGE_TO_SHAPE;
 
 	/**
+	 * Time to grow.
+	 */
+	private final int growingTime;
+
+	/**
 	 * Initializes a new instance.
 	 */
-	public HerbBlock(Settings settings) {
+	public HerbBlock(Settings settings, int growingTime) {
 		super(settings);
+		this.growingTime = growingTime;
 		setDefaultState(getDefaultState().with(AGE, 0));
 	}
 
@@ -52,16 +63,6 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
 	}
 
 	/**
-	 * Gets the time to grow.
-	 */
-	public abstract int getGrowingTime();
-
-	/**
-	 * Gets the required light to grow.
-	 */
-	public abstract int getMinLightToGrow();
-
-	/**
 	 * Gets a value indicating if the block reacts with the ticking system.
 	 */
 	@Override
@@ -75,8 +76,8 @@ public abstract class HerbBlock extends PlantBlock implements Fertilizable {
 	 */
 	@Override
 	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-		if (getAge(state) == 0 && random.nextInt(getGrowingTime()) == 0
-				&& world.getBaseLightLevel(pos, 0) >= getMinLightToGrow()) {
+		if (getAge(state) == 0 && random.nextInt(growingTime) == 0
+				&& world.getBaseLightLevel(pos, 0) >= MIN_LIGHT_TO_GROW) {
 			//Sets the age to 1.
 			BlockState nextGrowState = state.with(AGE, 1);
 			world.setBlockState(pos, nextGrowState, 2);
