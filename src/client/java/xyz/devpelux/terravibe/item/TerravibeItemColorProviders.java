@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Color providers for the items.
  */
-public class TerravibeItemColorProviders {
+public final class TerravibeItemColorProviders {
 	/**
 	 * Gets the color of the ancient gillyweed seeds item.
 	 */

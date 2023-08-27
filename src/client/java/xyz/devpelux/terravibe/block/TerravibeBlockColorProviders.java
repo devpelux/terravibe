@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Color providers for the blocks.
  */
-public class TerravibeBlockColorProviders {
+public final class TerravibeBlockColorProviders {
 	/**
 	 * Gets the color of the milk cauldron block.
 	 */

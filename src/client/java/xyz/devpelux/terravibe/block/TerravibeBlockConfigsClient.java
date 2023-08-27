@@ -9,7 +9,7 @@ import net.minecraft.client.render.RenderLayer;
 /**
  * Block configurations.
  */
-public class TerravibeBlockConfigsClient {
+public final class TerravibeBlockConfigsClient {
 	/**
 	 * Registers all the block color providers.
 	 */

@@ -6,7 +6,7 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
 /**
  * Factories of pizza blocks.
  */
-public class PizzaBlockFactories {
+public final class PizzaBlockFactories {
 	/**
 	 * Creates a new block of pizza four cheese.
 	 */

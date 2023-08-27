@@ -10,7 +10,7 @@ import xyz.devpelux.terravibe.item.TerravibeItems;
 /**
  * Block configurations.
  */
-public class TerravibeBlockConfigs {
+public final class TerravibeBlockConfigs {
 	/**
 	 * Registers all the block behaviors.
 	 */

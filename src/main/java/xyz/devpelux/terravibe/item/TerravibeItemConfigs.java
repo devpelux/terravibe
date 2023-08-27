@@ -8,7 +8,7 @@ import static xyz.devpelux.terravibe.item.TerravibeItems.*;
 /**
  * Item configurations.
  */
-public class TerravibeItemConfigs {
+public final class TerravibeItemConfigs {
 	/**
 	 * Registers all the item composting chances.
 	 */

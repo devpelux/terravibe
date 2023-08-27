@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * List of all the extra loot pools added to existing blocks.
  */
-public class TerravibeBlockLootPools {
+public final class TerravibeBlockLootPools {
 	/**
 	 * Registers all the loot table modifiers.
 	 */

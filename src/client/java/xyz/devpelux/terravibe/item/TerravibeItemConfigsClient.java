@@ -9,7 +9,7 @@ import static xyz.devpelux.terravibe.item.TerravibeItems.*;
 /**
  * Item configurations.
  */
-public class TerravibeItemConfigsClient {
+public final class TerravibeItemConfigsClient {
 	/**
 	 * Registers all the item color providers.
 	 */
